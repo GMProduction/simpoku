@@ -1,0 +1,565 @@
+@font-face {
+    src: url("../assets/font/helvetica.ttf") !important;
+    font-family: helvetica;
+
+}
+
+@font-face {
+    font-family: 'hel';
+    src: url('../font/Helvetica.ttf');
+}
+
+
+.login-brand {
+    margin-top: 100px;
+    font-family: 'hel';
+    font-size: 30px;
+    color: white;
+    text-align: center;
+}
+
+.box-login {
+    margin-top: 10px;
+    padding: 20px 30px;
+    background-color: white;
+    border-radius: 0px 3px 3px 0px;
+    box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+}
+
+.login-title {
+    font-family: 'hel';
+    font-size: larger;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-form {
+    margin-bottom: 10px;
+}
+
+.login-footer {
+    text-align: center
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.z-depth-2 {
+    -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+}
+
+.z-depth-0 {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+/* 12dp elevation modified*/
+.z-depth-3 {
+    -webkit-box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+}
+
+/* 16dp elevation */
+.z-depth-4 {
+    -webkit-box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -7px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -7px rgba(0, 0, 0, 0.2);
+}
+
+.tambah50px {
+    margin-top: 10px;
+}
+
+.bawah {
+    padding-top: 50px;
+}
+
+.conten-fixed {
+    padding-top: 100px;
+}
+
+.warna-burgundy {
+    background-color: #8C001A;
+}
+
+.bg-putih {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.warna-burgundy-1 {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.warna-gray {
+    background-color: #efefef;
+}
+
+.text-burgundy {
+    color: #8C001A !important;
+}
+
+.garis:hover {
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+    font-weight: bold;
+}
+
+.garis-aktive,
+.garis:active {
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+    font-weight: bold;
+}
+
+.table-borderless th,
+.table-borderless td,
+.table-borderless thead th,
+.table-borderless tbody+tbody {
+    border: 0;
+}
+
+.list-event .img-list-event,
+.list-event .img-list-event img {
+    height: 120px;
+    width: 180px
+}
+
+.list-event .tittle-list-event {
+    color: #800000 !important;
+    font-weight: bolder;
+    border-bottom: 1px solid;
+}
+
+.list-event .list:hover {
+    cursor: pointer;
+    background-color: #f9f2f2;
+}
+
+.list-event .img-event {
+    width: 100%;
+}
+
+.title-homeEven {
+    font-weight: bold;
+    color: #800000;
+}
+
+
+
+a,
+a:focus,
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover,
+.btn {
+    outline: none !important;
+}
+
+/*ROUNDED CORNER*/
+* {
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+/*CATEGORIES BADGE*/
+.badge {
+    font-weight: 600;
+    font-size: 13px;
+    color: white;
+    background-color: #289dcc;
+}
+
+.linkfeat {
+    background: rgba(76, 76, 76, 0);
+    background: -moz-linear-gradient(top, rgba(76, 76, 76, 0) 0%, rgba(48, 48, 48, 0) 49%, rgba(19, 19, 19, 1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(76, 76, 76, 0)), color-stop(49%, rgba(48, 48, 48, 0)), color-stop(100%, rgba(19, 19, 19, 1)));
+    background: -webkit-linear-gradient(top, rgba(76, 76, 76, 0) 0%, rgba(48, 48, 48, 0) 49%, rgba(19, 19, 19, 1) 100%);
+    background: -o-linear-gradient(top, rgba(76, 76, 76, 0) 0%, rgba(48, 48, 48, 0) 49%, rgba(19, 19, 19, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(76, 76, 76, 0) 0%, rgba(48, 48, 48, 0) 49%, rgba(19, 19, 19, 1) 100%);
+    background: linear-gradient(to bottom, rgba(76, 76, 76, 0) 0%, rgba(48, 48, 48, 0) 49%, rgba(19, 19, 19, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4c4c4c', endColorstr='#131313', GradientType=0);
+}
+
+.mg-2,
+.mg-4 {
+    margin-left: -20px;
+}
+
+
+html,
+body {
+    height: 100%;
+    font-family: helvetica !important;
+    padding: 0;
+    margin: 0;
+}
+
+.bodylogin {
+    background-color: rgba(0, 0, 0, 0.85);
+    height: 100%;
+    width: 100%;
+    margin-top: 0;
+    padding-top: 0;
+    background-position: 0, -100px;
+}
+
+.bodypolos {
+    background-image: unset;
+}
+
+
+
+nav.navAwal {
+    position: absolute;
+}
+
+li.nav-item {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#toggler {
+    color: black;
+}
+
+
+
+nav.home li.nav-item .nav-link-shadow {
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    font-weight: 500;
+    text-shadow: 2px;
+    transition: 0.5s;
+    text-shadow: 0px 0px 10px blue;
+}
+
+nav.home li.nav-item .nav-link-shadow:hover {
+    text-shadow: 0px 0px 10px red;
+}
+
+nav.home li.nav-item .nav-link-shadow:active {
+    text-shadow: 0px 0px 10px red;
+}
+
+li a i {
+    margin-left: 3px;
+}
+
+nav img {
+    height: auto;
+}
+
+nav a.navbar-brand {
+    margin-left: 60px;
+}
+
+ul.navbar-nav {
+    margin-right: 100px;
+}
+
+.gambarfullhome {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-image: url("../assets/gambar/gambarhome.jpg");
+    z-index: -1;
+    background-size: cover;
+}
+
+.carihome {
+    text-align: center !important;
+    justify-content: center;
+    height: 300px;
+    padding: 200px 0;
+    z-index: 2;
+}
+
+.tekshome {
+    width: 40%;
+    height: 300px;
+    margin-left: 100px;
+    padding: 200px 0;
+    z-index: 2;
+}
+
+.judulhome {
+    font-size: 60px;
+    font-weight: 800;
+    color: white;
+    text-shadow: 0px 0px 10px blue;
+
+}
+
+.judulhome:hover {
+    text-shadow: 0px 0px 10px red;
+}
+
+.isihome {
+    font-size: 25px;
+    font-weight: 300;
+    color: white;
+    text-shadow: 0px 0px 10px blue;
+}
+
+.isihome:hover {
+    text-shadow: 0px 0px 10px red;
+}
+
+.btn-depan {
+    background-color: white;
+    box-shadow: 0px 0px 10px blue;
+    color: blue;
+}
+
+.btn-depan:hover {
+    background-color: white;
+    box-shadow: 0px 0px 10px red;
+    color: red;
+}
+
+.anImgB {
+    opacity: 0;
+    transform: translate(-200px, 0);
+    z-index: 1;
+    transition: 3s;
+}
+
+.anImg1 {
+    opacity: 0;
+    transform: translate(0, -200px);
+    z-index: 1;
+    transition: 2s;
+}
+
+.anImg2 {
+    opacity: 0;
+    transform: translate(0, 500px);
+    z-index: 1;
+    transition: 5s;
+}
+
+.anImg3 {
+    opacity: 0;
+    transform: translate(300px, 0);
+    z-index: 1;
+    transition: 3s;
+}
+
+.anImg4 {
+    opacity: 0;
+    transform: translate(400px, 0);
+    z-index: 1;
+    transition: 4s;
+}
+
+
+
+.anJudul,
+.anBtn {
+    opacity: 0;
+    transform: translate(-200px, 0);
+    z-index: 1;
+}
+
+.anIsi {
+    opacity: 0;
+    transform: translate(0, -200px);
+    z-index: 1;
+}
+
+.anJudul {
+    transition: 3s;
+}
+
+.anIsi {
+    transition: 2s;
+}
+
+.anBtn {
+    transition: 1s;
+}
+
+.anJudul.jmuncul,
+.anIsi.jmuncul,
+.anBtn.jmuncul,
+.anImgB.jmuncul,
+.anImg1.jmuncul,
+.anImg2.jmuncul,
+.anImg3.jmuncul,
+.anImg4.jmuncul {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+.produkkami {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.newproduk {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: red;
+    min-height: 400px;
+
+}
+
+.modalproduk {
+    background-color: red;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px black;
+}
+
+
+.gambarnew {
+    height: 20vw;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.inputjumlah {
+    text-align: center;
+    width: 50px;
+    display: inline-block;
+    border-radius: 0;
+    box-shadow: 3px 3px 5px grey;
+}
+
+.tombolpesan {
+    margin-top: 40px;
+}
+
+.input-plus {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    box-shadow: 3px 3px 5px grey;
+}
+
+.input-min {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    box-shadow: 3px 3px 5px grey;
+}
+
+.judulsection {
+    width: 300px;
+}
+
+.colnya {
+    padding: 5px;
+}
+
+.kartuproduk {
+    padding: 10px;
+    height: 320px;
+    border-radius: 10px;
+    background-color: red;
+    box-shadow: 3px 3px 5px grey;
+    overflow: hidden;
+}
+
+.kartuproduk img {
+    width: 100%;
+    height: 60%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.kartuproduk h3 {
+    margin-top: 5px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.kartuproduk h4 {
+    width: 100%;
+}
+
+.kartuproduk h4 {
+    color: black;
+}
+
+.tombolpesankecil {
+    width: 88%;
+    bottom: 0;
+    margin-top: 0;
+    margin-right: 10px;
+    position: absolute;
+
+}
+
+.paketkami {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: rgba(255, 215, 0, 0.85);
+
+}
+
+.footer {
+    margin-top: 30px;
+    left: 0px;
+    bottom: 0px;
+    height: 30%;
+    width: 100%;
+    color: white;
+}
+
+.kartupaket {
+    padding: 10px;
+    height: 500px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 3px 3px 5px grey;
+    overflow: hidden;
+}
+
+.kartupaket img {
+    width: 100%;
+    height: 40%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    object-fit: cover;
+}
+
+.tombolpesanpaket {
+    width: 92%;
+    position: absolute;
+    bottom: 0px;
+}
+
+.namapaket {
+    margin-top: 10px;
+    color: red;
+}
+
+/* Modal Produk */
+.modalprodukdialog {
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+}
+
+.modalprodukbody {
+    background-color: rgba(0, 0, 0, 0);
+
+}
+
+/* Utility */
+.btn-danger {
+    background-color: red;
+}
+
+.sidebar-dark-primary {
+    background-color: #1a237e;
+}
