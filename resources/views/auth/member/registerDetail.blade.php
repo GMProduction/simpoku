@@ -7,7 +7,7 @@
         background-color: transparent;
         border-right: 0;
         width: 40px;
-        
+
     }
 
     .transparan1 {
@@ -17,7 +17,7 @@
 
     .bordertext {
         border-left: 0;
-        outline: 0 none !important;
+        outline: 0 !important;
     }
 
 
@@ -33,9 +33,18 @@
 <div class="container bawah">
 
     <div class="row justify-content-center">
-        <div class="row col-lg-6 justify-content-center border" style="border-radius: 1rem">
+        <div class="row col-lg-9 justify-content-center border" style="border-radius: 1rem">
+            <div class="col-lg-6">
+                <div class="row col-12 justify-content-center">
+                    <div class="col-6 mb-5 mt-5">
+                        <img src="{{ asset('/assets/gambar/logo2.png') }}" alt="">
+                    </div>
+                </div>
+                <p class="">Only Simpoku member can download pdf information</p>
 
-            <div class="col-lg-10">
+
+            </div>
+            <div class="col-lg-6">
                 <div class="register-box">
                     <div class="">
                         <div class="card-body register-card-body">
@@ -79,7 +88,8 @@
                                             <span class="">+62</span>
                                         </div>
                                     </div>
-                                    <input type="password" class="form-control bordertext " placeholder="Phone" style="">
+                                    <input type="password" class="form-control bordertext " placeholder="Phone"
+                                        style="">
 
                                 </div>
                                 <div class="input-group mb-3">
@@ -102,16 +112,23 @@
                                         </div>
                                     </div>
                                     <!-- /.col -->
-                                    <div class="col-4">
+
+                                    <!-- /.col -->
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4 col-sm-12">
+                                        <button type="submit"
+                                            class="btn btn-primary btn-block btn-flat">Back</button>
+                                    </div>
+                                    <div class="offset-4 col-lg-4 col-sm-12">
                                         <button type="submit"
                                             class="btn btn-primary btn-block btn-flat">Register</button>
                                     </div>
-                                    <!-- /.col -->
                                 </div>
                             </form>
 
-                           
-                           
+
+
                         </div>
                         <!-- /.form-box -->
                     </div><!-- /.card -->
