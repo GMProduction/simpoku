@@ -45,14 +45,14 @@
                     <div class="col-lg-2">
                         <label for="comboMonth" class=" col-form-label">Month : </label>
                         <select name="comboMonth" id="comboMonth" class="form-control">
-                                @foreach ($month as $item)
-                                <option value="{{$item}}">{{$item}}</option>
-                                @endforeach
+                            @foreach ($month as $item)
+                            <option value="{{$item}}">{{$item}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-lg-2">
                         <label for="combo" class=" col-form-label">Region : </label>
-                       
+
                         <select name="" id="" class="form-control">
                             <option value="">asd</option>
                             <option value="">asd</option>
@@ -75,52 +75,6 @@
             <option value=""></option>
         </section>
     </div>
-
-
-    
-
-
-    <!--
-        
-        <a class="row col-12 mt-2 pt-2 pb-2 list" style="" href="/dataevent">
-            <div class="bg-primary img-list-event">
-                    <img class="" src="http://admin.makro.id/media/post_img_sm/dpr-setujui-penambahan-anggaran-bp-batam-rp565-miliar-1531258457.jpeg" alt="">
-            </div> 
-            <div class="pl-3">
-                <h5 class="tittle-list-event">dasdasdasdasdasd</h5>
-                <p>Keterangan</p>
-                <span class="small">Date :</span>
-                <br>
-                <span class="small pb-0"><i class="fa fa-map-marker "></i> asd</span>
-            </div>       
-                     
-        </a>
-       
-        <div class="row col-12 pt-2 pb-2 list" style="">
-            <div class="bg-primary img-list-event">
-                asd
-            </div> 
-            <div class="pl-3">
-                <h5 class="tittle-list-event">dasdasdasdasdasd</h5>
-                <p>Keterangan</p>
-                <span class="small">Date :</span>
-                <br>
-                <span class="small pb-0"><i class="fa fa-map-marker "></i> asd</span>
-            </div>                
-        </div>
-        <div class="row col-12 pt-2 pb-2 list" style="">
-                <div class="bg-primary img-list-event">
-                    asd
-                </div> 
-                <div class="pl-3">
-                    <h5 class="tittle-list-event">dasdasdasdasdasd</h5>
-                    <p>Keterangan</p>
-                    <span class="small">Date :</span>
-                    <br>
-                    <span class="small pb-0"><i class="fa fa-map-marker "></i> asd</span>
-                </div>                
-            </div>
-        -->
 
 
 </div>
@@ -169,16 +123,9 @@
             var t = $('#txtCari').val();
             cariEven();
             
-
-
-            
         });
 
-    $(window).on("load", function() {
-        
-        
-        
-    });
+  
 
    
 

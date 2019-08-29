@@ -16,7 +16,7 @@ class eventController extends Controller
     {
 
         $event = eventModel::query()
-            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'tglMulai', 'tglAkhir', 'noContact','namaContact', 'spec', 'gambar', 'filepdf')
+            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'city','tglMulai', 'tglAkhir', 'noContact','namaContact', 'spec', 'gambar', 'filepdf')
             ->take(8)
             ->get();
 
@@ -25,7 +25,7 @@ class eventController extends Controller
             ->get();
 
         $homeCarousell = eventModel::query()
-            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'tglMulai', 'tglAkhir', 'noContact','namaContact', 'spec', 'gambar', 'filepdf')
+            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'city','tglMulai', 'tglAkhir', 'noContact','namaContact', 'spec', 'gambar', 'filepdf')
             ->take(4)
             ->get();
 
@@ -112,7 +112,7 @@ class eventController extends Controller
     public function slickEven()
     {
         $eventSlick = eventModel::query()
-            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'tglMulai', 'tglAkhir', 'noContact','namaContact', 'spec', 'gambar', 'filepdf')
+            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'city','tglMulai', 'tglAkhir', 'noContact','namaContact', 'spec', 'gambar', 'filepdf')
             ->where([
                 ['DATE_FORMAT', '(', 'tgl', '"%Y"', ')', '=', '2018']
             ])
@@ -123,7 +123,7 @@ class eventController extends Controller
     public function listEvent()
     {
         $event = eventModel::query()
-            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'tglMulai', 'tglAkhir', 'noContact','namaContact', 'spec', 'gambar', 'filepdf')
+            ->select('id', 'judul', 'deskripsi', 'tempat', 'region','city', 'tglMulai', 'tglAkhir', 'noContact','namaContact', 'spec', 'gambar', 'filepdf')
             ->get();
         //return view('layouts/dataListEvent')->with('event',$event);
         $returnHtml = view('main/data/dataListEvent')->with('event', $event)->render();
@@ -133,7 +133,7 @@ class eventController extends Controller
     public function dataEvent(Request $req)
     {
         $event = eventModel::query()
-            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'tglMulai', 'tglAkhir', 'noContact','namaContact','spec', 'gambar', 'filepdf')
+            ->select('id', 'judul', 'deskripsi', 'tempat', 'region','city', 'tglMulai', 'tglAkhir', 'noContact','namaContact','spec', 'gambar', 'filepdf')
             ->where([
                 ['id', '=', $req->id]
             ])
@@ -145,7 +145,7 @@ class eventController extends Controller
     public function comboCarievent(Request $req)
     {
         $event = eventModel::query()
-            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'tglMulai', 'tglAkhir', 'noContact','namaContact', 'spec', 'gambar', 'filepdf')
+            ->select('id', 'judul', 'deskripsi', 'tempat', 'region','city', 'tglMulai', 'tglAkhir', 'noContact','namaContact', 'spec', 'gambar', 'filepdf')
             ->where([
                 ['spec', 'like', '%' . $req->sp . '%']
             ])
@@ -164,7 +164,7 @@ class eventController extends Controller
     public function cariEvent(Request $req)
     {
         $event = eventModel::query()
-            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'tglMulai', 'tglAkhir','noContact','namaContact', 'gambar', 'filepdf')
+            ->select('id', 'judul', 'deskripsi', 'tempat', 'region','city', 'tglMulai', 'tglAkhir','noContact','namaContact','spec', 'gambar', 'filepdf')
             ->where([
                 ['judul', 'like', '%' . $req->nama . '%']
             ])

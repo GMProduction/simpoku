@@ -5,7 +5,7 @@
 
 .row1{
  /*   padding-top: 10px; */
-    padding-right: 50px;
+    padding-right: 70px;
 }
 
 .row2 {
@@ -125,7 +125,7 @@
 }
 
 .links:hover {
-    color: #fff;
+    
     text-decoration: none;
 }
 
