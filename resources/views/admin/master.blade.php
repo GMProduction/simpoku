@@ -81,7 +81,7 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fa fa-database"></i>
                                 <p>
-                                    Master
+                                    Data Master
                                     <i class="right fa fa-angle-left"></i>
                                 </p>
                             </a>
@@ -89,20 +89,26 @@
                                 <li class="nav-item">
                                     <a href="/admin/user" class="nav-link ">
                                         <i class="fa fa-users nav-icon"></i>
-                                        <p>Data user</p>
+                                        <p>Admin</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/user" class="nav-link ">
+                                        <i class="fa fa-users nav-icon"></i>
+                                        <p>Members</p>
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a href="/admin/event" class="nav-link ">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Data Event</p>
+                                        <i class="fa fa-calendar-check-o nav-icon"></i>
+                                        <p>Events</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/event" class="nav-link ">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Gambar Slide</p>
+                                        <i class="fa fa-desktop nav-icon"></i>
+                                        <p>Banner Slides</p>
                                     </a>
                                 </li>
                             </ul>

@@ -9,13 +9,9 @@
     <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{asset ('adminlte/plugins/font-awesome/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{ asset('/css/sweetalert2.css')}}">
-    <link rel="stylesheet" href="{{ asset('/css/genosstyle.css')}}">
+    <link rel="stylesheet" href="{{ asset('/css/admin/auth/login.css')}}">
     <title>Login Form</title>
-    <style>
-        body{
-                background-color: #4B0082;
-            }
-    </style>
+    
 </head>
 <body>
     <div class="container">

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Master;
+namespace App\Http\Controllers\admin\master;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -31,7 +31,7 @@ class eventController extends Controller
     public function getData()
     {
         $event = eventModel::query()
-            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'tglMulai', 'tglAkhir', 'contact', 'spec', 'gambar', 'filepdf')
+            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
             ->orderBy('id', 'DESC')
             ->get();
 
