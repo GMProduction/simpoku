@@ -18,7 +18,7 @@
 
     td {
         vertical-align: middle !important;
-        
+
         font-weight: bolder;
         opacity: 0.8;
     }
@@ -35,36 +35,41 @@
     <div class="">
         <div class="p-3">
 
-            <div class="row list-event">
-                <div class="col-lg-6 p-3 justify-content-center">
+            <div class="row list-event border" style="border-radius: 1rem">
+                <div class="col-lg-6 p-3 justify-content-center ">
                     <img class="img-event" src="{{asset ('/assets/foto/'.$even->gambar)}}" alt="" width="400">
                 </div>
                 <div class="col-lg-6 p-3">
-                    <h2 class="judul">{{$even->judul}}</h2>
+                    <h2 class="judul ">{{$even->judul}}</h2>
 
+                    <div class="row col justify-content-center mb-2">
+                        <div style="border: 1px solid red; width: 30%;"></div>
+                    </div>
 
                     <table class="table table-sm table-borderless">
                         <tr>
                             <td class="" style=""><i class="fa fa-clipboard text-burgundy" aria-hidden="true"></i></td>
-                            <td class="text-burgundy">{{$even->deskripsi}}</td>
+                            <td class="">{{$even->deskripsi}}</td>
                         </tr>
                         <tr>
                             <td class="" style="width: 30px"><span class="fa fa-calendar text-burgundy "></span></td>
-                            <td class="text-burgundy">{{date('D, d M', strtotime($even->tglMulai))}} - {{date('D, d M Y', strtotime($even->tglAhkir))}}</td>
-                           
+                            <td class="">{{date('D, d M', strtotime($even->tglMulai))}} -
+                                {{date('D, d M Y', strtotime($even->tglAhkir))}}</td>
+
                         </tr>
                         <tr>
                             <td class="" style=""><i class="fa fa-location-arrow text-burgundy" aria-hidden="true"></i>
                             </td>
-                            <td class="text-burgundy">{{$even->region}}</td>
+                            <td class="">{{$even->tempat}}, {{$even->region}}</td>
                         </tr>
+                        
                         <tr>
                             <td><i class="fa fa-phone text-burgundy" aria-hidden="true"></i></td>
-                            <td class="text-burgundy">{{$even->contact}}</td>
+                            <td class=""> {{$even->namaContact}} : {{$even->noContact}} </td>
                         </tr>
-                        <tr>
-                            <td class="" style=""><i class="fa fa-user-md text-burgundy" aria-hidden="true"></i></td>
-                            <td class="text-burgundy">{{$even->spec}}</td>
+                        <tr style="border-bottom: 0">
+                            <td class=""><i class="fa fa-user-md text-burgundy" aria-hidden="true"></i></td>
+                            <td class="">{{$even->spec}}</td>
                         </tr>
 
 

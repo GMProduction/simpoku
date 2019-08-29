@@ -83,105 +83,7 @@
                                 </div>
                             </div>
                             @endforeach
-                            <!--
-                        <div class="carousel-item active">
-                            <div class="card bg-dark text-white">
-                                <img class="card-img img-fluid"
-                                    src="https://makro.id/admin/media/image/cegah-korupsi-ini-yang-dilakukan-bandara-hang-nadim-dan-pelabuhan-1564066372.jpg"
-                                    alt="">
-                                <div class="card-img-overlay d-flex linkfeat">
-                                    <a href="https://makro.id/cegah-korupsi-ini-yang-dilakukan-bandara-hang-nadim-dan-pelabuhan"
-                                        class="align-self-end">
-                                        <span class="badge">Industri</span>
-                                        <h4 class="card-title">Cegah Korupsi, Ini yang Dilakukan Bandara Hang Nadim dan
-                                            Pelabuhan Batam </h4>
-                                        <p class="textfeat" style="display: none;">MAKRO.ID, BATAM - Badan Pengusahaan
-                                            (BP) Batam melalui BUBU Hang Nadim Batam dan Badan Pengelola Pelabuhan Batam
-                                            bersama KSOP Khusus Batam, melakukan penandatanganan pencanangan pembangunan
-                                            zona integritas menuju Wilayah Bebas</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card bg-dark text-white">
-                                <img class="card-img img-fluid"
-                                    src="https://makro.id/admin/media/image/ini-cara-bp-batam-untuk-gaet-investor-ke-kota-batam-1564063343.jpg"
-                                    alt="">
-                                <div class="card-img-overlay d-flex linkfeat">
-                                    <a href="https://makro.id/ini-cara-bp-batam-untuk-gaet-investor-ke-kota-batam"
-                                        class="align-self-end">
-                                        <span class="badge">Industri</span>
-                                        <h4 class="card-title">Ini Cara BP Batam untuk Gaet Investor ke Kota Batam</h4>
-                                        <p class="textfeat" style="display: none;">MAKRO.ID, BATAM&nbsp;- Badan
-                                            Pengusahaan (BP) Batam terus berusaha menggenjot investasi di Kota Batam,
-                                            Provinsi Kepulauan Riau.
-
-                                            Salah satunya dengan melakukan promosi ke Taiwan. Kehadiran BP Batam ke
-                                            Taiwan untuk&nbsp;memenuhi undangan dari</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card bg-dark text-white">
-                                <img class="card-img img-fluid"
-                                    src="https://makro.id/admin/media/image/bp-batambatalkan-alokasi-lahanpt-pulau-mas-putih-1563445416.jpeg"
-                                    alt="">
-                                <div class="card-img-overlay d-flex linkfeat">
-                                    <a href="https://makro.id/bp-batambatalkan-alokasi-lahanpt-pulau-mas-putih"
-                                        class="align-self-end">
-                                        <span class="badge">Industri</span>
-                                        <h4 class="card-title">BP Batam Batalkan Alokasi Lahan PT Pulau Mas Putih</h4>
-                                        <p class="textfeat" style="display: none;">MAKRO.ID, BATAM&nbsp;- Program
-                                            penertiban lahan terus dilaksanakan oleh BP Batam, salah satunya adalah
-                                            pemasangan papan pemberitahuan pada alokasi lahan yang dilaksanakan pada
-                                            Rabu (17/7/2019) siang. Papan pemberitahuan ini telah dipasang</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card bg-dark text-white">
-                                <img class="card-img img-fluid"
-                                    src="https://makro.id/admin/media/image/3-perusahaan-hongkong-jajaki-peluang-investasi-di-batam-1563364236.jpeg"
-                                    alt="">
-                                <div class="card-img-overlay d-flex linkfeat">
-                                    <a href="https://makro.id/3-perusahaan-hongkong-jajaki-peluang-investasi-di-batam"
-                                        class="align-self-end">
-                                        <span class="badge">Industri</span>
-                                        <h4 class="card-title">3 Perusahaan Hongkong Jajaki Peluang Investasi di Batam
-                                        </h4>
-                                        <p class="textfeat" style="display: none;">MAKRO.ID, BATAM - Plh Direktur
-                                            Promosi dan Humas BP Batam Mohamad Taofan menuturkan Batam terbuka dengan
-                                            masuknya investasi asing. Batam memiliki banyak peluang usaha yang dapat
-                                            ditawarkan kepada investor.
-
-                                            &ldquo;Peluang investasi</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card bg-dark text-white">
-                                <img class="card-img img-fluid"
-                                    src="https://makro.id/admin/media/image/pejabat-eselon-ii-bp-batam-dirotasi-1563185753.jpeg"
-                                    alt="">
-                                <div class="card-img-overlay d-flex linkfeat">
-                                    <a href="https://makro.id/pejabat-eselon-ii-bp-batam-dirotasi"
-                                        class="align-self-end">
-                                        <span class="badge">Ragam</span>
-                                        <h4 class="card-title">Pejabat Eselon II BP Batam Dirotasi</h4>
-                                        <p class="textfeat" style="display: none;">MAKRO.ID, BATAM - Kepala BP Batam,
-                                            Edy Putra Irawady melantik 8 pejabat stuktural &nbsp;Eselon II dan III di
-                                            lingkungan BP Batam pada Jumat (12/7/2019) pagi.&nbsp;
-
-                                            Pelantikan ini dilaksanakan di Ruang Rapat</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    -->
+                        
                         </div>
                     </div>
                 </div>
@@ -208,65 +110,7 @@
                         @endphp
 
                         @endforeach
-                        <!--
-                    <div class="col-6 pb-2 mg-1	">
-                        <div class="card bg-dark text-white">
-                            <img class="card-img img-fluid"
-                                src="https://makro.id/admin/media/image/cegah-korupsi-ini-yang-dilakukan-bandara-hang-nadim-dan-pelabuhan-1564066372.jpg"
-                                alt="">
-                            <div class="card-img-overlay d-flex">
-                                <a href="https://makro.id/cegah-korupsi-ini-yang-dilakukan-bandara-hang-nadim-dan-pelabuhan"
-                                    class="align-self-end">
-                                    <span class="badge">Industri</span>
-                                    <h6 class="card-title">Cegah Korupsi, Ini yang Dilakukan Bandara Hang Nadim dan
-                                        Pelabuhan Batam </h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 pb-2 mg-2	">
-                        <div class="card bg-dark text-white">
-                            <img class="card-img img-fluid"
-                                src="https://makro.id/admin/media/image/ini-cara-bp-batam-untuk-gaet-investor-ke-kota-batam-1564063343.jpg"
-                                alt="">
-                            <div class="card-img-overlay d-flex">
-                                <a href="https://makro.id/ini-cara-bp-batam-untuk-gaet-investor-ke-kota-batam"
-                                    class="align-self-end">
-                                    <span class="badge">Industri</span>
-                                    <h6 class="card-title">Ini Cara BP Batam untuk Gaet Investor ke Kota Batam</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 pb-2 mg-3	">
-                        <div class="card bg-dark text-white">
-                            <img class="card-img img-fluid"
-                                src="https://makro.id/admin/media/image/bp-batambatalkan-alokasi-lahanpt-pulau-mas-putih-1563445416.jpeg"
-                                alt="">
-                            <div class="card-img-overlay d-flex">
-                                <a href="https://makro.id/bp-batambatalkan-alokasi-lahanpt-pulau-mas-putih"
-                                    class="align-self-end">
-                                    <span class="badge">Industri</span>
-                                    <h6 class="card-title">BP Batam Batalkan Alokasi Lahan PT Pulau Mas Putih</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 pb-2 mg-4	">
-                        <div class="card bg-dark text-white">
-                            <img class="card-img img-fluid"
-                                src="https://makro.id/admin/media/image/3-perusahaan-hongkong-jajaki-peluang-investasi-di-batam-1563364236.jpeg"
-                                alt="">
-                            <div class="card-img-overlay d-flex">
-                                <a href="https://makro.id/3-perusahaan-hongkong-jajaki-peluang-investasi-di-batam"
-                                    class="align-self-end">
-                                    <span class="badge">Industri</span>
-                                    <h6 class="card-title">3 Perusahaan Hongkong Jajaki Peluang Investasi di Batam</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                -->
+                     
                     </div>
                 </div>
             </div>
@@ -335,16 +179,13 @@
                             alt="asd">
                     </a>
                     <div class="text-center">
-                        <a href="#!" class="btn btn-light w-200" style="border-radius: 5rem !important"><img class="m-0 p-0"
-                                src="{{ asset('/assets/gambar/playstore.png') }}" alt="Twitter" width="150"></a>
+                        <a href="#!" class="btn btn-light w-200" style="border-radius: 5rem !important"><img
+                                class="m-0 p-0" src="{{ asset('/assets/gambar/playstore.png') }}" alt="Twitter"
+                                width="150"></a>
                     </div>
                     <div class="clearfix"></div>
                     <br>
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#pop" role="tab">Terpopuler</a>
-                        </li>
-                    </ul>
+                    
                 </div>
 
         </section>
@@ -362,28 +203,7 @@
     @section('script')
 
     <script>
-        $(document).ready(function(){
-        
-            });
-
-            function homeCarousell(){           
-                   
-                $.ajax({
-                    type: 'GET',
-                    url: '/homeCarousell',
-                    success : function(data){
-                        
-                }
-                }) ;
-           }
-           function tampilDoktor(){
-               
-               if($('#nav-home-tab').hasClass('active')){
-                   alert('aktiv');
-               }
-           }
-
-            function cariEvenHome() {
+        function cariEvenHome() {
             var txt = $('.txtCariEven').val();
             if(txt === ''){
                 alert('data kosong');
@@ -400,54 +220,9 @@
         
         
 
-            function tampilEvenTahun(th){
-                $.ajax({
-                type : 'GET',
-                url : '/eventTahun',
-                data : {
-                    tahun: th
-                },
-                success : function(data){
-                    if(th === '2019'){
-                        $('#slide2019').html(data.html);
-                    }else{
-                        $('#slide2018').html(data.html);
-                    }                    
-                    
-
-                }
-            });
-            }
-
-            function spec(){
-                tampilEvenSpec('SpOG');
-            }
-
-            function tampilEvenSpec(sp){
-               
-                $.ajax({
-                type : 'GET',
-                url : '/eventSpec',
-                data : {
-                    spec: sp
-                },
-                success : function(data){
-                    if(sp === 'SpOG'){
-                        $('#slideSpOG').html(data.html);
-                    }else{
-                        $('#slide').html(data.html);
-                    }                    
-                    
-
-                }
-            });
-            }
             
-           $(window).on('load', function(){
-              tampilEvenTahun('2019');
-              tampilEvenTahun('2018')
-            });
 
+           
             
             
     
