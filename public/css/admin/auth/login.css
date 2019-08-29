@@ -1,0 +1,68 @@
+@font-face {
+    font-family: 'helvetica';
+    src: url('../asset/font/Helvetica.ttf');
+}
+
+@font-face {
+    font-family: 'source-sans-pro';
+    src: url('../font/source-sans-pro/SourceSansPro-Light.otf');
+}
+
+@font-face {
+    font-family: 'source-sans-pro-bold';
+    src: url('../font/source-sans-pro/SourceSansPro-Bold.otf');
+}
+
+html,
+body {
+    font-family: 'helvetica';
+    background-color: #843B69;
+}
+
+
+.login-brand {
+    margin-top: 100px;
+    font-family: 'helvetica';
+    font-size: 30px;
+    color: white;
+    text-align: center;
+}
+
+.brand-login {
+    margin-top: 100px;
+}
+
+.brand-register {
+    margin-top: 50px;
+}
+
+.box-login {
+    margin-top: 10px;
+    padding: 20px 30px;
+    background-color: white;
+    border-radius: 0px 3px 3px 0px;
+    box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+}
+
+.login-title {
+    font-family: 'helvetica';
+    font-size: larger;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-form {
+    margin-bottom: 10px;
+}
+
+.login-footer {
+    text-align: center
+}
+
+.btn-login {
+    background-color: #D71149;
+    color: azure;
+    border-radius: 0px;
+    width: 100%;
+
+}

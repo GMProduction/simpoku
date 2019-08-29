@@ -22,7 +22,7 @@
                         </div>
                         <div class="float-sm-right">
                             <a class="btn btn-primary btn-sm box-tools" href="/admin/event/new">
-                                <i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Event Baru
+                                <i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;New Event
                             </a>
                         </div>
                     </div>
@@ -36,8 +36,6 @@
                                         <th>Tempat</th>
                                         <th>Mulai</th>
                                         <th>Akhir</th>
-                                        <th>Kontak</th>
-                                        <th>Spesialis</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -62,25 +60,28 @@
 <script id="details-template" type="text/x-handlebars-templatel">
 @verbatim
 <div class="row">
-    <div id="foto" class="col-sm-2 text-center">
-        <a href="/foto/{{ 'gambar' }}" target="_blank">
-                    <img src="/foto/{{ 'gambar' }}" height="100" width="100">
-        </a>
-        </div>
-        <div id="detail" class="col-sm-10">
+        <div id="detail" class="col-md-10 offset-2">
         <table class="table table-light">
             <tbody>
                 <tr>
+                    <td>Gambar Event</td>
+                    <td>:</td>
+                    <td><a href="/foto/{{ 'gambar' }}" target="_blank">Gambar Event</a></td>
+                </tr>
+                <tr>
                     <td>PDF</td>
                     <td>:</td>
-
                     <td><a href="/pdf/{{'filepdf'}}" target="_blank">Download</a></td>
-
                 </tr>
                 <tr>
                     <td>Deskripsi</td>
                     <td>:</td>
                     <td>{{ 'deskripsi' }}</td>
+                </tr>
+                <tr>
+                    <td>Spesialis</td>
+                    <td>:</td>
+                    <td>{{ 'spec' }}</td>
                 </tr>
                 <tr>
                     <td>Region</td>
@@ -107,7 +108,7 @@ $(document).ready(function () {
     });
     var template = Handlebars.compile($("#details-template").html());
     table = $('#tb-event').DataTable({
-        lengthMenu: [[5, 10, 15, -1], [5, 10, 15, "All"]],
+        lengthMenu: [[15, 30, 50, -1], [15, 30, 50, "All"]],
         autowidth: true,
         serverSide: true,
         processing: false,
@@ -118,19 +119,15 @@ $(document).ready(function () {
             { data: 'tempat', name: 'tempat' },
             { data: 'tglMulai', name: 'tglMulai' },
             { data: 'tglAkhir', name: 'tglAkhir' },
-            { data: 'contact', name: 'contact' },
-            { data: 'spec', name: 'spec' },
             { data: 'action', name: 'action', searchable: false, orderable: false }
         ],
         columnDefs: [
             { targets: [0], width:'5%', orderable: false},
             { targets: [1], width:'20%'},
-            { targets: [2], width:'10%'},
+            { targets: [2], width:'25%'},
             { targets: [3], width:'10%'},
             { targets: [4], width:'10%'},
-            { targets: [5], width:'10%'},
-            { targets: [6], width:'10%'},
-            { targets: [7], width:'15%', orderable: false},
+            { targets: [5], width:'15%', orderable: false},
             {
                 targets: [0, 1, 3, 4, 5],
                 className: 'text-center'

@@ -57,22 +57,22 @@ Route::group(['prefix' => 'admin'], function () {
     })->name('admin');
 
     Route::group(['prefix' => 'user'], function () {
-        Route::get('/', 'Master\userController@index')->name('pageuser');
-        Route::get('/view', 'Master\userController@getData');
-        Route::get('/new', 'Master\userController@showForm');
-        Route::post('/add', 'Master\userController@add');
-        Route::get('/store', 'Master\userController@store');
-        Route::post('/update', 'Master\userController@edit');
-        Route::delete('/destroy', 'Master\userController@delete');
+        Route::get('/', 'admin\master\userController@index')->name('pageuser');
+        Route::get('/view', 'admin\master\userController@getData');
+        Route::get('/new', 'admin\master\userController@showForm');
+        Route::post('/add', 'admin\master\userController@add');
+        Route::get('/store', 'admin\master\userController@store');
+        Route::post('/update', 'admin\master\userController@edit');
+        Route::delete('/destroy', 'admin\master\userController@delete');
     });
     Route::group(['prefix' => 'event'], function () {
-        Route::get('/', 'Master\eventController@index')->name('pageevent');
-        Route::get('/view', 'Master\eventController@getData');
-        Route::get('/new', 'Master\eventController@showForm');
-        Route::post('/add', 'Master\eventController@add');
-        Route::get('/store', 'Master\eventController@store');
-        Route::post('/update', 'Master\eventController@edit');
-        Route::delete('/destroy', 'Master\eventController@delete');
+        Route::get('/', 'admin\master\eventController@index')->name('pageevent');
+        Route::get('/view', 'admin\master\eventController@getData');
+        Route::get('/new', 'admin\master\eventController@showForm');
+        Route::post('/add', 'admin\master\eventController@add');
+        Route::get('/store', 'admin\master\eventController@store');
+        Route::post('/update', 'admin\master\eventController@edit');
+        Route::delete('/destroy', 'admin\master\eventController@delete');
     });
 });
 
@@ -83,7 +83,7 @@ Route::get('/verifyaccount/{token}', 'Auth\RegisterMemberController@verify');
 
 Route::group(['middleware' => 'auth'], function () {
 
-   
+
 
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
