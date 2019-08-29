@@ -67,6 +67,11 @@
                         Not A Member ? <a href="/register" style="font-weight: bold">Create Account</a>
                     </div>
                 </div>
+                <div class="form-group">
+                    <div class="text-center">
+                        Not A Member ? <a href="/auth/google" style="font-weight: bold">Login By Google</a>
+                    </div>
+                </div>
                 </form>
             </div>
         </div>

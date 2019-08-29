@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Auth\Member;
+namespace App\Http\Controllers\Auth\member;
 
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Laravel\Socialite\Facades\Socialite;
 use Alert;
 
 class LoginController extends Controller
@@ -21,12 +22,24 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function redirectToProvider($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+    }
+
     public function showLoginForm()
     {
-        
+
         return view('auth.member.login');
     }
 
+    public function handleProviderCallback()
+    {
+        // $user = Socialite::driver($provider)->user();
+        // $authUser = $this->findOrCreateUser($user, $provider);
+        // Auth::login($authUser, true);
+        return redirect('/login');
+    }
     function postlogin(Request $request)
     {
         $login_type = filter_var($request->input('username'), FILTER_VALIDATE_EMAIL)

@@ -20,6 +20,8 @@ Route::post('/postRegister', 'Auth\RegisterMemberController@register')->name('re
 Route::get('/login', 'Auth\LoginMemberController@showLoginForm')->name('login');
 Route::post('/postlogin', 'Auth\LoginMemberController@postlogin');
 Route::get('/logout', 'Auth\LoginMemberController@logout')->name('logout');
+Route::get('/auth/{provider}', 'Auth\member\LoginController@redirectToProvider');
+Route::get('/callback', 'Auth\member\LoginController@handleProviderCallback');
 
 Route::get('/adminpanel', 'Auth\Admin\LoginController@showLoginForm');
 Route::post('/postloginadmin', 'Auth\Admin\LoginController@postlogin');

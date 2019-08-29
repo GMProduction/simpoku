@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Master\eventModel;
+use App\Master\slideModel;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,7 +25,27 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('umum.welcome');
-    }
+        $event = eventModel::query()
+            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'tglMulai', 'tglAkhir', 'contact', 'spec', 'gambar', 'filepdf')
+            ->take(8)
+            ->get();
 
+        $slide = slideModel::query()
+            ->select('id', 'judul', 'gambar', 'terlihat')
+            ->get();
+
+        $homeCarousell = eventModel::query()
+            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'tglMulai', 'tglAkhir', 'contact', 'spec', 'gambar', 'filepdf')
+            ->take(4)
+            ->get();
+
+
+        $data = [
+            'event' => $event,
+            'slide' => $slide,
+            'homeCarousell' => $homeCarousell
+        ];
+
+        return view('main.home')->with($data);
+    }
 }
