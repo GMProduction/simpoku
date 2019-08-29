@@ -8,5 +8,5 @@ class eventModel extends Model
 {
     //
     protected $table = 'tb_event';
-    protected $fillable = ['judul', 'deskripsi', 'tempat', 'region', 'tglMulai', 'tglAkhir', 'contact', 'spec', 'gambar', 'filepdf'];
+    protected $fillable = ['judul', 'deskripsi', 'tempat', 'region','city', 'tglMulai', 'tglAkhir', 'noContact','namaContact', 'spec', 'gambar', 'filepdf'];
 }

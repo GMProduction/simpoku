@@ -1,177 +1,214 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{csrf_token()}}">
-    <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet" />
-    <title>Registration Form</title>
-    <style>
-        body{
-            background-color: #8D021F;
-        }
-        .box-register{
-            border-radius: 8px;
-            margin-top: 70px;
-            
-        }
-        .box-left{
-            padding: 20px 30px;
-            background-color: white;
-            color: #8D021F;
-            border-radius: 5px 0px 0px 5px;
-            box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
-            
-        }
-        .box-right{
-            padding: 20px 30px;
-            background-color: white;
-            color: #8D021F;
-            border-radius: 0px 5px 5px 0px;
-            box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
-        }
-        .msg{
-            color:#8D021F;
-            font-size: 10px;
-        }
-    </style>
-</head>
-<body>
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 box-register">
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5 box-left">
-                        <div class="box-title">General Information</div>
-                        <form method="post" action="/postRegister">
-                        {{ csrf_field() }}
-                        <div class="form-group">
-                            <input id="username" class="form-control @error('username') is-invalid @enderror" type="text" placeholder="username" name="username" value="{{ old('username')}}">
-                            @error('username')
-                                <span class="msg invalid-feedback" role="alert">
-                                    {{$message}}
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input id="firstname" class="form-control @error('firstname') is-invalid @enderror" type="text" placeholder="First Name" name="firstname" value="{{ old('firstname')}}">
-                                    @error('firstname')
-                                        <span class="msg invalid-feedback" role="alert">
-                                            {{$message}}
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input id="lastname" class="form-control @error('firstname') is-invalid @enderror" type="text" placeholder="Last name" name="lastname" value="{{ old('lastname')}}">
-                                    @error('lastname')
-                                        <span class="msg invalid-feedback" role="alert">
-                                            {{$message}}
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input id="email" class="form-control @error('firstname') is-invalid @enderror" type="email" placeholder="Email Address" name="email" value="{{ old('email')}}">
-                            @error('email')
-                                <span class="msg invalid-feedback" role="alert">
-                                    {{$message}}
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <input type="password" id="password" class="form-control" aria-describedby="passwordHelpBlock" placeholder="Password" name="password">
-                            <small id="passwordHelpBlock" class="form-text text-muted">
-                            Your password at least 6 characters, must not contain spaces, special characters, or emoji.
-                            </small>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" id="password_confirmation" class="form-control @error('password') is-invalid @enderror" aria-describedby="passwordHelpBlock" placeholder="Password Confrimation" name="password_confirmation">
-                            @error('password')
-                                <span class="msg invalid-feedback" role="alert">
-                                    {{$message}}
-                                </span>
-                            @enderror
-                        </div>
+@extends('main.header')
 
-                    </div>
-                    <div class="col-md-5 box-right">
-                        <div class="box-title">Contact Details</div>
-                        <div class="form-group">
-                            <select name="job" id="job" class="form-control @error('job') is-invalid @enderror">
-                                <option value=""> -- Select Job --</option>
-                                <option value="Dokter Splesialis">Dokter Splesialis</option>
-                                <option value="Dokter Umum">Dokter Umum</option>
-                                <option value="PPDS">PPDS</option>
-                                <option value="Mahasiswa Kedokteran">Mahasiswa Kedokteran</option>
-                                <option value="Perawat">Perawat</option>
-                                <option value="Apoteker">Apoteker</option>
-                                <option value="Formasi">Formasi</option>
-                                <option value="Others">Others</option>
-                            </select>
-                            @error('job')
-                                <span class="msg invalid-feedback" role="alert">
-                                    {{$message}}
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <input id="dateofbirth" type="date" value="" class="form-control @error('dateofbirth') is-invalid @enderror" name="dateofbirth" value="{{ old('dateofbirth') }}" required autocomplete="dateofbirth" autofocus>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">+62</span>
+@section('content')
+
+<style>
+    .transparan {
+        background-color: transparent;
+        border-right: 0;
+        width: 40px;
+    }
+
+    .transparan1 {
+        background-color: transparent;
+        border-left: 0;
+    }
+
+    .bordertext {
+        border-left: 0;
+        outline: 0 none !important;
+    }
+
+
+    .form-control:focus {        
+        outline-offset: 0px !important;
+        outline: none !important;
+    }
+</style>
+
+<link href="{{ asset('/css/login.css') }}" rel="stylesheet" />
+
+<div class="container bawah">
+
+    <div class="row justify-content-center">
+        <div class="row col-lg-9 justify-content-center border">
+            <div class="col-lg-6">
+                <div class="register-box">
+                    <div class="">
+                        <div class="card-body register-card-body">
+                            <p class="login-box-msg">General Information</p>
+
+                            <form action="../../index.html" method="post">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text transparan" style="">
+                                            <span class="fa fa-user"></span>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control bordertext " placeholder="Full name">
+
                                 </div>
-                                <input id="phone" name="phone" type="number" class="form-control @error('phone') is-invalid @enderror" placeholder="Phone" aria-label="phone" aria-describedby="basic-addon1" value="{{ old('phone')}}">
-                                @error('phone')
-                                <span class="msg invalid-feedback" role="alert">
-                                    {{$message}}
-                                </span>
-                            @enderror
-                            </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text transparan" style="">
+                                            <span class="fa fa-envelope"></span>
+                                        </div>
+                                    </div>
+                                    <input type="email" class="form-control bordertext" placeholder="Email"
+                                        style="border-right: 0">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text transparan1">
+                                            <span class="">@gmail.com</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text transparan" style="">
+                                            <span class="fa fa-lock"></span>
+                                        </div>
+                                    </div>
+                                    <input type="password" class="form-control bordertext" id="password1"
+                                        placeholder="Password">
+
+                                    <div class="input-group-append">
+                                        <div class="input-group-text border-0" style="background-color: transparent">
+                                            <a style="cursor: pointer" onclick="showPass('1')"><span
+                                                    class="fa fa-eye-slash" id="ico1"></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text transparan">
+                                            <span class="fa fa-lock"></span>
+                                        </div>
+                                    </div>
+                                    <input type="password" class="form-control bordertext" id="password2"
+                                        placeholder="Retype password">
+
+                                    <div class="input-group-append">
+                                        <div class="input-group-text border-0" style="background-color: transparent">
+                                            <a style="cursor: pointer" onclick="showPass('2')"><span
+                                                    class="fa fa-eye-slash" id="ico2"></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+
+
                         </div>
-                        <div class="form-group">
-                            <textarea class="form-control @error('address') is-invalid @enderror" rows="3" id="address" name="address" placeholder="Address" value="{{ old('address')}}"></textarea>
-                            @error('address')
-                                <span class="msg invalid-feedback" role="alert">
-                                    {{$message}}
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary" style="width: 100%">
-                                    CREATE ACCOUNT
-                                </button>
-                            </div>
-                            <div class="text-center">
-                            <small>
-                                By Creating an account. I accept Simpoku's  <a href="#" style="font-weight: bold">Terms of Use and Privacy Policy</a>
-                            </small>
-                            </div>
-                        </div>
-                    </form>
-                       <div class="form-group">
-                           <div class="text-center" style="font-weight: bold">
-                                <a href="/login">Already Have a Simpoku Account ?</a>
-                           </div>
-                       </div>
-                    </div>
+                        <!-- /.form-box -->
+                    </div><!-- /.card -->
                 </div>
+
+            </div>
+
+            <div class="col-lg-6">
+                <div class="register-box">
+                    <div class="">
+                        <div class="card-body register-card-body">
+                            <p class="login-box-msg">Contact Detail</p>
+
+                            <form action="../../index.html" method="post">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text transparan">
+                                            <span class="fa fa-user-md"></span>
+                                        </div>
+                                    </div>
+                                    <select name="" id="" class="form-control bordertext">
+                                        <option value="">asd</option>
+                                    </select>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text transparan">
+                                            <span class="fa fa-calendar"></span>
+                                        </div>
+                                    </div>
+                                    <input type="date" class="form-control bordertext" placeholder="">
+
+                                </div>
+                                <div class="input-group mb-3">
+
+                                    <div class="input-group-append">
+                                        <div class="input-group-text transparan">
+                                            <span class="fa fa-phone"></span>
+                                        </div>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <div class="input-group-text transparan" style="border-left: 0">
+                                            <span class="">+62</span>
+                                        </div>
+                                    </div>
+                                    <input type="password" class="form-control bordertext " placeholder="Phone">
+
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text transparan">
+                                            <span class="fa fa-home"></span>
+                                        </div>
+                                    </div>
+                                    <textarea name="" id="" cols="30" rows="3"
+                                        class="form-control bordertext" placeholder="Address"></textarea>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <div class="icheck-primary">
+                                            <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                                            <label for="agreeTerms">
+                                                I agree to the <a href="#">terms</a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-4">
+                                        <button type="submit"
+                                            class="btn btn-primary btn-block btn-flat">Register</button>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                            </form>
+
+                            <div class="social-auth-links text-center">
+                                <p>- OR -</p>
+                                
+                                <a href="#" class="btn btn-block btn-danger">
+                                    <i class="fa fa-google mr-2"></i>
+                                    Sign up using Google
+                                </a>
+                            </div>
+                            <div class="text-center mt-3">
+                                <a href="login" class="text-center text-primary bold">I already have a membership Simpoku</a>
+                            </div>
+                        </div>
+                        <!-- /.form-box -->
+                    </div><!-- /.card -->
+                </div>
+
             </div>
         </div>
     </div>
+</div>
 
-</body>
-</html>
+<script>
+    function showPass(a){
+        
+    if($('#ico'+a).hasClass("fa-eye")){        
+        $('#ico'+a).removeClass("fa-eye");
+        $('#ico'+a).addClass("fa-eye-slash");
+        document.getElementById('password'+a).type = 'password';
+    }else{
+        $('#ico'+a).removeClass("fa-eye-slash");
+        $('#ico'+a).addClass("fa-eye");
+        document.getElementById('password'+a).type = 'text';
+    }
+}
+</script>
 
-
-
+@endsection

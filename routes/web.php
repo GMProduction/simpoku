@@ -28,16 +28,24 @@ Route::post('/postloginadmin', 'Auth\Admin\LoginController@postlogin');
 Route::get('/logoutadmin', 'Auth\Admin\LoginController@logout')->name('logoutadmin');
 
 Route::group(['middleware' => 'memberonly'], function () {
-    Route::get('/', 'HomeController@index');
-    Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/event', function () {
-        return view('umum/listevent');
-    })->name('event');
-    Route::get('/dataevent', function () {
-        return view('umum/dataevent');
-    })->name('dataevent');
+    Route::get('/', 'member\eventController@index')->name('event');
+    Route::get('/event', 'member\eventController@listEventAll')->name('listEventAll');
+    Route::get('/tampilListEven', 'member\eventController@listEvent')->name('listEvent');
+    Route::get('/cariListEven', 'member\eventController@cariEvent')->name('event');
+    Route::get('/dataevent', 'member\eventController@dataEvent')->name('dataEvent');
+    Route::get('/eventTahun', 'member\eventController@eventTahun')->name('eventTahun');
+    Route::get('/eventSpec', 'member\eventController@eventSpec')->name('eventSpec');
+    Route::get('/getAllSpec', 'member\specController@getAllSpec')->name('getAllSpec');
+    Route::get('/comboCariEven', 'member\eventController@comboCarievent')->name('comboCariEven');
+    Route::get('homeCarousell', 'member\eventController@homeCarousell')->name('homeCarousell');
     Route::get('/about', function () {
-        return view('umum/about');
+        return view('main/about');
+    })->name('about');
+    Route::get('/register', function () {
+        return view('auth/member/register');
+    })->name('register');
+    Route::get('/detail', function () {
+        return view('auth/member/registerDetail');
     })->name('about');
 });
 
@@ -75,10 +83,7 @@ Route::get('/verifyaccount/{token}', 'Auth\RegisterMemberController@verify');
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::group(['prefix' => 'event'], function () {
-        Route::get('/', 'Master\eventController@index');
-        Route::get('/tambah', 'Master\eventController@add');
-    });
+   
 
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
