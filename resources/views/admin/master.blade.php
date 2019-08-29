@@ -93,7 +93,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/admin/user" class="nav-link ">
+                                    <a href="/admin/member" class="nav-link ">
                                         <i class="fa fa-users nav-icon"></i>
                                         <p>Members</p>
                                     </a>
