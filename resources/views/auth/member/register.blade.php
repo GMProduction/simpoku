@@ -20,7 +20,7 @@
     }
 
 
-    .form-control:focus {        
+    .form-control:focus {
         outline-offset: 0px !important;
         outline: none !important;
     }
@@ -31,13 +31,13 @@
 <div class="container bawah">
 
     <div class="row justify-content-center">
-        <div class="row col-lg-9 justify-content-center border">
+        <div class="row col-lg-9 justify-content-center border" style="border-radius: 1rem">
             <div class="col-lg-6">
                 <div class="register-box">
                     <div class="">
                         <div class="card-body register-card-body">
+                            <h4 class="login-box-msg">Create your Simpoku Account</h4>
                             <p class="login-box-msg">General Information</p>
-
                             <form action="../../index.html" method="post">
                                 <div class="input-group mb-3">
                                     <div class="input-group-append">
@@ -95,9 +95,29 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    
+                                    <!-- /.col -->
+                                    <div class="offset-8 col-4">
+                                        <a href="detailRegister"
+                                            class="btn btn-primary btn-block btn-flat">Next</a>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
 
                             </form>
+                            <div class="social-auth-links text-center">
+                                <p>- OR -</p>
 
+                                <a href="#" class="btn btn-block btn-danger">
+                                    <i class="fa fa-google mr-2"></i>
+                                    Sign up using Google
+                                </a>
+                            </div>
+                            <div class="text-center mt-3">
+                                <a href="login" class="text-center text-primary bold">I already have a membership
+                                    Simpoku</a>
+                            </div>
 
                         </div>
                         <!-- /.form-box -->
@@ -107,89 +127,13 @@
             </div>
 
             <div class="col-lg-6">
-                <div class="register-box">
-                    <div class="">
-                        <div class="card-body register-card-body">
-                            <p class="login-box-msg">Contact Detail</p>
-
-                            <form action="../../index.html" method="post">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text transparan">
-                                            <span class="fa fa-user-md"></span>
-                                        </div>
-                                    </div>
-                                    <select name="" id="" class="form-control bordertext">
-                                        <option value="">asd</option>
-                                    </select>
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text transparan">
-                                            <span class="fa fa-calendar"></span>
-                                        </div>
-                                    </div>
-                                    <input type="date" class="form-control bordertext" placeholder="">
-
-                                </div>
-                                <div class="input-group mb-3">
-
-                                    <div class="input-group-append">
-                                        <div class="input-group-text transparan">
-                                            <span class="fa fa-phone"></span>
-                                        </div>
-                                    </div>
-                                    <div class="input-group-append">
-                                        <div class="input-group-text transparan" style="border-left: 0">
-                                            <span class="">+62</span>
-                                        </div>
-                                    </div>
-                                    <input type="password" class="form-control bordertext " placeholder="Phone">
-
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text transparan">
-                                            <span class="fa fa-home"></span>
-                                        </div>
-                                    </div>
-                                    <textarea name="" id="" cols="30" rows="3"
-                                        class="form-control bordertext" placeholder="Address"></textarea>
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-8">
-                                        <div class="icheck-primary">
-                                            <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-                                            <label for="agreeTerms">
-                                                I agree to the <a href="#">terms</a>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-4">
-                                        <button type="submit"
-                                            class="btn btn-primary btn-block btn-flat">Register</button>
-                                    </div>
-                                    <!-- /.col -->
-                                </div>
-                            </form>
-
-                            <div class="social-auth-links text-center">
-                                <p>- OR -</p>
-                                
-                                <a href="#" class="btn btn-block btn-danger">
-                                    <i class="fa fa-google mr-2"></i>
-                                    Sign up using Google
-                                </a>
-                            </div>
-                            <div class="text-center mt-3">
-                                <a href="login" class="text-center text-primary bold">I already have a membership Simpoku</a>
-                            </div>
-                        </div>
-                        <!-- /.form-box -->
-                    </div><!-- /.card -->
+                <div class="row col-12 justify-content-center" >
+                    <div class="col-6 mb-5 mt-5">
+                        <img src="{{ asset('/assets/gambar/logo2.png') }}" alt="">
+                    </div>
                 </div>
+                    <p class="">Only Simpoku member can download pdf information</p>
+               
 
             </div>
         </div>
