@@ -50,6 +50,8 @@ Route::group(['middleware' => 'memberonly'], function () {
     Route::get('/member', function () {
         return view('main/dashboard');
     })->name('about');
+
+    
 });
 
 

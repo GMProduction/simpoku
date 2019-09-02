@@ -16,7 +16,7 @@ class eventController extends Controller
     {
 
         $event = eventModel::query()
-            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'city','tglMulai', 'tglAkhir', 'noContact','namaContact', 'spec', 'gambar', 'filepdf')
+            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
             ->take(8)
             ->get();
 
@@ -25,7 +25,7 @@ class eventController extends Controller
             ->get();
 
         $homeCarousell = eventModel::query()
-            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'city','tglMulai', 'tglAkhir', 'noContact','namaContact', 'spec', 'gambar', 'filepdf')
+            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
             ->take(4)
             ->get();
 
@@ -112,7 +112,7 @@ class eventController extends Controller
     public function slickEven()
     {
         $eventSlick = eventModel::query()
-            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'city','tglMulai', 'tglAkhir', 'noContact','namaContact', 'spec', 'gambar', 'filepdf')
+            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
             ->where([
                 ['DATE_FORMAT', '(', 'tgl', '"%Y"', ')', '=', '2018']
             ])
@@ -123,7 +123,7 @@ class eventController extends Controller
     public function listEvent()
     {
         $event = eventModel::query()
-            ->select('id', 'judul', 'deskripsi', 'tempat', 'region','city', 'tglMulai', 'tglAkhir', 'noContact','namaContact', 'spec', 'gambar', 'filepdf')
+            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
             ->get();
         //return view('layouts/dataListEvent')->with('event',$event);
         $returnHtml = view('main/data/dataListEvent')->with('event', $event)->render();
@@ -133,7 +133,7 @@ class eventController extends Controller
     public function dataEvent(Request $req)
     {
         $event = eventModel::query()
-            ->select('id', 'judul', 'deskripsi', 'tempat', 'region','city', 'tglMulai', 'tglAkhir', 'noContact','namaContact','spec', 'gambar', 'filepdf')
+            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
             ->where([
                 ['id', '=', $req->id]
             ])
@@ -145,7 +145,7 @@ class eventController extends Controller
     public function comboCarievent(Request $req)
     {
         $event = eventModel::query()
-            ->select('id', 'judul', 'deskripsi', 'tempat', 'region','city', 'tglMulai', 'tglAkhir', 'noContact','namaContact', 'spec', 'gambar', 'filepdf')
+            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
             ->where([
                 ['spec', 'like', '%' . $req->sp . '%']
             ])
@@ -164,7 +164,7 @@ class eventController extends Controller
     public function cariEvent(Request $req)
     {
         $event = eventModel::query()
-            ->select('id', 'judul', 'deskripsi', 'tempat', 'region','city', 'tglMulai', 'tglAkhir','noContact','namaContact','spec', 'gambar', 'filepdf')
+            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
             ->where([
                 ['judul', 'like', '%' . $req->nama . '%']
             ])
@@ -182,6 +182,63 @@ class eventController extends Controller
         } else {
             $returnHtml = view('main/data/listEventKosong')->render();
             return response()->json(array('success' => true, 'html' => $returnHtml));
+        }
+    }
+
+    public function load_data(Request $request)
+    {
+        if ($request->ajax()) {
+            if ($request->id > 0) {
+                $data = eventModel::query()
+                    ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
+                    ->where('id', '<', $request->id)
+                    ->orderBy('id', 'DESC')
+                    ->limit(2)
+                    ->get();
+            } else {
+                $data = eventModel::query()
+                    ->orderBy('id', 'DESC')
+                    ->limit(2)
+                    ->get();
+            }
+            $output = '';
+            $last_id = '';
+            if (!$data->isEmpty()) {
+                foreach ($data as $even) {
+                    $output .= '
+                     <a href="/dataevent?id={{$even->id}}" class="media p-2 border-B listHover">
+                     <div class="media">
+                         <div class="last-media-img ml-1 mt-1 mr-2"
+                             style="background-image: url({{asset ("/assets/foto/".$even->gambar)}})">
+                         </div>
+                         <div class="media-body pt-1">
+                             <div class="time-cat pb-1 pl-0">
+                                 <span class="badge">{{$even->region}}</span>
+                                 <small class="text-time">{{date("d M", strtotime($even->tglMulai))}} s/d
+                                     {{date("d M Y", strtotime($even->tglAkhir))}}</small>
+                             </div>
+                             <p class="mb-0 text-burgundy" id="title-lm">{{$even->judul}} </p>
+                             <p class="d-none d-lg-block ">{{$even->deskripsi}}</p>
+                             <p class="d-none d-lg-block ">Specialist : {{$even->spec}}</p>
+                         </div>
+                     </div>
+                 </a>
+                     ';
+                    $last_id = $even->id;
+                }
+                $output .= '
+                <div id="load_more">
+                    <button type="button" nama="load_more_button" class="btn btn-info form-control" data-id="' . $last_id . '">No Data Found</button>
+                </div>
+            ';
+            } else {
+                $output .= '
+                    <div id="load_more">
+                        <button type="button" nama="load_more_button" class="btn btn-info form-control">No Data Found</button>
+                    </div>
+                ';
+            }
+            echo $output;
         }
     }
 }

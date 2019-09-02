@@ -132,10 +132,17 @@
     <hr>
 
     <div class="">
+      
         <section id="tampilanListEven" class="">
-            <option value=""></option>
+            
         </section>
     </div>
+
+<br>
+
+<div id="post_data">
+        
+</div>
 
 
 </div>
@@ -153,7 +160,7 @@
             
             $.ajax({
                 type : 'GET',
-                url : '/tampilListEven',
+                url : "/listevent",
                 success : function(data){
                     $('#tampilanListEven').html(data.html);
                 }
@@ -183,7 +190,25 @@
         $(document).ready(function () {
             var t = $('#txtCari').val();
             cariEven();
+
+/*
+            var _token = $('input[name=_token]').val();
+
+            load_data('',_token);
+
+            function load_data(id="", _token){
+                $.ajak({
+                    url:'/cariListEven',
+                    methot:'POST',
+                    data:{id:id, _token:_token},
+                    success:function(data){
+                        $('#load_more_button').remove();
+                        $('#post_data').append(data);
+                    }
+                })
+            }
             
+            */
         });
 
   
