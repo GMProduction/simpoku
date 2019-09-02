@@ -49,13 +49,20 @@
 
                         <li class="upper-links"><a class="links" href="event"><i class="fa fa-calendar"
                                     aria-hidden="true"></i> Event</a></li>
-                        <li class="upper-links"><a class="links" href="login"><i class="fa fa-lock"
-                                    aria-hidden="true"></i> Login</a></li>
-                        <li class="upper-links">|</li>
-                        <li class="upper-links"><a class="links" href="register"><i class="fa fa-sign-in"
-                                    aria-hidden="true"></i> Register</a></li>
-                        <li class="upper-links"><a class="links" href="register"><i class="fa fa-sign-out"
+                        @if (auth()->guard('member')->check())
+                            {{auth()->guard('member')->user()->fullname}}
+                            <li class="upper-links"><a class="links" href="/logout"><i class="fa fa-sign-out"
                                     aria-hidden="true"></i> Logout</a></li>
+                        @else
+                            <li class="upper-links"><a class="links" href="login"><i class="fa fa-lock"
+                        aria-hidden="true"></i> Login </a></li>
+                        
+                        <li class="upper-links">|</li>
+                        <li class="upper-links"><a class="links" href="/register"><i class="fa fa-sign-in"
+                                    aria-hidden="true"></i> Register</a></li>
+                        @endif
+                        
+                        
 
                     </ul>
                 </div>
@@ -149,6 +156,8 @@
 <script src="{{ asset('js/app.js') }}" defer></script>
 <script src="{{ asset('/js/jquery.min.js') }}"></script>
 <script src="{{ asset('/js/tampilan/genosstyle.js') }}"></script>
+<script src="{{ asset('js/sweetalert.min.js') }}"></script>
+    @include('sweet::alert')
 
 <script>
     function cariEven(nm) {

@@ -14,21 +14,28 @@
 
 Auth::routes();
 
-Route::get('/register', 'Auth\RegisterMemberController@showRegistrationForm');
-Route::post('/postRegister', 'Auth\RegisterMemberController@register')->name('registermember');
+Route::get('/register', 'Auth\member\RegisterController@showRegistrationForm');
+Route::post('/detailregister', 'Auth\member\RegisterController@showDetailRegistration');
+Route::post('/postregister/{provider}', 'Auth\member\RegisterController@register');
+
+
+
+Route::get('/', 'member\eventController@index')->name('event');
 
 Route::get('/login', 'Auth\LoginMemberController@showLoginForm')->name('login');
-Route::post('/postlogin', 'Auth\LoginMemberController@postlogin');
-Route::get('/logout', 'Auth\LoginMemberController@logout')->name('logout');
-Route::get('/auth/{provider}', 'Auth\member\LoginController@redirectToProvider');
-Route::get('/callback', 'Auth\member\LoginController@handleProviderCallback');
+Route::get('/registerByGoogle', 'Auth\member\LoginController@redirectToGoogle');
+Route::post('/postlogin', 'Auth\member\LoginController@postlogin');
+Route::get('/callback', 'Auth\member\LoginController@googleCallback');
+Route::get('/logout', 'Auth\member\LoginController@logout')->name('logout');
+// Route::get('/auth/{provider}', 'Auth\member\LoginController@redirectToProvider');
+// Route::get('/callback', 'Auth\member\LoginController@handleProviderCallback');
 
 Route::get('/adminpanel', 'Auth\Admin\LoginController@showLoginForm');
 Route::post('/postloginadmin', 'Auth\Admin\LoginController@postlogin');
 Route::get('/logoutadmin', 'Auth\Admin\LoginController@logout')->name('logoutadmin');
 
 Route::group(['middleware' => 'memberonly'], function () {
-    Route::get('/', 'member\eventController@index')->name('event');
+
     Route::get('/event', 'member\eventController@listEventAll')->name('listEventAll');
     Route::get('/tampilListEven', 'member\eventController@listEvent')->name('listEvent');
     Route::get('/cariListEven', 'member\eventController@cariEvent')->name('event');
@@ -58,7 +65,7 @@ Route::group(['middleware' => 'memberonly'], function () {
 Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/', function () {
-        return view('admin.menuawal');
+        return view('admin.dashboard');
     })->name('admin');
 
     Route::group(['prefix' => 'user'], function () {
@@ -92,12 +99,13 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 
-Route::get('/verifyaccount/{token}', 'Auth\RegisterMemberController@verify');
 
 
-Route::group(['middleware' => 'auth'], function () {
 
+Route::group(['middleware' => 'auth:web,member'], function () {
 
+    Route::get('/verifyaccount/{token}', 'Auth\member\RegisterController@verify');
+    Route::get('/resend/{id}', 'Auth\member\RegisterController@resend');
 
     Route::get('/dashboard', function () {
         return view('admin.dashboard');

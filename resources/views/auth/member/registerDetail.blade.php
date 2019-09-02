@@ -62,7 +62,7 @@
                                             <span class="fa fa-calendar"></span>
                                         </div>
                                     </div>
-                                    <input type="date" class="form-control bordertext" placeholder="">
+                                    <input type="date" class="form-control bordertext" placeholder="" name="dateofbirth" id="dateofbirth">
 
                                 </div>
                                 <div class="input-group mb-3">
@@ -87,7 +87,7 @@
                                             <span class="fa fa-home"></span>
                                         </div>
                                     </div>
-                                    <textarea name="" id="" cols="30" rows="3" class="form-control bordertext"
+                                    <textarea name="address" id="address" cols="30" rows="3" class="form-control bordertext"
                                         placeholder="Address"></textarea>
 
                                 </div>

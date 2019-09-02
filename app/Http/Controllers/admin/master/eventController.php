@@ -7,19 +7,25 @@ use App\Http\Controllers\Controller;
 use App\Master\eventModel;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Validator;
+
 use Alert;
+use App\Master\specModel;
 
 class eventController extends Controller
 {
     //
     public function index()
     {
+
         return view('admin.master.event.page');
     }
 
     public function showForm()
     {
-        return view('admin.master.event.form');
+        $spec = specModel::query()
+            ->select('id', 'gelar', 'spec')
+            ->get();
+        return view('admin.master.event.form')->with(['spec' => $spec]);
     }
 
     public function store(Request $r)
@@ -56,10 +62,12 @@ class eventController extends Controller
             'deskripsi' => 'required|',
             'tempat' => 'required|',
             'region' => 'required|',
+            'city' => 'required|',
             'tglMulai' => 'required|',
             'tglAkhir' => 'required|',
             'spec' => 'required|',
-            'contact' => 'required|numeric|digits_between:1,15',
+            'namaContact' => 'required|',
+            'noContact' => 'required|numeric|digits_between:1,15',
         ];
 
         return Validator::make($r->all(), $rules, $messages);
@@ -67,6 +75,9 @@ class eventController extends Controller
 
     public function add(Request $r)
     {
+        // $event = new eventModel();
+        // return implode(",", $r->spec);
+
         if ($this->isValid($r)->fails()) {
             $errors = $this->isValid($r)->errors();
             Alert::error('Gagal Menambahkan Data', 'Ooops');
@@ -93,10 +104,12 @@ class eventController extends Controller
                 $event->deskripsi = $r->deskripsi;
                 $event->tempat = $r->tempat;
                 $event->region = $r->region;
+                $event->city = $r->city;
                 $event->tglMulai = $r->tglMulai;
                 $event->tglAkhir = $r->tglAkhir;
-                $event->spec = $r->spec;
-                $event->contact = $r->contact;
+                $event->noContact = $r->noContact;
+                $event->namaContact = $r->namaContact;
+                $event->spec = implode(",", $r->spec);
                 $event->gambar = $namaFoto;
                 $event->filepdf = $namapdf;
                 $event->save();

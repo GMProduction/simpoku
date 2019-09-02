@@ -42,7 +42,7 @@ Event Baru
                                 @enderror
                         </div>
                         <div class="row">
-                             <div class="col-md-6">
+                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Tempat Event</label>
                                     <input type="text" class="form-control @error('tempat') is-invalid @enderror" placeholder="Tempat Event" id="tempat" name="tempat" value="{{ old('tempat')}}" autocomplete="tempat">
@@ -53,15 +53,69 @@ Event Baru
                                         @enderror
                                 </div>
                              </div>
-                             <div class="col-md-6">
-                                 <div class="form-group">
-                                    <label>Region Event</label>
-                                    <input type="text" class="form-control @error('region') is-invalid @enderror" placeholder="region Event" id="region" name="region" value="{{ old('region')}}" >
-                                        @error('region')
+                             <div class="col-md-4">
+                                <div class="form-group">
+                                     <label>Contact Person</label>
+                                        <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                        </div>
+                                        <input id="namaContact" name="namaContact" type="text" class="form-control @error('namaContact') is-invalid @enderror" placeholder="Contact Person" aria-label="namaContact" aria-describedby="basic-addon1" value="{{ old('namaContact')}}">
+                                        @error('namaContact')
                                             <span class="msg invalid-feedback" role="alert">
                                                 {{$message}}
                                             </span>
                                         @enderror
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col-md-4">
+                                <div class="form-group">
+                                     <label>Contact Phone</label>
+                                        <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                                        </div>
+                                        <input id="noContact" name="noContact" type="number" class="form-control @error('noContact') is-invalid @enderror" placeholder="Contact Phone" aria-label="noContact" aria-describedby="basic-addon1" value="{{ old('noContact')}}">
+                                        @error('noContact')
+                                            <span class="msg invalid-feedback" role="alert">
+                                                {{$message}}
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                             
+                         </div>
+                         <div class="row">
+                             <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Region</label>
+                                    <select id="region" class="form-control" name="region">
+                                        <option value="Jawa Tengah">Jawa Tengah</option>
+                                        <option value="Jawa Barat">Jawa Barat</option>
+                                        <option value="Jawa Timur">Jawa Timur</option>
+                                        <option value="DIY">DIY Jogjakarta</option>
+                                        <option value="Sumatera Utara">Sumatera Utara</option>
+                                        <option value="Sumatera Barat">Sumatera Barat</option>
+                                    </select>
+                                </div>
+                             </div>
+                             <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>City</label>
+                                    <select id="city" class="form-control" name="city">
+                                        <option value="Surakarta">Surakarta</option>
+                                        <option value="Sukoharjo">Sukoharjo</option>
+                                        <option value="Klaten">Klaten</option>
+                                        <option value="karanganyar">karanganyar</option>
+                                        <option value="Surabaya">Surabaya</option>
+                                        <option value="Madiun">Madiun</option>
+                                        <option value="Malang">Malang</option>
+                                        <option value="Banten">Banten</option>
+                                        <option value="Cirebon">Cirebon</option>
+                                        <option value="Bandung">Bandung</option>
+                                    </select>
                                 </div>
                              </div>
                          </div>
@@ -78,31 +132,15 @@ Event Baru
                                         <input class="form-control" type="date" name="tglAkhir" id="tglAkhir" required>
                                 </div>
                              </div>
-                             <div class="col-md-4">
-                                <div class="form-group">
-                                     <label>Kontak</label>
-                                        <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-phone" aria-hidden="true"></i></span>
-                                        </div>
-                                        <input id="contact" name="contact" type="number" class="form-control @error('contact') is-invalid @enderror" placeholder="Contact" aria-label="contact" aria-describedby="basic-addon1" value="{{ old('contact')}}">
-                                        @error('contact')
-                                            <span class="msg invalid-feedback" role="alert">
-                                                {{$message}}
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
                          </div>
                          <div class="form-group">
-                            <label>Spesialis Event</label>
-                            <input type="text" class="form-control @error('spec') is-invalid @enderror" placeholder="Spesialis Event" id="spec" name="spec" value="{{ old('spec')}}" autocomplete="spec">
-                                @error('spec')
-                                    <span class="msg invalid-feedback" role="alert">
-                                        {{$message}}
-                                    </span>
-                                @enderror
+                            <label>Specialis</label>
+                                <select class="form-control select2" multiple="multiple" data-placeholder="Select a State"
+                                        style="width: 100%;" name="spec[]" id="spec">
+                                        @foreach ($spec as $item)
+                                            <option value={{$item->gelar}}>{{$item->spec}}</option>
+                                        @endforeach
+                                </select>
                         </div>
                          <div class="row">
                                 <div class="col-sm-6">
@@ -125,25 +163,12 @@ Event Baru
                                 </div>
                          </div>
                          <div class="form-group">
-                                <label>Multiple</label>
-                                <select class="form-control select2" multiple="multiple" data-placeholder="Select a State"
-                                        style="width: 100%;">
-                                <option>Alab,ama</option>
-                                <option>Alaska</option>
-                                <option>California</option>
-                                <option>Delaware</option>
-                                <option>Tennessee</option>
-                                <option>Texas</option>
-                                <option>Washington</option>
-                                </select>
+                                
                             </div>
                     </div>
                     <div class="card-footer">
                        <div class="text-right">
-                            <button type="submit" id="btnSimpan" class="btn btn-primary"><i id="iconbtn" class="fa  fa-check-circle" aria-hidden="true"></i>&nbsp;Simpan</button>
-                        </div>
-                       <div class="text-right">
-                            <button type="button" id="btnCoba" class="btn btn-primary"><i id="iconbtn" class="fa  fa-check-circle" aria-hidden="true"></i>&nbsp;coba</button>
+                            <button type="submit" id="btnSimpan" class="btn btn-primary"><i id="iconbtn" class="fa  fa-check-circle" aria-hidden="true"></i>&nbsp;Submit</button>
                         </div>
                     </div>
                 </form>

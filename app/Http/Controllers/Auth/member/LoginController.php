@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Facades\Socialite;
 use Alert;
+use App\Master\memberModel;
 
 class LoginController extends Controller
 {
@@ -33,24 +34,40 @@ class LoginController extends Controller
         return view('auth.member.login');
     }
 
-    public function handleProviderCallback()
+    public function redirectToGoogle()
     {
-        // $user = Socialite::driver($provider)->user();
-        // $authUser = $this->findOrCreateUser($user, $provider);
-        // Auth::login($authUser, true);
-        return redirect('/login');
+        $this->middleware('guest');
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function googleCallback()
+    {
+
+        $this->middleware('guest');
+        $user = Socialite::driver('google')->stateless()->user();
+
+        $data = [
+            'fullname' => $user->getName(),
+            'email' => $user->getEmail(),
+            'password' => '',
+            'provider' => 'google'
+        ];
+        $member = memberModel::where('gmail', $user->getEmail())->first();
+        if ($member != null) {
+            if (Auth::guard('member')->loginUsingId($member->id)) {
+                Alert::success('Selamat', 'Login Berhasil');
+                return redirect('/');
+            }
+        } else {
+            return view('auth.member.registerDetail')->with(['data' => $data]);
+        }
+
+        // return $data;
     }
     function postlogin(Request $request)
     {
-        $login_type = filter_var($request->input('username'), FILTER_VALIDATE_EMAIL)
-            ? 'email'
-            : 'username';
-
-        $request->merge([
-            $login_type => $request->input('username')
-        ]);
-
-        if (Auth::guard('member')->attempt($request->only($login_type, 'password'))) {
+        $this->middleware('guest');
+        if (Auth::guard('member')->attempt($request->only('email', 'password'))) {
             return redirect('/');
         } else {
             Alert::error('Periksa username atau password anda', 'Gagal');

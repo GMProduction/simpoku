@@ -11,14 +11,15 @@
           <div class="card card-signin">
             <div class="card-body">
               <h5 class="card-title text-center">Sign In</h5>
-              <form class="form-signin">
+              <form class="form-signin" action="/postlogin" method="POST">
+                @csrf
                 <div class="form-label-group">
-                  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required autofocus>
                   <label for="inputEmail">Email address</label>
                 </div>
   
                 <div class="form-label-group">
-                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
                   <label for="inputPassword">Password</label>
                 </div>
   
@@ -28,7 +29,7 @@
                 </div>
                 <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"> Sign in</button>
                 <hr class="my-4">
-                <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fa fa-google mr-2"></i> Sign in with Google</button>
+                <a href="/registerByGoogle" class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fa fa-google mr-2"></i> Sign in with Google</a>
                 
               </form>
             </div>

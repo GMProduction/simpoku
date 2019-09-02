@@ -105,12 +105,12 @@
                                         <p>Events</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="/event" class="nav-link ">
                                         <i class="fa fa-desktop nav-icon"></i>
                                         <p>Banner Slides</p>
                                     </a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </li>
 
