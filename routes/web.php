@@ -47,6 +47,9 @@ Route::group(['middleware' => 'memberonly'], function () {
     Route::get('/detailRegister', function () {
         return view('auth/member/registerDetail');
     })->name('about');
+    Route::get('/member', function () {
+        return view('main/dashboard');
+    })->name('about');
 });
 
 

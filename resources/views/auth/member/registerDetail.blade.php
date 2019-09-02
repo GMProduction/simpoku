@@ -3,28 +3,7 @@
 @section('content')
 
 <style>
-    .transparan {
-        background-color: transparent;
-        border-right: 0;
-        width: 40px;
-
-    }
-
-    .transparan1 {
-        background-color: transparent;
-        border-left: 0;
-    }
-
-    .bordertext {
-        border-left: 0;
-        outline: 0 !important;
-    }
-
-
-    .form-control:focus {
-        outline-offset: 0px !important;
-        outline: none !important;
-    }
+   
 </style>
 
 <link href="{{ asset('/css/login.css') }}" rel="stylesheet" />
@@ -51,21 +30,31 @@
                             <h5 class="login-box-msg">Contact Detail</h5>
 
                             <form action="../../index.html" method="post">
-                                <div class="input-group mb-3 border" style="border-radius: 5rem;">
+                                <div class="input-group mb-3 border" style="">
                                     <div class="input-group-append">
                                         <div class="input-group-text transparan">
                                             <span class="fa fa-user-md"></span>
                                         </div>
                                     </div>
                                     <select name="" id="" class="form-control bordertext">
-                                        <option value="">- Pilih Job -</option>
+                                        <option value="">- Select Profession -</option>
                                         <option value="">Dokter Spesialis</option>
                                         <option value="">Dokter Umum</option>
                                         <option value="">PPDS</option>
+                                        <option value="">Dokter Muda</option>
                                         <option value="">Perawat</option>
                                         <option value="">Apoteker</option>
                                         <option value="">Farmasi</option>
                                     </select>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text transparan" style="">
+                                            <span class="fa fa-building"></span>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control bordertext " placeholder="Instantion Name">
+
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-append">
@@ -88,7 +77,7 @@
                                             <span class="">+62</span>
                                         </div>
                                     </div>
-                                    <input type="password" class="form-control bordertext " placeholder="Phone"
+                                    <input type="number" class="form-control bordertext " placeholder="Phone"
                                         style="">
 
                                 </div>
@@ -117,8 +106,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-4 col-sm-12">
-                                        <button type="submit"
-                                            class="btn btn-primary btn-block btn-flat">Back</button>
+                                        <a type="submit"
+                                            class="btn btn-primary btn-block btn-flat" href="register">Back</a>
                                     </div>
                                     <div class="offset-4 col-lg-4 col-sm-12">
                                         <button type="submit"

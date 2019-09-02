@@ -11,7 +11,7 @@
             <div class="media-body pt-1">
                 <div class="time-cat pb-1 pl-0">
                     <span class="badge">{{$even->region}}</span>
-                    <small class="text-time">{{date('d M', strtotime($even->tglMulai))}} s/d {{date('d M Y', strtotime($even->tglAhkir))}}</small>
+                    <small class="text-time">{{date('d M', strtotime($even->tglMulai))}} s/d {{date('d M Y', strtotime($even->tglAkhir))}}</small>
                 </div>
                 <p class="mb-0 text-burgundy" id="title-lm">{{$even->judul}} </p>
                 <p class="d-none d-lg-block ">{{$even->deskripsi}}</p>

@@ -20,12 +20,13 @@
 
     <script src="{{ asset('/js/flipkart.js') }}"></script>
 
+    <link rel="shortcut icon" href="{{asset('assets/gambar/logo2.png')}}" type="image/x-icon">
 
 
     @yield('css')
 
     <script>
-     function cariDataevent(){
+        function cariDataevent(){
         var a = $('#txtCari').val();
         
         if(event.keyCode === 13){
@@ -63,16 +64,18 @@
                 <div class="col-sm-12 col-lg-3 col-md-5">
                     <h2 style="margin:0px;"><span class="smallnav menu" onclick=""><i class="fa fa-bars"
                                 onclick="openNav()" aria-hidden="true"></i> <a href="/">Simpoku</a></span></h2>
-                    <h1 style="margin:0px;" class=""><a href="/" class="profile-li"><span class="largenav"><img
-                                    src="{{ asset('/assets/gambar/logo1.png') }}" width="250" style=""
+                    <h1 style="margin:0px; position: absolute;" class=""><a href="/" class="profile-li"><span
+                                class="largenav"><img src="{{ asset('/assets/gambar/logo1.png') }}" width="250" style=""
                                     alt=""></span></a></h1>
                 </div>
                 <div class="flipkart-navbar-search smallsearch col-lg-8 col-md-7 col-sm-11 float-left">
                     <div class="row rounded5rem bg-putih">
                         <input class="flipkart-navbar-input col-md-11 col-sm-11 text-black"
                             style="background-color: transparent" type="text" id="txtCari"
-                            placeholder="Search Event Name, Specialist, Region, Month " name="" onkeyup="cariDataevent()">
-                        <button class="flipkart-navbar-button  col-md-1 col-sm-1 rounded5rem-kanan warna-gray" style="" onclick="cariDataevent()">
+                            placeholder="Search Event Name, Specialist, Region, Month " name=""
+                            onkeyup="cariDataevent()">
+                        <button class="flipkart-navbar-button  col-md-1 col-sm-1 rounded5rem-kanan warna-gray" style=""
+                            onclick="cariDataevent()">
                             <i class="fa fa-lg fa-search"></i>
                         </button>
                     </div>
@@ -92,12 +95,14 @@
         <a class="links" href="login"><i class="fa fa-lock" aria-hidden="true"></i> Login</a>
         <a class="links" href="register"><i class="fa fa-sign-in" aria-hidden="true"></i> Register</a>
     </div>
-    @yield('content')
+
+    <div style="min-height: 231px">
+        @yield('content')
+    </div>
 
 
 
-
-    <footer class="warna-burgundy footer" style="height: 250px">
+    <footer class="warna-burgundy footer" style="height: 300px">
         <div class="container">
             <div class="row pt-4 mr-3">
                 <div class="col-6">
@@ -123,10 +128,14 @@
 
                 <div class="col-3">
                     <label class="text-uppercase pb-1 font-weight-bold ">About Us :</label>
-                    
+
 
                 </div>
-               
+                <div class="col-12"> 
+                    <div class=" row col-12 justify-content-center pt-5">
+                        <small><i class="fa fa-copyright" aria-hidden="true"></i> Powered By abiaga</small>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
@@ -137,6 +146,7 @@
 
 
 <!-- JS -->
+<script src="{{ asset('js/app.js') }}" defer></script>
 <script src="{{ asset('/js/jquery.min.js') }}"></script>
 <script src="{{ asset('/js/tampilan/genosstyle.js') }}"></script>
 

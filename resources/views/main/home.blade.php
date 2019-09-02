@@ -99,7 +99,7 @@
                                     style="height: 134px">
                                 <div class="card-img-overlay d-flex">
                                     <a href="/dataevent?id=/dataevent?id={{$data->id}}}}" class="align-self-end">
-                                        <span class="badge">Industri</span>
+                                        <span class="badge">{{$data->region}}</span>
                                         <h6 class="card-title">{{$data->judul}} </h6>
                                     </a>
                                 </div>
@@ -153,8 +153,8 @@
                                     <div class="media-body pt-1">
                                         <div class="time-cat pb-1 pl-0">
                                             <span class="badge">{{$even->region}}</span>
-                                            <small class="text-time">{{date('d M', strtotime($even->tglMulai))}} s/d
-                                                {{date('d M Y', strtotime($even->tglAhkir))}}</small>
+                                            <small class="text-time" style="">{{date('d M', strtotime($even->tglMulai))}} s/d
+                                                {{date('d M Y', strtotime($even->tglAkhir))}}</small>
                                         </div>
                                         <p class="mb-0 text-burgundy" id="title-lm">{{$even->judul}} </p>
                                         <p class="d-none d-lg-block mb-2 ">{{$even->deskripsi}}</p>

@@ -54,7 +54,7 @@
                         <tr>
                             <td class="" style="width: 30px"><span class="fa fa-calendar text-burgundy "></span></td>
                             <td class="">{{date('D, d M', strtotime($even->tglMulai))}} -
-                                {{date('D, d M Y', strtotime($even->tglAhkir))}}</td>
+                                {{date('D, d M Y', strtotime($even->tglAkhir))}}</td>
 
                         </tr>
                         <tr>

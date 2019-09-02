@@ -3,27 +3,7 @@
 @section('content')
 
 <style>
-    .transparan {
-        background-color: transparent;
-        border-right: 0;
-        width: 40px;
-    }
-
-    .transparan1 {
-        background-color: transparent;
-        border-left: 0;
-    }
-
-    .bordertext {
-        border-left: 0;
-        outline: 0 none !important;
-    }
-
-
-    .form-control:focus {
-        outline-offset: 0px !important;
-        outline: none !important;
-    }
+    
 </style>
 
 <link href="{{ asset('/css/login.css') }}" rel="stylesheet" />

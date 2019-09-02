@@ -11,10 +11,34 @@
 }
 
 
+
+.transparan {
+    background-color: transparent;
+    border-right: 0;
+    width: 40px;
+}
+
+.transparan1 {
+    background-color: transparent;
+    border-left: 0;
+}
+
+.bordertext {
+    border-left: 0;
+    outline: 0 none !important;
+}
+
+
+.form-control:focus {
+    outline-offset: 0px !important;
+    outline: none !important;
+}
+
 .warna-burgundy{
     /*background-color: #63033A; */
     background-color: #843B69;
 }
+
 
 
 .bg-putih{
