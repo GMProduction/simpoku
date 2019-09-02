@@ -38,15 +38,20 @@
                         <div class="card-body register-card-body">
                             <h4 class="login-box-msg">Create your Simpoku Account</h4>
                             <p class="login-box-msg">General Information</p>
-                            <form action="../../index.html" method="post">
+                            <form action="/detailregister" method="post">
+                                @csrf
                                 <div class="input-group mb-3">
                                     <div class="input-group-append">
                                         <div class="input-group-text transparan" style="">
                                             <span class="fa fa-user"></span>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control bordertext " placeholder="Full name">
-
+                                <input type="text" class="form-control bordertext @error('fullname') is-invalid @enderror" placeholder="Full name" name="fullname" id="fullname" value="{{old('fulname')}}">
+                                    @error('fullname')
+                                        <span class="msg invalid-feedback" role="alert">
+                                            {{$message}}
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-append">
@@ -54,14 +59,13 @@
                                             <span class="fa fa-envelope"></span>
                                         </div>
                                     </div>
-                                    <input type="email" class="form-control bordertext" placeholder="Email"
-                                        style="border-right: 0">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text transparan1">
-                                            <span class="">@gmail.com</span>
-                                        </div>
-                                    </div>
-
+                                    <input type="email" class="form-control bordertext @error('email') is-invalid @enderror" placeholder="Email" name="email" id="email" value="{{old('email')}}"
+                                        style="">
+                                    @error('email')
+                                        <span class="msg invalid-feedback" role="alert">
+                                            {{$message}}
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-append">
@@ -69,7 +73,7 @@
                                             <span class="fa fa-lock"></span>
                                         </div>
                                     </div>
-                                    <input type="password" class="form-control bordertext" id="password1"
+                                    <input type="password" class="form-control bordertext @error('password') is-invalid @enderror" id="password" name="password"
                                         placeholder="Password">
 
                                     <div class="input-group-append">
@@ -78,6 +82,9 @@
                                                     class="fa fa-eye-slash" id="ico1"></span></a>
                                         </div>
                                     </div>
+                                    <small id="passwordHelpBlock" class="form-text text-muted">
+                                            Your password at least 6 characters, must not contain spaces, special characters, or emoji.
+                                    </small>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-append">
@@ -85,7 +92,7 @@
                                             <span class="fa fa-lock"></span>
                                         </div>
                                     </div>
-                                    <input type="password" class="form-control bordertext" id="password2"
+                                    <input type="password" class="form-control bordertext @error('password') is-invalid @enderror" id="password_confirmation" name="password_confirmation"
                                         placeholder="Retype password">
 
                                     <div class="input-group-append">
@@ -94,26 +101,23 @@
                                                     class="fa fa-eye-slash" id="ico2"></span></a>
                                         </div>
                                     </div>
+                                    @error('password')
+                                        <span class="msg invalid-feedback" role="alert">
+                                            {{$message}}
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="row">
                                     
                                     <!-- /.col -->
                                     <div class="offset-8 col-4">
-                                        <a href="detailRegister"
-                                            class="btn btn-primary btn-block btn-flat">Next</a>
+                                        <button type="submit"
+                                            class="btn btn-primary btn-block btn-flat">Next</button>
                                     </div>
                                     <!-- /.col -->
                                 </div>
 
                             </form>
-                            <div class="social-auth-links text-center">
-                                <p>- OR -</p>
-
-                                <a href="#" class="btn btn-block btn-danger">
-                                    <i class="fa fa-google mr-2"></i>
-                                    Sign up using Google
-                                </a>
-                            </div>
                             <div class="text-center mt-3">
                                 <a href="login" class="text-center text-primary bold">I already have a membership
                                     Simpoku</a>

@@ -50,21 +50,25 @@
                         <div class="card-body register-card-body">
                             <h5 class="login-box-msg">Contact Detail</h5>
 
-                            <form action="../../index.html" method="post">
+                            <form action="/postregister/{{$data['provider']}}" method="post">
+                                @csrf
+                                <input type="hidden" name="fullname" value="{{$data['fullname']}}">
+                                <input type="hidden" name="email" value="{{$data['email']}}">
+                                <input type="hidden" name="password" value="{{$data['password']}}">
                                 <div class="input-group mb-3 border" style="border-radius: 5rem;">
                                     <div class="input-group-append">
                                         <div class="input-group-text transparan">
                                             <span class="fa fa-user-md"></span>
                                         </div>
                                     </div>
-                                    <select name="" id="" class="form-control bordertext">
+                                    <select name="job" id="job" class="form-control bordertext">
                                         <option value="">- Pilih Job -</option>
-                                        <option value="">Dokter Spesialis</option>
-                                        <option value="">Dokter Umum</option>
-                                        <option value="">PPDS</option>
-                                        <option value="">Perawat</option>
-                                        <option value="">Apoteker</option>
-                                        <option value="">Farmasi</option>
+                                        <option value="Dokter Spesialis">Dokter Spesialis</option>
+                                        <option value="Dokter Umum">Dokter Umum</option>
+                                        <option value="PPDS">PPDS</option>
+                                        <option value="Perawat">Perawat</option>
+                                        <option value="Apoteker">Apoteker</option>
+                                        <option value="Farmasi">Farmasi</option>
                                     </select>
                                 </div>
                                 <div class="input-group mb-3">
@@ -73,7 +77,7 @@
                                             <span class="fa fa-calendar"></span>
                                         </div>
                                     </div>
-                                    <input type="date" class="form-control bordertext" placeholder="">
+                                    <input type="date" class="form-control bordertext" placeholder="" name="dateofbirth" id="dateofbirth">
 
                                 </div>
                                 <div class="input-group mb-3">
@@ -88,8 +92,8 @@
                                             <span class="">+62</span>
                                         </div>
                                     </div>
-                                    <input type="password" class="form-control bordertext " placeholder="Phone"
-                                        style="">
+                                    <input type="number" class="form-control bordertext " placeholder="Phone"
+                                        style="" name="phone" id="phone">
 
                                 </div>
                                 <div class="input-group mb-3">
@@ -98,7 +102,7 @@
                                             <span class="fa fa-home"></span>
                                         </div>
                                     </div>
-                                    <textarea name="" id="" cols="30" rows="3" class="form-control bordertext"
+                                    <textarea name="address" id="address" cols="30" rows="3" class="form-control bordertext"
                                         placeholder="Address"></textarea>
 
                                 </div>
@@ -117,8 +121,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-4 col-sm-12">
-                                        <button type="submit"
-                                            class="btn btn-primary btn-block btn-flat">Back</button>
+                                        <a href="/register"
+                                            class="btn btn-primary btn-block btn-flat">Back</a>
                                     </div>
                                     <div class="offset-4 col-lg-4 col-sm-12">
                                         <button type="submit"

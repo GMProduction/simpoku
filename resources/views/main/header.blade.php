@@ -19,7 +19,7 @@
     <link href="{{ asset('/css/flipkart.css') }}" rel="stylesheet" />
 
     <script src="{{ asset('/js/flipkart.js') }}"></script>
-
+    <link rel="stylesheet" href="{{ asset('/css/sweetalert2.css')}}">
 
 
     @yield('css')
@@ -48,13 +48,20 @@
 
                         <li class="upper-links"><a class="links" href="event"><i class="fa fa-calendar"
                                     aria-hidden="true"></i> Event</a></li>
-                        <li class="upper-links"><a class="links" href="login"><i class="fa fa-lock"
-                                    aria-hidden="true"></i> Login</a></li>
-                        <li class="upper-links">|</li>
-                        <li class="upper-links"><a class="links" href="register"><i class="fa fa-sign-in"
-                                    aria-hidden="true"></i> Register</a></li>
-                        <li class="upper-links"><a class="links" href="register"><i class="fa fa-sign-out"
+                        @if (auth()->guard('member')->check())
+                            {{auth()->guard('member')->user()->fullname}}
+                            <li class="upper-links"><a class="links" href="/logout"><i class="fa fa-sign-out"
                                     aria-hidden="true"></i> Logout</a></li>
+                        @else
+                            <li class="upper-links"><a class="links" href="login"><i class="fa fa-lock"
+                        aria-hidden="true"></i> Login </a></li>
+                        
+                        <li class="upper-links">|</li>
+                        <li class="upper-links"><a class="links" href="/register"><i class="fa fa-sign-in"
+                                    aria-hidden="true"></i> Register</a></li>
+                        @endif
+                        
+                        
 
                     </ul>
                 </div>
@@ -92,7 +99,24 @@
         <a class="links" href="login"><i class="fa fa-lock" aria-hidden="true"></i> Login</a>
         <a class="links" href="register"><i class="fa fa-sign-in" aria-hidden="true"></i> Register</a>
     </div>
+    
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        @auth('member')
+            @if (auth()->guard('member')->user()->email_verified_at == NULL)
+                <div class="alert alert-warning" role="alert" >
+            Please Verify Your Email Account To Get More Fitur From Simpoku.com<br>
+                Click <a href="/resend/{{auth()->guard('member')->user()->id}}">Resend Link</a> if you are not received an email confirmation.
+        </div>
+            @endif
+        @endauth
+        
     @yield('content')
+    </div>
+    
 
 
 
@@ -139,6 +163,8 @@
 <!-- JS -->
 <script src="{{ asset('/js/jquery.min.js') }}"></script>
 <script src="{{ asset('/js/tampilan/genosstyle.js') }}"></script>
+<script src="{{ asset('js/sweetalert.min.js') }}"></script>
+    @include('sweet::alert')
 
 <script>
     function cariEven(nm) {
