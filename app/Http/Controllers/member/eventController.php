@@ -173,6 +173,8 @@ class eventController extends Controller
             ])
             ->get();
 
+           
+
         $jum = $event->first();
 
 

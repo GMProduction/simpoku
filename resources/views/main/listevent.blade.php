@@ -191,14 +191,14 @@
             var t = $('#txtCari').val();
             cariEven();
 
-/*
+
             var _token = $('input[name=_token]').val();
 
             load_data('',_token);
 
             function load_data(id="", _token){
-                $.ajak({
-                    url:'/cariListEven',
+                $.ajax({
+                    url:'/loadmore.load_data',
                     methot:'POST',
                     data:{id:id, _token:_token},
                     success:function(data){
@@ -208,7 +208,7 @@
                 })
             }
             
-            */
+            
         });
 
   
