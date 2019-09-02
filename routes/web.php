@@ -77,6 +77,15 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/update', 'admin\master\eventController@edit');
         Route::delete('/destroy', 'admin\master\eventController@delete');
     });
+    Route::group(['prefix' => 'member'], function () {
+        Route::get('/', 'admin\master\memberController@index')->name('pagemember');
+        Route::get('/view', 'admin\master\memberController@getData');
+        Route::get('/new', 'admin\master\memberController@showForm');
+        Route::post('/add', 'admin\master\memberController@add');
+        Route::get('/store', 'admin\master\memberController@store');
+        Route::post('/update', 'admin\master\memberController@edit');
+        Route::delete('/destroy', 'admin\master\memberController@delete');
+    });
 });
 
 

@@ -15,7 +15,7 @@ class memberModel extends Authenticatable
     protected $guard = 'member';
 
     protected $fillable = [
-        'username', 'email', 'password', 'firstname', 'lastname', 'address', 'phone', 'job', 'dateofbirth', 'email_verified_at', 'remember_token'
+        'email', 'gmail', 'fullname', 'password', 'address', 'phone', 'job', 'dateofbirth', 'email_verified_at', 'remember_token'
     ];
 
     protected $hidden = [
@@ -26,5 +26,5 @@ class memberModel extends Authenticatable
     //     'email_verified_at' => 'datetime',
     // ];
 
-    
+
 }

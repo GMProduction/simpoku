@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Master;
+namespace App\Http\Controllers\admin\master;
 
 use App\User;
 use Yajra\DataTables\DataTables;
