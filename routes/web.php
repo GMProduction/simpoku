@@ -44,14 +44,14 @@ Route::group(['middleware' => 'memberonly'], function () {
     Route::get('/register', function () {
         return view('auth/member/register');
     })->name('register');
-    Route::get('/detailRegister', function () {
+    Route::post('/detailRegister', function () {
         return view('auth/member/registerDetail');
     })->name('about');
     Route::get('/member', function () {
         return view('main/dashboard');
     })->name('about');
 
-    Route::get('/loadmore/load_data','member\eventController@load_more')->name('loadmore.load_data');
+    Route::get('/loadmore/load_data','member\eventController@load_data')->name('loadmore.load_data');
 });
 
 
