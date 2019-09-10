@@ -5,88 +5,21 @@
 
 @section('content')
 
-<?php
-    
 
-    $curl = curl_init();
-
-    curl_setopt_array($curl, array(
-      CURLOPT_URL => "http://api.rajaongkir.com/starter/city",
-      CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_ENCODING => "",
-      CURLOPT_MAXREDIRS => 10,
-      CURLOPT_TIMEOUT => 30,
-      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-      CURLOPT_CUSTOMREQUEST => "GET",
-      CURLOPT_HTTPHEADER => array(
-        "key: 7366bbad708dcf7d2f1b3d69e5f4219f"
-      ),
-    ));
-
-    $response = curl_exec($curl);
-    $err = curl_error($curl);
-
-    curl_close($curl);
-
-    $listKota = array(); //bikin array untuk nampung list kota
-
-    if ($err) {
-      echo "cURL Error #:" . $err;
-    } else {
-
-        $arrayResponse = json_decode($response, true); //decode response dari raja ongkir, json ke array
-      
-        $tempListKota = $arrayResponse['rajaongkir']['results']; // ambil array yang dibutuhin aja, disini resultnya aja
-
-        //looping array temporary untuk masukin object yang kita butuhin
-        foreach ($tempListKota as $value) {
-            //bikin object baru
-            $kota = new stdClass();
-            $kota->id = $value['city_id']; //id kotanya
-            $kota->nama = $value['city_name']; //nama kotanya
-            $kota->prov = $value['province']; //nama kotanya
-
-            array_push($listKota, $kota); //push object kota yang kita bikin ke array yang nampung list kota
-
-        }
-
-        //$listKota : udah berisi list kota yang kita butuhin
-
-        /*ini untuk ngecek aja isi $list kota udah bener apa belum
-        foreach ($listKota as $kota) {
-          echo ("<br>");
-          echo "id : ". $kota->id . " - " . "nama : ". $kota->nama;
-
-        }
-     */
-
-    }
-
-?>
 
 
 <div class="container bawah ">
 
 
 
-    <div class="row col-12" style="width: 100%;">
+    <div class="row" style="">
 
-        <div class="col-lg-12 col-md-12 col-sm-12">
-            <div class="" style="">
-                <!--
-                <div class="input-group-prepend">
-                    <span class="input-group-text border-right-0" id="basic-addon1" style="background-color: white"><i
-                            class="fa fa-search" aria-hidden="true"></i></span>
-                </div>
-                
-                <input type="text" id="txtCari" class=" form-control border-left-0 form-control-sm"
-                    placeholder="Cari Event / Deskripsi..." aria-label="Username" aria-describedby="basic-addon1"
-                    style="">
-                -->
-                <div class="row">
-                    <div class=" col-md-5">
+       
+                <div class="row pb-3 border">
+                    <div class=" col-lg-6">
                         <label for="comboSpec" class=" col-form-label">Specialist : </label>
-                        <select name="comboSpec" id="comboSpec" class="form-control">
+                        <select name="comboSpec" id="comboSpec" class="form-control" onchange="comboCariEven()">
+                            <option value="">All</option>
                             @foreach ($spec as $item)
                             <option value="{{$item->spec}}">{{$item->spec}}</option>
                             @endforeach
@@ -94,7 +27,8 @@
                     </div>
                     <div class="col-lg-2">
                         <label for="comboYear" class=" col-form-label">Year : </label>
-                        <select name="comboYear" id="comboYear" class="form-control">
+                        <select name="comboYear" id="comboYear" class="form-control" onchange="comboCariEven()">
+                            <option value="">All</option>
                             @foreach ($year as $item)
                             <option value="{{$item}}">{{$item}}</option>
                             @endforeach
@@ -103,46 +37,57 @@
                     </div>
                     <div class="col-lg-2">
                         <label for="comboMonth" class=" col-form-label">Month : </label>
-                        <select name="comboMonth" id="comboMonth" class="form-control">
-                            @foreach ($month as $item)
-                            <option value="{{$item}}">{{$item}}</option>
-                            @endforeach
+                        <select name="comboMonth" id="comboMonth" class="form-control" onchange="comboCariEven()">
+                            <option value="">All</option>
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
                         </select>
                     </div>
-                    <div class="col-lg-2">
-                        <label for="combo" class=" col-form-label">Region : </label>
+                    <div class="col-lg-4">
+                        <label for="combo" class=" col-form-label">Regional : </label>
+                        <select name="" id="comboRegion" class="form-control" onchange="comboCariEven()">
+                            <option value="">All</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-5">
+                        <label for="combo" class=" col-form-label">City : </label>
+                        <select name="" id="comboCity" class="form-control" onchange="comboCariEven()">
+                            <option value="">All</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-2  align-self-end col-form-label">
+                            <button class="btn floaat-bottom btn-danger" onclick="reset()"><i class="fa fa-times" aria-hidden="true"></i> Reset</button>
+                        </div>
 
-                        <select name="" id="" class="form-control">
-                            @foreach ($listKota as $kota)
-                        <option value="{{$kota->id}}">{{ $kota->nama }}</option>
-                            @endforeach
-                            
-                            
-                        </select>
-                    </div>
-                    <div class="col-lg-1 align-self-end col-form-label">
-                        <button class="btn floaat-bottom" onclick="comboCariEven()">Submit</button>
-                    </div>
                 </div>
 
-            </div>
-        </div>
+         
 
     </div>
     <hr>
 
     <div class="">
-      
+
         <section id="tampilanListEven" class="">
-            
+
         </section>
     </div>
 
-<br>
+    <br>
 
-<div id="post_data">
-        
-</div>
+    <div id="post_data">
+
+    </div>
 
 
 </div>
@@ -153,68 +98,7 @@
 
 
 @section('script')
-<script>
-    $('#txtCari').val(sessionStorage.getItem('cari'));
-        sessionStorage.setItem('cari','');
-        function tampilListEven() {
-            
-            $.ajax({
-                type : 'GET',
-                url : "/listevent",
-                success : function(data){
-                    $('#tampilanListEven').html(data.html);
-                }
-            })
-        }
 
-       function comboCariEven(){
-           var s = $('#comboSpec').val();
-           var y = $('#comboYear').val();
-           var m = $('#comboMonth').val();
-           $.ajax({
-               type :'GET',
-               url : '/comboCariEven',
-               data : {
-                   spec : s,
-                   year : y,
-                   month : m
-               },
-               success : function(data){
-                   alert(s + ' ' +m + ' ' +y);
-                }
-
-           })
-       }
-
-        
-        $(document).ready(function () {
-            var t = $('#txtCari').val();
-            cariEven();
-
-/*
-            var _token = $('input[name=_token]').val();
-
-            load_data('',_token);
-
-            function load_data(id="", _token){
-                $.ajak({
-                    url:'/cariListEven',
-                    methot:'POST',
-                    data:{id:id, _token:_token},
-                    success:function(data){
-                        $('#load_more_button').remove();
-                        $('#post_data').append(data);
-                    }
-                })
-            }
-            
-            */
-        });
-
-  
-
-   
-
-</script>
+<script src="{{ asset('/js/tampilan/listevent.js') }}"></script>
 
 @endsection

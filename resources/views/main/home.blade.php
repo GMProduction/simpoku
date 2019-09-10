@@ -64,26 +64,29 @@
                 <div id="featured" class="carousel slide carousel-fade" data-ride="carousel">
                     <div class="carousel-inner">
                         @foreach ($homeCarousell as $data )
+
                         @if($loop->first)
                         <div class="carousel-item active">
                             @else
                             <div class="carousel-item">
                                 @endif
 
-                                <div class="card bg-dark text-white border-0">
+                                <div class="card bg-dark text-white border-0" style="height: 276px;">
                                     <img class="card-img img-fluid" src="{{asset ('/assets/foto/'.$data->gambar)}}"
-                                        alt="" style="height: 276px">
+                                        alt="" style=" object-fit: cover">
                                     <div class="card-img-overlay d-flex linkfeat">
-                                        <a href="{{$data->id}}" class="align-self-end">
+                                        <a href="/dataevent?id={{$data->id}}" class="align-self-end">
                                             <span class="badge">{{$data->regional}}</span>
                                             <h4 class="card-title">{{$data->judul}} </h4>
                                             <p class="textfeat" style="display: none;">{{$data->deskripsi}}</p>
                                         </a>
                                     </div>
                                 </div>
+
                             </div>
+
                             @endforeach
-                        
+
                         </div>
                     </div>
                 </div>
@@ -94,11 +97,11 @@
                         @endphp
                         @foreach ($homeCarousell as $data )
                         <div class="col-6 pb-2 mg-{{$a}}">
-                            <div class="card bg-dark text-white border-0">
+                            <div class="card bg-dark text-white border-0" style="">
                                 <img class="card-img img-fluid" src="{{asset ('/assets/foto/'.$data->gambar)}}" alt=""
-                                    style="height: 134px">
+                                    style="height: 134px; object-fit: cover">
                                 <div class="card-img-overlay d-flex">
-                                    <a href="/dataevent?id=/dataevent?id={{$data->id}}}}" class="align-self-end">
+                                    <a href="/dataevent?id={{$data->id}}" class="align-self-end">
                                         <span class="badge">{{$data->region}}</span>
                                         <h6 class="card-title">{{$data->judul}} </h6>
                                     </a>
@@ -110,7 +113,7 @@
                         @endphp
 
                         @endforeach
-                     
+
                     </div>
                 </div>
             </div>
@@ -153,7 +156,8 @@
                                     <div class="media-body pt-1">
                                         <div class="time-cat pb-1 pl-0">
                                             <span class="badge">{{$even->region}}</span>
-                                            <small class="text-time" style="">{{date('d M', strtotime($even->tglMulai))}} s/d
+                                            <small class="text-time"
+                                                style="">{{date('d M', strtotime($even->tglMulai))}} s/d
                                                 {{date('d M Y', strtotime($even->tglAkhir))}}</small>
                                         </div>
                                         <p class="mb-0 text-burgundy" id="title-lm">{{$even->judul}} </p>
@@ -185,7 +189,7 @@
                     </div>
                     <div class="clearfix"></div>
                     <br>
-                    
+
                 </div>
 
         </section>

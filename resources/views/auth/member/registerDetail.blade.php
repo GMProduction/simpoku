@@ -7,7 +7,7 @@
 </style>
 
 <link href="{{ asset('/css/login.css') }}" rel="stylesheet" />
-<link href="{{ asset('/css/flipkart.css') }}" rel="stylesheet" />
+
 
 <div class="container bawah">
 
@@ -110,12 +110,12 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-4 col-sm-12">
-                                        <a type="submit"
-                                            class="btn btn-primary btn-block btn-flat" href="register">Back</a>
+                                        <a 
+                                            class="btn btn-danger btn-block" href="register" style=""> <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
                                     </div>
-                                    <div class="offset-4 col-lg-4 col-sm-12">
+                                    <div class="offset-3 col-lg-5 col-sm-12">
                                         <button type="submit"
-                                            class="btn btn-primary btn-block btn-flat">Register</button>
+                                            class="btn btn-primary btn-block btn-flat"><i class="fa fa-sign-in" aria-hidden="true"></i> Register</button>
                                     </div>
                                 </div>
                             </form>

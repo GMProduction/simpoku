@@ -144,16 +144,32 @@ class eventController extends Controller
 
     public function comboCarievent(Request $req)
     {
-        $event = eventModel::query()
-            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
-            ->where([
-                ['spec', 'like', '%' . $req->sp . '%']
+        $event = eventModel::whereYear('tglMulai', 'like','%' . $req->year . '%')
+            ->where([               
+                ['city', 'like', '%' . $req->city . '%'],
+                ['region', 'like', '%' . $req->region . '%']                    
             ])
+            ->where(function($as) use ($req) {
+                $as->where('spec', 'like', '%' . $req->spec . '%')
+                   ->orwhere('deskripsi', 'like', '%' . $req->spec . '%')
+                   ->orwhere('judul', 'like', '%' . $req->spec . '%')
+                   ->orwhereMonth('tglMulai', 'like', '%' . $req->spec . '%')
+                   ->orwhereYear('tglMulai', 'like','%' . $req->spec . '%')
+                   ->orwhere('city', 'like', '%' . $req->spec . '%')
+                   ->orwhere('region', 'like', '%' . $req->spec . '%');
+            })
+            ->where(function ($mo) use ($req){
+                if($req->month == ""){
+                    $mo->whereMonth('tglMulai', 'like','%' . $req->month . '%');
+                }else{
+                    $mo->whereMonth('tglMulai', '=',  $req->month );
+                }
+            })
+           
             ->get();
         $jum = $event->first();
-
         if ($jum != null) {
-            $returnHtml = view('main/data/dataListEvent')->with('event', $event)->render();
+            $returnHtml = view('main/data/dataListEvent')->with('eventList', $event)->render();
             return response()->json(array('success' => true, 'html' => $returnHtml));
         } else {
             $returnHtml = view('main/data/listEventKosong')->render();
@@ -172,6 +188,8 @@ class eventController extends Controller
                 ['deskripsi', 'like', '%' . $req->nama . '%']
             ])
             ->get();
+
+
 
         $jum = $event->first();
 
@@ -206,20 +224,21 @@ class eventController extends Controller
             if (!$data->isEmpty()) {
                 foreach ($data as $even) {
                     $output .= '
-                     <a href="/dataevent?id={{$even->id}}" class="media p-2 border-B listHover">
+                     <a href="/dataevent?id=' . $even->id . '" class="media p-2 border-B listHover">
                      <div class="media">
                          <div class="last-media-img ml-1 mt-1 mr-2"
-                             style="background-image: url({{asset ("/assets/foto/".$even->gambar)}})">
+                             style="background-image: url(\'assets/foto/' . $even->gambar . '\')">
+                             asdasd
                          </div>
                          <div class="media-body pt-1">
                              <div class="time-cat pb-1 pl-0">
-                                 <span class="badge">{{$even->region}}</span>
-                                 <small class="text-time">{{date("d M", strtotime($even->tglMulai))}} s/d
-                                     {{date("d M Y", strtotime($even->tglAkhir))}}</small>
+                                 <span class="badge">' . $even->region . '</span>
+                                 <small class="text-time">' . date("d M", strtotime($even->tglMulai)) . ' s/d
+                                     ' . date("d M Y", strtotime($even->tglAkhir)) . '</small>
                              </div>
-                             <p class="mb-0 text-burgundy" id="title-lm">{{$even->judul}} </p>
-                             <p class="d-none d-lg-block ">{{$even->deskripsi}}</p>
-                             <p class="d-none d-lg-block ">Specialist : {{$even->spec}}</p>
+                             <p class="mb-0 text-burgundy" id="title-lm">' . $even->judul . ' </p>
+                             <p class="d-none d-lg-block ">' . $even->deskripsi . '</p>
+                             <p class="d-none d-lg-block ">Specialist : ' . $even->spec . '</p>
                          </div>
                      </div>
                  </a>
@@ -228,7 +247,7 @@ class eventController extends Controller
                 }
                 $output .= '
                 <div id="load_more">
-                    <button type="button" nama="load_more_button" class="btn btn-info form-control" data-id="' . $last_id . '">No Data Found</button>
+                    <button type="button" nama="load_more_button" id="load_more_button" class="btn btn-info form-control" data-id="' . $last_id . '">Load More</button>
                 </div>
             ';
             } else {

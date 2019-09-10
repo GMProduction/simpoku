@@ -78,7 +78,7 @@
                 <div class="flipkart-navbar-search smallsearch col-lg-8 col-md-7 col-sm-11 float-left">
                     <div class="row rounded5rem bg-putih">
                         <input class="flipkart-navbar-input col-md-11 col-sm-11 text-black"
-                            style="background-color: transparent" type="text" id="txtCari"
+                            style="background-color: transparent" type="text" id="txtCari1"
                             placeholder="Search Event Name, Specialist, Region, Month " name=""
                             onkeyup="cariDataevent()">
                         <button class="flipkart-navbar-button  col-md-1 col-sm-1 rounded5rem-kanan warna-gray" style=""

@@ -3,7 +3,10 @@
     --input-padding-y: .75rem;
   }
   
- 
+ a:hover{
+   color: white !important;
+   opacity: 0.8;
+ }
   
   .card-signin {
     border: 0;
@@ -99,6 +102,11 @@
   .btn-google {
     color: white;
     background-color: #ea4335;
+  }
+
+  .btn-google:hover {
+    color: white;
+    background-color: #d33d30;
   }
   
   .btn-facebook {

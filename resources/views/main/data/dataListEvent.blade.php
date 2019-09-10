@@ -71,11 +71,8 @@
 
         
         @endforeach
-            
-        <div class="show_more_main" id="show_more_main1">
-            <span id="1" class="show_more" title="Load more posts">Show more</span>
-            <span class="loding" style="display: none;"><span class="loding_txt">Loading...</span></span>
-        </div>
+
+       
     </div>
 
 </section>
