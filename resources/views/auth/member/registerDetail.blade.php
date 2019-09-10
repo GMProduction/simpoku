@@ -29,22 +29,26 @@
                         <div class="card-body register-card-body">
                             <h5 class="login-box-msg">Contact Detail</h5>
 
-                            <form action="../../index.html" method="post">
+                        <form action="/postregister/{{$data['provider']}}" method="post">
+                            @csrf
+                        <input type="hidden" name="fullname" value="{{$data['fullname']}}">
+                        <input type="hidden" name="email" value="{{$data['email']}}">
+                        <input type="hidden" name="password" value="{{$data['password']}}">
                                 <div class="input-group mb-3 border" style="">
                                     <div class="input-group-append">
                                         <div class="input-group-text transparan">
                                             <span class="fa fa-user-md"></span>
                                         </div>
                                     </div>
-                                    <select name="" id="" class="form-control bordertext">
+                                    <select name="job" id="" class="form-control bordertext">
                                         <option value="">- Select Profession -</option>
-                                        <option value="">Dokter Spesialis</option>
-                                        <option value="">Dokter Umum</option>
-                                        <option value="">PPDS</option>
-                                        <option value="">Dokter Muda</option>
-                                        <option value="">Perawat</option>
-                                        <option value="">Apoteker</option>
-                                        <option value="">Farmasi</option>
+                                        <option value="Dokter Spesialis">Dokter Spesialis</option>
+                                        <option value="Dokter Umum">Dokter Umum</option>
+                                        <option value="PPDS">PPDS</option>
+                                        <option value="Dokter Muda">Dokter Muda</option>
+                                        <option value="Perawat">Perawat</option>
+                                        <option value="Apoteker">Apoteker</option>
+                                        <option value="Farmasi">Farmasi</option>
                                     </select>
                                 </div>
                                 <div class="input-group mb-3">
@@ -78,7 +82,7 @@
                                         </div>
                                     </div>
                                     <input type="number" class="form-control bordertext " placeholder="Phone"
-                                        style="">
+                                        style="" name="phone">
 
                                 </div>
                                 <div class="input-group mb-3">
