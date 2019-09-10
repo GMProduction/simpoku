@@ -51,14 +51,14 @@ Route::group(['middleware' => 'memberonly'], function () {
         return view('main/dashboard');
     })->name('about');
 
-    Route::get('/loadmore/load_data','member\eventController@load_data')->name('loadmore.load_data');
+    Route::get('/loadmore/load_data', 'member\eventController@load_data')->name('loadmore.load_data');
 });
 
 
 Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/', function () {
-        return view('admin.menuawal');
+        return view('admin.dashboard');
     })->name('admin');
 
     Route::group(['prefix' => 'user'], function () {

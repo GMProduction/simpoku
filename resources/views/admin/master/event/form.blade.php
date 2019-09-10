@@ -138,7 +138,7 @@ Event Baru
                                 <select class="form-control select2" multiple="multiple" data-placeholder="Select a State"
                                         style="width: 100%;" name="spec[]" id="spec">
                                         @foreach ($spec as $item)
-                                            <option value={{$item->gelar}}>{{$item->spec}}</option>
+                                            <option value="{{$item->gelar}}">{{$item->spec}}</option>
                                         @endforeach
                                 </select>
                         </div>

@@ -30,8 +30,11 @@ class eventController extends Controller
 
     public function store(Request $r)
     {
+        $spec = specModel::query()
+            ->select('id', 'gelar', 'spec')
+            ->get();
         $event = eventModel::where('id', '=', $r->id)->firstOrFail();
-        return view('admin.master.event.update')->with(['event' => $event]);
+        return view('admin.master.event.update')->with(['event' => $event, 'spec' => $spec]);
     }
 
     public function getData()
