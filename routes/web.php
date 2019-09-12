@@ -12,7 +12,6 @@
 */
 
 
-// Route::get('/', 'member\eventController@index')->name('event');
 // Route::get('/', function () {
 //     echo 'oke';
 // });
@@ -35,6 +34,7 @@ Route::post('/postloginadmin', 'Auth\Admin\LoginController@postlogin');
 Route::get('/logoutadmin', 'Auth\Admin\LoginController@logout')->name('logoutadmin');
 
 Route::group(['middleware' => 'memberonly'], function () {
+    Route::get('/', 'member\eventController@index')->name('event');
     Route::get('/event', 'member\eventController@listEventAll')->name('listEventAll');
     Route::get('/eventlist', 'member\eventController@listEventAll')->name('listEventAll');
     Route::post('/load_data', 'member\eventController@load_data')->name('load_data');
