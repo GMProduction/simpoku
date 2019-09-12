@@ -14,6 +14,9 @@
 
 Auth::routes();
 
+Route::get('/sel', function () {
+    return view('admin.test');
+});
 Route::get('/register', 'Auth\RegisterMemberController@showRegistrationForm');
 Route::post('/postRegister', 'Auth\RegisterMemberController@register')->name('registermember');
 
@@ -78,6 +81,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/store', 'admin\master\eventController@store');
         Route::post('/update', 'admin\master\eventController@edit');
         Route::delete('/destroy', 'admin\master\eventController@delete');
+        Route::post('/test', 'admin\master\eventController@test');
+        Route::get('/getCities', 'admin\master\eventController@getCities');
     });
     Route::group(['prefix' => 'member'], function () {
         Route::get('/', 'admin\master\memberController@index')->name('pagemember');

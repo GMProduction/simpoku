@@ -23,15 +23,25 @@ class eventController extends Controller
     public function showForm()
     {
         $spec = specModel::query()
-            ->select('id', 'gelar', 'spec')
+            ->select('id', 'spec')
             ->get();
-        return view('admin.master.event.form')->with(['spec' => $spec]);
+
+        $token = getToken();
+        $provinces = getProvince($token);
+
+        // return $cities;
+        return view('admin.master.event.form')->with(['spec' => $spec, 'provinces' => $provinces]);
     }
 
+    public function getCities(Request $r)
+    {
+        $token = getToken();
+        return  getCities($token, $r->idpropinsi);
+    }
     public function store(Request $r)
     {
         $spec = specModel::query()
-            ->select('id', 'gelar', 'spec')
+            ->select('id', 'spec')
             ->get();
         $event = eventModel::where('id', '=', $r->id)->firstOrFail();
         return view('admin.master.event.update')->with(['event' => $event, 'spec' => $spec]);
@@ -124,6 +134,22 @@ class eventController extends Controller
                 return redirect()->back()->withInput();
             }
         }
+    }
+
+    public function test(Request $r)
+    {
+        $event = new eventModel();
+        $event->judul = $r->judul;
+        $event->deskripsi = $r->deskripsi;
+        $event->tempat = $r->tempat;
+        $event->region = $r->region;
+        $event->city = $r->city;
+        $event->tglMulai = $r->tglMulai;
+        $event->tglAkhir = $r->tglAkhir;
+        $event->noContact = $r->noContact;
+        $event->namaContact = $r->namaContact;
+        $event->spec = $r->input('id');
+        return response()->json($event);
     }
 
     public function edit(Request $r)
