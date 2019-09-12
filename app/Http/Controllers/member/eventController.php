@@ -3,31 +3,41 @@
 namespace App\Http\Controllers\member;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\FormBuilder;
 use App\Http\Controllers\Controller;
 use App\Master\eventModel;
 use App\Master\CarouselModel;
 use App\Master\specModel;
+use Carbon\Carbon;
+
 
 class eventController extends Controller
 {
     //
     public function index()
     {
+        $mytime = Carbon::now();
+        $hari =  $mytime->format('d');
 
         $event = eventModel::query()
-            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
+            ->select('judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
+            ->orderBy('tglMulai', 'ASC')
+            ->whereDay('tglMulai', '>', $hari)
             ->take(8)
             ->get();
 
         $carousel = CarouselModel::query()
             ->select('id', 'judul', 'gambar', 'terlihat')
+            ->where('terlihat', '=', 'ya')
             ->get();
+
 
         $homeCarousell = eventModel::query()
             ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
+            ->orderBy('tglMulai', 'ASC')
+            ->whereDay('tglMulai', '>', $hari)
             ->take(4)
             ->get();
+
 
 
         $data = [
@@ -37,6 +47,7 @@ class eventController extends Controller
         ];
 
         return view('main/home')->with($data);
+        //return($hari);
     }
 
     public function listEventAll()
@@ -67,11 +78,12 @@ class eventController extends Controller
         $data = [
             'year' => $years,
             'spec' => $sp,
-            'month' => $months
+            'month' => $months,
 
         ];
 
-        return view('main/listevent')->with($data);
+        // return view('main/listevent')->with($data);
+        return view('main/listevent1')->with($data);
         //return($years);
 
 
@@ -130,6 +142,9 @@ class eventController extends Controller
         return response()->json(array('success' => true, 'html' => $returnHtml));
     }
 
+
+
+
     public function dataEvent(Request $req)
     {
         $event = eventModel::query()
@@ -144,36 +159,101 @@ class eventController extends Controller
 
     public function comboCarievent(Request $req)
     {
-        $event = eventModel::whereYear('tglMulai', 'like','%' . $req->year . '%')
-            ->where([               
+        $event = eventModel::whereYear('tglMulai', 'like', '%' . $req->year . '%')
+            ->where([
                 ['city', 'like', '%' . $req->city . '%'],
-                ['region', 'like', '%' . $req->region . '%']                    
+                ['region', 'like', '%' . $req->region . '%']
             ])
-            ->where(function($as) use ($req) {
+            ->where(function ($as) use ($req) {
                 $as->where('spec', 'like', '%' . $req->spec . '%')
-                   ->orwhere('deskripsi', 'like', '%' . $req->spec . '%')
-                   ->orwhere('judul', 'like', '%' . $req->spec . '%')
-                   ->orwhereMonth('tglMulai', 'like', '%' . $req->spec . '%')
-                   ->orwhereYear('tglMulai', 'like','%' . $req->spec . '%')
-                   ->orwhere('city', 'like', '%' . $req->spec . '%')
-                   ->orwhere('region', 'like', '%' . $req->spec . '%');
+                    ->orwhere('deskripsi', 'like', '%' . $req->spec . '%')
+                    ->orwhere('judul', 'like', '%' . $req->spec . '%')
+                    ->orwhereMonth('tglMulai', 'like', '%' . $req->spec . '%')
+                    ->orwhereYear('tglMulai', 'like', '%' . $req->spec . '%')
+                    ->orwhere('city', 'like', '%' . $req->spec . '%')
+                    ->orwhere('region', 'like', '%' . $req->spec . '%');
             })
-            ->where(function ($mo) use ($req){
-                if($req->month == ""){
-                    $mo->whereMonth('tglMulai', 'like','%' . $req->month . '%');
-                }else{
-                    $mo->whereMonth('tglMulai', '=',  $req->month );
+            ->where(function ($mo) use ($req) {
+                if ($req->month == "") {
+                    $mo->whereMonth('tglMulai', 'like', '%' . $req->month . '%');
+                } else {
+                    $mo->whereMonth('tglMulai', '=',  $req->month);
                 }
             })
-           
             ->get();
+
+
+
+
+
         $jum = $event->first();
         if ($jum != null) {
-            $returnHtml = view('main/data/dataListEvent')->with('eventList', $event)->render();
+            //return view('main/data/dataListEvent', with('event', $event));
+            $returnHtml = view('main/data/dataListEvent')->with('event', $event)->render();
             return response()->json(array('success' => true, 'html' => $returnHtml));
+            //return $event;
         } else {
-            $returnHtml = view('main/data/listEventKosong')->render();
-            return response()->json(array('success' => true, 'html' => $returnHtml));
+            //return view('main/data/listEventKosong', compact('event'));
+            $returnHtml = view('main/data/listEventKosong');
+        }
+    }
+
+    public function comboPagination(Request $req)
+    {
+        $event = eventModel::whereYear('tglMulai', 'like', '%' . $req->year . '%')
+            ->where([
+                ['city', 'like', '%' . $req->city . '%'],
+                ['region', 'like', '%' . $req->region . '%']
+            ])
+            ->where(function ($as) use ($req) {
+                $as->where('spec', 'like', '%' . $req->spec . '%')
+                    ->orwhere('deskripsi', 'like', '%' . $req->spec . '%')
+                    ->orwhere('judul', 'like', '%' . $req->spec . '%')
+                    ->orwhereMonth('tglMulai', 'like', '%' . $req->spec . '%')
+                    ->orwhereYear('tglMulai', 'like', '%' . $req->spec . '%')
+                    ->orwhere('city', 'like', '%' . $req->spec . '%')
+                    ->orwhere('region', 'like', '%' . $req->spec . '%');
+            })
+            ->where(function ($mo) use ($req) {
+                if ($req->month == "") {
+                    $mo->whereMonth('tglMulai', 'like', '%' . $req->month . '%');
+                } else {
+                    $mo->whereMonth('tglMulai', '=',  $req->month);
+                }
+            })
+            ->paginate(5);
+
+        $years = [];
+        for ($year = now()->year; $year >= 2010; $year--) $years[$year] = $year;
+
+
+        $sp = specModel::query()
+            ->select('gelar', 'spec')
+            ->get();
+
+        $data = [
+            'year' => $years,
+            'spec' => $sp,
+            'event' => $event
+
+
+        ];
+
+
+        if ($req->ajax()) {
+            return view('main/data/dataListEvent', with($data));
+            //$returnHtml = view('main/data/dataListEvent')->with('eventList', $event)->render();
+            //return response()->json(array('success' => true, 'html' => $returnHtml));
+        }
+
+        $jum = $event->first();
+        if ($jum != null) {
+            return view('main/listevent', with($data));
+            //$returnHtml = view('main/data/pagination')->with('eventList', $event)->render();
+            //return response()->json(array('success' => true, 'html' => $returnHtml));
+        } else {
+            //return view('main/data/listEventKosong', compact('event'));
+            $returnHtml = view('main/data/listEventKosong');
         }
     }
 
@@ -203,20 +283,73 @@ class eventController extends Controller
         }
     }
 
-    public function load_data(Request $request)
+    public function load_data(Request $req)
     {
-        if ($request->ajax()) {
-            if ($request->id > 0) {
+        if ($req->ajax()) {
+            if ($req->id > 0) {
+                /*
                 $data = eventModel::query()
                     ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
                     ->where('id', '<', $request->id)
                     ->orderBy('id', 'DESC')
                     ->limit(2)
                     ->get();
+                    */
+                $data = eventModel::where('id', '<', $req->id)
+                    ->whereYear('tglMulai', 'like', '%' . $req->year . '%')
+                    ->where([
+                        ['city', 'like', '%' . $req->city . '%'],
+                        ['region', 'like', '%' . $req->region . '%']
+                    ])
+                    ->where(function ($as) use ($req) {
+                        $as->where('spec', 'like', '%' . $req->spec . '%')
+                            ->orwhere('deskripsi', 'like', '%' . $req->des . '%')
+                            ->orwhere('judul', 'like', '%' . $req->judul . '%')
+                            ->orwhereMonth('tglMulai', 'like', '%' . $req->month . '%')
+                            ->orwhereYear('tglMulai', 'like', '%' . $req->year . '%')
+                            ->orwhere('city', 'like', '%' . $req->city . '%')
+                            ->orwhere('region', 'like', '%' . $req->region . '%');
+                    })
+                    ->where(function ($mo) use ($req) {
+                        if ($req->month == "") {
+                            $mo->whereMonth('tglMulai', 'like', '%' . $req->month . '%');
+                        } else {
+                            $mo->whereMonth('tglMulai', '=',  $req->month);
+                        }
+                    })
+                    ->orderBy('id', 'DESC')
+                    ->limit(3)
+                    ->get();
             } else {
+                /*
                 $data = eventModel::query()
                     ->orderBy('id', 'DESC')
-                    ->limit(2)
+                    ->limit(3)
+                    ->get();
+                    */
+                $data = eventModel::whereYear('tglMulai', 'like', '%' . $req->year . '%')
+                    ->where([
+                        ['city', 'like', '%' . $req->city . '%'],
+                        ['region', 'like', '%' . $req->region . '%']
+                    ])
+                    ->where(function ($as) use ($req) {
+                        $as->where('spec', 'like', '%' . $req->spec . '%')
+                            ->orwhere('deskripsi', 'like', '%' . $req->des . '%')
+                            ->orwhere('judul', 'like', '%' . $req->judul . '%')
+                            ->orwhereMonth('tglMulai', 'like', '%' . $req->month . '%')
+                            ->orwhereYear('tglMulai', 'like', '%' . $req->year . '%')
+                            ->orwhere('city', 'like', '%' . $req->city . '%')
+                            ->orwhere('region', 'like', '%' . $req->region . '%');
+                    })
+                    ->where(function ($mo) use ($req) {
+                        if ($req->month == "") {
+                            $mo->whereMonth('tglMulai', 'like', '%' . $req->month . '%');
+                        } else {
+                            $mo->whereMonth('tglMulai', '=',  $req->month);
+                        }
+                    })
+                    ->orderBy('id', 'DESC')
+                    ->limit(3)
                     ->get();
             }
             $output = '';
@@ -228,7 +361,7 @@ class eventController extends Controller
                      <div class="media">
                          <div class="last-media-img ml-1 mt-1 mr-2"
                              style="background-image: url(\'assets/foto/' . $even->gambar . '\')">
-                             asdasd
+                             
                          </div>
                          <div class="media-body pt-1">
                              <div class="time-cat pb-1 pl-0">

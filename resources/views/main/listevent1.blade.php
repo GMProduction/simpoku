@@ -4,7 +4,7 @@
 
 
 @section('content')
-
+<link rel="stylesheet" href="{{ asset('/css/carousell.css')}}" type="text/css" media="screen" />
 
 
 
@@ -77,21 +77,15 @@
     </div>
     <hr>
 
-    <div class="">
+    <div class="" id="dataEvent">
 
-        <section id="tampilanListEven1" class="">
-            @include('main.data.dataListEvent')
-        </section>
     </div>
 
     <br>
 
-    <div id="post_data">
+   
 
-    </div>
-
-    <button type="submit" onclick="cek()">cek lokasi</button>
-
+   
 
 </div>
 
@@ -102,86 +96,16 @@
 
 @section('script')
 
-
 <script src="{{ asset('/js/tampilan/listevent1.js') }}"></script>
 
+<script>
+$(document).ready(function(){
+    $('#dataEvent').load('/dataLoad');
+})
 
-<script type="text/javascript">
-    $(window).on('hashchange', function() {
-        if (window.location.hash) {
-            var page = window.location.hash.replace('#', '');
-            if (page == Number.NaN || page <= 0) {
-                return false;
-            }else{
-                getData(page);
-            }
-        }
-    });
-    
-    $(document).ready(function()
-    {
-        $(document).on('click', '.pagination a',function(event)
-        {
-            event.preventDefault();
-  
-            $('li').removeClass('active');
-            $(this).parent('li').addClass('active');
-  
-            var myurl = $(this).attr('href');
-            var page=$(this).attr('href').split('page=')[1];
-
-            var h =  window.location.hash.substring(2);
-            var data = h;
-           
-           
-  
-            getData(page,data);
-        });
-  
-    });
-
-    function cek(){
-        var h =  window.location.hash.substring(2);
-        alert(h);
-
-    }
-
-    function cari(){
-        var s = $('#comboSpec').val()
-        var y = $('#comboYear').val()
-        var m = $('#comboMonth').val()
-        var c = $('#comboCity').val()
-        var r = $('#comboRegion option:selected').text();
-        if(s !== ''){
-            s = '&spec='+s
-        }
-        if(y !== ''){
-            y = '&years='+y
-        }
-        if(m !== ''){
-            m = '&month='+m
-        }
-        var data = [s, y, m];
-        var ss = data.join('').replace(',','');
-        getData(ss);
-    }
-  
-    function getData(page,data){
-        
-       
-        $.ajax(
-        {
-            url: '?page=' + page,
-            type: "get",
-            
-            datatype: "html"
-        }).done(function(data){
-            $("#tampilanListEven1").empty().html(data);
-            location.hash = page;
-        }).fail(function(jqXHR, ajaxOptions, thrownError){
-              alert('No response from server');
-        });
-    }
+function cari(){
+    $('#dataEvent').load('/dataLoad');
+}
 </script>
 
 @endsection

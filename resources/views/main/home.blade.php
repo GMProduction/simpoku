@@ -7,6 +7,14 @@
 <link href="{{ asset('/css/tab.css') }}" rel="stylesheet" />
 <link rel="stylesheet" href="{{ asset('/css/flexslider.css')}}" type="text/css" media="screen" />
 <link rel="stylesheet" href="{{ asset('/css/carousell.css')}}" type="text/css" media="screen" />
+<meta name="description"
+    content="Informasi seputar seminar kesehatan, yang di ikuti oleh Doktor Umum, 
+    Doktor Spesialis, PPDS, Dokter Muda, Perawat Apoteker, Farmasi. Yang diselenggarakan di dalam kota maupun luar kota.">
+<meta name="keywords" content="simposium, simpoku, seminar, seminar kesehatan, perawat, apoteker, dokter, ">
+<meta name="author" content="">
+<meta name="absrtact" content="">
+
+
 @endsection
 
 @section('content')
@@ -53,76 +61,38 @@
     }
 </style>
 <div class="bawahHome" style="">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
 
+            <div class="flexslider" style="">
+                <ul class="slides">
 
-    <div class="container pt-4">
-        <style type="text/css">
-
-        </style>
-        <div class="row" style="">
-            <div class="col-sm-12 col-md-6 col-lg-6  py-0 pl-3 pr-1 featcard">
-                <div id="featured" class="carousel slide carousel-fade" data-ride="carousel">
-                    <div class="carousel-inner">
-                        @foreach ($homeCarousell as $data )
-
-                        @if($loop->first)
-                        <div class="carousel-item active">
-                            @else
-                            <div class="carousel-item">
-                                @endif
-
-                                <div class="card bg-dark text-white border-0" style="height: 276px;">
-                                    <img class="card-img img-fluid" src="{{asset ('/assets/foto/'.$data->gambar)}}"
-                                        alt="" style=" object-fit: cover">
-                                    <div class="card-img-overlay d-flex linkfeat">
-                                        <a href="/dataevent?id={{$data->id}}" class="align-self-end">
-                                            <span class="badge">{{$data->regional}}</span>
-                                            <h4 class="card-title">{{$data->judul}} </h4>
-                                            <p class="textfeat" style="display: none;">{{$data->deskripsi}}</p>
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            @endforeach
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 py-0 px-1 d-none d-lg-block">
-                    <div class="row">
-                        @php
-                        $a = 1;
-                        @endphp
-                        @foreach ($homeCarousell as $data )
-                        <div class="col-6 pb-2 mg-{{$a}}">
-                            <div class="card bg-dark text-white border-0" style="">
-                                <img class="card-img img-fluid" src="{{asset ('/assets/foto/'.$data->gambar)}}" alt=""
-                                    style="height: 134px; object-fit: cover">
-                                <div class="card-img-overlay d-flex">
-                                    <a href="/dataevent?id={{$data->id}}" class="align-self-end">
-                                        <span class="badge">{{$data->region}}</span>
-                                        <h6 class="card-title">{{$data->judul}} </h6>
-                                    </a>
-                                </div>
+                    @foreach ($carousel as $data )
+                    <li>
+                        <div class="card bg-dark text-white border-0" style="">
+                            <img class="card-img img-fluid" src="{{asset ('/assets/foto/'.$data->gambar)}}" alt=""
+                                style=" object-fit: cover; height: 400px;"  >
+                              
+                            <div class="card-img-overlay linkfeat d-flex ">
+                                <a href="/dataevent?id={{$data->id}}" class="align-self-end ">
+                                    <h4 class="card-title">{{$data->judul}} </h4>
+                                    <p class="textfeat" style="display: none;">{{$data->deskripsi}}</p>
+                                </a>
                             </div>
                         </div>
-                        @php
-                        $a = $a+1;
-                        @endphp
 
-                        @endforeach
 
-                    </div>
-                </div>
+                    </li>
+                    @endforeach
+
+                </ul>
             </div>
-
-
 
         </div>
     </div>
-    <div class="container pt-3 " style="">
+
+
+    <div class="container border" style="margin-top: -60px; background-color: white;  border-radius: 1rem !important">
 
 
 
@@ -157,7 +127,8 @@
                                         <div class="time-cat pb-1 pl-0">
                                             <span class="badge">{{$even->region}}</span>
                                             <small class="text-time"
-                                                style="">{{date('d M', strtotime($even->tglMulai))}} s/d
+                                                style="">{{date('d M', strtotime($even->tglMulai))}}
+                                                s/d
                                                 {{date('d M Y', strtotime($even->tglAkhir))}}</small>
                                         </div>
                                         <p class="mb-0 text-burgundy" id="title-lm">{{$even->judul}} </p>
@@ -205,6 +176,7 @@
     @endsection
 
     @section('script')
+    <script defer src="{{ asset('/js/jquery.flexslider.js') }}"></script>
 
     <script>
         function cariEvenHome() {
@@ -221,9 +193,26 @@
             }
             
         }
+        $(document).ready(function(){
+        $(".linkfeat").hover(
+          function () {
+              $(".textfeat").show(500);
+          },
+          function () {
+              $(".textfeat").hide(500);
+          }
+      );
+  });
         
-        
+      
 
+        $(window).on('load',function(){
+  $('.flexslider').flexslider({
+    animation: "slide",
+    rtl: true,
+   
+  });
+});
             
 
            

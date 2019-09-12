@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="{{ asset('/css/carousell.css')}}" type="text/css" media="screen" />
 
+
 <style>
     .show_more_main {
         margin: 15px 25px;
@@ -50,7 +51,7 @@
 
 <section>
     <div class="card-body m-0 p-0 postList border-0">
-        @foreach ($eventList as $even)
+        @foreach ($event as $even)
         <a href="/dataevent?id={{$even->id}}" class="media p-2 border-B listHover">
             <div class="media">
                 <div class="last-media-img ml-1 mt-1 mr-2"
@@ -74,5 +75,6 @@
 
        
     </div>
-
+    
 </section>
+

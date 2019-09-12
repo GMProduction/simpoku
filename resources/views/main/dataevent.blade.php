@@ -60,7 +60,7 @@
                         <tr>
                             <td class="" style=""><i class="fa fa-location-arrow text-burgundy" aria-hidden="true"></i>
                             </td>
-                            <td class="">{{$even->tempat}}, {{$even->region}}</td>
+                            <td class="">{{$even->tempat}}, {{$even->city}}, {{$even->region}}</td>
                         </tr>
                         
                         <tr>

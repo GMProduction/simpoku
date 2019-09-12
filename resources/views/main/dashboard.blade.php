@@ -2,14 +2,18 @@
 
 @section('content')
 <style>
-    .txtEdit{
+    .txtEdit1 {
         background-color: white !important
+    }
+
+    .divIcon {
+        background-color: #E9ECEF
     }
 </style>
 <div class="container bawah">
     <div class="row justify-content-center">
-        <div class="row col-lg-7 justify-content-center border">
-            <div class="row col-lg-12 justify-content-end pt-2"><a onclick="editProfile()"
+        <div class="row col-lg-7 justify-content-center border pt-3" style="border-radius: 1rem">
+            <div class="row col-lg-12 justify-content-end"><a onclick="editProfile()"
                     style="cursor: pointer; color: white" id="edit" class="btn btn-primary btn-sm"><span
                         class="fa fa-pencil" id="iconEdit"></span> <span id="lbEdit">edit</span> </a></div>
             <div class="col-lg-5 pt-2 " style="">
@@ -17,6 +21,11 @@
                     <div class="row col align-self-center justify-content-center pt-4">
                         <img src="{{asset ('/assets/foto/event1.jpg')}}" style="" class="rounded-circle"
                             alt="Cinque Terre" width="200">
+
+                    </div>
+                   
+                    <div class="pt-2">
+                        <input type="file" name="" id="" class="form-control btn-sm border-0" style="outline: none">
                     </div>
                 </div>
             </div>
@@ -26,68 +35,72 @@
                         <div class="col-lg-12 mb-3">
                             <div class="input-group">
                                 <div class="input-group-append">
-                                    <div class="input-group-text transparan" style="">
+                                    <div class="input-group-text transparan divIcon" style="">
                                         <span class="fa fa-user"></span>
                                     </div>
                                 </div>
                                 <input type="text" id="name" class="form-control bordertext txtEdit " disabled
-                                    placeholder="Full name">
+                                    placeholder="Full name" value="nama saya adalah">
 
                             </div>
                         </div>
                         <div class="col-lg-12 mb-3">
                             <div class="input-group">
                                 <div class="input-group-append">
-                                    <div class="input-group-text transparan" style="">
+                                    <div class="input-group-text transparan divIcon" style="">
                                         <span class="fa fa-user-md"></span>
                                     </div>
                                 </div>
-                                <input type="text" class="form-control bordertext txtEdit" disabled placeholder="profesi">
+                                <input type="text" class="form-control bordertext txtEdit" disabled
+                                    placeholder="profesi">
 
                             </div>
                         </div>
                         <div class="col-lg-12 mb-3">
                             <div class="input-group">
                                 <div class="input-group-append">
-                                    <div class="input-group-text transparan" style="">
+                                    <div class="input-group-text transparan divIcon" style="">
                                         <span class="fa fa-building"></span>
                                     </div>
                                 </div>
-                                <input type="text" class="form-control bordertext txtEdit " disabled placeholder="instansi">
+                                <input type="text" class="form-control bordertext txtEdit " disabled
+                                    placeholder="instansi">
 
                             </div>
                         </div>
                         <div class="col-lg-12 mb-3">
                             <div class="input-group">
                                 <div class="input-group-append">
-                                    <div class="input-group-text transparan txtEdit" style="">
+                                    <div class="input-group-text transparan divIcon" style="">
                                         <span class="fa fa-phone"></span>
                                     </div>
                                 </div>
-                                <input type="text" class="form-control bordertext txtEdit " disabled placeholder="phone">
+                                <input type="text" class="form-control bordertext txtEdit " disabled
+                                    placeholder="phone">
 
                             </div>
                         </div>
                         <div class="col-lg-12 mb-3">
                             <div class="input-group">
                                 <div class="input-group-append">
-                                    <div class="input-group-text transparan">
+                                    <div class="input-group-text transparan divIcon">
                                         <span class="fa fa-calendar"></span>
                                     </div>
                                 </div>
-                                <input type="date" class="form-control bordertext txtEdit" disabled style="" placeholder="">
+                                <input type="date" class="form-control bordertext txtEdit" disabled style=""
+                                    placeholder="">
 
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="input-group mb-3">
                                 <div class="input-group-append">
-                                    <div class="input-group-text transparan">
+                                    <div class="input-group-text transparan divIcon">
                                         <span class="fa fa-home"></span>
                                     </div>
                                 </div>
-                                <textarea name="" id="" cols="30" rows="3" disabled class="form-control bordertext txtEdit"
-                                    placeholder="Address"></textarea>
+                                <textarea name="" id="" cols="30" rows="3" disabled
+                                    class="form-control bordertext txtEdit" placeholder="Address"></textarea>
 
                             </div>
                         </div>
@@ -103,7 +116,7 @@
 @section('script')
 
 <script>
-        $(document).ready(function () {
+    $(document).ready(function () {
             
         });
         function editProfile(){
@@ -112,13 +125,15 @@
                     $('#iconEdit').removeClass('fa-pencil');
                     $('#iconEdit').addClass('fa-save');
                     $('#lbEdit').html('save');
+                    $('.input-group-append div').removeClass('divIcon');
                     
                 }else{
                     $('.txtEdit').attr('disabled','');
                     $('#iconEdit').addClass('fa-pencil');
                     $('#iconEdit').removeClass('fa-save');
                     $('#lbEdit').html('edit');
+                    $('.input-group-append div').addClass('divIcon');
                 }
             }
-    </script>
+</script>
 @endsection
