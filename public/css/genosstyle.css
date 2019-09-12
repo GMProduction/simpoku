@@ -10,7 +10,11 @@
   -webkit-appearance: none; 
 }
 
-
+.jumbotron {
+    padding: 2rem 20px !important;
+    margin-bottom: 2rem !important;
+    background-color: #e9ecef;
+  }
 
 .transparan {
     background-color: transparent;

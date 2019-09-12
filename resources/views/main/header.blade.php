@@ -4,6 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="revisit-after" content="7 day" >
+    <meta name="robots" content="all, index, follow">
+    <meta name="description" content="Informasi seputar seminar kesehatan, yang di ikuti oleh Doktor Umum, 
+    Doktor Spesialis, PPDS, Dokter Muda, Perawat Apoteker, Farmasi. Yang diselenggarakan di dalam kota maupun luar kota.">
+    
 
     <title>Simpoku</title>
     <!-- Font -->
@@ -114,8 +119,8 @@
             <div class="row pt-4 mr-3">
                 <div class="col-6">
                     <h6 class="text-uppercase pb-1 font-weight-bold">Contact Us :</h6>
-                    <p class="mb-2"><i class="fa fa-envelope mr-3 "></i>admin@simpoku.com</p>
-                    <p><i class="fa fa-phone mr-3"></i>+628 1166 63339</p>
+                    <p class="mb-2"><i class="fa fa-envelope mr-3 "></i>support@simpoku.com</p>
+                    <p><i class="fa fa-phone mr-3"></i>+62xx xxxx xxxx</p>
                     <br>
                     <h6 class="text-uppercase font-weight-bold" style="">Social Media :</h6>
                     <div class="row">
@@ -135,7 +140,9 @@
 
                 <div class="col-3">
                     <label class="text-uppercase pb-1 font-weight-bold ">About Us :</label>
-
+                    <p>
+                        We deliver optimistic and diverse experiences, and point of view to our audience of smart.
+                    </p>
 
                 </div>
                 <div class="col-12"> 
@@ -158,6 +165,8 @@
 <script src="{{ asset('/js/tampilan/genosstyle.js') }}"></script>
 <script src="{{ asset('js/sweetalert.min.js') }}"></script>
     @include('sweet::alert')
+    
+   
 
 <script>
     function cariEven(nm) {
@@ -172,9 +181,6 @@
             
         }
     })
-
-   
-    
 }
 
 

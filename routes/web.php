@@ -30,6 +30,8 @@ Route::get('/logoutadmin', 'Auth\Admin\LoginController@logout')->name('logoutadm
 Route::group(['middleware' => 'memberonly'], function () {
     Route::get('/', 'member\eventController@index')->name('event');
     Route::get('/event', 'member\eventController@listEventAll')->name('listEventAll');
+    Route::get('/eventlist', 'member\eventController@listEventAll')->name('listEventAll');
+    Route::post('/load_data', 'member\eventController@load_data')->name('load_data');
     Route::get('/tampilListEven', 'member\eventController@listEvent')->name('listEvent');
     Route::get('/cariListEven', 'member\eventController@cariEvent')->name('event');
     Route::get('/dataevent', 'member\eventController@dataEvent')->name('dataEvent');
@@ -38,11 +40,15 @@ Route::group(['middleware' => 'memberonly'], function () {
     Route::get('/getAllSpec', 'member\specController@getAllSpec')->name('getAllSpec');
     Route::get('/comboCariEven', 'member\eventController@comboCarievent')->name('comboCariEven');
     Route::get('homeCarousell', 'member\eventController@homeCarousell')->name('homeCarousell');
+    Route::get('/pagination', 'member\eventController@comboPagination')->name('comboPagination');
     Route::get('/about', function () {
         return view('main/about');
     })->name('about');
     Route::get('/register', function () {
         return view('auth/member/register');
+    })->name('register');
+    Route::get('/dataLoad', function () {
+        return view('main/data/dataeventload');
     })->name('register');
     Route::post('/detailRegister', function () {
         return view('auth/member/registerDetail');
