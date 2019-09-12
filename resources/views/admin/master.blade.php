@@ -21,6 +21,9 @@
 </head>
 
 <body class="hold-transition sidebar-mini bodypolos">
+    <div style="position: absolute; width: 100%; height: initial; background-color: gray; opacity: 0.3; display: none; z-index: 99999" id="loadingimage">
+        <img src="{{ asset('/assets/images/ajaxloader.gif') }}" alt="" >
+    </div>
     <div class="wrapper">
 
         <!-- Navbar -->

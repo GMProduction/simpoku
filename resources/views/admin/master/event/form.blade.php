@@ -5,6 +5,7 @@ Event Baru
 @endsection
 
 @section('content')
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-11">
@@ -20,7 +21,7 @@ Event Baru
                     <div class="card-header">
                         <h3 class="card-title">Form Tambah Event</h3>
                     </div>
-                    <form method="post" action="/admin/event/add" enctype="multipart/form-data">
+                    <form method="post" action="/admin/event/test" enctype="multipart/form-data" id="formevent" onsubmit="addparam()">
                     <div class="card-body">
                          {{ csrf_field() }}
                         <div class="form-group">
@@ -91,30 +92,19 @@ Event Baru
                              <div class="col-md-6">
                                  <div class="form-group">
                                     <label>Region</label>
-                                    <select id="region" class="form-control" name="region">
-                                        <option value="Jawa Tengah">Jawa Tengah</option>
-                                        <option value="Jawa Barat">Jawa Barat</option>
-                                        <option value="Jawa Timur">Jawa Timur</option>
-                                        <option value="DIY">DIY Jogjakarta</option>
-                                        <option value="Sumatera Utara">Sumatera Utara</option>
-                                        <option value="Sumatera Barat">Sumatera Barat</option>
+                                    <select id="region" class="form-control select2" name="region" data-placeholder="Select a Province">
+                                        @foreach ($provinces as $item)
+                                            <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                        @endforeach
+                                        
                                     </select>
                                 </div>
                              </div>
                              <div class="col-md-6">
                                  <div class="form-group">
                                     <label>City</label>
-                                    <select id="city" class="form-control" name="city">
-                                        <option value="Surakarta">Surakarta</option>
-                                        <option value="Sukoharjo">Sukoharjo</option>
-                                        <option value="Klaten">Klaten</option>
-                                        <option value="karanganyar">karanganyar</option>
-                                        <option value="Surabaya">Surabaya</option>
-                                        <option value="Madiun">Madiun</option>
-                                        <option value="Malang">Malang</option>
-                                        <option value="Banten">Banten</option>
-                                        <option value="Cirebon">Cirebon</option>
-                                        <option value="Bandung">Bandung</option>
+                                    <select id="city" class="form-control select2" name="city">
+                                        
                                     </select>
                                 </div>
                              </div>
@@ -138,7 +128,7 @@ Event Baru
                                 <select class="form-control select2" multiple="multiple" data-placeholder="Select a State"
                                         style="width: 100%;" name="spec[]" id="spec">
                                         @foreach ($spec as $item)
-                                            <option value="{{$item->gelar}}">{{$item->spec}}</option>
+                                            <option value="{{$item->spec}}">{{$item->spec}}</option>
                                         @endforeach
                                 </select>
                         </div>
@@ -176,17 +166,43 @@ Event Baru
             </div>
         </div>
     </div>
+    <div id="loading" style="display: none">
+        Lagi Loading
+    </div>
+    
 @endsection
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('/adminlte/plugins/select2/select2.min.css')}}">
     <link rel="stylesheet" href="{{ asset('/adminlte/plugins/select2/select2-bootstrap4.min.css')}}">
+    <style>
+        
+    </style>
 @endsection
 @section('script')
 <script src="{{ asset('/adminlte/plugins/select2/select2.min.js') }}"></script>
 <script>
 
 $(document).ready(function () {
+
+
+
+
+    getCities();
+    $('#formevent').submit(function (e) { 
+        var province = $('#region option:selected').html();
+        $('#region').val('asu');
+        alert(province);
+    });
+
+    $('#region').on('change', function () {
+        getCities();
+    });
+    
+    $('#city').select2({
+        placeholder: 'Select a City'
+    });
+
     $('.select2').select2({
         theme: 'bootstrap4'
     });
@@ -195,6 +211,38 @@ $(document).ready(function () {
         alert($('.select2').val());
     });
 });
+
+function getCities(){
+    var propinsi = $('#region').val()
+        $('#city').children().remove();
+        $.ajax({
+            type: "GET",
+            url: "/admin/event/getCities",
+            data: {
+                idpropinsi: propinsi
+            },
+            cache: false,
+            dataType: "json",
+            beforeSend: function(){
+                console.log('lagi Loading');
+                $('#loadingimage').show();
+            },
+            success: function (response) {
+                console.log('loading selesai');
+                $('#loadingimage').hide();
+                for (i = 0; i < Object.keys(response).length; i++) {
+                    $('#city').append($('<option>').text(response[i].name).attr('value', response[i].name))
+                    if (i == 0) {
+                        $("#city").select2("val", response[i].name);
+                    }
+                }
+            },
+            errors: function (response) {
+                console.log(response);
+                
+              }
+        });
+}
 </script>
 <script>
     $(".custom-file-input").on("change", function() {
