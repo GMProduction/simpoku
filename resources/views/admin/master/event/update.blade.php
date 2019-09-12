@@ -125,6 +125,15 @@ Edit user
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label>Specialis</label>
+                                <select class="form-control select2" multiple="multiple" data-placeholder="Select a State"
+                                        style="width: 100%;" name="spec[]" id="spec">
+                                        @foreach ($spec as $item)
+                                            <option value="{{$item->gelar}}" {{strpos($item->gelar)}}>{{$item->spec}}</option>
+                                        @endforeach
+                                </select>
+                        </div>
                 </div>
                 <div class="card-footer">
                     <div class="text-right">
