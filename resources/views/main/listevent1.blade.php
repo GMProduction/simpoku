@@ -18,7 +18,7 @@
         <div class="row pb-3 border">
             <div class=" col-lg-6">
                 <label for="comboSpec" class=" col-form-label">Specialist : </label>
-                <select name="comboSpec" id="comboSpec" class="form-control" onchange="comboCariEven()">
+                <select name="comboSpec" id="comboSpec" class="form-control form-control-sm" onchange="comboCariEven()">
                     <option value="">All</option>
                     @foreach ($spec as $item)
                     <option value="{{$item->spec}}">{{$item->spec}}</option>
@@ -27,7 +27,7 @@
             </div>
             <div class="col-lg-2">
                 <label for="comboYear" class=" col-form-label">Year : </label>
-                <select name="comboYear" id="comboYear" class="form-control" onchange="comboCariEven()">
+                <select name="comboYear" id="comboYear" class="form-control form-control-sm" onchange="comboCariEven()">
                     <option value="">All</option>
                     @foreach ($year as $item)
                     <option value="{{$item}}">{{$item}}</option>
@@ -37,7 +37,7 @@
             </div>
             <div class="col-lg-2">
                 <label for="comboMonth" class=" col-form-label">Month : </label>
-                <select name="comboMonth" id="comboMonth" class="form-control" onchange="comboCariEven()">
+                <select name="comboMonth" id="comboMonth" class="form-control  form-control-sm" onchange="comboCariEven()">
                     <option value="">All</option>
                     <option value="1">January</option>
                     <option value="2">February</option>
@@ -55,20 +55,27 @@
             </div>
             <div class="col-lg-4">
                 <label for="combo" class=" col-form-label">Regional : </label>
-                <select name="" id="comboRegion" class="form-control" onchange="comboCariEven()">
+                <select name="" id="comboRegion" class="form-control  form-control-sm" onchange="comboCariEven()">
                     <option value="">All</option>
                 </select>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-4">
                 <label for="combo" class=" col-form-label">City : </label>
-                <select name="" id="comboCity" class="form-control" onchange="comboCariEven()">
+                <select name="" id="comboCity" class="form-control form-control-sm" onchange="comboCariEven()">
                     <option value="">All</option>
                 </select>
             </div>
-            <div class="col-lg-2  align-self-end col-form-label">
-                <button class="btn floaat-bottom btn-danger" onclick="cari()"><i class="fa fa-times"
+
+            <div class="col-lg-1 align-self-end col-form-label">
+                <button class="btn floaat-bottom btn-primary btn-sm" onclick="cari()"><i class="fa fa-search"
+                        aria-hidden="true"></i> Search</button>
+            </div>
+            <div class="col-lg-1 align-self-end col-form-label">
+                <button class="btn floaat-bottom btn-danger btn-sm" onclick="reset()"><i class="fa fa-times"
                         aria-hidden="true"></i> Reset</button>
             </div>
+
+
 
         </div>
 
@@ -83,9 +90,9 @@
 
     <br>
 
-   
 
-   
+
+
 
 </div>
 
@@ -99,7 +106,7 @@
 <script src="{{ asset('/js/tampilan/listevent1.js') }}"></script>
 
 <script>
-$(document).ready(function(){
+    $(document).ready(function(){
     $('#dataEvent').load('/dataLoad');
 })
 
