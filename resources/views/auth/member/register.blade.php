@@ -18,7 +18,7 @@
                         <div class="card-body register-card-body">
                             <h4 class="login-box-msg">Create your Simpoku Account</h4>
                             <p class="login-box-msg">General Information</p>
-                            <form action="/detailRegister" method="post">
+                            <form action="/detailregister" method="post">
                                 @csrf
                                 <div class="input-group mb-3">
                                     <div class="input-group-append">
@@ -99,7 +99,7 @@
 
                                     <!-- /.col -->
                                     <div class="col-8">
-                                        <a href="/registerByGoogle" class="btn btn-google btn-block btn-flat"><span class="fa fa-google" ></span> Sign in with Google</a>
+                                        <a href="/gauth" class="btn btn-google btn-block btn-flat"><span class="fa fa-google" ></span> Sign in with Google</a>
                                     </div>
                                     <div class="col-4">
                                         <button type="submit" class="btn btn-primary btn-block btn-flat"> <i class="fa fa-arrow-right" aria-hidden="true"></i> Next</button>

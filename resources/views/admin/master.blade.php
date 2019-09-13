@@ -49,7 +49,7 @@
                         <i class="fa fa-user"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                        <a href="/logoutadmin" class="dropdown-item dropdown-footer">Logout</a>
+                        <a href="/logoutadmin" class="dropdown-item dropdown-footer text-dark">Logout</a>
                     </div>
                 </li>
 
@@ -149,6 +149,7 @@
         <!-- /.control-sidebar -->
     </div>
     
+    <script src=" {{asset ('/js/app.js')}}"></script>
     <script src=" {{asset ('/js/jquery.min.js')}}"></script>
     <script src=" {{asset ('/js/bootstrap.min.js')}}"></script>
     <script src="{{asset ('/adminlte/js/adminlte.js')}}"></script>

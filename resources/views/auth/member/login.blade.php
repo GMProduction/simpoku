@@ -29,7 +29,7 @@
                 </div>
                 <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"> Sign in</button>
                 <hr class="my-4">
-                <a href="/registerByGoogle" class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fa fa-google mr-2"></i> Sign in with Google</a>
+                <a href="/gauth" class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fa fa-google mr-2"></i> Sign in with Google</a>
                 
               </form>
             </div>
