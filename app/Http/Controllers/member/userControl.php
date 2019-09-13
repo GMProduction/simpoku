@@ -17,6 +17,7 @@ class userControl extends Controller
         return view('');
     }
 
+    // BY APP
     public function apiLogin(Request $request)
     {
         $email = $request->email;
@@ -36,16 +37,18 @@ class userControl extends Controller
                 if ($getVerifikasi == null) {
                     return response()->json(['password' => $getPassword, 'value' => 'belum']);
                 } else {
-                    return response()->json(['password' => $getPassword,
-                    'value' => 'sukses',
-                    'id' => $getId,
-                    'nama' => $getNama,
-                    'address' => $getAddress,
-                    'phone' => $getPhone,
-                    'job' => $getJob,
-                    'remember_token' => $remember_token,
-                    'dateofbirth' => $getTanggalLahir,
-                    'email' => $getemail]);
+                    return response()->json([
+                        'password' => $getPassword,
+                        'value' => 'sukses',
+                        'id' => $getId,
+                        'nama' => $getNama,
+                        'address' => $getAddress,
+                        'phone' => $getPhone,
+                        'job' => $getJob,
+                        'remember_token' => $remember_token,
+                        'dateofbirth' => $getTanggalLahir,
+                        'email' => $getemail
+                    ]);
                 }
             } else {
                 return response()->json(['password' => $getPassword, 'value' => 'gagal']);
@@ -58,7 +61,7 @@ class userControl extends Controller
     public function apiSimpanPendaftaran(Request $request)
     {
 
-         $data2 = memberModel::where('email', $request->email)->first();
+        $data2 = memberModel::where('email', $request->email)->first();
 
         if ($data2 != null) {
             return response()->json(['value' => "email sudah terdaftar"]);
@@ -84,65 +87,65 @@ class userControl extends Controller
             }
         }
     }
-    
+
     public function getPasswordUser($email)
     {
         $getUser = memberModel::where('email', $email)->first();
         if ($getUser != null) {
             $getPassword = $getUser->password;
-           
+
             $getemail = $getUser->email;
             $getVerifikasi = $getUser->email_verified_at;
 
-                if ($getVerifikasi == null) {
-                    return response()->json(['password' => $getPassword, 'value' => 'belum']);
-                } else {
-                    return response()->json(['password' => $getPassword, 'value' => 'sukses', 'email' => $getemail]);
-                }
-            
+            if ($getVerifikasi == null) {
+                return response()->json(['password' => $getPassword, 'value' => 'belum']);
+            } else {
+                return response()->json(['password' => $getPassword, 'value' => 'sukses', 'email' => $getemail]);
+            }
         } else {
             return response()->json(['value' => "user tidak terdaftar"]);
         }
     }
-    
-     public function cekAvailableAccountGoogle($email)
+
+    // BY GOOGLE
+
+    public function cekAvailableAccountGoogle($email)
     {
         $getUser = memberModel::where('gmail', $email)->first();
         if ($getUser != null) {
-            
+
             $getToken = $getUser->remember_token;
             $getEmail = $getUser->gmail;
             $getNama = $getUser->fullname;
-             $getAddress = $getUser->address;
-              $getPhone = $getUser->phone;
-               $getJob = $getUser->job;
-                $getDateOfBirth = $getUser->dateofbirth;
-            
-                    return response()->json([
-                    'value' => 'success', 
-                    'remember_token' => $getToken, 
-                    'email' => $getEmail,
-                    'nama' => $getNama,
-                    'address' => $getAddress,
-                    'phone' => $getPhone,
-                    'job' => $getJob,
-                    'dateofbirth' => $getDateOfBirth]);
-                
-            
+            $getAddress = $getUser->address;
+            $getPhone = $getUser->phone;
+            $getJob = $getUser->job;
+            $getDateOfBirth = $getUser->dateofbirth;
+
+            return response()->json([
+                'value' => 'success',
+                'remember_token' => $getToken,
+                'email' => $getEmail,
+                'nama' => $getNama,
+                'address' => $getAddress,
+                'phone' => $getPhone,
+                'job' => $getJob,
+                'dateofbirth' => $getDateOfBirth
+            ]);
         } else {
             return response()->json(['value' => "no account found"]);
         }
     }
-    
-     public function apiSimpanAkunGoogle(Request $request)
+
+    public function apiSimpanAkunGoogle(Request $request)
     {
 
-         $data2 = memberModel::where('gmail', $request->gmail)->first();
+        $data2 = memberModel::where('gmail', $request->gmail)->first();
 
         if ($data2 != null) {
             return response()->json(['value' => "terdaftar"]);
         } else {
-            
+
             $remember_token = str_random(60);
             try {
                 $user = new memberModel;
@@ -150,6 +153,7 @@ class userControl extends Controller
                 $user->fullname = $request->fullname;
                 $user->address = $request->address;
                 $user->phone = $request->phone;
+                $user->institute = $request->institute;
                 $user->job = $request->job;
                 $user->dateofbirth = $request->dateofbirth;
                 $user->email_verified_at = Carbon::now()->format('Y-m-d');
@@ -157,14 +161,17 @@ class userControl extends Controller
                 $user->save();
 
 
-                return response()->json(['value' => "success",
+                return response()->json([
+                    'value' => "success",
                     'nama' => $request->fullname,
-                    'address' =>$request->address,
+                    'address' => $request->address,
                     'phone' => $request->phone,
                     'job' => $request->job,
+                    'institute' => $request->institute,
                     'remember_token' => $remember_token,
                     'dateofbirth' => $request->dateofbirth,
-                    'email' => $request->gmail]);
+                    'email' => $request->gmail
+                ]);
             } catch (\Exception $th) {
                 return response()->json([
                     'value' => 'ada kesalahan input data, coba cek kembali data anda'
