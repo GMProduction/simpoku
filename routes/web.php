@@ -20,14 +20,24 @@ Auth::routes();
 Route::get('/sel', function () {
     return view('admin.test');
 });
-Route::get('/register', 'Auth\RegisterMemberController@showRegistrationForm');
-Route::post('/postRegister', 'Auth\RegisterMemberController@register')->name('registermember');
 
+//register
+Route::get('/register', 'Auth\member\RegisterController@showRegistrationForm');
+Route::post('/detailregister', 'Auth\member\RegisterController@showDetailRegistration');
+Route::post('/postregister', 'Auth\member\RegisterController@register');
+Route::get('/verifyaccount/{token}', 'Auth\RegisterMemberController@verify');
+
+//gauth
+Route::get('/gauth', 'Auth\gauth\googleController@redirectToGoogle');
+Route::get('/callback', 'Auth\gauth\googleController@googleCallback');
+
+
+//login
 Route::get('/login', 'Auth\LoginMemberController@showLoginForm')->name('login');
 Route::post('/postlogin', 'Auth\LoginMemberController@postlogin');
 Route::get('/logout', 'Auth\LoginMemberController@logout')->name('logout');
 Route::get('/auth/{provider}', 'Auth\member\LoginController@redirectToProvider');
-Route::get('/callback', 'Auth\member\LoginController@handleProviderCallback');
+
 
 Route::get('/adminpanel', 'Auth\Admin\LoginController@showLoginForm');
 Route::post('/postloginadmin', 'Auth\Admin\LoginController@postlogin');
@@ -56,9 +66,6 @@ Route::group(['middleware' => 'memberonly'], function () {
     Route::get('/dataLoad', function () {
         return view('main/data/dataeventload');
     })->name('register');
-    Route::post('/detailRegister', function () {
-        return view('auth/member/registerDetail');
-    })->name('about');
     Route::get('/member', function () {
         return view('main/dashboard');
     })->name('about');
@@ -106,7 +113,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 
-Route::get('/verifyaccount/{token}', 'Auth\RegisterMemberController@verify');
+
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -130,23 +137,23 @@ Route::group(['middleware' => 'auth'], function () {
 
 /* ANDROID API */
 /* USER */
-Route::post('/apiLogin','member\userControl@apiLogin');
-Route::get('/apiEventSpec/{spec}','member\eventControl@apiEventSpec');
-Route::get('/getPasswordUser/{email}','member\userControl@getPasswordUser');
-Route::get('/cekAvailableAccountGoogle/{email}','member\userControl@cekAvailableAccountGoogle');
-Route::post('/apiSimpanPendaftaran','member\userControl@apiSimpanPendaftaran');
-Route::post('/apiSimpanAkunGoogle','member\userControl@apiSimpanAkunGoogle');
+Route::post('/apiLogin', 'member\userControl@apiLogin');
+Route::get('/apiEventSpec/{spec}', 'member\eventControl@apiEventSpec');
+Route::get('/getPasswordUser/{email}', 'member\userControl@getPasswordUser');
+Route::get('/cekAvailableAccountGoogle/{email}', 'member\userControl@cekAvailableAccountGoogle');
+Route::post('/apiSimpanPendaftaran', 'member\userControl@apiSimpanPendaftaran');
+Route::post('/apiSimpanAkunGoogle', 'member\userControl@apiSimpanAkunGoogle');
 
 
 /* EVENT */
-Route::post('/apiInsertFavorit','member\eventControl@apiInsertFavorit');
-Route::post('/apiDeleteFavorit','member\eventControl@apiDeleteFavorit');
-Route::get('/apiCekFavorite/{id}/{idEvent}','member\eventControl@apiCekFavorite');
-Route::get('/apiTampilFavorite/{idUser}','member\eventControl@apiTampilFavorite');
-Route::get('/apiTampilSpec','member\eventControl@apiTampilSpec');
-Route::get('/apiDataEvent','member\eventControl@apiDataEvent');
-Route::get('/apiEventIncoming','member\eventControl@apiEventIncoming');
-Route::get('/apiDetailEvent/{id}','member\eventControl@apiDetailEvent');
-Route::get('/searchDataEvent/{id}','member\eventControl@searchDataEvent');
-Route::get('/apiEventMonth/{month}','member\eventControl@apiEventMonth');
-Route::get('/apiDataSlider','member\eventControl@apiDataSlider');
+Route::post('/apiInsertFavorit', 'member\eventControl@apiInsertFavorit');
+Route::post('/apiDeleteFavorit', 'member\eventControl@apiDeleteFavorit');
+Route::get('/apiCekFavorite/{id}/{idEvent}', 'member\eventControl@apiCekFavorite');
+Route::get('/apiTampilFavorite/{idUser}', 'member\eventControl@apiTampilFavorite');
+Route::get('/apiTampilSpec', 'member\eventControl@apiTampilSpec');
+Route::get('/apiDataEvent', 'member\eventControl@apiDataEvent');
+Route::get('/apiEventIncoming', 'member\eventControl@apiEventIncoming');
+Route::get('/apiDetailEvent/{id}', 'member\eventControl@apiDetailEvent');
+Route::get('/searchDataEvent/{id}', 'member\eventControl@searchDataEvent');
+Route::get('/apiEventMonth/{month}', 'member\eventControl@apiEventMonth');
+Route::get('/apiDataSlider', 'member\eventControl@apiDataSlider');

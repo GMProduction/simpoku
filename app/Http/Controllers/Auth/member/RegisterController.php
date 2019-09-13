@@ -22,17 +22,17 @@ class RegisterController extends Controller
     protected $redirectTo = '/';
 
     public function __construct()
-    { }
+    {
+        $this->middleware('guest')->except('logout');
+    }
 
     public function showRegistrationForm()
     {
-        $this->middleware('guest');
         return view('auth.member.register');
     }
 
     private function isValidGeneral(Request $r)
     {
-        $this->middleware('guest');
         $messages = [];
 
         $rules = [
@@ -43,10 +43,9 @@ class RegisterController extends Controller
 
         return Validator::make($r->all(), $rules, $messages);
     }
+
     public function showDetailRegistration(Request $r)
     {
-
-        $this->middleware('guest');
         if ($this->isValidGeneral($r)->fails()) {
             $errors = $this->isValidGeneral($r)->errors();
             return redirect()->back()->withErrors($errors)->withInput();
@@ -55,146 +54,106 @@ class RegisterController extends Controller
                 'fullname' => $r->fullname,
                 'email' => $r->email,
                 'password' =>  Hash::make($r->password),
-                'provider' => 'simpoku'
+                'provider' => 'simpoku',
+                'avatar' => 'default'
             ];
             return view('auth.member.registerDetail')->with(['data' => $data]);
         }
     }
 
-    private function isValid(Request $r)
+    private function isValidDetail(Request $r)
     {
-        $this->middleware('guest');
         $messages = [];
 
         $rules = [
-            'fullname' => 'required|max:191',
-            'email' => 'required|max:191',
-            'password' => 'required',
+            'job' => 'required',
+            'institute' => 'required',
+            'dateofbirth' => 'required',
             'phone' => 'required|numeric|digits_between:1,15',
             'address' => 'required',
-            'job' => 'required',
-            'dateofbirth' => 'required',
         ];
 
         return Validator::make($r->all(), $rules, $messages);
     }
 
-    public function register(Request $r, $provider)
+    public function register(Request $r)
     {
-        $this->middleware('guest');
-
-        if ($provider != 'google') {
-            if ($this->isValid($r)->fails()) {
-                $errors = $this->isValid($r)->errors();
-                Alert::error('Registrasi Anda Gagal', 'Ooops');
-                return redirect()->back()->withErrors($errors)->withInput();
-            } else {
-                try {
-                    $member = new memberModel();
-                    $member->email = $r->email;
-                    $member->gmail = NULL;
-                    $member->fullname = $r->fullname;
-                    $member->password = $r->password;
-                    $member->address = $r->address;
-                    $member->phone = $r->phone;
-                    $member->job = $r->job;
-                    $member->dateofbirth = $r->dateofbirth;
-                    $member->email_verified_at = NULL;
-                    $member->remember_token = str_random(60);
-                    $member->save();
-                    if ($member->save()) {
-                        dispatch(new SendVerificationEmail($member));
-                        if (Auth::guard('member')->loginUsingId($member->id)) {
-                            Alert::success('Selamat', 'Registrasi Anda Berhasil');
-                            return redirect('/');
-                        }
-                    }
-                } catch (\Exception  $e) {
-                    $exData = explode('(', $e->getMessage());
-                    Alert::error('Gagal Menambahkan Data \n' . $exData[0], 'Ooops');
-                    return $exData;
-                }
-            }
-        } else {
-            if ($this->isValidGoogle($r)->fails()) {
-                $errors = $this->isValidGoogle($r)->errors();
-                Alert::error('Registrasi Anda Gagal', 'Ooops');
-                return redirect()->back()->withErrors($errors)->withInput();
-            } else {
-                try {
-                    $member = new memberModel();
-                    $member->email = NULL;
-                    $member->gmail = $r->email;
-                    $member->fullname = $r->fullname;
-                    $member->password = NULL;
-                    $member->address = $r->address;
-                    $member->phone = $r->phone;
-                    $member->job = $r->job;
-                    $member->dateofbirth = $r->dateofbirth;
-                    $member->email_verified_at = Carbon::now()->format('Y-m-d');
-                    $member->remember_token = str_random(60);
-                    $member->save();
-                    if ($member->save()) {
-                        if (Auth::guard('member')->loginUsingId($member->id)) {
-                            Alert::success('Selamat', 'Registrasi Anda Berhasil');
-                            return redirect('/');
-                        }
-                    }
-                } catch (\Exception  $e) {
-                    $exData = explode('(', $e->getMessage());
-                    Alert::error('Gagal Menambahkan Data \n' . $exData[0], 'Ooops');
-                    return $exData;
-                }
-            }
-        }
-    }
-
-    private function isValidGoogle(Request $r)
-    {
-        $this->middleware('guest');
-        $messages = [];
-
-        $rules = [
-            'fullname' => 'required|max:191',
-            'email' => 'required|max:191',
-            'phone' => 'required|numeric|digits_between:1,15',
-            'address' => 'required',
-            'job' => 'required',
-            'dateofbirth' => 'required',
-        ];
-
-        return Validator::make($r->all(), $rules, $messages);
-    }
-
-    public function registerByGoogle(Request $r)
-    {
-
-        $this->middleware('guest');
-        if ($this->isValidGoogle($r)->fails()) {
-            $errors = $this->isValidGoogle($r)->errors();
-            Alert::error('Registrasi Anda Gagal', 'Ooops');
+        if ($this->isValidDetail($r)->fails()) {
+            $errors = $this->isValidDetail($r)->errors();
+            Alert::error('Sory, Failed to Register', 'Ooops');
             return redirect()->back()->withErrors($errors)->withInput();
         } else {
-            try {
-                $member = new memberModel();
-                $member->email = NULL;
-                $member->gmail = $r->email;
-                $member->fullname = $r->fullname;
-                $member->password = NULL;
-                $member->address = $r->address;
-                $member->phone = $r->phone;
-                $member->job = $r->job;
-                $member->dateofbirth = $r->dateofbirth;
-                $member->email_verified_at = Carbon::now()->format('Y-m-d');
-                $member->remember_token = str_random(60);
-                $member->save();
-            } catch (\Exception  $e) {
-                $exData = explode('(', $e->getMessage());
-                Alert::error('Gagal Menambahkan Data \n' . $exData[0], 'Ooops');
-                return $exData;
+            if ($r->provider != 'google') {
+                return $this->registerBySimpoku($r);
+            } else {
+                return $this->registerByGoogle($r);
             }
         }
     }
+
+    private function registerBySimpoku(Request $r)
+    {
+        // return $r;
+        try {
+            $member = new memberModel();
+            $member->email = $r->email;
+            $member->gmail = NULL;
+            $member->fullname = $r->fullname;
+            $member->password = $r->password;
+            $member->address = $r->address;
+            $member->phone = $r->phone;
+            $member->institute = $r->institute;
+            $member->avatar = $r->avatar;
+            $member->job = $r->job;
+            $member->dateofbirth = $r->dateofbirth;
+            $member->email_verified_at = NULL;
+            $member->remember_token = str_random(60);
+            $member->save();
+            if ($member->save()) {
+                dispatch(new SendVerificationEmail($member));
+                if (Auth::guard('member')->loginUsingId($member->id)) {
+                    Alert::success('Congratulation', 'Your Registration Successfull');
+                    return redirect('/');
+                }
+            }
+        } catch (\Exception  $e) {
+            $exData = explode('(', $e->getMessage());
+            Alert::error('Failed To Register\n' . $exData[0], 'Ooops');
+            return response()->json($exData);
+        }
+    }
+
+    private function registerByGoogle(Request $r)
+    {
+        try {
+            $member = new memberModel();
+            $member->email = NULL;
+            $member->gmail = $r->email;
+            $member->fullname = $r->fullname;
+            $member->password = NULL;
+            $member->address = $r->address;
+            $member->phone = $r->phone;
+            $member->job = $r->job;
+            $member->dateofbirth = $r->dateofbirth;
+            $member->institute = $r->institute;
+            $member->avatar = $r->avatar;
+            $member->email_verified_at = Carbon::now()->format('Y-m-d');
+            $member->remember_token = str_random(60);
+            $member->save();
+            if ($member->save()) {
+                if (Auth::guard('member')->loginUsingId($member->id)) {
+                    Alert::success('Congratulation', 'Your Registration Successfull');
+                    return redirect('/');
+                }
+            }
+        } catch (\Exception  $e) {
+            $exData = explode('(', $e->getMessage());
+            Alert::error('Failed To Register\n' . $exData[0], 'Ooops');
+            return response()->json($exData);
+        }
+    }
+
+
 
     public function verify($token)
     {
