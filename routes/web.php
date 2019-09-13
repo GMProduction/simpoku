@@ -127,3 +127,26 @@ Route::group(['middleware' => 'auth'], function () {
         return view('/admin/master/datakategori');
     })->name('kategori');
 });
+
+/* ANDROID API */
+/* USER */
+Route::post('/apiLogin','member\userControl@apiLogin');
+Route::get('/apiEventSpec/{spec}','member\eventControl@apiEventSpec');
+Route::get('/getPasswordUser/{email}','member\userControl@getPasswordUser');
+Route::get('/cekAvailableAccountGoogle/{email}','member\userControl@cekAvailableAccountGoogle');
+Route::post('/apiSimpanPendaftaran','member\userControl@apiSimpanPendaftaran');
+Route::post('/apiSimpanAkunGoogle','member\userControl@apiSimpanAkunGoogle');
+
+
+/* EVENT */
+Route::post('/apiInsertFavorit','member\eventControl@apiInsertFavorit');
+Route::post('/apiDeleteFavorit','member\eventControl@apiDeleteFavorit');
+Route::get('/apiCekFavorite/{id}/{idEvent}','member\eventControl@apiCekFavorite');
+Route::get('/apiTampilFavorite/{idUser}','member\eventControl@apiTampilFavorite');
+Route::get('/apiTampilSpec','member\eventControl@apiTampilSpec');
+Route::get('/apiDataEvent','member\eventControl@apiDataEvent');
+Route::get('/apiEventIncoming','member\eventControl@apiEventIncoming');
+Route::get('/apiDetailEvent/{id}','member\eventControl@apiDetailEvent');
+Route::get('/searchDataEvent/{id}','member\eventControl@searchDataEvent');
+Route::get('/apiEventMonth/{month}','member\eventControl@apiEventMonth');
+Route::get('/apiDataSlider','member\eventControl@apiDataSlider');
