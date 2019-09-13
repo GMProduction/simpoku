@@ -57,7 +57,7 @@
                                             <span class="fa fa-building"></span>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control bordertext " placeholder="Instantion Name">
+                                    <input type="text" class="form-control bordertext " placeholder="Institute Name" name="institute" id="institute">
 
                                 </div>
                                 <div class="input-group mb-3">

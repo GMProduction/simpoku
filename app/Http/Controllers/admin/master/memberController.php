@@ -34,7 +34,7 @@ class memberController extends Controller
     public function getData()
     {
         $member = memberModel::query()
-            ->select('id', 'email', 'gmail', 'fullname', 'password', 'address', 'phone', 'job', 'dateofbirth', 'email_verified_at', 'remember_token')
+            ->select('id', 'email', 'gmail', 'fullname', 'password', 'address', 'phone', 'job', 'dateofbirth', 'institute', 'email_verified_at', 'remember_token')
             ->get();
 
         return DataTables::of($member)
@@ -63,6 +63,7 @@ class memberController extends Controller
             'address' => 'required',
             'job' => 'required',
             'dateofbirth' => 'required',
+            'institute' => 'required',
         ];
 
         return Validator::make($r->all(), $rules, $messages);
@@ -89,6 +90,7 @@ class memberController extends Controller
                 $member->phone = $r->phone;
                 $member->job = $r->job;
                 $member->dateofbirth = $r->dateofbirth;
+                $member->institute = $r->institute;
                 $member->email_verified_at = Carbon::now()->format('Y-m-d');
                 $member->remember_token = str_random(60);
                 $member->save();
@@ -115,6 +117,7 @@ class memberController extends Controller
             'address' => 'required',
             'job' => 'required',
             'dateofbirth' => 'required',
+            'institute' => 'required'
         ];
 
         if ($r->password != null) {
@@ -142,6 +145,7 @@ class memberController extends Controller
                     'address' => $r->address,
                     'job' => $r->job,
                     'dateofbirth' => $r->dateofbirth,
+                    'institute' => $r->institute,
                 ];
 
                 if ($r->password != null) {
