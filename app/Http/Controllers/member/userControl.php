@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Master\memberModel;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
+use App\Jobs\sendVerificationEmail;
 use Illuminate\Support\Facades\Hash;
 
 class userControl extends Controller
@@ -29,6 +30,7 @@ class userControl extends Controller
             $getemail = $getUser->email;
             $getAddress = $getUser->address;
             $getPhone = $getUser->phone;
+            $getJob = $getUser->job;
             $remember_token = $getUser->remember_token;
             $getTanggalLahir = $getUser->dateofbirth;
             $getVerifikasi = $getUser->email_verified_at;
@@ -58,31 +60,47 @@ class userControl extends Controller
         }
     }
 
-    public function apiSimpanPendaftaran(Request $request)
+    public function apiSimpanPendaftaran(Request $r)
     {
 
-        $data2 = memberModel::where('email', $request->email)->first();
+        $data2 = memberModel::where('email', $r->email)->first();
 
         if ($data2 != null) {
-            return response()->json(['value' => "email sudah terdaftar"]);
+            return response()->json(['value' => "email has been taken by another account simpoku"]);
         } else {
             try {
-                $user = new memberModel;
-                $user->email = $request->email;
-                $user->password = Hash::make($request->password);
-                $user->nama = $request->nama;
-                $user->tgl_lahir = $request->tgl_lahir;
-                $user->no_telp = $request->no_telp;
-                $user->pekerjaan = $request->pekerjaan;
-                $user->verifikasi = "sudah";
-                $user->save();
+                $getToken = str_random(60);
+                $member = new memberModel();
+                $member->email = $r->email;
+                $member->gmail = NULL;
+                $member->fullname = $r->fullname;
+                $member->password = Hash::make($r->password);;
+                $member->address = $r->address;
+                $member->phone = $r->phone;
+                $member->job = $r->job;
+                $member->institute = $r->institute;
+                $member->dateofbirth = $r->dateofbirth;
+                $member->email_verified_at = NULL;
+                $member->remember_token = $getToken;
+                $member->save();
 
+                if ($member->save()) {
+                    return response()->json([
+                        'value' => 'success',
+                        'remember_token' => $getToken,
+                        'email' => $r->email,
+                        'nama' => $r->fullname,
+                        'address' => $r->address,
+                        'phone' => $r->phone,
+                        'job' => $r->job,
+                        'dateofbirth' => $r->dateofbirth
+                    ]);
 
-                return response()->json(['value' => "success"]);
+                    dispatch(new SendVerificationEmail($member));
+                }
             } catch (\Exception $th) {
                 return response()->json([
-                    'value' => 'ada kesalahan input data, coba cek kembali data anda'
-
+                    'value' => $th
                 ]);
             }
         }
