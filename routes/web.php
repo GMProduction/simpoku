@@ -140,7 +140,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::post('/apiLogin', 'member\userControl@apiLogin');
 Route::get('/apiEventSpec/{spec}', 'member\eventControl@apiEventSpec');
 Route::get('/getPasswordUser/{email}', 'member\userControl@getPasswordUser');
-Route::get('/cekAvailableAccountGoogle/{email}', 'member\userControl@cekAvailableAccountGoogle');
+Route::get('/cekAvailableAccount/{email}', 'member\userControl@cekAvailableAccount');
 Route::post('/apiSimpanPendaftaran', 'member\userControl@apiSimpanPendaftaran');
 Route::post('/apiSimpanAkunGoogle', 'member\userControl@apiSimpanAkunGoogle');
 
