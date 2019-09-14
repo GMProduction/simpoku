@@ -189,7 +189,7 @@ class eventControl extends Controller
             return response($res);
         }
     }
-    
+
      public function apiTampilSpec()
     {
         $data = specModel::all();
@@ -204,7 +204,7 @@ class eventControl extends Controller
             return response($res);
         }
     }
-    
+
      public  function apiEventSpec($spec)
     {
         $data = eventModel::where('spec', 'LIKE', '%' .$spec. '%')
