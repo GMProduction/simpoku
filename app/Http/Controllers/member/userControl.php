@@ -133,13 +133,13 @@ class userControl extends Controller
         $getUser = memberModel::where('email', $email)->first();
         if ($getUserG != null) {
 
-            $getToken = $getUser->remember_token;
-            $getEmail = $getUser->gmail;
-            $getNama = $getUser->fullname;
-            $getAddress = $getUser->address;
-            $getPhone = $getUser->phone;
-            $getJob = $getUser->job;
-            $getDateOfBirth = $getUser->dateofbirth;
+            $getToken = $getUserG->remember_token;
+            $getEmail = $getUserG->gmail;
+            $getNama = $getUserG->fullname;
+            $getAddress = $getUserG->address;
+            $getPhone = $getUserG->phone;
+            $getJob = $getUserG->job;
+            $getDateOfBirth = $getUserG->dateofbirth;
 
             return response()->json([
                 'value' => 'success',
@@ -152,6 +152,7 @@ class userControl extends Controller
                 'dateofbirth' => $getDateOfBirth
             ]);
         } else if($getUser != null){
+
             $getToken = $getUser->remember_token;
             $getEmail = $getUser->email;
             $getNama = $getUser->fullname;
