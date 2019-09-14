@@ -127,13 +127,33 @@ class userControl extends Controller
 
     // BY GOOGLE
 
-    public function cekAvailableAccountGoogle($email)
+    public function cekAvailableAccount($email)
     {
-        $getUser = memberModel::where('gmail', $email)->first();
-        if ($getUser != null) {
+        $getUserG = memberModel::where('gmail', $email)->first();
+        $getUser = memberModel::where('email', $email)->first();
+        if ($getUserG != null) {
 
             $getToken = $getUser->remember_token;
             $getEmail = $getUser->gmail;
+            $getNama = $getUser->fullname;
+            $getAddress = $getUser->address;
+            $getPhone = $getUser->phone;
+            $getJob = $getUser->job;
+            $getDateOfBirth = $getUser->dateofbirth;
+
+            return response()->json([
+                'value' => 'success',
+                'remember_token' => $getToken,
+                'email' => $getEmail,
+                'nama' => $getNama,
+                'address' => $getAddress,
+                'phone' => $getPhone,
+                'job' => $getJob,
+                'dateofbirth' => $getDateOfBirth
+            ]);
+        } else if($getUser != null){
+            $getToken = $getUser->remember_token;
+            $getEmail = $getUser->email;
             $getNama = $getUser->fullname;
             $getAddress = $getUser->address;
             $getPhone = $getUser->phone;
