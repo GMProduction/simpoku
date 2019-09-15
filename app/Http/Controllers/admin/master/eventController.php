@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Master\eventModel;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Validator;
-
+use Image;
 use Alert;
 use App\Master\specModel;
 
@@ -29,8 +29,8 @@ class eventController extends Controller
         $token = getToken();
         $provinces = getProvince($token);
 
-        // return $cities;
         return view('admin.master.event.form')->with(['spec' => $spec, 'provinces' => $provinces]);
+        // return view('admin.master.event.form')->with(['spec' => $spec, 'provinces' => $provinces]);
     }
 
     public function getCities(Request $r)
@@ -75,6 +75,7 @@ class eventController extends Controller
             'deskripsi' => 'required|',
             'tempat' => 'required|',
             'region' => 'required|',
+            'regionName' => 'required|',
             'city' => 'required|',
             'tglMulai' => 'required|',
             'tglAkhir' => 'required|',
@@ -88,35 +89,42 @@ class eventController extends Controller
 
     public function add(Request $r)
     {
-        // $event = new eventModel();
-        // return implode(",", $r->spec);
+
+
 
         if ($this->isValid($r)->fails()) {
             $errors = $this->isValid($r)->errors();
-            Alert::error('Gagal Menambahkan Data', 'Ooops');
-            return redirect()->back()->withErrors($errors)->withInput();
+            return response()->json($errors);
         } else {
 
             if ($r->hasFile('gambar')) {
-                $upFoto = $r->file('gambar');
-                $namaFoto = $r->judul . '.' . $upFoto->getClientOriginalExtension();
-                $r->gambar->move(public_path('foto'), $namaFoto);
+                $image = $r->file('gambar');
+                $namaFoto = $r->judul . '.' . $image->getClientOriginalExtension();
+
+                $image_resize = Image::make($image->getRealPath());
+                $image_resize->fit(150);
+                //save to thumbnails 150x150
+                $image_resize->save(public_path('assets/thumbnails/' . $namaFoto));
+                //save to origin
+                $r->gambar->move(public_path('assets/foto'), $namaFoto);
             } else {
                 $namaFoto = '';
             }
+
             if ($r->hasFile('filepdf')) {
-                $uppdf = $r->file('filepdf');
-                $namapdf = $r->judul . '.' . $uppdf->getClientOriginalExtension();
+                $filepdf = $r->file('filepdf');
+                $namapdf = $r->judul . '.' . $filepdf->getClientOriginalExtension();
                 $r->filepdf->move(public_path('pdf'), $namapdf);
             } else {
                 $namapdf = '';
             }
+
             try {
                 $event = new eventModel();
                 $event->judul = $r->judul;
                 $event->deskripsi = $r->deskripsi;
                 $event->tempat = $r->tempat;
-                $event->region = $r->region;
+                $event->region = $r->regionName;
                 $event->city = $r->city;
                 $event->tglMulai = $r->tglMulai;
                 $event->tglAkhir = $r->tglAkhir;
@@ -130,8 +138,7 @@ class eventController extends Controller
                 return redirect()->back();
             } catch (\Exception  $e) {
                 $exData = explode('(', $e->getMessage());
-                Alert::error('Gagal Merubah Data \n' . $exData[0], 'Ooops');
-                return redirect()->back()->withInput();
+                return response()->json($e);
             }
         }
     }

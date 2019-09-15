@@ -89,6 +89,34 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/update', 'admin\master\userController@edit');
         Route::delete('/destroy', 'admin\master\userController@delete');
     });
+
+    Route::group(['prefix' => 'member'], function () {
+        Route::get('/', 'admin\master\memberController@index')->name('pagemember');
+        Route::get('/view', 'admin\master\memberController@getData');
+        Route::get('/new', 'admin\master\memberController@showForm');
+        Route::post('/add', 'admin\master\memberController@add');
+        Route::get('/store', 'admin\master\memberController@store');
+        Route::post('/update', 'admin\master\memberController@edit');
+        Route::delete('/destroy', 'admin\master\memberController@delete');
+    });
+    Route::group(['prefix' => 'specialist'], function () {
+        Route::get('/', 'admin\master\specialisController@index')->name('pagespecialist');
+        Route::get('/view', 'admin\master\specialisController@getData');
+        Route::get('/new', 'admin\master\specialisController@showForm');
+        Route::post('/add', 'admin\master\specialisController@add');
+        Route::get('/store', 'admin\master\specialisController@store');
+        Route::post('/update', 'admin\master\specialisController@edit');
+        Route::delete('/destroy', 'admin\master\specialisController@delete');
+    });
+    Route::group(['prefix' => 'banner'], function () {
+        Route::get('/', 'admin\master\bannerController@index')->name('pagebanner');
+        Route::get('/view', 'admin\master\bannerController@getData');
+        Route::get('/new', 'admin\master\bannerController@showForm');
+        Route::post('/add', 'admin\master\bannerController@add');
+        Route::get('/update', 'admin\master\bannerController@edit');
+        Route::delete('/destroy', 'admin\master\bannerController@delete');
+    });
+
     Route::group(['prefix' => 'event'], function () {
         Route::get('/', 'admin\master\eventController@index')->name('pageevent');
         Route::get('/view', 'admin\master\eventController@getData');
@@ -99,15 +127,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::delete('/destroy', 'admin\master\eventController@delete');
         Route::post('/test', 'admin\master\eventController@test');
         Route::get('/getCities', 'admin\master\eventController@getCities');
-    });
-    Route::group(['prefix' => 'member'], function () {
-        Route::get('/', 'admin\master\memberController@index')->name('pagemember');
-        Route::get('/view', 'admin\master\memberController@getData');
-        Route::get('/new', 'admin\master\memberController@showForm');
-        Route::post('/add', 'admin\master\memberController@add');
-        Route::get('/store', 'admin\master\memberController@store');
-        Route::post('/update', 'admin\master\memberController@edit');
-        Route::delete('/destroy', 'admin\master\memberController@delete');
     });
 });
 
