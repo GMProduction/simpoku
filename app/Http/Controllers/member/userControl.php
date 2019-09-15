@@ -135,6 +135,7 @@ class userControl extends Controller
 
             $getToken = $getUserG->remember_token;
             $getEmail = $getUserG->gmail;
+            $getId = $getUserG->id;
             $getNama = $getUserG->fullname;
             $getAddress = $getUserG->address;
             $getPhone = $getUserG->phone;
@@ -149,7 +150,8 @@ class userControl extends Controller
                 'address' => $getAddress,
                 'phone' => $getPhone,
                 'job' => $getJob,
-                'dateofbirth' => $getDateOfBirth
+                'dateofbirth' => $getDateOfBirth,
+                'id' => $getId
             ]);
         } else if($getUser != null){
 
@@ -158,6 +160,7 @@ class userControl extends Controller
             $getNama = $getUser->fullname;
             $getAddress = $getUser->address;
             $getPhone = $getUser->phone;
+            $getId = $getUser->id;
             $getJob = $getUser->job;
             $getDateOfBirth = $getUser->dateofbirth;
 
@@ -169,6 +172,7 @@ class userControl extends Controller
                 'address' => $getAddress,
                 'phone' => $getPhone,
                 'job' => $getJob,
+                'id' => $getId,
                 'dateofbirth' => $getDateOfBirth
             ]);
         } else {
