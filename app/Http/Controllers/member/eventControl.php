@@ -124,8 +124,7 @@ class eventControl extends Controller
             return response()->json(['value' => "success"]);
         } catch (\Exception $th) {
             return response()->json([
-                'value' => 'ada kesalahan input'
-
+                'value' =>  $th
             ]);
         }
     }
@@ -140,7 +139,7 @@ class eventControl extends Controller
             return response()->json(['value' => "success"]);
         } catch (\Exception $th) {
             return response()->json([
-                'value' => 'ada kesalahan delete'
+                'value' => $th
 
             ]);
         }
