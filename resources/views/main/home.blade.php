@@ -64,7 +64,7 @@
     @if (auth()->guard('member')->check() && auth()->guard('member')->user()->email_verified_at == NULL)
         <div class="alert alert-warning" role="alert">
             Please Verify Your Email Address by clicking Link.<br>
-            If Your are not receive an email. click <a href=""></a>RESEND to resend mail verification.
+            If Your are not receive an email. click <a href="{{ url('/resend/'.auth()->guard('member')->user()->id) }}"></a>RESEND to resend mail verification.
         </div>
     @endif
     <div class="jumbotron jumbotron-fluid">
