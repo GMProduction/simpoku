@@ -10,10 +10,11 @@
   -webkit-appearance: none; 
 }
 
-.jumbotron {
+.jumbotron-fluid {
     padding: 2rem 20px !important;
-    margin-bottom: 2rem !important;
-    background-color: #e9ecef;
+    margin-bottom: 3rem !important;
+   
+    background-color: #e9ecef !important;
   }
 
 .transparan {
@@ -700,7 +701,9 @@ ul.navbar-nav {
     bottom: 0px;     
     height: 30%;
     width: 100%;
-    color: white;
+    /* color: white; */
+    background-color: #E9ECEF;
+    
 }   
 
 .kartupaket {

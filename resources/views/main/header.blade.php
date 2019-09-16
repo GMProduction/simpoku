@@ -4,11 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="revisit-after" content="7 day" >
+    <meta name="revisit-after" content="7 day">
     <meta name="robots" content="all, index, follow">
-    <meta name="description" content="Informasi seputar seminar kesehatan, yang di ikuti oleh Doktor Umum, 
+    <meta name="description"
+        content="Informasi seputar seminar kesehatan, yang di ikuti oleh Doktor Umum, 
     Doktor Spesialis, PPDS, Dokter Muda, Perawat Apoteker, Farmasi. Yang diselenggarakan di dalam kota maupun luar kota.">
-    
+
 
     <title>Simpoku</title>
     <!-- Font -->
@@ -23,7 +24,7 @@
     <link href="{{ asset('/css/animate.css') }}" rel="stylesheet" />
     <link href="{{ asset('/css/flipkart.css') }}" rel="stylesheet" />
 
-    <script src="{{ asset('/js/flipkart.js') }}"></script>
+
 
     <link rel="shortcut icon" href="{{asset('assets/gambar/logo2.png')}}" type="image/x-icon">
 
@@ -32,11 +33,11 @@
 
     <script>
         function cariDataevent(){
-        var a = $('#txtCari').val();
+        var a = $('#txtCari1').val();
         
         if(event.keyCode === 13){
-            window.location = 'event';
-            cariEven(a);
+            window.location = 'eventsearch?par='+a;
+            //cariEven(a);
         }
     }
     </script>
@@ -55,19 +56,19 @@
                         <li class="upper-links"><a class="links" href="event"><i class="fa fa-calendar"
                                     aria-hidden="true"></i> Event</a></li>
                         @if (auth()->guard('member')->check())
-                            {{auth()->guard('member')->user()->fullname}}
-                            <li class="upper-links"><a class="links" href="/logout"><i class="fa fa-sign-out"
+                        {{auth()->guard('member')->user()->fullname}}
+                        <li class="upper-links"><a class="links" href="/logout"><i class="fa fa-sign-out"
                                     aria-hidden="true"></i> Logout</a></li>
                         @else
-                            <li class="upper-links"><a class="links" href="login"><i class="fa fa-lock"
-                        aria-hidden="true"></i> Login </a></li>
-                        
+                        <li class="upper-links"><a class="links" href="login"><i class="fa fa-lock"
+                                    aria-hidden="true"></i> Login </a></li>
+
                         <li class="upper-links">|</li>
                         <li class="upper-links"><a class="links" href="/register"><i class="fa fa-sign-in"
                                     aria-hidden="true"></i> Register</a></li>
                         @endif
-                        
-                        
+
+
 
                     </ul>
                 </div>
@@ -123,15 +124,24 @@
                     <p><i class="fa fa-phone mr-3"></i>+62xx xxxx xxxx</p>
                     <br>
                     <h6 class="text-uppercase font-weight-bold" style="">Social Media :</h6>
-                    <div class="row">
+                    <div class="row col-12">
                         <a href="ig">
-                            <img class="m-2" src="{{ asset('/assets/gambar/instagram.png') }}" alt="Instagram">
+                                <span class="fa-stack fa-lg">
+                                        <i class="fa fa-square-o fa-stack-2x"></i>
+                                        <i class="fa fa-instagram fa-stack-1x"></i>
+                                    </span>
                         </a>
                         <a href="fb">
-                            <img class="m-2" src="{{ asset('/assets/gambar/facebook.png') }}" alt="Facebook">
+                                <span class="fa-stack fa-lg">
+                                        <i class="fa fa-square-o fa-stack-2x"></i>
+                                        <i class="fa fa-facebook fa-stack-1x"></i>
+                                    </span>
                         </a>
                         <a href="tw">
-                            <img class="m-2" src="{{ asset('/assets/gambar/twitter.png') }}" alt="Twitter">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-square-o fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x"></i>
+                            </span>
                         </a>
 
                     </div>
@@ -145,7 +155,7 @@
                     </p>
 
                 </div>
-                <div class="col-12"> 
+                <div class="col-12">
                     <div class=" row col-12 justify-content-center pt-5">
                         <small><i class="fa fa-copyright" aria-hidden="true"></i> Powered By abiaga</small>
                     </div>
@@ -162,11 +172,13 @@
 <!-- JS -->
 <script src="{{ asset('js/app.js') }}" defer></script>
 <script src="{{ asset('/js/jquery.min.js') }}"></script>
+<script defer src="{{ asset('/js/jquery.flexslider-min.js') }}"></script>
 <script src="{{ asset('/js/tampilan/genosstyle.js') }}"></script>
+<script src="{{ asset('/js/flipkart.js') }}"></script>
 <script src="{{ asset('js/sweetalert.min.js') }}"></script>
-    @include('sweet::alert')
-    
-   
+@include('sweet::alert')
+
+
 
 <script>
     function cariEven(nm) {
@@ -177,6 +189,7 @@
             nama: nm
         },
         success : function(data){
+            
             $('#tampilanListEven').html(data.html);
             
         }

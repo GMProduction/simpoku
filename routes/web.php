@@ -59,11 +59,15 @@ Route::group(['middleware' => 'memberonly'], function () {
     Route::post('/detailRegister', function () {
         return view('auth/member/registerDetail');
     })->name('about');
+    Route::get('eventsearch','member\eventController@searchEvent')->name('eventsearch');
     Route::get('/member', function () {
         return view('main/dashboard');
     })->name('about');
 
-    Route::get('/loadmore/load_data', 'member\eventController@load_data')->name('loadmore.load_data');
+    Route::get('/dataLoad/load_data', 'member\eventController@load_data')->name('loadmore.load_data');
+
+    Route::get('dataevent/download','member\eventController@download_pdf')->name('download_pdf');
+
 });
 
 

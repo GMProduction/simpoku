@@ -18,7 +18,7 @@ function reset () {
   $('#comboRegion').val('')
   $('#txtCari1').val('')
 
-  comboCariEven()
+  //comboCariEven()
 }
 
 function comboCariEven () {
@@ -72,7 +72,7 @@ $(document).ready(function () {
   }()
 
   var t = $('#txtCari1').val()
-  comboCariEven()
+  //comboCariEven()
 
   $.ajax({
     url: 'https://x.rajaapi.com/MeP7c5ne' + return_first + '/m/wilayah/provinsi',
@@ -111,27 +111,6 @@ $(document).ready(function () {
     })
   })
 
-  var _token = $('input[name=_token]').val()
-
-  // load_data('',_token)
-
-  function load_data (id = '' , _token) {
-    $.ajax({
-      url: '/loadmore/load_data',
-      methot: 'POST',
-      data: {id: id, _token: _token},
-      success: function (data) {
-        $('#load_more_button').remove()
-        $('#post_data').append(data)
-      }
-    })
-  }
-
-  $(document).on('click', '#load_more_button', function () {
-    var id = $(this).data('id')
-    $('#load_more_button').html('<b>Loading...</b>')
-    load_data(id, _token, t)
-  })
 
   $('#txtCari1').on('input', function () {
     var id = $(this).data('id')
