@@ -49,7 +49,7 @@
                         <i class="fa fa-user"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                        <a href="/logoutadmin" class="dropdown-item dropdown-footer">Logout</a>
+                        <a href="/logoutadmin" class="dropdown-item dropdown-footer text-dark">Logout</a>
                     </div>
                 </li>
 
@@ -101,6 +101,18 @@
                                         <p>Members</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="/admin/specialist" class="nav-link ">
+                                        <i class="fa fa-users nav-icon"></i>
+                                        <p>Specialist</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/banner" class="nav-link ">
+                                        <i class="fa fa-users nav-icon"></i>
+                                        <p>Banner</p>
+                                    </a>
+                                </li>
 
                                 <li class="nav-item">
                                     <a href="/admin/event" class="nav-link ">
@@ -108,12 +120,6 @@
                                         <p>Events</p>
                                     </a>
                                 </li>
-                                {{-- <li class="nav-item">
-                                    <a href="/event" class="nav-link ">
-                                        <i class="fa fa-desktop nav-icon"></i>
-                                        <p>Banner Slides</p>
-                                    </a>
-                                </li> --}}
                             </ul>
                         </li>
 
@@ -149,6 +155,7 @@
         <!-- /.control-sidebar -->
     </div>
     
+    <script src=" {{asset ('/js/app.js')}}"></script>
     <script src=" {{asset ('/js/jquery.min.js')}}"></script>
     <script src=" {{asset ('/js/bootstrap.min.js')}}"></script>
     <script src="{{asset ('/adminlte/js/adminlte.js')}}"></script>

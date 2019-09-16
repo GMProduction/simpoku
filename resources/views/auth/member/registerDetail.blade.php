@@ -29,11 +29,13 @@
                         <div class="card-body register-card-body">
                             <h5 class="login-box-msg">Contact Detail</h5>
 
-                        <form action="/postregister/{{$data['provider']}}" method="post">
+                        <form action="/postregister" method="post">
                             @csrf
                         <input type="hidden" name="fullname" value="{{$data['fullname']}}">
                         <input type="hidden" name="email" value="{{$data['email']}}">
                         <input type="hidden" name="password" value="{{$data['password']}}">
+                        <input type="hidden" name="provider" value="{{$data['provider']}}">
+                        <input type="hidden" name="avatar" value="{{$data['avatar']}}">
                                 <div class="input-group mb-3 border" style="">
                                     <div class="input-group-append">
                                         <div class="input-group-text transparan">
@@ -57,7 +59,7 @@
                                             <span class="fa fa-building"></span>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control bordertext " placeholder="Instantion Name">
+                                    <input type="text" class="form-control bordertext" placeholder="Institute Name" name="institute" id="institute">
 
                                 </div>
                                 <div class="input-group mb-3">

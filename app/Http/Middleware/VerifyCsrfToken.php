@@ -20,5 +20,10 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
+        '/apiSimpanAkunGoogle',
+        '/apiSimpanPendaftaran',
+        '/apiLogin',
+        '/apiInsertFavorit',
+        '/apiDeleteFavorit',
     ];
 }

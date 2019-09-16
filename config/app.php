@@ -164,6 +164,7 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -231,6 +232,7 @@ return [
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         'PDF' => Barryvdh\DomPDF\Facade::class
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];
