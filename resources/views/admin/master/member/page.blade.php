@@ -20,11 +20,7 @@ Data Member
                          <div class="float-sm-left">
                             <h3 class="card-title">Data Member</h3>
                         </div>
-                        <div class="float-sm-right">
-                            <a class="btn btn-primary btn-sm box-tools" href="/admin/member/new">
-                                <i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;New Member
-                            </a>
-                        </div>
+                        
                     </div>
                     <div class="card-body">
                         <div class="table-responsive-lg">
@@ -71,6 +67,11 @@ Data Member
                     <td>Gmail Account</td>
                     <td>:</td>
                     <td>{{ 'gmail' }}</td>
+                </tr>
+                <tr>
+                    <td>Institute</td>
+                    <td>:</td>
+                    <td>{{ 'institute' }}</td>
                 </tr>
                 <tr>
                     <td>Address</td>

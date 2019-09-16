@@ -40,7 +40,7 @@ class memberController extends Controller
         return DataTables::of($member)
             ->addIndexColumn()
             ->addColumn('action', function ($member) {
-                return '<a class="btn-sm btn-warning" id="btn-edit" href="/admin/member/store?id=' . $member->id . '"><i class="fa fa-edit"></i></a>
+                return '
                  <a class="btn-sm btn-danger" data-toggle="tooltip" title="Hapus Data" id="btn-delete" href="#" onclick="hapus(\'' . $member->id . '\',event)"><i class="fa fa-trash"></i></a>
                  <a class="btn-sm btn-info details-control" id="btn-detail" href="#"><i class="fa fa-folder-open"></i></a>
                  ';
