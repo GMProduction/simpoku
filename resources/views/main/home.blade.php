@@ -156,7 +156,7 @@
                 <div class="card border-0 m-0 p-0">
                     <div class="row">
                         <div class="col-lg-10 col-sm-6" style="bottom: -5px">
-                            <h4 class=" heading-large title-homeEven">Incoming Events </h4>
+                            <h4 class=" heading-large title-homeEven">Upcoming Events </h4>
                         </div>
                         <div class="col-lg-2 col-sm-6" style="bottom: -5px">
                             <a href="event" class="pull-right">Show more</a>
