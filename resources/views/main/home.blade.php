@@ -100,7 +100,7 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol> --}}
         <div class="carousel-inner">
-                @foreach ($homeCarousell as $data )
+                @foreach ($carousel as $data )
     
                 @if($loop->first)
                 <div class="carousel-item active">
@@ -138,7 +138,7 @@
 </div>
 
 
-<div class="container border" style="margin-top: -80px; background-color: white;  border-radius: 1rem !important">
+<div class="container border" style="margin-top: -60px; background-color: white;  border-radius: 1rem !important">
 
 
 
@@ -156,7 +156,7 @@
                 <div class="card border-0 m-0 p-0">
                     <div class="row">
                         <div class="col-lg-10 col-sm-6" style="bottom: -5px">
-                            <h4 class=" heading-large title-homeEven">Incoming Events </h4>
+                            <h4 class=" heading-large title-homeEven">Upcoming Events </h4>
                         </div>
                         <div class="col-lg-2 col-sm-6" style="bottom: -5px">
                             <a href="event" class="pull-right">Show more</a>
