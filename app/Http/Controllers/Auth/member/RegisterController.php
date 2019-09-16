@@ -157,6 +157,7 @@ class RegisterController extends Controller
 
     public function verify($token)
     {
+        $this->middleware('auth');
         $member = memberModel::where('remember_token', $token)->first();
         $member->email_verified_at = Carbon::now();
         if ($member->save()) {
@@ -166,7 +167,8 @@ class RegisterController extends Controller
 
     public function resend($id)
     {
-        $member = memberModel::where('id', $id)->first();
+        $this->middleware('auth');
+        $member = memberModel::where('id', $id)->firstOrFail();
         dispatch(new SendVerificationEmail($member));
         return redirect()->back();
     }
