@@ -169,7 +169,6 @@ Route::group(['middleware' => 'auth'], function () {
 /* ANDROID API */
 /* USER */
 Route::post('/apiLogin', 'member\userControl@apiLogin');
-Route::get('/apiEventSpec/{spec}', 'member\eventControl@apiEventSpec');
 Route::get('/getPasswordUser/{email}', 'member\userControl@getPasswordUser');
 Route::get('/cekAvailableAccount/{email}', 'member\userControl@cekAvailableAccount');
 Route::post('/apiSimpanPendaftaran', 'member\userControl@apiSimpanPendaftaran');
@@ -183,8 +182,9 @@ Route::get('/apiCekFavorite/{id}/{idEvent}', 'member\eventControl@apiCekFavorite
 Route::get('/apiTampilFavorite/{idUser}', 'member\eventControl@apiTampilFavorite');
 Route::get('/apiTampilSpec', 'member\eventControl@apiTampilSpec');
 Route::get('/apiDataEvent', 'member\eventControl@apiDataEvent');
-Route::get('/apiEventIncoming', 'member\eventControl@apiEventIncoming');
 Route::get('/apiDetailEvent/{id}', 'member\eventControl@apiDetailEvent');
-Route::get('/searchDataEvent/{id}', 'member\eventControl@searchDataEvent');
-Route::get('/apiEventMonth/{month}', 'member\eventControl@apiEventMonth');
 Route::get('/apiDataSlider', 'member\eventControl@apiDataSlider');
+Route::get('/searchDataEvent/{id}', 'member\eventControl@searchDataEvent');
+Route::get('/apiEventIncoming', 'member\eventControl@apiEventIncoming');
+Route::get('/apiEventMonth/{month}', 'member\eventControl@apiEventMonth');
+Route::get('/apiEventSpec/{spec}', 'member\eventControl@apiEventSpec');
