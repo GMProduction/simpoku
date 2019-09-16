@@ -20,12 +20,15 @@ Auth::routes();
 Route::get('/sel', function () {
     return view('admin.test');
 });
+Route::get('/testverify', function () {
+    return view('auth.member.verify');
+});
 
 //register
 Route::get('/register', 'Auth\member\RegisterController@showRegistrationForm');
 Route::post('/detailregister', 'Auth\member\RegisterController@showDetailRegistration');
 Route::post('/postregister', 'Auth\member\RegisterController@register');
-Route::get('/verifyaccount/{token}', 'Auth\RegisterMemberController@verify');
+
 
 //gauth
 Route::get('/gauth', 'Auth\gauth\googleController@redirectToGoogle');
@@ -44,6 +47,8 @@ Route::post('/postloginadmin', 'Auth\Admin\LoginController@postlogin');
 Route::get('/logoutadmin', 'Auth\Admin\LoginController@logout')->name('logoutadmin');
 
 Route::group(['middleware' => 'memberonly'], function () {
+    Route::get('/verifyaccount/{token}', 'Auth\member\VerificationController@verify');
+    Route::get('/resend/{id}', 'Auth\member\VerificationController@resend');
     Route::get('/', 'member\eventController@index')->name('event');
     Route::get('/event', 'member\eventController@listEventAll')->name('listEventAll');
     Route::get('/eventlist', 'member\eventController@listEventAll')->name('listEventAll');
@@ -66,11 +71,18 @@ Route::group(['middleware' => 'memberonly'], function () {
     Route::get('/dataLoad', function () {
         return view('main/data/dataeventload');
     })->name('register');
+    Route::post('/detailRegister', function () {
+        return view('auth/member/registerDetail');
+    })->name('about');
+    Route::get('eventsearch','member\eventController@searchEvent')->name('eventsearch');
     Route::get('/member', function () {
         return view('main/dashboard');
     })->name('about');
 
-    Route::get('/loadmore/load_data', 'member\eventController@load_data')->name('loadmore.load_data');
+    Route::get('/dataLoad/load_data', 'member\eventController@load_data')->name('loadmore.load_data');
+
+    Route::get('dataevent/download','member\eventController@download_pdf')->name('download_pdf');
+
 });
 
 
@@ -89,6 +101,34 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/update', 'admin\master\userController@edit');
         Route::delete('/destroy', 'admin\master\userController@delete');
     });
+
+    Route::group(['prefix' => 'member'], function () {
+        Route::get('/', 'admin\master\memberController@index')->name('pagemember');
+        Route::get('/view', 'admin\master\memberController@getData');
+        Route::get('/new', 'admin\master\memberController@showForm');
+        Route::post('/add', 'admin\master\memberController@add');
+        Route::get('/store', 'admin\master\memberController@store');
+        Route::post('/update', 'admin\master\memberController@edit');
+        Route::delete('/destroy', 'admin\master\memberController@delete');
+    });
+    Route::group(['prefix' => 'specialist'], function () {
+        Route::get('/', 'admin\master\specialisController@index')->name('pagespecialist');
+        Route::get('/view', 'admin\master\specialisController@getData');
+        Route::get('/new', 'admin\master\specialisController@showForm');
+        Route::post('/add', 'admin\master\specialisController@add');
+        Route::get('/store', 'admin\master\specialisController@store');
+        Route::post('/update', 'admin\master\specialisController@edit');
+        Route::delete('/destroy', 'admin\master\specialisController@delete');
+    });
+    Route::group(['prefix' => 'banner'], function () {
+        Route::get('/', 'admin\master\bannerController@index')->name('pagebanner');
+        Route::get('/view', 'admin\master\bannerController@getData');
+        Route::get('/new', 'admin\master\bannerController@showForm');
+        Route::post('/add', 'admin\master\bannerController@add');
+        Route::get('/update', 'admin\master\bannerController@edit');
+        Route::delete('/destroy', 'admin\master\bannerController@delete');
+    });
+
     Route::group(['prefix' => 'event'], function () {
         Route::get('/', 'admin\master\eventController@index')->name('pageevent');
         Route::get('/view', 'admin\master\eventController@getData');
@@ -99,15 +139,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::delete('/destroy', 'admin\master\eventController@delete');
         Route::post('/test', 'admin\master\eventController@test');
         Route::get('/getCities', 'admin\master\eventController@getCities');
-    });
-    Route::group(['prefix' => 'member'], function () {
-        Route::get('/', 'admin\master\memberController@index')->name('pagemember');
-        Route::get('/view', 'admin\master\memberController@getData');
-        Route::get('/new', 'admin\master\memberController@showForm');
-        Route::post('/add', 'admin\master\memberController@add');
-        Route::get('/store', 'admin\master\memberController@store');
-        Route::post('/update', 'admin\master\memberController@edit');
-        Route::delete('/destroy', 'admin\master\memberController@delete');
     });
 });
 

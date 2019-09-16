@@ -75,7 +75,7 @@
 
 
                     </table>
-                    <a class="btn btn-primary rounded">Download pdf</a>
+                    <a class="btn btn-primary rounded" href="dataevent/download?id={{$even->id}}">Download pdf</a>
 
 
                 </div>

@@ -19,7 +19,7 @@ class eventController extends Controller
         $hari =  $mytime->format('d');
 
         $event = eventModel::query()
-            ->select('judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
+            ->select('id','judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
             ->orderBy('tglMulai', 'ASC')
             ->whereDay('tglMulai', '>', $hari)
             ->take(8)
@@ -275,12 +275,46 @@ class eventController extends Controller
 
 
         if ($jum != null) {
-            $returnHtml = view('main/data/dataListEvent')->with('eventList', $event)->render();
+            $returnHtml = view('main/data/dataListEvent')->with('event', $event)->render();
             return response()->json(array('success' => true, 'html' => $returnHtml));
         } else {
             $returnHtml = view('main/data/listEventKosong')->render();
             return response()->json(array('success' => true, 'html' => $returnHtml));
         }
+    }
+
+    public function searchEvent(Request $req)
+    {
+        $event = eventModel::query()
+            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
+            ->where('judul', 'like', '%' . $req->par . '%')
+            ->orwhere('deskripsi', 'like', '%' . $req->par . '%')
+            ->orwhere('spec', 'like', '%' . $req->par . '%')
+            ->orwhereMonth('tglMulai', 'like', '%' . $req->par . '%')
+            ->orwhereYear('tglMulai', 'like', '%' . $req->par . '%')
+            ->orwhere('city', 'like', '%' . $req->par . '%')
+            ->orwhere('region', 'like', '%' . $req->par . '%')
+            ->get();
+
+
+        //    return $event;
+
+        $data = [
+            'event' => $event,
+            'param' => $req->par
+        ];
+         return view('main/carievent')->with($data)->render();
+
+        // $jum = $event->first();
+
+
+        // if ($jum != null) {
+        //     $returnHtml = view('main/data/dataListEvent')->with('event', $event)->render();
+        //     return response()->json(array('success' => true, 'html' => $returnHtml));
+        // } else {
+        //     $returnHtml = view('main/data/listEventKosong')->render();
+        //     return response()->json(array('success' => true, 'html' => $returnHtml));
+        // }
     }
 
     public function load_data(Request $req)
@@ -318,7 +352,7 @@ class eventController extends Controller
                         }
                     })
                     ->orderBy('id', 'DESC')
-                    ->limit(3)
+                    ->limit(2)
                     ->get();
             } else {
                 /*
@@ -349,7 +383,7 @@ class eventController extends Controller
                         }
                     })
                     ->orderBy('id', 'DESC')
-                    ->limit(3)
+                    ->limit(6)
                     ->get();
             }
             $output = '';
@@ -365,7 +399,7 @@ class eventController extends Controller
                          </div>
                          <div class="media-body pt-1">
                              <div class="time-cat pb-1 pl-0">
-                                 <span class="badge">' . $even->region . '</span>
+                                 <span class="badge">' . $even->city .', '.  $even->region . '</span>
                                  <small class="text-time">' . date("d M", strtotime($even->tglMulai)) . ' s/d
                                      ' . date("d M Y", strtotime($even->tglAkhir)) . '</small>
                              </div>
@@ -379,18 +413,33 @@ class eventController extends Controller
                     $last_id = $even->id;
                 }
                 $output .= '
-                <div id="load_more">
-                    <button type="button" nama="load_more_button" id="load_more_button" class="btn btn-info form-control" data-id="' . $last_id . '">Load More</button>
+                <div id="load_more" class="pt-2">
+                    <button type="button" name="load_more_button" id="load_more_button" class="btn btn-light form-control load" data-id="' . $last_id . '">Load More</button>
                 </div>
             ';
             } else {
                 $output .= '
-                    <div id="load_more">
-                        <button type="button" nama="load_more_button" class="btn btn-info form-control">No Data Found</button>
+                    <div id="load_more" class="pt-2">
+                        <button type="button" name="load_more_button" class="btn btn-light form-control">No Data Found</button>
                     </div>
                 ';
             }
             echo $output;
         }
+    }
+
+    public function download_pdf(Request $req){
+
+         $file= public_path(). '\\pdf\\'.$req->id.'.pdf';
+
+         $headers = array(
+
+            'Content-Type: application/pdf',
+
+          );
+            return Response()->download($file, 'filename.pdf', $headers);
+
+        
+         
     }
 }

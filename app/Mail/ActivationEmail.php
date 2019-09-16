@@ -31,6 +31,6 @@ class ActivationEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Simpoku Verification Email')->view('auth.member.verify')->with(['remember_token' => $this->member->remember_token]);
+        return $this->subject('Simpoku Verification Email')->view('auth.member.verify')->with(['remember_token' => $this->member->remember_token, 'fullname' => $this->member->fullname]);
     }
 }

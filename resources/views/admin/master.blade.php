@@ -101,6 +101,18 @@
                                         <p>Members</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="/admin/specialist" class="nav-link ">
+                                        <i class="fa fa-users nav-icon"></i>
+                                        <p>Specialist</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/banner" class="nav-link ">
+                                        <i class="fa fa-users nav-icon"></i>
+                                        <p>Banner</p>
+                                    </a>
+                                </li>
 
                                 <li class="nav-item">
                                     <a href="/admin/event" class="nav-link ">
@@ -108,12 +120,6 @@
                                         <p>Events</p>
                                     </a>
                                 </li>
-                                {{-- <li class="nav-item">
-                                    <a href="/event" class="nav-link ">
-                                        <i class="fa fa-desktop nav-icon"></i>
-                                        <p>Banner Slides</p>
-                                    </a>
-                                </li> --}}
                             </ul>
                         </li>
 

@@ -21,7 +21,7 @@ Event Baru
                     <div class="card-header">
                         <h3 class="card-title">Form Tambah Event</h3>
                     </div>
-                    <form method="post" action="/admin/event/test" enctype="multipart/form-data" id="formevent" onsubmit="addparam()">
+                    <form method="post" action="/admin/event/add" enctype="multipart/form-data" id="formevent">
                     <div class="card-body">
                          {{ csrf_field() }}
                         <div class="form-group">
@@ -96,8 +96,8 @@ Event Baru
                                         @foreach ($provinces as $item)
                                             <option value="{{$item['id']}}">{{$item['name']}}</option>
                                         @endforeach
-                                        
                                     </select>
+                                <input type="hidden" name="regionName" value="{{$provinces[0]['name']}}" id="regionName">
                                 </div>
                              </div>
                              <div class="col-md-6">
@@ -113,13 +113,13 @@ Event Baru
                              <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="tglMulai">Tanggal Mulai</label>
-                                        <input class="form-control" type="date" name="tglMulai" id="tglMulai" required>
+                                        <input class="form-control" type="date" name="tglMulai" id="tglMulai" >
                                     </div>
                              </div>
                              <div class="col-md-4">
                                  <div class="form-group">
                                         <label for="tglAkhir">Tanggal Akhir</label>
-                                        <input class="form-control" type="date" name="tglAkhir" id="tglAkhir" required>
+                                        <input class="form-control" type="date" name="tglAkhir" id="tglAkhir" >
                                 </div>
                              </div>
                          </div>
@@ -185,23 +185,18 @@ Event Baru
 
 $(document).ready(function () {
 
-
-
-
     getCities();
-    $('#formevent').submit(function (e) { 
-        var province = $('#region option:selected').html();
-        $('#region').val('asu');
-        alert(province);
-    });
 
     $('#region').on('change', function () {
+        var regionName = $('#region option:selected').text();
+        $('#regionName').val(regionName);
         getCities();
     });
     
     $('#city').select2({
         placeholder: 'Select a City'
     });
+    
 
     $('.select2').select2({
         theme: 'bootstrap4'
