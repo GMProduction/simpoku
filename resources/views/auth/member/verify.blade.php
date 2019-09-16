@@ -20,7 +20,7 @@
             <img class="img-fluid" src="{{ asset('assets/gambar/logo1.png') }}" alt="">
         </div>
         <div class="card-body">
-            Hi, Member<br>
+            Hi, {{$fullname}}<br>
             Congratulations! Your Register hass been successfully.<br>
             Please Follow This <a href="{{ url('/verifyaccount/' . $remember_token) }}">Link</a> To Verify Your Simpoku Account and Get More Fitur From Simpoku.com. 
             <br>
