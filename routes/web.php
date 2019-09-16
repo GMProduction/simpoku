@@ -20,12 +20,15 @@ Auth::routes();
 Route::get('/sel', function () {
     return view('admin.test');
 });
+Route::get('/testverify', function () {
+    return view('auth.member.verify');
+});
 
 //register
 Route::get('/register', 'Auth\member\RegisterController@showRegistrationForm');
 Route::post('/detailregister', 'Auth\member\RegisterController@showDetailRegistration');
 Route::post('/postregister', 'Auth\member\RegisterController@register');
-Route::get('/verifyaccount/{token}', 'Auth\RegisterMemberController@verify');
+
 
 //gauth
 Route::get('/gauth', 'Auth\gauth\googleController@redirectToGoogle');
@@ -137,7 +140,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::group(['middleware' => 'auth'], function () {
 
-
+    Route::get('/verifyaccount/{token}', 'Auth\member\RegisterMemberController@verify');
 
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
