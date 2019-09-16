@@ -115,7 +115,7 @@
 
 
 
-    <footer class="warna-burgundy footer" style="height: 300px">
+    <footer class=" footer" style="height: 300px;">
         <div class="container">
             <div class="row pt-4 mr-3">
                 <div class="col-6">

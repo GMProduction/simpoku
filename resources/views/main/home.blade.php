@@ -100,7 +100,7 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol> --}}
         <div class="carousel-inner">
-                @foreach ($homeCarousell as $data )
+                @foreach ($carousel as $data )
     
                 @if($loop->first)
                 <div class="carousel-item active">
