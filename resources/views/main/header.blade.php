@@ -55,7 +55,7 @@
                         <li class="upper-links"><a class="links" href="event"><i class="fa fa-calendar"
                                     aria-hidden="true"></i> Event</a></li>
                         @if (auth()->guard('member')->check())
-                            {{auth()->guard('member')->user()->fullname}}
+                            Hi, {{auth()->guard('member')->user()->fullname}}
                             <li class="upper-links"><a class="links" href="/logout"><i class="fa fa-sign-out"
                                     aria-hidden="true"></i> Logout</a></li>
                         @else
