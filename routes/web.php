@@ -140,8 +140,8 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('/verifyaccount/{token}', 'Auth\member\RegisterController@verify');
-    Route::get('/resend/{id}', 'Auth\member\RegisterController@resend');
+    Route::get('/verifyaccount/{token}', 'Auth\member\VerificationController@verify');
+    Route::get('/resend/{id}', 'Auth\member\VerificationController@resend');
 
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
