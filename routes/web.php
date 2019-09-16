@@ -47,6 +47,8 @@ Route::post('/postloginadmin', 'Auth\Admin\LoginController@postlogin');
 Route::get('/logoutadmin', 'Auth\Admin\LoginController@logout')->name('logoutadmin');
 
 Route::group(['middleware' => 'memberonly'], function () {
+    Route::get('/verifyaccount/{token}', 'Auth\member\VerificationController@verify');
+    Route::get('/resend/{id}', 'Auth\member\VerificationController@resend');
     Route::get('/', 'member\eventController@index')->name('event');
     Route::get('/event', 'member\eventController@listEventAll')->name('listEventAll');
     Route::get('/eventlist', 'member\eventController@listEventAll')->name('listEventAll');
@@ -140,8 +142,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('/verifyaccount/{token}', 'Auth\member\VerificationController@verify');
-    Route::get('/resend/{id}', 'Auth\member\VerificationController@resend');
+
 
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
