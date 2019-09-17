@@ -108,7 +108,7 @@ class eventController extends Controller
                 //save to thumbnails 150x150
                 $image_resize->save(public_path('assets/thumbnails/' . $namaFoto));
                 //save to origin
-                $r->gambar->move(public_path('assets/foto'), $namaFoto);
+                // $r->gambar->move(public_path('assets/foto'), $namaFoto);
             } else {
                 $namaFoto = '';
             }
