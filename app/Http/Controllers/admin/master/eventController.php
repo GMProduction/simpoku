@@ -30,7 +30,6 @@ class eventController extends Controller
         $provinces = getProvince($token);
 
         return view('admin.master.event.form')->with(['spec' => $spec, 'provinces' => $provinces]);
-        // return view('admin.master.event.form')->with(['spec' => $spec, 'provinces' => $provinces]);
     }
 
     public function getCities(Request $r)
@@ -43,8 +42,11 @@ class eventController extends Controller
         $spec = specModel::query()
             ->select('id', 'spec')
             ->get();
+
+        $token = getToken();
+        $provinces = getProvince($token);
         $event = eventModel::where('id', '=', $r->id)->firstOrFail();
-        return view('admin.master.event.update')->with(['event' => $event, 'spec' => $spec]);
+        return view('admin.master.event.update')->with(['event' => $event, 'spec' => $spec, 'provinces' => $provinces]);
     }
 
     public function getData()
@@ -57,7 +59,7 @@ class eventController extends Controller
         return DataTables::of($event)
             ->addIndexColumn()
             ->addColumn('action', function ($event) {
-                return '<a class="btn-sm btn-warning" id="btn-edit" href="/admin/event/store?id=' . $event->id . '"><i class="fa fa-edit"></i></a>
+                return '
                  <a class="btn-sm btn-danger" data-toggle="tooltip" title="Hapus Data" id="btn-delete" href="#" onclick="hapus(\'' . $event->id . '\',event)"><i class="fa fa-trash"></i></a>
                  <a class="btn-sm btn-info details-control" id="btn-detail" href="#"><i class="fa fa-folder-open"></i></a>
                  ';

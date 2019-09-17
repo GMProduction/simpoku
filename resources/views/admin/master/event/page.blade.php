@@ -88,6 +88,11 @@
                     <td>:</td>
                     <td>{{ 'region' }}</td>
                 </tr>
+                <tr>
+                    <td>City</td>
+                    <td>:</td>
+                    <td>{{ 'city' }}</td>
+                </tr>
             </tbody>
         </table>
         </div>

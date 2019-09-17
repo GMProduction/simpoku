@@ -110,13 +110,13 @@ Event Baru
                              </div>
                          </div>
                          <div class="row">
-                             <div class="col-md-4">
+                             <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="tglMulai">Tanggal Mulai</label>
                                         <input class="form-control" type="date" name="tglMulai" id="tglMulai" >
                                     </div>
                              </div>
-                             <div class="col-md-4">
+                             <div class="col-md-6">
                                  <div class="form-group">
                                         <label for="tglAkhir">Tanggal Akhir</label>
                                         <input class="form-control" type="date" name="tglAkhir" id="tglAkhir" >

@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section('judul')
-New Specialis
+New Specialist
 @endsection
 
 @section('content')
@@ -11,14 +11,14 @@ New Specialis
                 <div class="text-right">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/admin"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="/admin/specialist">Master Specialis</a></li>
-                        <li class="breadcrumb-item active">Form New Specialis</li>
+                        <li class="breadcrumb-item"><a href="/admin/specialist">Master Specialist</a></li>
+                        <li class="breadcrumb-item active">Form New Specialist</li>
                     </ol>
                 </div>
 
                 <div class="card card-outline card-info">
                     <div class="card-header">
-                        <h3 class="card-title">Form New Specialis</h3>
+                        <h3 class="card-title">Form New Specialist</h3>
                     </div>
                     <form method="post" action="/admin/specialist/add">
                     <div class="card-body">
