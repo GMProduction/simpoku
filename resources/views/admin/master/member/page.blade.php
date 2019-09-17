@@ -150,7 +150,7 @@ $(document).ready(function () {
 function destroy(id) {
     $.ajax({
         type: 'POST',
-        url: '/admin/member/destory',
+        url: '/admin/member/destroy',
         data: {
             _method: 'DELETE',
             _token: $('input[name=_token]').val(),
