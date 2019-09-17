@@ -116,7 +116,7 @@ class eventController extends Controller
             if ($r->hasFile('filepdf')) {
                 $filepdf = $r->file('filepdf');
                 $namapdf = $r->judul . '.' . $filepdf->getClientOriginalExtension();
-                $r->filepdf->move(public_path('pdf'), $namapdf);
+                $r->filepdf->move(public_path('assets/pdf'), $namapdf);
             } else {
                 $namapdf = '';
             }
