@@ -187,40 +187,9 @@
     </footer>
 
     <style>
-        #tw:hover {
-            color: #1DA1F2;
-        }
+       
 
-        #fb:hover {
-            color: #4267B2;
-        }
-
-        #ad:hover {
-            color: #A4C639;
-        }
-
-        .ig:hover {
-            background: pink;
-            background: -webkit-radial-gradient(33% 100% circle, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
-            background: radial-gradient(circle at 33% 100%, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-
-
-        }
-
-        .instagrsam {
-            background: pink;
-            background: -webkit-radial-gradient(33% 100% circle, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
-            background: radial-gradient(circle at 33% 100%, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-
-
-
-
-
-        }
+        
     </style>
 
 
