@@ -120,7 +120,7 @@
 
                                     <div class="align-self-end">
                                         {{-- <span class="badge">{{$data->city}}, {{$data->regional}}</span> --}}
-                                        <h4 class="card-title">{{$data->judul}} </h4>
+                                        <h4 class="card-title">{{$data->judul}} - {{date('d M Y', strtotime($data->tglMulai))}} </h4>
                                         <p class="textfeat" style="display: none;">{{$data->deskripsi}}</p>
                                     </div>
 

@@ -29,7 +29,7 @@ class eventController extends Controller
             ->get();
 
         $carousel = CarouselModel::query()
-            ->select('tb_slide.idEvent', 'tb_slide.judul', 'tb_slide.gambar', 'terlihat', 'deskripsi','city','region','url','jenis')
+            ->select('tb_slide.idEvent', 'tb_slide.judul', 'tb_slide.gambar', 'terlihat','tglMulai', 'deskripsi','city','region','url','jenis')
             ->leftJoin('tb_event','tb_slide.idEvent', 'tb_event.id')
             ->where('terlihat', '=', 'ya')
             ->get();
