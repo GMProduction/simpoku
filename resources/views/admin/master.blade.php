@@ -46,7 +46,7 @@
                 <!-- Notifications Dropdown Menu -->
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user"></i>
+                    <i class="fa fa-user"></i>&nbsp;{{auth()->guard('web')->user()->username}}
                     </a>
                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
                         <a href="/logoutadmin" class="dropdown-item dropdown-footer text-dark">Logout</a>
@@ -60,7 +60,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
+            <a href="/" class="brand-link">
                 <!-- <img src="{{asset ('/adminlte/img/logoiks.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
                 <span class="brand-text font-weight-light">Simpoku Dashboard</span>
             </a>
@@ -72,7 +72,8 @@
                     <div class="image">
                         <img src="{{asset ('/adminlte/img/avatar5.png')}}" class="img-circle elevation-2" alt="User Image">
                     </div>
-                    <div class="info">
+                    <div class="info text-light">
+                        &nbsp;{{auth()->guard('web')->user()->username}}
                     </div>
                 </div>
 
@@ -91,25 +92,25 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="/admin/user" class="nav-link ">
-                                        <i class="fa fa-users nav-icon"></i>
+                                        <i class="fa fa-user nav-icon"></i>
                                         <p>Admin</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/admin/member" class="nav-link ">
-                                        <i class="fa fa-users nav-icon"></i>
+                                        <i class="fa fa-address-book nav-icon"></i>
                                         <p>Members</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/admin/specialist" class="nav-link ">
-                                        <i class="fa fa-users nav-icon"></i>
+                                        <i class="fa fa-user-md nav-icon"></i>
                                         <p>Specialist</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/admin/banner" class="nav-link ">
-                                        <i class="fa fa-users nav-icon"></i>
+                                        <i class="fa fa-desktop nav-icon"></i>
                                         <p>Banner</p>
                                     </a>
                                 </li>

@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section('judul')
-Edit user
+Edit Event
 @endsection
 
 @section('content')
@@ -12,7 +12,7 @@ Edit user
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/admin"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;Dashboard</a></li>
                     <li class="breadcrumb-item"><a href="/admin/event">Master Event</a></li>
-                    <li class="breadcrumb-item active">Form Event User</li>
+                    <li class="breadcrumb-item active">Form Edit Event</li>
                 </ol>
             </div>
 
@@ -43,58 +43,85 @@ Edit user
                             @enderror
                     </div>
                     <div class="row">
-                            <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Tempat Event</label>
-                                <input type="text" class="form-control @error('tempat') is-invalid @enderror" placeholder="Tempat Event" id="tempat" name="tempat" value="{{ old('tempat', $event->tempat)}}" autocomplete="tempat">
-                                    @error('tempat')
-                                        <span class="msg invalid-feedback" role="alert">
-                                            {{$message}}
-                                        </span>
-                                    @enderror
-                            </div>
-                            </div>
-                            <div class="col-md-6">
+                             <div class="col-md-4">
                                 <div class="form-group">
-                                <label>Region Event</label>
-                                <input type="text" class="form-control @error('region') is-invalid @enderror" placeholder="region Event" id="region" name="region" value="{{ old('region', $event->region)}}" >
-                                    @error('region')
-                                        <span class="msg invalid-feedback" role="alert">
-                                            {{$message}}
-                                        </span>
-                                    @enderror
+                                    <label>Tempat Event</label>
+                                    <input type="text" class="form-control @error('tempat') is-invalid @enderror" placeholder="Tempat Event" id="tempat" name="tempat" value="{{ old('tempat', $event->tempat)}}" autocomplete="tempat">
+                                        @error('tempat')
+                                            <span class="msg invalid-feedback" role="alert">
+                                                {{$message}}
+                                            </span>
+                                        @enderror
+                                </div>
+                             </div>
+                             <div class="col-md-4">
+                                <div class="form-group">
+                                     <label>Contact Person</label>
+                                        <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                        </div>
+                                        <input id="namaContact" name="namaContact" type="text" class="form-control @error('namaContact') is-invalid @enderror" placeholder="Contact Person" aria-label="namaContact" aria-describedby="basic-addon1" value="{{ old('namaContact', $event->namaContact)}}">
+                                        @error('namaContact')
+                                            <span class="msg invalid-feedback" role="alert">
+                                                {{$message}}
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
+                             <div class="col-md-4">
+                                <div class="form-group">
+                                     <label>Contact Phone</label>
+                                        <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                                        </div>
+                                        <input id="noContact" name="noContact" type="number" class="form-control @error('noContact') is-invalid @enderror" placeholder="Contact Phone" aria-label="noContact" aria-describedby="basic-addon1" value="{{ old('noContact', $event->noContact)}}">
+                                        @error('noContact')
+                                            <span class="msg invalid-feedback" role="alert">
+                                                {{$message}}
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
+                             
                         </div>
                         <div class="row">
-                            <div class="col-md-4">
+                             <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Region</label>
+                                    <select id="region" class="form-control select2" name="region" data-placeholder="Select a Province">
+                                        @foreach ($provinces as $item)
+                                            <option value="{{$item['id']}}" {{$item['name'] == $event['region'] ? 'selected="selected"' : ''}}>{{$item['name']}}</option>
+                                        @endforeach
+                                    </select>
+                                <input type="hidden" name="regionName" value="{{$provinces[0]['name']}}" id="regionName">
+                                </div>
+                             </div>
+                             <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>City</label>
+                                    <select id="city" class="form-control select2" name="city">
+                                        
+                                    </select>
+                                </div>
+                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="tglMulai">Tanggal Mulai</label>
                                     <input class="form-control" type="date" name="tglMulai" id="tglMulai" value="{{ old('tglMulai', $event->tglMulai)}}" required>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="tglAkhir">Tanggal Akhir</label>
                                     <input class="form-control" type="date" name="tglAkhir" id="tglAkhir" value="{{ old('tglAkhir', $event->tglAkhir)}}" required>
-                            </div>
-                            </div>
-                            <div class="col-md-4">
-                            <div class="form-group">
-                                    <label>Kontak</label>
-                                    <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-phone" aria-hidden="true"></i></span>
-                                    </div>
-                                    <input id="contact" name="contact" type="number" class="form-control @error('contact') is-invalid @enderror" placeholder="Contact" aria-label="contact" aria-describedby="basic-addon1" value="{{ old('contact', $event->contact)}}">
-                                    @error('contact')
-                                        <span class="msg invalid-feedback" role="alert">
-                                            {{$message}}
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
-                        </div>
                         </div>
                         <div class="form-group">
                         <label>Spesialis Event</label>
@@ -127,10 +154,10 @@ Edit user
                         </div>
                         <div class="form-group">
                             <label>Specialis</label>
-                                <select class="form-control select2" multiple="multiple" data-placeholder="Select a State"
+                                <select class="form-control select2" multiple="multiple"
                                         style="width: 100%;" name="spec[]" id="spec">
                                         @foreach ($spec as $item)
-                                            <option value="{{$item->gelar}}" {{strpos($item->gelar)}}>{{$item->spec}}</option>
+                                            <option value="{{$item->spec}}">{{$item->spec}}</option>
                                         @endforeach
                                 </select>
                         </div>
@@ -139,6 +166,7 @@ Edit user
                     <div class="text-right">
                         <button type="submit" id="btnSimpan" class="btn btn-primary"><i id="iconbtn" class="fa  fa-check-circle" aria-hidden="true"></i>&nbsp;Simpan</button>
                     </div>
+                    {{$spec}}
                 </div>
             </form>
             </div>
@@ -148,9 +176,96 @@ Edit user
 @endsection
 
 @section('css')
-    
+<link rel="stylesheet" href="{{ asset('/adminlte/plugins/select2/select2.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('/adminlte/plugins/select2/select2-bootstrap4.min.css')}}">    
 @endsection
 
 @section('script')
+<script src="{{ asset('/adminlte/plugins/select2/select2.min.js') }}"></script>
+<script>
+    $(document).ready(function () {
+
+        setCities();
+
+        $('#region').on('change', function () {
+            var regionName = $('#region option:selected').text();
+            $('#regionName').val(regionName);
+            getCities();
+        });
+
+        $('.select2').select2({
+            theme: 'bootstrap4'
+        });
+
     
+    });
+
+    function setCities(){
+        var propinsi = $('#region').val()
+        $('#city').children().remove();
+        $.ajax({
+            type: "GET",
+            url: "/admin/event/getCities",
+            data: {
+                idpropinsi: propinsi
+            },
+            cache: false,
+            dataType: "json",
+            beforeSend: function(){
+                console.log('lagi Loading');
+                $('#loadingimage').show();
+            },
+            success: function (response) {
+                console.log('loading selesai');
+                $('#loadingimage').hide();
+                for (i = 0; i < Object.keys(response).length; i++) {
+                    $('#city').append($('<option>').text(response[i].name).attr('value', response[i].name))
+                    if (response[i].name == '{{$event->city}}') {
+                        console.log('sama dengan'+response[i].name);
+                        $("#city").select2("val", response[i].name);
+                    }
+                }
+               console.log('{{$event->city}}');
+                
+            },
+            errors: function (response) {
+                console.log(response);
+                
+              }
+        });
+    }
+    function getCities(){
+        var propinsi = $('#region').val()
+        $('#city').children().remove();
+        $.ajax({
+            type: "GET",
+            url: "/admin/event/getCities",
+            data: {
+                idpropinsi: propinsi
+            },
+            cache: false,
+            dataType: "json",
+            beforeSend: function(){
+                console.log('lagi Loading');
+                $('#loadingimage').show();
+            },
+            success: function (response) {
+                console.log('loading selesai');
+                $('#loadingimage').hide();
+                for (i = 0; i < Object.keys(response).length; i++) {
+                    $('#city').append($('<option>').text(response[i].name).attr('value', response[i].name))
+                    if (i == 0) {
+                        $("#city").select2("val", response[i].name);
+                    }
+                }
+               console.log('{{$event->city}}');
+                
+            },
+            errors: function (response) {
+                console.log(response);
+                
+              }
+        });
+}
+</script>    
 @endsection

@@ -66,12 +66,12 @@
                 <tr>
                     <td>Gambar Event</td>
                     <td>:</td>
-                    <td><a href="/foto/{{ 'gambar' }}" target="_blank">Gambar Event</a></td>
+                    <td><a href="/assets/foto/{{ 'gambar' }}" target="_blank">Gambar Event</a></td>
                 </tr>
                 <tr>
                     <td>PDF</td>
                     <td>:</td>
-                    <td><a href="/pdf/{{'filepdf'}}" target="_blank">Download</a></td>
+                    <td><a href="/assets/pdf/{{'filepdf'}}" target="_blank">Download</a></td>
                 </tr>
                 <tr>
                     <td>Deskripsi</td>
@@ -87,6 +87,11 @@
                     <td>Region</td>
                     <td>:</td>
                     <td>{{ 'region' }}</td>
+                </tr>
+                <tr>
+                    <td>City</td>
+                    <td>:</td>
+                    <td>{{ 'city' }}</td>
                 </tr>
             </tbody>
         </table>
