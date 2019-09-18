@@ -75,7 +75,12 @@
 
 
                     </table>
-                    <a class="btn btn-primary rounded" href="dataevent/download?id={{$even->id}}">Download pdf</a>
+                    @if ($even->filepdf == '')
+                    <a class="btn btn-primary rounded" disabled href="">Download pdfs</a>
+                    @else
+                    <a class="btn btn-primary rounded" href="dataevent/download?pdf={{$even->filepdf}}">Download pdfb</a>
+                    @endif
+                   
 
 
                 </div>

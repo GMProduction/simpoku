@@ -1,7 +1,7 @@
 @extends('main.header')
 
 @section('content')
-    
+
 <div class="container bawah">
     <div class="">
         <h3>Simpoku</h3>
@@ -13,6 +13,9 @@
         <h5>Download apps</h5>
     </div>
 </div>
+
+
+
 
 
 

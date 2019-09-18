@@ -26,7 +26,8 @@ class eventController extends Controller
             ->get();
 
         $carousel = CarouselModel::query()
-            ->select('id', 'judul', 'gambar', 'terlihat')
+            ->select('tb_slide.idEvent', 'tb_slide.judul', 'tb_slide.gambar', 'terlihat', 'deskripsi','city','region','url','jenis')
+            ->leftJoin('tb_event','tb_slide.idEvent', 'tb_event.id')
             ->where('terlihat', '=', 'ya')
             ->get();
 
@@ -47,7 +48,7 @@ class eventController extends Controller
         ];
 
         return view('main/home')->with($data);
-        //return($hari);
+        //return($carousel);
     }
 
     public function listEventAll()
@@ -155,6 +156,7 @@ class eventController extends Controller
             ->get();
 
         return view('main/dataevent')->with('event', $event);
+        //return $event;
     }
 
     public function comboCarievent(Request $req)
@@ -430,7 +432,7 @@ class eventController extends Controller
 
     public function download_pdf(Request $req){
 
-         $file= public_path(). '\\pdf\\'.$req->id.'.pdf';
+         $file= public_path(). '\\assets\\pdf\\'.$req->pdf;
 
          $headers = array(
 

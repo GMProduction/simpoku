@@ -56,8 +56,8 @@
                         <li class="upper-links"><a class="links" href="event"><i class="fa fa-calendar"
                                     aria-hidden="true"></i> Event</a></li>
                         @if (auth()->guard('member')->check())
-                            Hi, {{auth()->guard('member')->user()->fullname}}
-                            <li class="upper-links"><a class="links" href="/logout"><i class="fa fa-sign-out"
+                        Hi, {{auth()->guard('member')->user()->fullname}}
+                        <li class="upper-links"><a class="links" href="/logout"><i class="fa fa-sign-out"
                                     aria-hidden="true"></i> Logout</a></li>
                         @else
                         <li class="upper-links"><a class="links" href="login"><i class="fa fa-lock"
@@ -109,38 +109,39 @@
         <a class="links" href="register"><i class="fa fa-sign-in" aria-hidden="true"></i> Register</a>
     </div>
 
-    <div style="min-height: 231px">
+    <div style="min-height: 100%" class="">
         @yield('content')
     </div>
 
 
 
-    <footer class=" footer" style="height: 300px;">
+    <footer class="mt-5" style="background-color: #E9ECEF">
         <div class="container">
-            <div class="row pt-4 mr-3">
-                <div class="col-6">
+            <div class="row pt-4">
+                <div class="col-lg-4 col-sm-12">
                     <h6 class="text-uppercase pb-1 font-weight-bold">Contact Us :</h6>
                     <p class="mb-2"><i class="fa fa-envelope mr-3 "></i>support@simpoku.com</p>
-                    <p><i class="fa fa-phone mr-3"></i>+62xx xxxx xxxx</p>
+                    <p><i class="fa fa-phone mr-3"></i>0822 2345 5737</p>
                     <br>
                     <h6 class="text-uppercase font-weight-bold" style="">Social Media :</h6>
-                    <div class="row col-12">
-                        <a href="ig">
-                                <span class="fa-stack fa-lg">
-                                        <i class="fa fa-square-o fa-stack-2x"></i>
-                                        <i class="fa fa-instagram fa-stack-1x"></i>
-                                    </span>
+                    <div class="row col-12 pb-4">
+                        <a href="ig" id="" class=""  aria-hidden="true" >
+                            <span class="fa-stack fa-lg ig"  aria-hidden="true" id="ig">
+                                    {{-- <i class="fa fa-square-o fa-stack-2x"></i> --}}
+                                    <i class="fa fa-instagram fa-stack-2x ig" aria-hidden="true" ></i>
+                                {{-- <i class="fa fa-instagram fa-stack-1x "></i> --}}
+                            </span>
                         </a>
-                        <a href="fb">
-                                <span class="fa-stack fa-lg">
-                                        <i class="fa fa-square-o fa-stack-2x"></i>
-                                        <i class="fa fa-facebook fa-stack-1x"></i>
-                                    </span>
-                        </a>
-                        <a href="tw">
+                        <a href="fb" id="fb">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-square-o fa-stack-2x"></i>
-                                <i class="fa fa-twitter fa-stack-1x"></i>
+                                {{-- <i class="fa fa-square-o fa-stack-2x"></i> --}}
+                                <i class="fa fa-facebook-square fa-stack-2x"></i>
+                            </span>
+                        </a>
+                        <a href="tw" id="tw">
+                            <span class="fa-stack fa-lg">
+                                {{-- <i class="fa fa-square-o fa-stack-2x"></i> --}}
+                                <i class="fa fa-twitter-square fa-stack-2x" style=""></i>
                             </span>
                         </a>
 
@@ -148,10 +149,19 @@
                 </div>
 
 
-                <div class="col-3">
+                <div class="col-lg-8 col-sm-12">
                     <label class="text-uppercase pb-1 font-weight-bold ">About Us :</label>
-                    <p>
-                        We deliver optimistic and diverse experiences, and point of view to our audience of smart.
+                    <p align="justify">
+                        Di akhir tahun 2018, terik mentari menyengat dan 2 orang sahabat berteduh di tempat yang kami
+                        menyebutnya "sor talok" dengan secangkir kopi. Mereka adalah  - orang yang selama ini
+                        menemukan banyak keresahan dari seminar - seminar kedokteran yang telah banyak mereka amati.
+                        Berdikusi dan mengumpulkan banyak opini rekan - rekan sejawat yang banyak berkeluh kesah atas
+                        event kedokteran yang mereka tangani, membuat mereka berdua harus berpikir tidak lazim dan
+                        mengubah paradigma mereka sendiri.
+                        SIMPOKU adalah hasil pemikiran out of the box sebagai sarana rekan sejawat untuk menjawab
+                        berbagai keresahan tersebut. Dengan menyuguhkan daftar event kedokteran terlengkap sebagai
+                        pondasi awal, kami ingin menjadi partner untuk rekan-rekan sejawat untuk mensukseskan
+                        event - event kedokteran.
                     </p>
 
                 </div>
@@ -164,6 +174,41 @@
         </div>
     </footer>
 
+    <style>
+        #tw:hover {
+            color: #1DA1F2;
+        }
+
+        #fb:hover {
+            color: #4267B2;
+        }
+
+        .ig:hover {
+            background: pink;
+            background: -webkit-radial-gradient(33% 100% circle, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
+            background: radial-gradient(circle at 33% 100%, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
+            -webkit-background-clip: text;
+             -webkit-text-fill-color: transparent;
+
+
+        }
+
+        .instagrsam {
+            background: pink;
+            background: -webkit-radial-gradient(33% 100% circle, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
+            background: radial-gradient(circle at 33% 100%, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+
+
+
+
+        }
+    </style>
+
+ 
+
 
 
 </body>
@@ -172,9 +217,7 @@
 <!-- JS -->
 <script src="{{ asset('js/app.js') }}" defer></script>
 <script src="{{ asset('/js/jquery.min.js') }}"></script>
-<script defer src="{{ asset('/js/jquery.flexslider-min.js') }}"></script>
 <script src="{{ asset('/js/tampilan/genosstyle.js') }}"></script>
-<script src="{{ asset('/js/flipkart.js') }}"></script>
 <script src="{{ asset('js/sweetalert.min.js') }}"></script>
 @include('sweet::alert')
 
@@ -194,6 +237,12 @@
             
         }
     })
+
+    
+   
+
+    
+
 }
 
 

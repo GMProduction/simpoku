@@ -61,10 +61,11 @@
 </style>
 <div class="bawahHome" style="">
     @if (auth()->guard('member')->check() && auth()->guard('member')->user()->email_verified_at == NULL)
-        <div class="alert alert-warning" role="alert">
-            Please Verify Your Email Address by clicking Link.<br>
-            If Your are not receive an email. click <a href="{{ url('/resend/'.auth()->guard('member')->user()->id) }}">RESEND</a> to resend mail verification.
-        </div>
+    <div class="alert alert-warning" role="alert">
+        Please Verify Your Email Address by clicking Link.<br>
+        If Your are not receive an email. click <a
+            href="{{ url('/resend/'.auth()->guard('member')->user()->id) }}">RESEND</a> to resend mail verification.
+    </div>
     @endif
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
@@ -100,41 +101,47 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol> --}}
         <div class="carousel-inner">
-                @foreach ($carousel as $data )
-    
-                @if($loop->first)
-                <div class="carousel-item active">
-                    @else
-                    <div class="carousel-item">
-                        @endif
+            @foreach ($carousel as $data )
 
-                        <div class="card bg-dark text-white border-0" style="height: 400px;">
-                            <img class="card-img img-fluid" src="{{asset ('/assets/foto/'.$data->gambar)}}"
-                                alt="" style=" object-fit: cover">
-                            <div class="card-img-overlay d-flex linkfeat">
-                                <a href="/dataevent?id={{$data->id}}" class="align-self-end">
-                                    <span class="badge">{{$data->city}}, {{$data->regional}}</span>
-                                    <h4 class="card-title">{{$data->judul}} </h4>
-                                    <p class="textfeat" style="display: none;">{{$data->deskripsi}}</p>
-                                </a>
+            @if($loop->first)
+            <div class="carousel-item active">
+                @else
+                <div class="carousel-item">
+                    @endif
+                    @if ($data->jenis == 'event')
+                    <a href="/dataevent?id={{$data->idEvent}}" class="">
+                        @else
+                        <a href="/dataevent?id={{$data->url}}">
+                            @endif
+                            <div class="card bg-dark text-white border-0" style="height: 400px;">
+                                <img class="card-img img-fluid" src="{{asset ('/assets/foto/'.$data->gambar)}}" alt=""
+                                    style=" object-fit: cover">
+                                <div class="card-img-overlay d-flex linkfeat" style="z-index: 9999 !important">
+
+                                    <div class="align-self-end">
+                                        {{-- <span class="badge">{{$data->city}}, {{$data->regional}}</span> --}}
+                                        <h4 class="card-title">{{$data->judul}} </h4>
+                                        <p class="textfeat" style="display: none;">{{$data->deskripsi}}</p>
+                                    </div>
+
+                                </div>
                             </div>
-                        </div>
+                        </a>
+                </div>
 
-                    </div>
-
-                    @endforeach
+                @endforeach
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
 
-</div>
+    </div>
 </div>
 
 
@@ -250,13 +257,7 @@
         
       
 
-        $(window).on('load',function(){
-  $('.flexslider').flexslider({
-    animation: "slide",
-    rtl: true,
-   
-  });
-});
+     
             
 
            

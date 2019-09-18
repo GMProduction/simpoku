@@ -1,7 +1,7 @@
 @font-face{
-    src: url("../assets/font/HelveticaNeueLT-BlackCond.otf") !important;
-    font-family: helvetica;
-    font-weight: bold;
+    src: url("../assets/font/HelveticaNowMicro-Medium.ttf") !important;
+    font-family: "Helvetica";
+    
     
 }
 
@@ -382,7 +382,7 @@ a, a:focus , a:hover{
 html,
 body {
     height: 100%;
-    font-family: helvetica !important;
+    font-family: "Helvetica" !important;
     padding: 0;
     margin: 0;
     background-color: white;
@@ -696,11 +696,10 @@ ul.navbar-nav {
 }
 
 .footer {
-    margin-top: 30px;
-    left: 0px;
-    bottom: 0px;     
-    height: 30%;
+    bottom: 0px;  
     width: 100%;
+    position: absolute;
+    height: 5rem !important;
     /* color: white; */
     background-color: #E9ECEF;
     

@@ -11,7 +11,7 @@
 <div class="container bawah">
 
     <div class="row justify-content-center">
-        <div class="row col-lg-9 justify-content-center border" style="border-radius: 1rem">
+        <div class="row col-lg-9 justify-content-center  card-signin" style="border-radius: 1rem">
             <div class="col-lg-6">
                 <div class="register-box">
                     <div class="">
@@ -126,7 +126,7 @@
                         <img src="{{ asset('/assets/gambar/logo2.png') }}" alt="">
                     </div>
                 </div>
-                <p class="">Only Simpoku member can download pdf information</p>
+                <p align="center">Only Simpoku members can download announcement</p>
 
 
             </div>
