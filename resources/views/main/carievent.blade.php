@@ -3,7 +3,7 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('/css/carousell.css')}}" type="text/css" media="screen" />
 <div class="container bawah">
-    <div class="card-body m-0 p-0 postList border-0">
+    <div class="card-body m-0  postList box-putih p-3" style="">
            
         @forelse ($event as $even)
        @if ($loop->first)
@@ -29,11 +29,11 @@
             </div>
         </a>
         @empty
-        <div class="row justify-content-center pt-5">
-            <div class="col-12">
-                <h4 class="text-center"><i class="fa fa-search fa-3x" aria-hidden="true"></i></h4>
+        <div class="row d-flex justify-content-center" style="min-height: 400px">
+            <div class="col-12 align-self-end ">
+                <h4 class="text-center "><i class="fa fa-search fa-3x" aria-hidden="true"></i></h4>
             </div>
-            <div class="col-12">
+            <div class="col-12" >
                 <h4 class="text-center">No result found for '{{$param}}'</h4>
             </div>
 

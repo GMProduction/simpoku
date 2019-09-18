@@ -13,7 +13,7 @@
 
 
 
-    <div class="row pb-3 border" style="border-radius: 1rem !important">
+    <div class="row pb-3 border box-putih" style="border-radius: 1rem !important;">
         <div class=" col-lg-6">
             <label for="comboSpec" class=" col-form-label">Specialist : </label>
             <select name="comboSpec" id="comboSpec" class="form-control form-control-sm" onchange="">
@@ -81,7 +81,7 @@
     </div>
     <hr>
 
-    <div class="" id="dataEvent" >
+    <div class="box-putih rounded" id="dataEvent" style="">
         
 
     </div>

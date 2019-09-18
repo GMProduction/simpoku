@@ -17,16 +17,19 @@ class eventController extends Controller
     {
         $mytime = Carbon::now();
         $hari =  $mytime->format('d');
+       
+        $dt = Carbon::now();
+        $bulan = $dt->toDateString();       
 
         $event = eventModel::query()
             ->select('id','judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
             ->orderBy('tglMulai', 'ASC')
-            ->whereDay('tglMulai', '>', $hari)
+            ->where('tglMulai', '>', $bulan)
             ->take(8)
             ->get();
 
         $carousel = CarouselModel::query()
-            ->select('tb_slide.idEvent', 'tb_slide.judul', 'tb_slide.gambar', 'terlihat', 'deskripsi','city','region','url','jenis')
+            ->select('tb_slide.idEvent', 'tb_slide.judul', 'tb_slide.gambar', 'terlihat','tglMulai', 'deskripsi','city','region','url','jenis')
             ->leftJoin('tb_event','tb_slide.idEvent', 'tb_event.id')
             ->where('terlihat', '=', 'ya')
             ->get();
@@ -211,7 +214,7 @@ class eventController extends Controller
                 $as->where('spec', 'like', '%' . $req->spec . '%')
                     ->orwhere('deskripsi', 'like', '%' . $req->spec . '%')
                     ->orwhere('judul', 'like', '%' . $req->spec . '%')
-                    ->orwhereMonth('tglMulai', 'like', '%' . $req->spec . '%')
+                    ->orwhere('tglMulai', 'like', '%' . $req->spec . '%')
                     ->orwhereYear('tglMulai', 'like', '%' . $req->spec . '%')
                     ->orwhere('city', 'like', '%' . $req->spec . '%')
                     ->orwhere('region', 'like', '%' . $req->spec . '%');
@@ -287,12 +290,13 @@ class eventController extends Controller
 
     public function searchEvent(Request $req)
     {
+        $bul = '';
         $event = eventModel::query()
             ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
             ->where('judul', 'like', '%' . $req->par . '%')
             ->orwhere('deskripsi', 'like', '%' . $req->par . '%')
             ->orwhere('spec', 'like', '%' . $req->par . '%')
-            ->orwhereMonth('tglMulai', 'like', '%' . $req->par . '%')
+            ->orwhereDate('tglMulai', 'like', '%' . $req->par . '%')
             ->orwhereYear('tglMulai', 'like', '%' . $req->par . '%')
             ->orwhere('city', 'like', '%' . $req->par . '%')
             ->orwhere('region', 'like', '%' . $req->par . '%')

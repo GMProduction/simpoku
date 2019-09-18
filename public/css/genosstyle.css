@@ -377,7 +377,14 @@ a, a:focus , a:hover{
 .mg-2, .mg-4{
 	margin-left:-20px;
 }
+body { 
+    background: url('https://www.ebiinc.com/hubfs/medical-background-checks.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 
+  }
 
 html,
 body {
@@ -385,7 +392,14 @@ body {
     font-family: "Helvetica" !important;
     padding: 0;
     margin: 0;
+    /* background-color: white; */
+   
+}
+
+.box-putih{
     background-color: white;
+    border-radius: 1rem !important;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
 }
 
 .bodylogin{

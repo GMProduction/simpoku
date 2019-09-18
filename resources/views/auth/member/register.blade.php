@@ -11,7 +11,7 @@
 <div class="container bawah">
 
     <div class="row justify-content-center">
-        <div class="row col-lg-9 justify-content-center  card-signin" style="border-radius: 1rem">
+        <div class="row col-lg-9 justify-content-center  card-signin" style="border-radius: 1rem; background-color: white">
             <div class="col-lg-6">
                 <div class="register-box">
                     <div class="">

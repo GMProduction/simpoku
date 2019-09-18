@@ -31,12 +31,12 @@
 @foreach ($event as $even)
 
 
-<div class="container bawah rounded" style="">
+<div class="container bawah" style="">
     <div class="">
-        <div class="p-3">
+        <div class="">
 
-            <div class="row list-event border" style="border-radius: 1rem">
-                <div class="col-lg-6 p-3 justify-content-center ">
+            <div class="row list-event box-putih" style="">
+                <div class="col-lg-6 pt-4 pr-3 pl-3 pb-3 justify-content-center ">
                     <img class="img-event" src="{{asset ('/assets/foto/'.$even->gambar)}}" alt="" width="400">
                 </div>
                 <div class="col-lg-6 p-3">
@@ -62,25 +62,33 @@
                             </td>
                             <td class="">{{$even->tempat}}, {{$even->city}}, {{$even->region}}</td>
                         </tr>
-                        
+
                         <tr>
                             <td><i class="fa fa-phone text-burgundy" aria-hidden="true"></i></td>
                             <td class=""> {{$even->namaContact}} : {{$even->noContact}} </td>
                         </tr>
-                        <tr style="border-bottom: 0">
+                        <tr style="">
                             <td class=""><i class="fa fa-user-md text-burgundy" aria-hidden="true"></i></td>
                             <td class="">{{$even->spec}}</td>
                         </tr>
-
+                        <tr style="border-bottom: 0">
+                            <td class=""><i class="fa fa-download text-burgundy" aria-hidden="true"></i></td>
+                            <td class="">
+                                @if ($even->filepdf == '')
+                                <a class=" rounded " href="#!"><i class="fa fa-file-pdf-o" aria-hidden="true"
+                                        style="color: red"></i> Unavailabe</a>
+                                @else
+                                <a class="rounded" href="dataevent/download?pdf={{$even->filepdf}}"><i
+                                        class="fa fa-file-pdf-o" aria-hidden="true" style="color: red"></i>
+                                    {{$even->filepdf}}</a>
+                                @endif
+                            </td>
+                        </tr>
 
 
                     </table>
-                    @if ($even->filepdf == '')
-                    <a class="btn btn-primary rounded" disabled href="">Download pdfs</a>
-                    @else
-                    <a class="btn btn-primary rounded" href="dataevent/download?pdf={{$even->filepdf}}">Download pdfb</a>
-                    @endif
-                   
+
+
 
 
                 </div>

@@ -1,5 +1,5 @@
 
-<div class="border p-3">
+<div class=" p-3">
     <div class="panel-body" >
         {{ csrf_field() }}
         <div id="post_data"></div>

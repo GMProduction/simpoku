@@ -45,7 +45,7 @@
 
 </head>
 
-<body style="" class="">
+<body style="" class="" style=" ">
     -->
     <div id="flipkart-navbar" class="warna-burgundy fixed-top z-depth-2">
         <div class="container">
@@ -118,33 +118,45 @@
     <footer class="mt-5" style="background-color: #E9ECEF">
         <div class="container">
             <div class="row pt-4">
-                <div class="col-lg-4 col-sm-12">
-                    <h6 class="text-uppercase pb-1 font-weight-bold">Contact Us :</h6>
-                    <p class="mb-2"><i class="fa fa-envelope mr-3 "></i>support@simpoku.com</p>
-                    <p><i class="fa fa-phone mr-3"></i>0822 2345 5737</p>
-                    <br>
-                    <h6 class="text-uppercase font-weight-bold" style="">Social Media :</h6>
-                    <div class="row col-12 pb-4">
-                        <a href="ig" id="" class=""  aria-hidden="true" >
-                            <span class="fa-stack fa-lg ig"  aria-hidden="true" id="ig">
+                <div class="col-lg-4 col-sm-12 pb-4">
+                    <div class="pb-2">
+                        <h6 class="text-uppercase pb-1 font-weight-bold">Contact Us :</h6>
+                        <p class="mb-2"><i class="fa fa-envelope mr-3 "></i>support@simpoku.com</p>
+                        <p><i class="fa fa-phone mr-3"></i>0822 2345 5737</p>
+                    </div>
+                    <div class="pb-4">
+                        <h6 class="text-uppercase font-weight-bold pb-1" style="">Social Media :</h6>
+                        <div class="row col-12">
+                            <a href="instagram" id="" class="" aria-hidden="true">
+                                <span class="fa-stack fa-lg ig" aria-hidden="true" id="ig">
                                     {{-- <i class="fa fa-square-o fa-stack-2x"></i> --}}
-                                    <i class="fa fa-instagram fa-stack-2x ig" aria-hidden="true" ></i>
-                                {{-- <i class="fa fa-instagram fa-stack-1x "></i> --}}
-                            </span>
-                        </a>
-                        <a href="fb" id="fb">
-                            <span class="fa-stack fa-lg">
-                                {{-- <i class="fa fa-square-o fa-stack-2x"></i> --}}
-                                <i class="fa fa-facebook-square fa-stack-2x"></i>
-                            </span>
-                        </a>
-                        <a href="tw" id="tw">
-                            <span class="fa-stack fa-lg">
-                                {{-- <i class="fa fa-square-o fa-stack-2x"></i> --}}
-                                <i class="fa fa-twitter-square fa-stack-2x" style=""></i>
-                            </span>
-                        </a>
+                                    <i class="fa fa-instagram fa-stack-2x ig" aria-hidden="true"></i>
+                                    {{-- <i class="fa fa-instagram fa-stack-1x "></i> --}}
+                                </span>
+                            </a>
+                            <a href="facebook" id="fb">
+                                <span class="fa-stack fa-lg">
+                                    {{-- <i class="fa fa-square-o fa-stack-2x"></i> --}}
+                                    <i class="fa fa-facebook-square fa-stack-2x"></i>
+                                </span>
+                            </a>
+                            <a href="twitter" id="tw">
+                                <span class="fa-stack fa-lg">
+                                    {{-- <i class="fa fa-square-o fa-stack-2x"></i> --}}
+                                    <i class="fa fa-twitter-square fa-stack-2x" style=""></i>
+                                </span>
+                            </a>
 
+                        </div>
+                    </div>
+                    <div class="pb-2">
+                        <h6 class="text-uppercase font-weight-bold">Download</h6>
+                        <a href="android" id="ad" class="">
+                            <span class="fa-stack fa-lg">
+                                {{-- <i class="fa fa-square-o fa-stack-2x"></i> --}}
+                                <i class="fa fa-android fa-stack-2x" style=""></i>
+                            </span>
+                        </a>
                     </div>
                 </div>
 
@@ -153,7 +165,7 @@
                     <label class="text-uppercase pb-1 font-weight-bold ">About Us :</label>
                     <p align="justify">
                         Di akhir tahun 2018, terik mentari menyengat dan 2 orang sahabat berteduh di tempat yang kami
-                        menyebutnya "sor talok" dengan secangkir kopi. Mereka adalah  - orang yang selama ini
+                        menyebutnya "sor talok" dengan secangkir kopi. Mereka adalah - orang yang selama ini
                         menemukan banyak keresahan dari seminar - seminar kedokteran yang telah banyak mereka amati.
                         Berdikusi dan mengumpulkan banyak opini rekan - rekan sejawat yang banyak berkeluh kesah atas
                         event kedokteran yang mereka tangani, membuat mereka berdua harus berpikir tidak lazim dan
@@ -183,12 +195,16 @@
             color: #4267B2;
         }
 
+        #ad:hover {
+            color: #A4C639;
+        }
+
         .ig:hover {
             background: pink;
             background: -webkit-radial-gradient(33% 100% circle, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
             background: radial-gradient(circle at 33% 100%, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
             -webkit-background-clip: text;
-             -webkit-text-fill-color: transparent;
+            -webkit-text-fill-color: transparent;
 
 
         }
@@ -207,7 +223,7 @@
         }
     </style>
 
- 
+
 
 
 
