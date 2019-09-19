@@ -112,7 +112,7 @@
 }
 
 .bawahHome{
-    margin-top: 68px;
+    margin-top: 90px;
 }
 
 .atas{
@@ -133,6 +133,16 @@
 .rounded5rem-kanan{
     border-top-right-radius: 5rem !important;
     border-bottom-right-radius: 5rem !important;
+}
+
+.about {
+    text-indent: 50px;
+    text-align: justify;
+    letter-spacing: 1px;
+}
+
+p, td {
+    letter-spacing: 1px;
 }
 
 

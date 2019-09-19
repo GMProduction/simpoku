@@ -46,7 +46,7 @@
 </head>
 
 <body style="" class="" style=" ">
-    -->
+
     <div id="flipkart-navbar" class="warna-burgundy fixed-top z-depth-2">
         <div class="container">
             <div class="row row1">
@@ -162,17 +162,18 @@
 
 
                 <div class="col-lg-8 col-sm-12">
-                    <label class="text-uppercase pb-1 font-weight-bold ">About Us :</label>
-                    <p align="justify">
+                    <label class="text-uppercase pb-1 font-weight-bold ">Brand History :</label>
+                    <p align="justify" class="about">
                         Di akhir tahun 2018, terik mentari menyengat dan 2 orang sahabat berteduh di tempat yang kami
                         menyebutnya "sor talok" dengan secangkir kopi. Mereka adalah - orang yang selama ini
                         menemukan banyak keresahan dari seminar - seminar kedokteran yang telah banyak mereka amati.
                         Berdikusi dan mengumpulkan banyak opini rekan - rekan sejawat yang banyak berkeluh kesah atas
                         event kedokteran yang mereka tangani, membuat mereka berdua harus berpikir tidak lazim dan
-                        mengubah paradigma mereka sendiri.
+                        mengubah paradigma mereka sendiri. </p>
+                    <p align="justify" class="about">
                         SIMPOKU adalah hasil pemikiran out of the box sebagai sarana rekan sejawat untuk menjawab
                         berbagai keresahan tersebut. Dengan menyuguhkan daftar event kedokteran terlengkap sebagai
-                        pondasi awal, kami ingin menjadi partner untuk rekan-rekan sejawat untuk mensukseskan
+                        pondasi awal, kami ingin menjadi partner bagi rekan-rekan sejawat untuk mensukseskan
                         event - event kedokteran.
                     </p>
 
@@ -188,8 +189,6 @@
 
     <style>
        
-
-        
     </style>
 
 
