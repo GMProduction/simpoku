@@ -203,6 +203,7 @@
 <script src="{{ asset('/js/jquery.min.js') }}"></script>
 <script src="{{ asset('/js/tampilan/genosstyle.js') }}"></script>
 <script src="{{ asset('js/sweetalert.min.js') }}"></script>
+<script src="{{ asset('js/flipkart.js') }}"></script>
 @include('sweet::alert')
 
 
