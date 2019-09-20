@@ -47,7 +47,7 @@
 
 <body style="" class="" style=" ">
 
-    <div id="flipkart-navbar" class="warna-burgundy fixed-top z-depth-2">
+    <div id="flipkart-navbar" class="warna-burgundy fixed-top z-depth-2" style="">
         <div class="container">
             <div class="row row1">
                 <div class="col-lg-12 justify-content-end">

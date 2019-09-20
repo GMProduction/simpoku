@@ -81,7 +81,7 @@
     </div>
     <hr>
 
-    <div class="box-putih rounded" id="dataEvent" style="">
+    <div class="box-putih rounded border" id="dataEvent" style="">
         
 
     </div>

@@ -44,6 +44,24 @@
     background-color: #843B69;
 }
 
+.warna1{
+    color: #2F323A !important;
+    font-weight: bolder;
+}
+
+.warna2{
+    color: #E26D5C !important;
+}
+
+.warna3{
+    color: #E39EC1 !important;
+}
+
+.warna4{
+    color: #DEBAC0 !important;
+}
+
+
 
 
 .bg-putih{
@@ -249,7 +267,7 @@ p, td {
 
 .title-homeEven{
     font-weight: bold;
-    color: #800000;
+    /* color: #800000; */
 }
 
 .showmore:hover{
@@ -408,7 +426,12 @@ a, a:focus , a:hover{
 .mg-2, .mg-4{
 	margin-left:-20px;
 }
-body { 
+
+.hearderTrasn{
+    background-color: rgba(132,59,105,0.8);
+}
+
+.body { 
     background: url('https://www.ebiinc.com/hubfs/medical-background-checks.jpg') no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;

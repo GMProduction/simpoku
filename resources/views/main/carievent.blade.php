@@ -3,7 +3,7 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('/css/carousell.css')}}" type="text/css" media="screen" />
 <div class="container bawah">
-    <div class="card-body m-0  postList box-putih p-3" style="">
+    <div class="card-body m-0  postList box-putih p-3 border" style="">
            
         @forelse ($event as $even)
        @if ($loop->first)

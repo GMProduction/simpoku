@@ -67,8 +67,8 @@
             href="{{ url('/resend/'.auth()->guard('member')->user()->id) }}">RESEND</a> to resend mail verification.
     </div>
     @endif
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
+    <div class=" container-fluid bawah">
+        <div class="">
 
 
 
@@ -91,9 +91,9 @@
                                 @else
                                 <a href="/dataevent?id={{$data->url}}">
                                     @endif
-                                    <div class="card bg-dark text-white border-0" style="height: 400px;">
+                                    <div class="card bg-dark text-white border-0 img" style="height: 400px;">
                                         <img class="card-img img-fluid" src="{{asset ('/assets/foto/'.$data->gambar)}}"
-                                            alt="" style=" object-fit: cover">
+                                            alt="" style=" object-fit: cover !important">
                                         <div class="card-img-overlay d-flex linkfeat" style="z-index: 9999 !important">
 
                                             <div class="align-self-end">
@@ -125,8 +125,8 @@
         </div>
 
 
-        <div class="container border"
-            style="margin-top: -60px; background-color: white;  border-radius: 1rem !important">
+        <div class="container"
+            style="margin-top: 30px; background-color: white; ">
 
 
 
@@ -144,7 +144,7 @@
                         <div class="card border-0 m-0 p-0">
                             <div class="row">
                                 <div class="col-lg-10 col-sm-6" style="bottom: -5px">
-                                    <h4 class=" heading-large title-homeEven">Upcoming Events </h4>
+                                    <h4 class=" heading-large warna1">Upcoming Events </h4>
                                 </div>
                                 <div class="col-lg-2 col-sm-6" style="bottom: -5px">
                                     <a href="event" class="pull-right">Show more</a>
@@ -159,13 +159,13 @@
                                         </div>
                                         <div class="media-body pt-1">
                                             <div class="time-cat pb-1 pl-0">
-                                                <span class="badge">{{$even->city}}, {{$even->region}}</span>
-                                                <small class="text-time"
+                                                <span class="badge" style="">{{$even->city}}, {{$even->region}}</span>
+                                                <small class="text-time "
                                                     style="">{{date('d M', strtotime($even->tglMulai))}}
                                                     s/d
                                                     {{date('d M Y', strtotime($even->tglAkhir))}}</small>
                                             </div>
-                                            <p class="mb-0 text-burgundy" id="title-lm">{{$even->judul}} </p>
+                                            <p class="mb-0" id="title-lm">{{$even->judul}} </p>
                                             <p class="d-none d-lg-block mb-2 ">{{$even->deskripsi}}</p>
                                             <p class="d-none d-lg-block mb-0">Specialist : {{$even->spec}}</p>
                                         </div>
@@ -180,7 +180,7 @@
                         <!--- BP Batam LOGO --->
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <h4 class=" heading-large title-homeEven">Download App </h4>
+                                <h4 class=" heading-large warna1">Download App </h4>
                             </li>
                         </ul>
                         <a href="" target="_blank">
