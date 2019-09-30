@@ -81,7 +81,7 @@ Route::group(['middleware' => 'memberonly'], function () {
 });
 
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::get('/', function () {
         return view('admin.dashboard');
@@ -139,27 +139,6 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 
-
-
-
-Route::group(['middleware' => 'auth'], function () {
-
-
-
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    });
-
-
-    Route::get('/produk', function () {
-        return view('/admin/master/dataproduk');
-    })->name('produk');
-
-
-    Route::get('/kategori', function () {
-        return view('/admin/master/datakategori');
-    })->name('kategori');
-});
 
 /* ANDROID API */
 /* USER */
