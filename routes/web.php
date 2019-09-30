@@ -86,7 +86,7 @@ Route::group(['prefix' => 'coba'], function(){
         return 'oke';
     });
 });
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'adminpanel', 'middleware' => 'auth'], function () {
 
     Route::get('/', function () {
         return view('admin.dashboard');
