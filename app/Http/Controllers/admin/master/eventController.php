@@ -199,7 +199,7 @@ class eventController extends Controller
                     ->where('id', '=', $id)
                     ->update($data);
                 Alert::success('Success', 'Berhasil Merubah Data');
-                return redirect('/admin/event');
+                return redirect('/dashboardadmin/event');
             } catch (\Exception  $e) {
                 $exData = explode('(', $e->getMessage());
                 Alert::error('Gagal Merubah Data \n' . $exData[0], 'Ooops');

@@ -11,8 +11,8 @@ Event Baru
             <div class="col-md-11">
                 <div class="text-right">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/admin"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="/admin/event">Master Event</a></li>
+                        <li class="breadcrumb-item"><a href="/dashboardadmin"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/dashboardadmin/event">Master Event</a></li>
                         <li class="breadcrumb-item active">Form Event User</li>
                     </ol>
                 </div>
@@ -21,7 +21,7 @@ Event Baru
                     <div class="card-header">
                         <h3 class="card-title">Form Tambah Event</h3>
                     </div>
-                    <form method="post" action="/admin/event/add" enctype="multipart/form-data" id="formevent">
+                    <form method="post" action="/dashboardadmin/event/add" enctype="multipart/form-data" id="formevent">
                     <div class="card-body">
                          {{ csrf_field() }}
                         <div class="form-group">
@@ -212,7 +212,7 @@ function getCities(){
         $('#city').children().remove();
         $.ajax({
             type: "GET",
-            url: "/admin/event/getCities",
+            url: "/dashboardadmin/event/getCities",
             data: {
                 idpropinsi: propinsi
             },

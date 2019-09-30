@@ -10,8 +10,8 @@ Edit Member
             <div class="col-md-11">
                 <div class="text-right">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/admin"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="/admin/member">Master Member</a></li>
+                        <li class="breadcrumb-item"><a href="/dashboardadmin"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/dashboardadmin/member">Master Member</a></li>
                         <li class="breadcrumb-item active">Form Edit Member</li>
                     </ol>
                 </div>
@@ -20,7 +20,7 @@ Edit Member
                     <div class="card-header">
                         <h3 class="card-title">Form Edit Member</h3>
                     </div>
-                    <form method="post" action="/admin/member/update" enctype="multipart/form-data">
+                    <form method="post" action="/dashboardadmin/member/update" enctype="multipart/form-data">
                     <div class="card-body">
                         {{ csrf_field() }}
                         <input type="hidden" name="oldusername" value="{{$member->username}}">

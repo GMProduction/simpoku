@@ -40,7 +40,7 @@ class userController extends Controller
         return DataTables::of($user)
             ->addIndexColumn()
             ->addColumn('action', function ($user) {
-                return '<a class="btn-sm btn-warning" data-toggle="tooltip" title="Ganti Data" id="btn-edit" href="/admin/user/store?id=' . $user->id . '"><i class="fa fa-edit"></i></a>
+                return '<a class="btn-sm btn-warning" data-toggle="tooltip" title="Ganti Data" id="btn-edit" href="/dashboardadmin/user/store?id=' . $user->id . '"><i class="fa fa-edit"></i></a>
                             <a class="btn-sm btn-danger" data-toggle="tooltip" title="Hapus Data" id="btn-delete" href="#" onclick="hapus(\'' . $user->id . '\',event)"><i class="fa fa-trash"></i></a>
                         ';
             })
@@ -124,7 +124,7 @@ class userController extends Controller
                     ->where('username', '=', $id)
                     ->update($data);
                 Alert::success('Success', 'Berhasil Merubah Data');
-                return redirect('/admin/user');
+                return redirect('/dashboardadmin/user');
             } catch (\Exception  $e) {
                 $exData = explode('(', $e->getMessage());
                 Alert::error('Gagal Merubah Data \n' . $exData[0], 'Ooops');

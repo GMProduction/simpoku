@@ -10,8 +10,8 @@ User Baru
             <div class="col-md-11">
                 <div class="text-right">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/admin"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="/admin/user">Master User</a></li>
+                        <li class="breadcrumb-item"><a href="/dashboardadmin"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/dashboardadmin/user">Master User</a></li>
                         <li class="breadcrumb-item active">Form Tambah User</li>
                     </ol>
                 </div>
@@ -20,7 +20,7 @@ User Baru
                     <div class="card-header">
                         <h3 class="card-title">Form Tambah User</h3>
                     </div>
-                    <form method="post" action="/admin/user/add">
+                    <form method="post" action="/dashboardadmin/user/add">
                     <div class="card-body">
                          {{ csrf_field() }}
                          <div class="row">

@@ -47,9 +47,9 @@ class bannerController extends Controller
             })
             ->editColumn('terlihat', function ($banner) {
                 if ($banner->terlihat == 'ya') {
-                    return '<a class="btn-sm btn-success" href="/admin/banner/update?id=' . $banner->id . '"><i class="fa fa-eye"></i></a>';
+                    return '<a class="btn-sm btn-success" href="/dashboardadmin/banner/update?id=' . $banner->id . '"><i class="fa fa-eye"></i></a>';
                 }
-                return '<a class="btn-sm btn-danger" href="/admin/banner/update?id=' . $banner->id . '"><i class="fa fa-eye-slash"></i></a>';
+                return '<a class="btn-sm btn-danger" href="/dashboardadmin/banner/update?id=' . $banner->id . '"><i class="fa fa-eye-slash"></i></a>';
             })
             ->editColumn('gambar', function ($banner) {
                 return '<a href="/assets/banner/' . $banner->gambar . '" target="_blank">Banner Image</a>';
@@ -121,7 +121,7 @@ class bannerController extends Controller
                 ->where('id', '=', $id)
                 ->update($data);
             Alert::success('Success', 'Berhasil Merubah Data');
-            return redirect('/admin/banner');
+            return redirect('/dashboardadmin/banner');
         } catch (\Exception  $e) {
             $exData = explode('(', $e->getMessage());
             Alert::error('Gagal Merubah Data \n' . $exData[0], 'Ooops');

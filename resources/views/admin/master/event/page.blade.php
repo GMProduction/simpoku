@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <div class="text-right">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/admin"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/dashboardadmin"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;Dashboard</a></li>
                         <li class="breadcrumb-item active">Data Event</li>
                     </ol>
                 </div>
@@ -21,7 +21,7 @@
                             <h3 class="card-title">Data Event</h3>
                         </div>
                         <div class="float-sm-right">
-                            <a class="btn btn-primary btn-sm box-tools" href="/admin/event/new">
+                            <a class="btn btn-primary btn-sm box-tools" href="/dashboardadmin/event/new">
                                 <i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;New Event
                             </a>
                         </div>
@@ -117,7 +117,7 @@ $(document).ready(function () {
         autowidth: true,
         serverSide: true,
         processing: false,
-        ajax: '/admin/event/view',
+        ajax: '/dashboardadmin/event/view',
         columns: [
             { data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false, orderable: false},
             { data: 'judul', name: 'judul' },
@@ -165,7 +165,7 @@ $(document).ready(function () {
 function destroy(id) {
 $.ajax({
     type: 'POST',
-    url: '/admin/event/destroy',
+    url: '/dashboardadmin/event/destroy',
     data: {
         _method: 'DELETE',
         _token: $('input[name=_token]').val(),
