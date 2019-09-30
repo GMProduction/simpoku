@@ -81,6 +81,11 @@ Route::group(['middleware' => 'memberonly'], function () {
 });
 
 
+Route::group(['prefix' => 'coba'], function(){
+    Route::get('/', function(){
+        return 'oke';
+    });
+});
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::get('/', function () {
