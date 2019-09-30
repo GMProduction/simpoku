@@ -91,32 +91,32 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="/admin/user" class="nav-link ">
+                                    <a href="/dashboardadmin/user" class="nav-link ">
                                         <i class="fa fa-user nav-icon"></i>
                                         <p>Admin</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/admin/member" class="nav-link ">
+                                    <a href="/dashboardadmin/member" class="nav-link ">
                                         <i class="fa fa-address-book nav-icon"></i>
                                         <p>Members</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/admin/specialist" class="nav-link ">
+                                    <a href="/dashboardadmin/specialist" class="nav-link ">
                                         <i class="fa fa-user-md nav-icon"></i>
                                         <p>Specialist</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/admin/banner" class="nav-link ">
+                                    <a href="/dashboardadmin/banner" class="nav-link ">
                                         <i class="fa fa-desktop nav-icon"></i>
                                         <p>Banner</p>
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="/admin/event" class="nav-link ">
+                                    <a href="/dashboardadmin/event" class="nav-link ">
                                         <i class="fa fa-calendar-check-o nav-icon"></i>
                                         <p>Events</p>
                                     </a>
