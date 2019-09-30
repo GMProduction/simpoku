@@ -36,7 +36,7 @@ class LoginController extends Controller
         ]);
 
         if (Auth::guard('web')->attempt($request->only($login_type, 'password'))) {
-            return redirect('/admin');
+            return redirect('/dashboardadmin');
         } else {
             Alert::error('Gagal Login', 'Ooops');
             return redirect()->back()->with('gagal', 'user id/password salah');
