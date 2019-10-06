@@ -104,7 +104,7 @@ class eventController extends Controller
                 $namaFoto = $r->judul . '.' . $image->getClientOriginalExtension();
 
                 $image_resize = Image::make($image->getRealPath());
-                $image_resize->fit(150);
+                $image_resize->resize(150, 150);
                 //save to thumbnails 150x150
                 $image_resize->save(public_path('assets/thumbnails/' . $namaFoto));
                 //save to origin
