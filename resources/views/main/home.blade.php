@@ -58,6 +58,23 @@
     .action a:hover {
         background: #000;
     }
+
+    @media (max-width: 1200px) {
+        .kecil {
+            height: 300px !important;
+
+        }
+    }
+
+    @media (max-width: 765px) {
+        .kecil {
+            height: 250px !important;
+        }
+
+        .desSlider {
+            display: block !important;
+        }
+    }
 </style>
 <div class="bawahHome" style="">
     @if (auth()->guard('member')->check() && auth()->guard('member')->user()->email_verified_at == NULL)
@@ -91,7 +108,7 @@
                                 @else
                                 <a href="/dataevent?id={{$data->url}}">
                                     @endif
-                                    <div class="card bg-dark text-white border-0 img" style="height: 400px;">
+                                    <div class="card bg-dark text-white border-0 img kecil" style="height: 400px;">
                                         <img class="card-img img-fluid" src="{{asset ('/assets/foto/'.$data->gambar)}}"
                                             alt="" style=" object-fit: cover !important">
                                         <div class="card-img-overlay d-flex linkfeat" style="z-index: 9999 !important">
@@ -99,9 +116,9 @@
                                             <div class="align-self-end">
                                                 {{-- <span class="badge">{{$data->city}}, {{$data->regional}}</span>
                                                 --}}
-                                                <h4 class="card-title">{{$data->judul}} -
-                                                    {{date('d M Y', strtotime($data->tglMulai))}} </h4>
-                                                <p class="textfeat" style="display: none;">{{$data->deskripsi}}</p>
+                                                <h4 class="card-title">{{$data->judul}}</h4>
+                                                <p id="desSlider" class="textfeat" style="display: none;">
+                                                    {{$data->deskripsi}}</p>
                                             </div>
 
                                         </div>
@@ -125,8 +142,7 @@
         </div>
 
 
-        <div class="container"
-            style="margin-top: 30px; background-color: white; ">
+        <div class="container" style="margin-top: 30px; background-color: white; ">
 
 
 
@@ -146,9 +162,7 @@
                                 <div class="col-lg-10 col-sm-6" style="bottom: -5px">
                                     <h4 class=" heading-large warna1">Upcoming Events </h4>
                                 </div>
-                                <div class="col-lg-2 col-sm-6" style="bottom: -5px">
-                                    <a href="event" class="pull-right">Show more</a>
-                                </div>
+
                             </div>
                             <div class="card-body m-0 p-0 postList border-0">
                                 @foreach ($event as $even)
@@ -173,6 +187,9 @@
                                 </a>
                                 @endforeach
 
+                            </div>
+                            <div id="load_more" class="pt-2">
+                                <a name="load_more_button" id="load_more_button" class="btn btn-light form-control load" href="event">Show More</a>
                             </div>
                         </div>
                     </div>
