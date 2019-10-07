@@ -17,7 +17,7 @@ class memberonly
     public function handle($request, Closure $next)
     {
         if (Auth::guard('web')->check()) {
-            return redirect('/admin');
+            return redirect('/dashboardadmin');
         }
         return $next($request);
     }

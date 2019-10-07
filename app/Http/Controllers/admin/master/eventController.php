@@ -104,7 +104,7 @@ class eventController extends Controller
                 $namaFoto = $r->judul . '.' . $image->getClientOriginalExtension();
 
                 $image_resize = Image::make($image->getRealPath());
-                $image_resize->fit(150);
+                $image_resize->resize(150, 150);
                 //save to thumbnails 150x150
                 $image_resize->save(public_path('assets/thumbnails/' . $namaFoto));
                 //save to origin
@@ -199,7 +199,7 @@ class eventController extends Controller
                     ->where('id', '=', $id)
                     ->update($data);
                 Alert::success('Success', 'Berhasil Merubah Data');
-                return redirect('/admin/event');
+                return redirect('/dashboardadmin/event');
             } catch (\Exception  $e) {
                 $exData = explode('(', $e->getMessage());
                 Alert::error('Gagal Merubah Data \n' . $exData[0], 'Ooops');

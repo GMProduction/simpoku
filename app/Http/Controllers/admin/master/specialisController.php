@@ -41,7 +41,7 @@ class specialisController extends Controller
         return DataTables::of($specialis)
             ->addIndexColumn()
             ->addColumn('action', function ($specialis) {
-                return '<a class="btn-sm btn-warning" id="btn-edit" href="/admin/specialist/store?id=' . $specialis->id . '"><i class="fa fa-edit"></i></a>
+                return '<a class="btn-sm btn-warning" id="btn-edit" href="/dashboardadmin/specialist/store?id=' . $specialis->id . '"><i class="fa fa-edit"></i></a>
                  <a class="btn-sm btn-danger" data-toggle="tooltip" title="Hapus Data" id="btn-delete" href="#" onclick="hapus(\'' . $specialis->id . '\',event)"><i class="fa fa-trash"></i></a>
                  ';
             })
@@ -109,7 +109,7 @@ class specialisController extends Controller
                     ->where('id', '=', $id)
                     ->update($data);
                 Alert::success('Success', 'Berhasil Merubah Data');
-                return redirect('/admin/specialist');
+                return redirect('/dashboardadmin/specialist');
             } catch (\Exception  $e) {
                 $exData = explode('(', $e->getMessage());
                 Alert::error('Gagal Merubah Data \n' . $exData[0], 'Ooops');

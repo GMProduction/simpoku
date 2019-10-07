@@ -10,7 +10,7 @@ Data Member
             <div class="col-md-12">
                 <div class="text-right">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/admin"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/dashboardadmin"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;Dashboard</a></li>
                         <li class="breadcrumb-item active">Data Member</li>
                     </ol>
                 </div>
@@ -101,7 +101,7 @@ $(document).ready(function () {
         autowidth: true,
         serverSide: true,
         processing: false,
-        ajax: '/admin/member/view',
+        ajax: '/dashboardadmin/member/view',
         columns: [
             { data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false, orderable: false},
             { data: 'fullname', name: 'fullname' },
@@ -150,7 +150,7 @@ $(document).ready(function () {
 function destroy(id) {
     $.ajax({
         type: 'POST',
-        url: '/admin/member/destroy',
+        url: '/dashboardadmin/member/destroy',
         data: {
             _method: 'DELETE',
             _token: $('input[name=_token]').val(),

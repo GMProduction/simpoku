@@ -156,7 +156,7 @@ class memberController extends Controller
                     ->where('id', '=', $id)
                     ->update($data);
                 Alert::success('Success', 'Berhasil Merubah Data');
-                return redirect('/admin/member');
+                return redirect('/dashboardadmin/member');
             } catch (\Exception  $e) {
                 $exData = explode('(', $e->getMessage());
                 Alert::error('Gagal Merubah Data \n' . $exData[0], 'Ooops');

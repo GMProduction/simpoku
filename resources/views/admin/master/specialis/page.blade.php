@@ -10,7 +10,7 @@ Data Specialist
             <div class="col-md-12">
                 <div class="text-right">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/admin"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/dashboardadmin"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;Dashboard</a></li>
                         <li class="breadcrumb-item active">Data Specialist</li>
                     </ol>
                 </div>
@@ -21,7 +21,7 @@ Data Specialist
                             <h3 class="card-title">Data Specialist</h3>
                         </div>
                         <div class="float-sm-right">
-                            <a class="btn btn-primary btn-sm box-tools" href="/admin/specialist/new">
+                            <a class="btn btn-primary btn-sm box-tools" href="/dashboardadmin/specialist/new">
                                 <i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;New Specialist
                             </a>
                         </div>
@@ -67,7 +67,7 @@ $(document).ready(function () {
         autowidth: true,
         serverSide: true,
         processing: false,
-        ajax: '/admin/specialist/view',
+        ajax: '/dashboardadmin/specialist/view',
         columns: [
             { data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false, orderable: false},
             { data: 'spec', name: 'spec' },
@@ -89,7 +89,7 @@ $(document).ready(function () {
 function destroy(id) {
     $.ajax({
         type: 'POST',
-        url: '/admin/specialist/destroy',
+        url: '/dashboardadmin/specialist/destroy',
         data: {
             _method: 'DELETE',
             _token: $('input[name=_token]').val(),

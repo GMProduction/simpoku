@@ -19,7 +19,7 @@ class RedirectIfAuthenticated
     {
 
         if (Auth::guard('web')->check()) {
-            return redirect('/admin');
+            return redirect('/dashboardadmin');
         } else if (Auth::guard('member')->check()) {
             return redirect('/');
         }
