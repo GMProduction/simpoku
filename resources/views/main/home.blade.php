@@ -188,7 +188,7 @@
                                 @endforeach
 
                             </div>
-                            <div id="load_more" class="pt-2">
+                            <div id="load_more" class="pt-2 pb-4">
                                 <a name="load_more_button" id="load_more_button" class="btn btn-light form-control load" href="event">Show More</a>
                             </div>
                         </div>
