@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{asset ('adminlte/plugins/font-awesome/css/font-awesome.min.css')}}">
 
     <!-- Styles -->
+    <link href="{{ asset('/css/sweetalert2.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/css/genosstyle.css') }}" rel="stylesheet" />
     <link href="{{ asset('/css/animate.css') }}" rel="stylesheet" />
@@ -202,9 +203,9 @@
 <script src="{{ asset('js/app.js') }}" defer></script>
 <script src="{{ asset('/js/jquery.min.js') }}"></script>
 <script src="{{ asset('/js/tampilan/genosstyle.js') }}"></script>
-<script src="{{ asset('js/sweetalert.min.js') }}"></script>
+<script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 <script src="{{ asset('js/flipkart.js') }}"></script>
-@include('sweet::alert')
+{{-- @include('sweet::alert') --}}
 
 
 

@@ -74,13 +74,21 @@
                         <tr style="border-bottom: 0">
                             <td class=""><i class="fa fa-download text-burgundy" aria-hidden="true"></i></td>
                             <td class="">
+
                                 @if ($even->filepdf == '')
                                 <a class=" rounded " href="#!"><i class="fa fa-file-pdf-o" aria-hidden="true"
                                         style="color: red"></i> Unavailabe</a>
                                 @else
+                                @if (auth()->guard('member')->check())
                                 <a class="rounded" href="dataevent/download?pdf={{$even->filepdf}}"><i
                                         class="fa fa-file-pdf-o" aria-hidden="true" style="color: red"></i>
                                     {{$even->filepdf}}</a>
+                                @else
+                                <a class="rounded" href="#!" onclick="alertLogin()"><i class="fa fa-file-pdf-o" aria-hidden="true"
+                                        style="color: red"></i>
+                                    {{$even->filepdf}}</a>
+                                @endif
+
                                 @endif
                             </td>
                         </tr>
@@ -105,6 +113,25 @@
         $('#iconBookmark').removeClass('fa-bookmark-o');
         $('#iconBookmark').addClass('fa-bookmark');
     
+}
+
+function alertLogin(){
+    Swal.fire({
+  title: 'Warning',
+  titleText: 'Please Login / Register for download announcement !',
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  cancelButtonText: 'Register',
+  confirmButtonText: 'Login'
+}).then((result) => {
+  if (result.value) {
+    window.location = 'login'
+  }else{
+    window.location = 'register'
+  }
+});
 }
 </script>
 @endsection
