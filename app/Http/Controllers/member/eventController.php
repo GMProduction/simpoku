@@ -436,7 +436,7 @@ class eventController extends Controller
 
     public function download_pdf(Request $req){
 
-         $file= public_path(). '\\assets\\pdf\\'.$req->pdf;
+         $file= public_path(). '/assets/pdf/'.$req->pdf;
 
          $headers = array(
 

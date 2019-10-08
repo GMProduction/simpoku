@@ -118,9 +118,10 @@
 function alertLogin(){
     Swal.fire({
   title: 'Warning',
-  titleText: 'Please Login / Register for download announcement !',
+  html: 'Please Login / Register for download announcement !',
   type: 'warning',
   showCancelButton: true,
+  showCloseButton: true,
   confirmButtonColor: '#3085d6',
   cancelButtonColor: '#d33',
   cancelButtonText: 'Register',
@@ -128,7 +129,10 @@ function alertLogin(){
 }).then((result) => {
   if (result.value) {
     window.location = 'login'
-  }else{
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ){
     window.location = 'register'
   }
 });
