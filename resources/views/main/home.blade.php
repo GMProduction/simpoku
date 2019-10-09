@@ -168,7 +168,7 @@
                                     <div class="media">
                                         <div class="last-media-img ml-1 mt-1 mr-2"
                                             style="">
-                                            <img src="{{asset ('/assets/thumbnails/'.$even->gambar)}}" alt="">
+                                            <img src="{{asset ('/assets/thumbnails/'.$even->gambar)}}" alt="" style="object-fit: cover">
                                         </div>
                                         <div class="media-body pt-1">
                                             <div class="time-cat pb-1 pl-0">
