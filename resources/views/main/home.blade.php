@@ -18,8 +18,12 @@
 
 @section('content')
 
+<script>
 
 
+
+
+</script>
 
 <style>
     .main {
@@ -143,15 +147,8 @@
 
 
         <div class="container" style="margin-top: 30px; background-color: white; ">
-
-
-
-
             <style type="text/css">
-
             </style>
-
-
             <section id='tampilevent' class="pt-3 pb-3">
                 <div class="row">
 
@@ -164,12 +161,13 @@
                                 </div>
 
                             </div>
+                            {{-- <div id="tampilEventHome"></div> --}}
                             <div class="card-body m-0 p-0 postList border-0">
                                 @foreach ($event as $even)
                                 <a href="/dataevent?id={{$even->id}}" class="media pl-2 pt-3 pb-3 border-B listHover">
                                     <div class="media">
                                         <div class="last-media-img ml-1 mt-1 mr-2"
-                                            style="background-image: url({{asset ('/assets/foto/'.$even->gambar)}})">
+                                            style="background-image: url({{asset ('/assets/thumbnails/'.$even->gambar)}})">
                                         </div>
                                         <div class="media-body pt-1">
                                             <div class="time-cat pb-1 pl-0">
@@ -179,7 +177,7 @@
                                                     s/d
                                                     {{date('d M Y', strtotime($even->tglAkhir))}}</small>
                                             </div>
-                                            <p class="mb-0" id="title-lm">{{$even->judul}} </p>
+                                            <p class="mb-0 text-burgundy" id="title-lm">{{$even->judul}} </p>
                                             <p class="d-none d-lg-block mb-2 ">{{$even->deskripsi}}</p>
                                             <p class="d-none d-lg-block mb-0">Specialist : {{$even->spec}}</p>
                                         </div>
@@ -189,7 +187,8 @@
 
                             </div>
                             <div id="load_more" class="pt-2 pb-4">
-                                <a name="load_more_button" id="load_more_button" class="btn btn-light form-control load" href="event">Show More</a>
+                                <a name="load_more_button" id="load_more_button" class="btn btn-light form-control load"
+                                    href="event">Show More</a>
                             </div>
                         </div>
                     </div>
@@ -227,7 +226,7 @@
         @endsection
 
         @section('script')
-
+        <script src="{{ asset('/js/tampilan/listevent1.js') }}"></script>
 
         <script>
             function cariEvenHome() {
@@ -245,6 +244,7 @@
             
         }
         $(document).ready(function(){
+            
         $(".linkfeat").hover(
           function () {
               $(".textfeat").show(500);

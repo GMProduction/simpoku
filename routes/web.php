@@ -65,7 +65,6 @@ Route::group(['middleware' => 'memberonly'], function () {
     Route::get('/about', function () {
         return view('main/about');
     })->name('about');
-
     Route::get('/dataLoad', function () {
         return view('main/data/dataeventload');
     })->name('dataload');

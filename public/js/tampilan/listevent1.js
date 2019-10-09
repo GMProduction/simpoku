@@ -21,6 +21,7 @@ function reset () {
   //comboCariEven()
 }
 
+
 function comboCariEven () {
   var s = $('#comboSpec').val()
   var y = $('#comboYear').val()
