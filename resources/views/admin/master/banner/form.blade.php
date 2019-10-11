@@ -25,6 +25,13 @@ New Banner
                         {{ csrf_field() }}
                          <div class="row">
                             <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="jenis">Banner Type</label>
+                                    <select id="jenis" class="form-control" name="jenis">
+                                        <option value="event">Event</option>
+                                        <option value="iklan">Iklan</option>
+                                    </select>
+                                </div>
                                     <div class="form-group">
                                             <label>Event ID</label>
                                             <div class="input-group mb-3">

@@ -32,6 +32,7 @@ Data Banner
                                         <th>#</th>
                                         <th>Title</th>
                                         <th>Banner Image</th>
+                                        <th>Banner Type</th>
                                         <th>Visibility</th>
                                         <th>Action</th>
                                     </tr>
@@ -72,13 +73,17 @@ $(document).ready(function () {
             { data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false, orderable: false},
             { data: 'judul', name: 'judul' },
             { data: 'gambar', name: 'gambar' },
+            { data: 'jenis', name: 'jenis' },
             { data: 'terlihat', name: 'terlihat' },
             { data: 'action', name: 'action', searchable: false, orderable: false }
         ],
         columnDefs: [
             { targets: [0], width:'10%', orderable: false},
-            { targets: [1], width:'75%'},
-            { targets: [2], width:'15%', orderable: false},
+            { targets: [1], width:'20%'},
+            { targets: [2], width:'20%'},
+            { targets: [3], width:'15%'},
+            { targets: [4], width:'15%'},
+            { targets: [5], width:'20%', orderable: false},
             {
                 targets: [0, 1, 2],
                 className: 'text-center'

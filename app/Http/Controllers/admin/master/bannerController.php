@@ -36,13 +36,14 @@ class bannerController extends Controller
     public function getData()
     {
         $banner = slideModel::query()
-            ->select('id', 'judul', 'gambar', 'terlihat')
+            ->select('id', 'judul', 'gambar', 'terlihat', 'jenis')
             ->get();
 
         return DataTables::of($banner)
             ->addIndexColumn()
             ->addColumn('action', function ($banner) {
                 return '
+                <a class="btn-sm btn-warning" data-toggle="tooltip" title="Edit Data" id="btn-edit" href="/dashboardadmin/banner/store?id='.$banner->id.'"><i class="fa fa-edit"></i></a>
                  <a class="btn-sm btn-danger" data-toggle="tooltip" title="Hapus Data" id="btn-delete" href="#" onclick="hapus(\'' . $banner->id . '\',event)"><i class="fa fa-trash"></i></a>
                  ';
             })
@@ -82,9 +83,7 @@ class bannerController extends Controller
         $messages = [];
 
         $rules = [
-            'idEvent' => 'required',
             'judul' => 'required',
-            'gambar' => 'required',
         ];
 
         return Validator::make($r->all(), $rules, $messages);
@@ -113,7 +112,7 @@ class bannerController extends Controller
                 $banner->terlihat = $r->terlihat;
                 $banner->idEvent = $r->idEvent;
                 $banner->url = '';
-                $banner->jenis = 'event';
+                $banner->jenis = $r->jenis;
                 $banner->save();
                 Alert::success('Success', 'Data Saved');
                 return redirect()->back();
@@ -123,6 +122,45 @@ class bannerController extends Controller
                 return $exData;
             }
         }
+    }
+
+    public function update(Request $r)
+    {
+
+        if ($this->isValid($r)->fails()) {
+            $errors = $this->isValid($r)->errors();
+            Alert::error('Gagal Menambahkan Data', 'Ooops');
+            return redirect()->back()->withErrors($errors)->withInput();
+        }else {
+        try {
+            $id = $r->oldid;
+            $data = [
+                'judul' => $r->judul,
+                'terlihat' => $r->terlihat,
+                'idEvent' => $r->idEvent,
+                'jenis' => $r->jenis,
+            ];
+
+            if ($r->hasFile('gambar')) {
+                $image = $r->file('gambar');
+                $namaFoto = $r->judul . '.' . $image->getClientOriginalExtension();
+                $image_resize = Image::make($image->getRealPath());
+                $image_resize->resize(1318, 401);
+                $image_resize->save(public_path('assets/banner/' . $namaFoto));
+                $data = array_add($data, 'gambar', $namaFoto);
+            }
+
+            slideModel::query()
+                ->where('id', '=', $id)
+                ->update($data);
+            Alert::success('Success', 'Berhasil Merubah Data');
+            return redirect('/dashboardadmin/banner');
+        } catch (\Exception  $e) {
+            $exData = explode('(', $e->getMessage());
+            Alert::error('Gagal Merubah Data \n' . $exData[0], 'Ooops');
+            return redirect()->back()->withInput();
+        }
+    }
     }
 
     public function edit(Request $r)
