@@ -60,7 +60,7 @@ class eventController extends Controller
             ->addIndexColumn()
             ->addColumn('action', function ($event) {
                 return '
-                 <a class="btn-sm btn-warning" data-toggle="tooltip" title="Edit Data" id="btn-edit" href="/dashboardadmin/event/store?id='.$event->id.'"><i class="fa fa-trash"></i></a>
+                 <a class="btn-sm btn-warning" data-toggle="tooltip" title="Edit Data" id="btn-edit" href="/dashboardadmin/event/store?id='.$event->id.'"><i class="fa fa-edit"></i></a>
                  <a class="btn-sm btn-danger" data-toggle="tooltip" title="Hapus Data" id="btn-delete" href="#" onclick="hapus(\'' . $event->id . '\',event)"><i class="fa fa-trash"></i></a>
                  <a class="btn-sm btn-info details-control" id="btn-detail" href="#"><i class="fa fa-folder-open"></i></a>
                  ';
