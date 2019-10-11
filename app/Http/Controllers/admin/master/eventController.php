@@ -84,7 +84,7 @@ class eventController extends Controller
             'tglAkhir' => 'required|',
             'spec' => 'required|',
             'namaContact' => 'required|',
-            'noContact' => 'required|numeric|digits_between:1,15',
+            'noContact' => 'required|numeric|digits_between:10,13',
         ];
 
         return Validator::make($r->all(), $rules, $messages);
