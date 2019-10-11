@@ -127,7 +127,9 @@ Route::group(['prefix' => 'dashboardadmin', 'middleware' => 'auth'], function ()
         Route::get('/new', 'admin\master\bannerController@showForm');
         Route::post('/add', 'admin\master\bannerController@add');
         Route::get('/update', 'admin\master\bannerController@edit');
+        Route::post('/updatedata', 'admin\master\bannerController@update');
         Route::delete('/destroy', 'admin\master\bannerController@delete');
+        Route::get('/store', 'admin\master\bannerController@store');
     });
 
     Route::group(['prefix' => 'event'], function () {

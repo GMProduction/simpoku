@@ -71,6 +71,7 @@ class specialisController extends Controller
             try {
                 $specialis = new specModel();
                 $specialis->spec = $r->spec;
+                $specialis->gelar = NULL;
                 $specialis->save();
                 Alert::success('Success', 'Data Saved');
                 return redirect()->back();

@@ -1,5 +1,5 @@
 <?php $__env->startSection('judul'); ?>
-New Banner
+Edit Banner
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -10,7 +10,7 @@ New Banner
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/dashboardadmin"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;Dashboard</a></li>
                         <li class="breadcrumb-item"><a href="/dashboardadmin/banner">Master Banner</a></li>
-                        <li class="breadcrumb-item active">Form New Banner</li>
+                        <li class="breadcrumb-item active">Form Edit Banner</li>
                     </ol>
                 </div>
 
@@ -18,17 +18,19 @@ New Banner
                     <div class="card-header">
                         <h3 class="card-title">Form New Banner</h3>
                     </div>
-                    <form method="post" action="/dashboardadmin/banner/add" enctype="multipart/form-data">
+                    <form method="post" action="/dashboardadmin/banner/updatedata" enctype="multipart/form-data">
+
                     <div class="card-body">
                         <?php echo e(csrf_field()); ?>
 
+                    <input type="hidden" name="oldid" value="<?php echo e($banner->id); ?>">
                          <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="jenis">Banner Type</label>
                                     <select id="jenis" class="form-control" name="jenis">
-                                        <option value="event">Event</option>
-                                        <option value="iklan">Iklan</option>
+                                        <option value="event" <?php echo e($banner->jenis == 'event' ? 'selected' : ''); ?>>Event</option>
+                                        <option value="iklan" <?php echo e($banner->jenis == 'iklan' ? 'selected' : ''); ?>>Iklan</option>
                                     </select>
                                 </div>
                                     <div class="form-group">
@@ -41,7 +43,7 @@ New Banner
 if (isset($message)) { $messageCache = $message; }
 $message = $errors->first('idEvent'); ?> is-invalid <?php unset($message);
 if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>" placeholder="Event ID" id="idEvent" name="idEvent" value="<?php echo e(old('idEvent')); ?>" readonly onclick="openModal()">
+endif; ?>" placeholder="Event ID" id="idEvent" name="idEvent" value="<?php echo e(old('judul', $banner->idEvent)); ?>" readonly onclick="openModal()">
                                             </div>
                                     </div>
                                  <div class="form-group">
@@ -54,7 +56,7 @@ endif; ?>" placeholder="Event ID" id="idEvent" name="idEvent" value="<?php echo 
 if (isset($message)) { $messageCache = $message; }
 $message = $errors->first('judul'); ?> is-invalid <?php unset($message);
 if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>" placeholder="Banner Title" id="judul" name="judul" value="<?php echo e(old('judul')); ?>">
+endif; ?>" placeholder="Banner Title" id="judul" name="judul" value="<?php echo e(old('judul', $banner->judul)); ?>">
                                         <?php if ($errors->has('judul')) :
 if (isset($message)) { $messageCache = $message; }
 $message = $errors->first('judul'); ?>
@@ -77,8 +79,8 @@ endif; ?>
                                 <div class="form-group">
                                     <label>Visibility</label>
                                     <select id="terlihat" class="form-control" name="terlihat">
-                                        <option value="ya">Visible</option>
-                                        <option value="tidak">Invisible</option>
+                                        <option value="ya" <?php echo e($banner->terlihat == 'ya' ? 'selected' : ''); ?>>Visible</option>
+                                        <option value="tidak" <?php echo e($banner->terlihat == 'tidak' ? 'selected' : ''); ?>>Invisible</option>
                                     </select>
                                 </div>
                             </div>
@@ -181,4 +183,4 @@ function pilih(id, e){
     });
 </script>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\laravel\simpoku\resources\views/admin/master/banner/form.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\laravel\simpoku\resources\views/admin/master/banner/update.blade.php ENDPATH**/ ?>
