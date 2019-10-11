@@ -56,6 +56,7 @@ Route::group(['middleware' => 'memberonly'], function () {
     Route::get('/tampilListEven', 'member\eventController@listEvent')->name('listEvent');
     Route::get('/cariListEven', 'member\eventController@cariEvent')->name('event');
     Route::get('/dataevent', 'member\eventController@dataEvent')->name('dataEvent');
+    Route::get('/dataiklan', 'member\eventController@dataIklan')->name('dataIklan');
     Route::get('/eventTahun', 'member\eventController@eventTahun')->name('eventTahun');
     Route::get('/eventSpec', 'member\eventController@eventSpec')->name('eventSpec');
     Route::get('/getAllSpec', 'member\specController@getAllSpec')->name('getAllSpec');
