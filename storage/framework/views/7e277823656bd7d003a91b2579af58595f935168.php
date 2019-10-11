@@ -68,7 +68,7 @@
 
     @media (max-width: 765px) {
         .kecil {
-            height: 250px !important;
+            height: 209px !important;
         }
 
         .desSlider {
@@ -84,7 +84,7 @@
             href="<?php echo e(url('/resend/'.auth()->guard('member')->user()->id)); ?>">RESEND</a> to resend mail verification.
     </div>
     <?php endif; ?>
-    <div class=" container-fluid bawah">
+    <div class=" container bawah">
         <div class="">
 
 
@@ -104,9 +104,9 @@
                                 <?php else: ?>
                                 <a href="/dataiklan?id=<?php echo e($data->id); ?>">
                                     <?php endif; ?>
-                                    <div class="card bg-dark text-white border-0 img kecil" style="height: 400px;">
+                                    <div class="card bg-dark text-white border-0 img kecil" style="height: 628px;">
                                         <img class="card-img img-fluid" src="<?php echo e(asset ('/assets/banner/'.$data->gambar)); ?>"
-                                            alt="" style=" object-fit: cover !important; height: 401px">
+                                            alt="" style=" object-fit: cover !important; height: 100%">
                                         <div class="card-img-overlay d-flex linkfeat" style="z-index: 9999 !important">
 
                                             <div class="align-self-end">
