@@ -60,6 +60,7 @@ class eventController extends Controller
             ->addIndexColumn()
             ->addColumn('action', function ($event) {
                 return '
+                 <a class="btn-sm btn-warning" data-toggle="tooltip" title="Edit Data" id="btn-edit" href="/dashboardadmin/event/store?id='.$event->id.'"><i class="fa fa-trash"></i></a>
                  <a class="btn-sm btn-danger" data-toggle="tooltip" title="Hapus Data" id="btn-delete" href="#" onclick="hapus(\'' . $event->id . '\',event)"><i class="fa fa-trash"></i></a>
                  <a class="btn-sm btn-info details-control" id="btn-detail" href="#"><i class="fa fa-folder-open"></i></a>
                  ';
@@ -91,8 +92,6 @@ class eventController extends Controller
 
     public function add(Request $r)
     {
-
-
 
         if ($this->isValid($r)->fails()) {
             $errors = $this->isValid($r)->errors();
@@ -175,23 +174,31 @@ class eventController extends Controller
                     'deskripsi' => $r->deskripsi,
                     'tempat' => $r->tempat,
                     'region' => $r->region,
+                    'city' => $r->city,
                     'tglMulai' => $r->tglMulai,
                     'tglAkhir' => $r->tglAkhir,
-                    'spec' => $r->spec,
-                    'contact' => $r->contact,
+                    'noContact' => $r->noContact,
+                    'namaContact' => $r->namaContact,
+                    'spec' => implode(",", $r->spec),
                 ];
 
                 if ($r->hasFile('gambar')) {
-                    $upFoto = $r->file('gambar');
-                    $namaFoto = $r->judul . '.' . $upFoto->getClientOriginalExtension();
-                    $r->gambar->move(public_path('foto'), $namaFoto);
+                    $image = $r->file('gambar');
+                    $namaFoto = $r->judul . '.' . $image->getClientOriginalExtension();
+    
+                    $image_resize = Image::make($image->getRealPath());
+                    $image_resize->resize(150, 150);
+                    //save to thumbnails 150x150
+                    $image_resize->save(public_path('assets/thumbnails/' . $namaFoto));
+                    //save to origin
+                    $r->gambar->move(public_path('assets/foto'), $namaFoto);
                     $data = array_add($data, 'gambar', $namaFoto);
-                }
-
+                } 
+                
                 if ($r->hasFile('filepdf')) {
-                    $uppdf = $r->file('filepdf');
-                    $namapdf = $r->judul . '.' . $uppdf->getClientOriginalExtension();
-                    $r->filepdf->move(public_path('pdf'), $namapdf);
+                    $filepdf = $r->file('filepdf');
+                    $namapdf = $r->judul . '.' . $filepdf->getClientOriginalExtension();
+                    $r->filepdf->move(public_path('assets/pdf'), $namapdf);
                     $data = array_add($data, 'filepdf', $namapdf);
                 }
 

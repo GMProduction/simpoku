@@ -10,8 +10,8 @@ Edit Event
         <div class="col-md-11">
             <div class="text-right">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/admin"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="/admin/event">Master Event</a></li>
+                    <li class="breadcrumb-item"><a href="/dashboardadmin"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/dashboardadmin/event">Master Event</a></li>
                     <li class="breadcrumb-item active">Form Edit Event</li>
                 </ol>
             </div>
@@ -20,7 +20,7 @@ Edit Event
                 <div class="card-header">
                     <h3 class="card-title">Form Tambah Event</h3>
                 </div>
-                <form method="post" action="/admin/event/update" enctype="multipart/form-data">
+                <form method="post" action="/dashboardadmin/event/update" enctype="multipart/form-data">
                 <div class="card-body">
                         {{ csrf_field() }}
                     <input type="hidden" name="oldid" value="{{$event->id}}">
@@ -124,14 +124,14 @@ Edit Event
                             </div>
                         </div>
                         <div class="form-group">
-                        <label>Spesialis Event</label>
-                        <input type="text" class="form-control @error('spec') is-invalid @enderror" placeholder="Spesialis Event" id="spec" name="spec" value="{{ old('spec', $event->spec)}}" autocomplete="spec">
-                            @error('spec')
-                                <span class="msg invalid-feedback" role="alert">
-                                    {{$message}}
-                                </span>
-                            @enderror
-                    </div>
+                            <label>Specialis</label>
+                                <select class="form-control select2" multiple="multiple" data-placeholder="Select Specialists"
+                                        style="width: 100%;" name="spec[]" id="spec">
+                                        @foreach ($spec as $item)
+                                            <option value="{{$item->spec}}">{{$item->spec}}</option>
+                                        @endforeach
+                                </select>
+                        </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
@@ -152,21 +152,12 @@ Edit Event
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label>Specialis</label>
-                                <select class="form-control select2" multiple="multiple"
-                                        style="width: 100%;" name="spec[]" id="spec">
-                                        @foreach ($spec as $item)
-                                            <option value="{{$item->spec}}">{{$item->spec}}</option>
-                                        @endforeach
-                                </select>
-                        </div>
+                        
                 </div>
                 <div class="card-footer">
                     <div class="text-right">
                         <button type="submit" id="btnSimpan" class="btn btn-primary"><i id="iconbtn" class="fa  fa-check-circle" aria-hidden="true"></i>&nbsp;Simpan</button>
                     </div>
-                    {{$spec}}
                 </div>
             </form>
             </div>
@@ -205,7 +196,7 @@ Edit Event
         $('#city').children().remove();
         $.ajax({
             type: "GET",
-            url: "/admin/event/getCities",
+            url: "/dashboardadmin/event/getCities",
             data: {
                 idpropinsi: propinsi
             },
@@ -239,7 +230,7 @@ Edit Event
         $('#city').children().remove();
         $.ajax({
             type: "GET",
-            url: "/admin/event/getCities",
+            url: "/dashboardadmin/event/getCities",
             data: {
                 idpropinsi: propinsi
             },
