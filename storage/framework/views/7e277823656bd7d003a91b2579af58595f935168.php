@@ -159,7 +159,7 @@
                                     <div class="media">
                                         <div class="last-media-img ml-1 mt-1 mr-2"
                                             style="">
-                                            <img src="<?php echo e(asset ('/assets/thumbnails/'.$even->gambar)); ?>" alt="">
+                                            <img src="<?php echo e(asset ('/assets/thumbnails/'.$even->gambar)); ?>" alt="" width="120" height="120" style="object-fit: cover">
                                         </div>
                                         <div class="media-body pt-1">
                                             <div class="time-cat pb-1 pl-0">

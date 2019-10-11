@@ -17,7 +17,7 @@ class eventController extends Controller
     {
         $mytime = Carbon::now();
         $hari =  $mytime->format('d');
-       
+        
         $dt = Carbon::now();
         $bulan = $dt->toDateString();       
 
@@ -340,6 +340,9 @@ class eventController extends Controller
 
     public function load_data(Request $req)
     {
+        $mytime = Carbon::now();
+        $hari = $mytime->toDateString();     
+        
         if ($req->ajax()) {
             if ($req->id > 0) {
                 /*
@@ -372,7 +375,8 @@ class eventController extends Controller
                             $mo->whereMonth('tglMulai', '=',  $req->month);
                         }
                     })
-                    ->orderBy('id', 'DESC')
+                    ->orderBy('tglMulai', 'ASC')
+                    ->where('tglMulai', '>', $hari)
                     ->limit(2)
                     ->get();
             } else {
@@ -403,7 +407,8 @@ class eventController extends Controller
                             $mo->whereMonth('tglMulai', '=',  $req->month);
                         }
                     })
-                    ->orderBy('id', 'DESC')
+                    ->orderBy('tglMulai', 'ASC')
+                    ->where('tglMulai', '>', $hari)
                     ->limit(6)
                     ->get();
             }
