@@ -8,5 +8,5 @@ class slideModel extends Model
 {
     //
     protected $table = 'tb_slide';
-    protected $fillable = ['judul', 'gambar', 'terlihat'];
+    protected $fillable = ['idEvent','judul', 'gambar', 'terlihat', 'url', 'jenis'];
 }

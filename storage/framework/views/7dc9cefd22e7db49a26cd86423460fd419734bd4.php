@@ -1,28 +1,28 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="csrf-token" content="{{csrf_token()}}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     <title>Simpoku</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{asset ('adminlte/plugins/font-awesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset ('adminlte/plugins/font-awesome/css/font-awesome.min.css')); ?>">
    
-    <link rel="stylesheet" href="{{ asset('/adminlte/css/adminlte.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('/css/genosstyle.css')}}">
-    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('/css/sweetalert2.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('/adminlte/css/adminlte.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/genosstyle.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/bootstrap.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/sweetalert2.css')); ?>">
 
-    @yield('css')
+    <?php echo $__env->yieldContent('css'); ?>
 </head>
 
 <body class="hold-transition sidebar-mini bodypolos">
     <div style="position: absolute; width: 100%; height: initial; background-color: gray; opacity: 0.3; display: none; z-index: 99999" id="loadingimage">
-        <img src="{{ asset('/assets/images/ajaxloader.gif') }}" alt="" >
+        <img src="<?php echo e(asset('/assets/images/ajaxloader.gif')); ?>" alt="" >
     </div>
     <div class="wrapper">
 
@@ -34,7 +34,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link">@yield('judul')</a>
+                    <a class="nav-link"><?php echo $__env->yieldContent('judul'); ?></a>
                 </li>
 
             </ul>
@@ -46,7 +46,8 @@
                 <!-- Notifications Dropdown Menu -->
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user"></i>&nbsp;{{auth()->guard('web')->user()->username}}
+                    <i class="fa fa-user"></i>&nbsp;<?php echo e(auth()->guard('web')->user()->username); ?>
+
                     </a>
                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
                         <a href="/logoutadmin" class="dropdown-item dropdown-footer text-dark">Logout</a>
@@ -61,7 +62,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="/" class="brand-link">
-                <!-- <img src="{{asset ('/adminlte/img/logoiks.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
+                <!-- <img src="<?php echo e(asset ('/adminlte/img/logoiks.png')); ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
                 <span class="brand-text font-weight-light">Simpoku Dashboard</span>
             </a>
 
@@ -70,10 +71,11 @@
                 <!-- user panel -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{asset ('/adminlte/img/avatar5.png')}}" class="img-circle elevation-2" alt="User Image">
+                        <img src="<?php echo e(asset ('/adminlte/img/avatar5.png')); ?>" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info text-light">
-                        &nbsp;{{auth()->guard('web')->user()->username}}
+                        &nbsp;<?php echo e(auth()->guard('web')->user()->username); ?>
+
                     </div>
                 </div>
 
@@ -139,7 +141,7 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid pt-2"">
-                    @yield('content')
+                    <?php echo $__env->yieldContent('content'); ?>
                 </div><!-- /.container-fluid -->
             </section>
             <!-- /.content -->
@@ -156,13 +158,14 @@
         <!-- /.control-sidebar -->
     </div>
     
-    <script src=" {{asset ('/js/jquery.min.js')}}"></script>
-    <script src="{{ asset ('/js/bootstrap-4.3.1/bootstrap.min.js')}}"></script>
-    <script src="{{ asset ('/js/bootstrap-4.3.1/popper.min.js')}}"></script>
-    <script src="{{asset ('/adminlte/js/adminlte.js')}}"></script>
-    <script src="{{ asset('js/sweetalert.min.js') }}"></script>
-    @include('sweet::alert')
-    @yield('script')
+    <script src=" <?php echo e(asset ('/js/jquery.min.js')); ?>"></script>
+    <script src="<?php echo e(asset ('/js/bootstrap-4.3.1/bootstrap.min.js')); ?>"></script>
+    <script src="<?php echo e(asset ('/js/bootstrap-4.3.1/popper.min.js')); ?>"></script>
+    <script src="<?php echo e(asset ('/adminlte/js/adminlte.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/sweetalert.min.js')); ?>"></script>
+    <?php echo $__env->make('sweet::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->yieldContent('script'); ?>
 </body>
 
 </html>
+<?php /**PATH D:\laravel\simpoku\resources\views/admin/master.blade.php ENDPATH**/ ?>
