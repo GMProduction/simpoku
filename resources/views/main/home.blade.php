@@ -110,7 +110,7 @@
                             @if ($data->jenis == 'event')
                             <a href="/dataevent?id={{$data->idEvent}}" class="">
                                 @else
-                                <a href="/dataiklan?id={{$data->url}}">
+                                <a href="/dataiklan?id={{$data->id}}">
                                     @endif
                                     <div class="card bg-dark text-white border-0 img kecil" style="height: 400px;">
                                         <img class="card-img img-fluid" src="{{asset ('/assets/banner/'.$data->gambar)}}"

@@ -102,7 +102,7 @@
                             <?php if($data->jenis == 'event'): ?>
                             <a href="/dataevent?id=<?php echo e($data->idEvent); ?>" class="">
                                 <?php else: ?>
-                                <a href="/dataiklan?id=<?php echo e($data->url); ?>">
+                                <a href="/dataiklan?id=<?php echo e($data->id); ?>">
                                     <?php endif; ?>
                                     <div class="card bg-dark text-white border-0 img kecil" style="height: 400px;">
                                         <img class="card-img img-fluid" src="<?php echo e(asset ('/assets/banner/'.$data->gambar)); ?>"
