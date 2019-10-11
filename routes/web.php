@@ -75,7 +75,7 @@ Route::group(['middleware' => 'memberonly'], function () {
         return view('main/dashboard');
     })->name('about');
 
-    Route::get('/dataLoad/load_data', 'member\eventController@load_data')->name('loadmore.load_data');
+    Route::get('/dataLoad/load_data', 'member\eventController@load_data')->name('dataLoad.load_data');
 
     Route::get('dataevent/download', 'member\eventController@download_pdf')->name('download_pdf');
 });
