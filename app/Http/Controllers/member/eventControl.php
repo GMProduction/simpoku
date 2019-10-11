@@ -98,7 +98,7 @@ class eventControl extends Controller
 
     public  function apiDataSlider()
     {
-        $data = slideModel::orderBy('gambar', 'asc')->get();
+        $data = slideModel::where('terlihat', '=', 'ya')->orderBy('gambar', 'asc')->get();
 
 
         if (count($data) > 0) {
