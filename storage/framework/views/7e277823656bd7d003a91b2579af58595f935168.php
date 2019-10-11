@@ -105,7 +105,7 @@
                                 <a href="/dataevent?id=<?php echo e($data->url); ?>">
                                     <?php endif; ?>
                                     <div class="card bg-dark text-white border-0 img kecil" style="height: 400px;">
-                                        <img class="card-img img-fluid" src="<?php echo e(asset ('/assets/foto/'.$data->gambar)); ?>"
+                                        <img class="card-img img-fluid" src="<?php echo e(asset ('/assets/banner/'.$data->gambar)); ?>"
                                             alt="" style=" object-fit: cover !important">
                                         <div class="card-img-overlay d-flex linkfeat" style="z-index: 9999 !important">
 
