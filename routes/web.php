@@ -122,6 +122,7 @@ Route::group(['prefix' => 'dashboardadmin', 'middleware' => 'auth'], function ()
     Route::group(['prefix' => 'banner'], function () {
         Route::get('/', 'admin\master\bannerController@index')->name('pagebanner');
         Route::get('/view', 'admin\master\bannerController@getData');
+        Route::get('/viewevent', 'admin\master\bannerController@getDataEvent');
         Route::get('/new', 'admin\master\bannerController@showForm');
         Route::post('/add', 'admin\master\bannerController@add');
         Route::get('/update', 'admin\master\bannerController@edit');

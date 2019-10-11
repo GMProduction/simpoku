@@ -11,6 +11,7 @@ use Alert;
 use App\Master\slideModel;
 use App\Master\specModel;
 use Image;
+use App\Master\eventModel;
 
 class bannerController extends Controller
 {
@@ -58,12 +59,30 @@ class bannerController extends Controller
             ->make(true);
     }
 
+    public function getDataEvent()
+    {
+        $event = eventModel::query()
+            ->select('id', 'judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
+            ->orderBy('id', 'DESC')
+            ->get();
+
+        return DataTables::of($event)
+            ->addIndexColumn()
+            ->addColumn('action', function ($event) {
+                return '
+                 <a class="btn-sm btn-success" data-toggle="tooltip" title="Hapus Data" id="btn-delete" href="#" onclick="pilih(\'' . $event->id . '\',event)">Pilih</a>
+                 ';
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+    }
 
     private function isValid(Request $r)
     {
         $messages = [];
 
         $rules = [
+            'idEvent' => 'required',
             'judul' => 'required',
             'gambar' => 'required',
         ];
@@ -82,7 +101,7 @@ class bannerController extends Controller
                 $image = $r->file('gambar');
                 $namaFoto = $r->judul . '.' . $image->getClientOriginalExtension();
                 $image_resize = Image::make($image->getRealPath());
-                $image_resize->fit(700, 360);
+                $image_resize->resize(1318, 401);
                 $image_resize->save(public_path('assets/banner/' . $namaFoto));
             } else {
                 $namaFoto = '';
@@ -92,6 +111,9 @@ class bannerController extends Controller
                 $banner->judul = $r->judul;
                 $banner->gambar = $namaFoto;
                 $banner->terlihat = $r->terlihat;
+                $banner->idEvent = $r->idEvent;
+                $banner->url = '';
+                $banner->jenis = 'event';
                 $banner->save();
                 Alert::success('Success', 'Data Saved');
                 return redirect()->back();

@@ -1,10 +1,8 @@
-@extends('admin.master')
-
-@section('judul')
+<?php $__env->startSection('judul'); ?>
 New Banner
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-11">
@@ -22,7 +20,8 @@ New Banner
                     </div>
                     <form method="post" action="/dashboardadmin/banner/add" enctype="multipart/form-data">
                     <div class="card-body">
-                        {{ csrf_field() }}
+                        <?php echo e(csrf_field()); ?>
+
                          <div class="row">
                             <div class="col-md-12">
                                     <div class="form-group">
@@ -31,7 +30,11 @@ New Banner
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-user-md" aria-hidden="true"></i></span>
                                                 </div>
-                                            <input type="text" class="form-control @error('idEvent') is-invalid @enderror" placeholder="Event ID" id="idEvent" name="idEvent" value="{{ old('idEvent')}}" readonly onclick="openModal()">
+                                            <input type="text" class="form-control <?php if ($errors->has('idEvent')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('idEvent'); ?> is-invalid <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>" placeholder="Event ID" id="idEvent" name="idEvent" value="<?php echo e(old('idEvent')); ?>" readonly onclick="openModal()">
                                             </div>
                                     </div>
                                  <div class="form-group">
@@ -40,12 +43,21 @@ New Banner
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1"><i class="fa fa-user-md" aria-hidden="true"></i></span>
                                         </div>
-                                    <input type="text" class="form-control @error('judul') is-invalid @enderror" placeholder="Banner Title" id="judul" name="judul" value="{{ old('judul')}}">
-                                        @error('judul')
+                                    <input type="text" class="form-control <?php if ($errors->has('judul')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('judul'); ?> is-invalid <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>" placeholder="Banner Title" id="judul" name="judul" value="<?php echo e(old('judul')); ?>">
+                                        <?php if ($errors->has('judul')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('judul'); ?>
                                             <span class="msg invalid-feedback" role="alert">
-                                                {{$message}}
+                                                <?php echo e($message); ?>
+
                                             </span>
-                                        @enderror
+                                        <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -101,15 +113,15 @@ New Banner
             </div>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('css')
-<link rel="stylesheet" href="{{ asset('/css/dataTables.bootstrap4.min.css')}}">
-@endsection
+<?php $__env->startSection('css'); ?>
+<link rel="stylesheet" href="<?php echo e(asset('/css/dataTables.bootstrap4.min.css')); ?>">
+<?php $__env->stopSection(); ?>
 
-@section('script')
-<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('js/dataTablesBootstrap4.js') }}"></script>
+<?php $__env->startSection('script'); ?>
+<script src="<?php echo e(asset('js/jquery.dataTables.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/dataTablesBootstrap4.js')); ?>"></script>
 <script>
 
 function openModal() {
@@ -161,4 +173,5 @@ function pilih(id, e){
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\laravel\simpoku\resources\views/admin/master/banner/form.blade.php ENDPATH**/ ?>
