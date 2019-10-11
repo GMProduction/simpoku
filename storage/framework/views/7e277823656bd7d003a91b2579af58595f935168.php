@@ -1,11 +1,7 @@
-@extends('main.header')
+<?php $__env->startSection('css'); ?>
 
-
-
-@section('css')
-
-<link rel="stylesheet" href="{{ asset('/css/flexslider.css')}}" type="text/css" media="screen" />
-<link rel="stylesheet" href="{{ asset('/css/carousell.css')}}" type="text/css" media="screen" />
+<link rel="stylesheet" href="<?php echo e(asset('/css/flexslider.css')); ?>" type="text/css" media="screen" />
+<link rel="stylesheet" href="<?php echo e(asset('/css/carousell.css')); ?>" type="text/css" media="screen" />
 <meta name="description"
     content="Informasi seputar seminar kesehatan, yang di ikuti oleh Doktor Umum, 
     Doktor Spesialis, PPDS, Dokter Muda, Perawat Apoteker, Farmasi. Yang diselenggarakan di dalam kota maupun luar kota.">
@@ -14,9 +10,9 @@
 <meta name="absrtact" content="">
 
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <script>
 
@@ -81,48 +77,43 @@
     }
 </style>
 <div class="bawahHome" style="">
-    @if (auth()->guard('member')->check() && auth()->guard('member')->user()->email_verified_at == NULL)
+    <?php if(auth()->guard('member')->check() && auth()->guard('member')->user()->email_verified_at == NULL): ?>
     <div class="alert alert-warning" role="alert">
         Please Verify Your Email Address by clicking Link.<br>
         If Your are not receive an email. click <a
-            href="{{ url('/resend/'.auth()->guard('member')->user()->id) }}">RESEND</a> to resend mail verification.
+            href="<?php echo e(url('/resend/'.auth()->guard('member')->user()->id)); ?>">RESEND</a> to resend mail verification.
     </div>
-    @endif
+    <?php endif; ?>
     <div class=" container-fluid bawah">
         <div class="">
 
 
 
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                {{-- <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol> --}}
+                
                 <div class="carousel-inner">
-                    @foreach ($carousel as $data )
+                    <?php $__currentLoopData = $carousel; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-                    @if($loop->first)
+                    <?php if($loop->first): ?>
                     <div class="carousel-item active">
-                        @else
+                        <?php else: ?>
                         <div class="carousel-item">
-                            @endif
-                            @if ($data->jenis == 'event')
-                            <a href="/dataevent?id={{$data->idEvent}}" class="">
-                                @else
-                                <a href="/dataevent?id={{$data->url}}">
-                                    @endif
+                            <?php endif; ?>
+                            <?php if($data->jenis == 'event'): ?>
+                            <a href="/dataevent?id=<?php echo e($data->idEvent); ?>" class="">
+                                <?php else: ?>
+                                <a href="/dataevent?id=<?php echo e($data->url); ?>">
+                                    <?php endif; ?>
                                     <div class="card bg-dark text-white border-0 img kecil" style="height: 400px;">
-                                        <img class="card-img img-fluid" src="{{asset ('/assets/foto/'.$data->gambar)}}"
+                                        <img class="card-img img-fluid" src="<?php echo e(asset ('/assets/foto/'.$data->gambar)); ?>"
                                             alt="" style=" object-fit: cover !important">
                                         <div class="card-img-overlay d-flex linkfeat" style="z-index: 9999 !important">
 
                                             <div class="align-self-end">
-                                                {{-- <span class="badge">{{$data->city}}, {{$data->regional}}</span>
-                                                --}}
-                                                <h4 class="card-title">{{$data->judul}}</h4>
+                                                
+                                                <h4 class="card-title"><?php echo e($data->judul); ?></h4>
                                                 <p id="desSlider" class="textfeat" style="display: none;">
-                                                    {{$data->deskripsi}}</p>
+                                                    <?php echo e($data->deskripsi); ?></p>
                                             </div>
 
                                         </div>
@@ -130,7 +121,7 @@
                                 </a>
                         </div>
 
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -161,30 +152,31 @@
                                 </div>
 
                             </div>
-                            {{-- <div id="tampilEventHome"></div> --}}
+                            
                             <div class="card-body m-0 p-0 postList border-0">
-                                @foreach ($event as $even)
-                                <a href="/dataevent?id={{$even->id}}" class="media pl-2 pt-3 pb-3 border-B listHover">
+                                <?php $__currentLoopData = $event; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $even): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <a href="/dataevent?id=<?php echo e($even->id); ?>" class="media pl-2 pt-3 pb-3 border-B listHover">
                                     <div class="media">
                                         <div class="last-media-img ml-1 mt-1 mr-2"
                                             style="">
-                                            <img src="{{asset ('/assets/thumbnails/'.$even->gambar)}}" alt="" width="120" height="120" style="object-fit: cover">
+                                            <img src="<?php echo e(asset ('/assets/thumbnails/'.$even->gambar)); ?>" alt="">
                                         </div>
                                         <div class="media-body pt-1">
                                             <div class="time-cat pb-1 pl-0">
-                                                <span class="badge" style="">{{$even->city}}, {{$even->region}}</span>
+                                                <span class="badge" style=""><?php echo e($even->city); ?>, <?php echo e($even->region); ?></span>
                                                 <small class="text-time "
-                                                    style="">{{date('d M', strtotime($even->tglMulai))}}
+                                                    style=""><?php echo e(date('d M', strtotime($even->tglMulai))); ?>
+
                                                     s/d
-                                                    {{date('d M Y', strtotime($even->tglAkhir))}}</small>
+                                                    <?php echo e(date('d M Y', strtotime($even->tglAkhir))); ?></small>
                                             </div>
-                                            <p class="mb-0 text-burgundy" id="title-lm">{{$even->judul}} </p>
-                                            <p class="d-none d-lg-block mb-2 ">{{$even->deskripsi}}</p>
-                                            <p class="d-none d-lg-block mb-0">Specialist : {{$even->spec}}</p>
+                                            <p class="mb-0 text-burgundy" id="title-lm"><?php echo e($even->judul); ?> </p>
+                                            <p class="d-none d-lg-block mb-2 "><?php echo e($even->deskripsi); ?></p>
+                                            <p class="d-none d-lg-block mb-0">Specialist : <?php echo e($even->spec); ?></p>
                                         </div>
                                     </div>
                                 </a>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                             </div>
                             <div id="load_more" class="pt-2 pb-4">
@@ -201,12 +193,12 @@
                             </li>
                         </ul>
                         <a href="" target="_blank">
-                            <img src="{{asset ('/assets/gambar/qrcode.png')}}" class="img-fluid img-thumbnail border-0"
+                            <img src="<?php echo e(asset ('/assets/gambar/qrcode.png')); ?>" class="img-fluid img-thumbnail border-0"
                                 alt="asd">
                         </a>
                         <div class="text-center">
                             <a href="#!" class="btn btn-light w-200" style="border-radius: 5rem !important"><img
-                                    class="m-0 p-0" src="{{ asset('/assets/gambar/playstore.png') }}" alt="Twitter"
+                                    class="m-0 p-0" src="<?php echo e(asset('/assets/gambar/playstore.png')); ?>" alt="Twitter"
                                     width="150"></a>
                         </div>
                         <div class="clearfix"></div>
@@ -224,10 +216,10 @@
 
 
 
-        @endsection
+        <?php $__env->stopSection(); ?>
 
-        @section('script')
-        <script src="{{ asset('/js/tampilan/listevent1.js') }}"></script>
+        <?php $__env->startSection('script'); ?>
+        <script src="<?php echo e(asset('/js/tampilan/listevent1.js')); ?>"></script>
 
         <script>
             function cariEvenHome() {
@@ -269,4 +261,5 @@
             
                   
         </script>
-        @endsection
+        <?php $__env->stopSection(); ?>
+<?php echo $__env->make('main.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Program\web\New folder\simpoku\resources\views/main/home.blade.php ENDPATH**/ ?>

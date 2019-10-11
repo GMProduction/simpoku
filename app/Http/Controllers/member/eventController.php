@@ -54,6 +54,21 @@ class eventController extends Controller
         //return($carousel);
     }
 
+    public function evenHome(){
+        $dt = Carbon::now();
+        $bulan = $dt->toDateString();   
+        $event = eventModel::query()
+        ->select('id','judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
+        ->orderBy('tglMulai', 'ASC')
+        ->where('tglMulai', '>', $bulan)
+        ->take(8)
+        ->get();
+        $data = [
+            'event' => $event
+        ];
+        return view('main/data/evenHome')->with($data);
+    }
+    
     public function listEventAll()
     {
         $years = [];
@@ -400,7 +415,7 @@ class eventController extends Controller
                      <a href="/dataevent?id=' . $even->id . '" class="media p-2 border-B listHover">
                      <div class="media">
                          <div class="last-media-img ml-1 mt-1 mr-2"
-                             style="background-image: url(\'assets/foto/' . $even->gambar . '\')">
+                             style="background-image: url(\'assets/thumbnails/' . $even->gambar . '\')">
                              
                          </div>
                          <div class="media-body pt-1">
@@ -436,7 +451,7 @@ class eventController extends Controller
 
     public function download_pdf(Request $req){
 
-         $file= public_path(). '\\assets\\pdf\\'.$req->pdf;
+         $file= public_path(). '/assets/pdf/'.$req->pdf;
 
          $headers = array(
 

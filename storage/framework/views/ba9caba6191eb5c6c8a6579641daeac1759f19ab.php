@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 
 <head>
     <meta charset="utf-8">
@@ -16,21 +16,21 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{asset ('adminlte/plugins/font-awesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset ('adminlte/plugins/font-awesome/css/font-awesome.min.css')); ?>">
 
     <!-- Styles -->
-    <link href="{{ asset('/css/sweetalert2.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('/css/genosstyle.css') }}" rel="stylesheet" />
-    <link href="{{ asset('/css/animate.css') }}" rel="stylesheet" />
-    <link href="{{ asset('/css/flipkart.css') }}" rel="stylesheet" />
+    <link href="<?php echo e(asset('/css/sweetalert2.min.css')); ?>" rel="stylesheet" />
+    <link href="<?php echo e(asset('/css/bootstrap.min.css')); ?>" rel="stylesheet" />
+    <link href="<?php echo e(asset('/css/genosstyle.css')); ?>" rel="stylesheet" />
+    <link href="<?php echo e(asset('/css/animate.css')); ?>" rel="stylesheet" />
+    <link href="<?php echo e(asset('/css/flipkart.css')); ?>" rel="stylesheet" />
 
 
 
-    <link rel="shortcut icon" href="{{asset('assets/gambar/logo2.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo e(asset('assets/gambar/logo2.png')); ?>" type="image/x-icon">
 
 
-    @yield('css')
+    <?php echo $__env->yieldContent('css'); ?>
 
     <script>
         function cariDataevent(){
@@ -56,18 +56,19 @@
 
                         <li class="upper-links"><a class="links" href="event"><i class="fa fa-calendar"
                                     aria-hidden="true"></i> Event</a></li>
-                        @if (auth()->guard('member')->check())
-                        Hi, {{auth()->guard('member')->user()->fullname}}
+                        <?php if(auth()->guard('member')->check()): ?>
+                        Hi, <?php echo e(auth()->guard('member')->user()->fullname); ?>
+
                         <li class="upper-links"><a class="links" href="/logout"><i class="fa fa-sign-out"
                                     aria-hidden="true"></i> Logout</a></li>
-                        @else
+                        <?php else: ?>
                         <li class="upper-links"><a class="links" href="login"><i class="fa fa-lock"
                                     aria-hidden="true"></i> Login </a></li>
 
                         <li class="upper-links">|</li>
                         <li class="upper-links"><a class="links" href="/register"><i class="fa fa-sign-in"
                                     aria-hidden="true"></i> Register</a></li>
-                        @endif
+                        <?php endif; ?>
 
 
 
@@ -79,7 +80,7 @@
                     <h2 style="margin:0px;"><span class="smallnav menu" onclick=""><i class="fa fa-bars"
                                 onclick="openNav()" aria-hidden="true"></i> <a href="/">Simpoku</a></span></h2>
                     <h1 style="margin:0px; position: absolute;" class=""><a href="/" class="profile-li"><span
-                                class="largenav"><img src="{{ asset('/assets/gambar/logo1.png') }}" width="250" style=""
+                                class="largenav"><img src="<?php echo e(asset('/assets/gambar/logo1.png')); ?>" width="250" style=""
                                     alt=""></span></a></h1>
                 </div>
                 <div class="flipkart-navbar-search smallsearch col-lg-8 col-md-7 col-sm-11 float-left">
@@ -100,7 +101,7 @@
     </div>
     <div id="mySidenav" class="sidenav" style="z-index: 9999">
         <div class="container warna-burgundy" style="padding-top: 10px; height: 119px">
-            <span class="sidenav-heading"><img src="{{ asset('/assets/gambar/logo.png') }}" width="100" style=""
+            <span class="sidenav-heading"><img src="<?php echo e(asset('/assets/gambar/logo.png')); ?>" width="100" style=""
                     alt=""></span>
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
         </div>
@@ -111,7 +112,7 @@
     </div>
 
     <div style="min-height: 100%" class="">
-        @yield('content')
+        <?php echo $__env->yieldContent('content'); ?>
     </div>
 
 
@@ -130,20 +131,20 @@
                         <div class="row col-12">
                             <a href="instagram" id="" class="" aria-hidden="true">
                                 <span class="fa-stack fa-lg ig" aria-hidden="true" id="ig">
-                                    {{-- <i class="fa fa-square-o fa-stack-2x"></i> --}}
+                                    
                                     <i class="fa fa-instagram fa-stack-2x ig" aria-hidden="true"></i>
-                                    {{-- <i class="fa fa-instagram fa-stack-1x "></i> --}}
+                                    
                                 </span>
                             </a>
                             <a href="facebook" id="fb">
                                 <span class="fa-stack fa-lg">
-                                    {{-- <i class="fa fa-square-o fa-stack-2x"></i> --}}
+                                    
                                     <i class="fa fa-facebook-square fa-stack-2x"></i>
                                 </span>
                             </a>
                             <a href="twitter" id="tw">
                                 <span class="fa-stack fa-lg">
-                                    {{-- <i class="fa fa-square-o fa-stack-2x"></i> --}}
+                                    
                                     <i class="fa fa-twitter-square fa-stack-2x" style=""></i>
                                 </span>
                             </a>
@@ -154,7 +155,7 @@
                         <h6 class="text-uppercase font-weight-bold">Download</h6>
                         <a href="android" id="ad" class="">
                             <span class="fa-stack fa-lg">
-                                {{-- <i class="fa fa-square-o fa-stack-2x"></i> --}}
+                                
                                 <i class="fa fa-android fa-stack-2x" style=""></i>
                             </span>
                         </a>
@@ -200,12 +201,12 @@
 
 
 <!-- JS -->
-<script src="{{ asset('js/app.js') }}" defer></script>
-<script src="{{ asset('/js/jquery.min.js') }}"></script>
-<script src="{{ asset('/js/tampilan/genosstyle.js') }}"></script>
-<script src="{{ asset('js/sweetalert2.min.js') }}"></script>
-<script src="{{ asset('js/flipkart.js') }}"></script>
-{{-- @include('sweet::alert') --}}
+<script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
+<script src="<?php echo e(asset('/js/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('/js/tampilan/genosstyle.js')); ?>"></script>
+<script src="<?php echo e(asset('js/sweetalert2.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/flipkart.js')); ?>"></script>
+
 
 
 
@@ -237,4 +238,4 @@
 
 
 
-@yield('script')
+<?php echo $__env->yieldContent('script'); ?><?php /**PATH D:\Program\web\New folder\simpoku\resources\views/main/header.blade.php ENDPATH**/ ?>
