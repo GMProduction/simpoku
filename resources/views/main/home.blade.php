@@ -114,7 +114,7 @@
                                     @endif
                                     <div class="card bg-dark text-white border-0 img kecil" style="height: 400px;">
                                         <img class="card-img img-fluid" src="{{asset ('/assets/banner/'.$data->gambar)}}"
-                                            alt="" style=" object-fit: cover !important">
+                                            alt="" style=" object-fit: cover !important; height: 401px">
                                         <div class="card-img-overlay d-flex linkfeat" style="z-index: 9999 !important">
 
                                             <div class="align-self-end">
