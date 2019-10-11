@@ -388,7 +388,7 @@ class eventController extends Controller
                 })
                 ->orderBy('tglMulai', 'ASC')
                 ->where('tglMulai', '>', $hari)
-                ->limit(3)
+                ->limit(30)
                 ->get();
                     // ->whereYear('tglMulai', 'like', '%' . $req->year . '%')
                     // ->where([
@@ -445,7 +445,7 @@ class eventController extends Controller
                     })
                     ->orderBy('tglMulai', 'ASC')
                     ->where('tglMulai', '>', $hari)
-                    ->limit(6)
+                    ->limit(30)
                     ->get();
             }
             $output = '';
