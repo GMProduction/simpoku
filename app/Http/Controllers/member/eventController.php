@@ -364,32 +364,57 @@ class eventController extends Controller
                     ->limit(2)
                     ->get();
                     */
-                $data = eventModel::where('id', '<', $req->id)
-                    ->whereYear('tglMulai', 'like', '%' . $req->year . '%')
-                    ->where([
-                        ['city', 'like', '%' . $req->city . '%'],
-                        ['region', 'like', '%' . $req->region . '%']
-                    ])
-                    ->where(function ($as) use ($req) {
-                        $as->where('spec', 'like', '%' . $req->spec . '%')
-                            ->orwhere('deskripsi', 'like', '%' . $req->des . '%')
-                            ->orwhere('judul', 'like', '%' . $req->judul . '%')
-                            ->orwhereMonth('tglMulai', 'like', '%' . $req->month . '%')
-                            ->orwhereYear('tglMulai', 'like', '%' . $req->year . '%')
-                            ->orwhere('city', 'like', '%' . $req->city . '%')
-                            ->orwhere('region', 'like', '%' . $req->region . '%');
-                    })
-                    ->where(function ($mo) use ($req) {
-                        if ($req->month == "") {
-                            $mo->whereMonth('tglMulai', 'like', '%' . $req->month . '%');
-                        } else {
-                            $mo->whereMonth('tglMulai', '=',  $req->month);
-                        }
-                    })
-                    ->orderBy('tglMulai', 'ASC')
-                    ->where('tglMulai', '>', $hari)
-                    ->limit(2)
-                    ->get();
+                $data = eventModel::where('tglMulai', '>', $req->date)
+                ->whereYear('tglMulai', 'like', '%' . $req->year . '%')
+                ->where([
+                    ['city', 'like', '%' . $req->city . '%'],
+                    ['region', 'like', '%' . $req->region . '%']
+                ])
+                ->where(function ($as) use ($req) {
+                    $as->where('spec', 'like', '%' . $req->spec . '%')
+                        ->orwhere('deskripsi', 'like', '%' . $req->des . '%')
+                        ->orwhere('judul', 'like', '%' . $req->judul . '%')
+                        ->orwhereMonth('tglMulai', 'like', '%' . $req->month . '%')
+                        ->orwhereYear('tglMulai', 'like', '%' . $req->year . '%')
+                        ->orwhere('city', 'like', '%' . $req->city . '%')
+                        ->orwhere('region', 'like', '%' . $req->region . '%');
+                })
+                ->where(function ($mo) use ($req) {
+                    if ($req->month == "") {
+                        $mo->whereMonth('tglMulai', 'like', '%' . $req->month . '%');
+                    } else {
+                        $mo->whereMonth('tglMulai', '=',  $req->month);
+                    }
+                })
+                ->orderBy('tglMulai', 'ASC')
+                ->where('tglMulai', '>', $hari)
+                ->limit(3)
+                ->get();
+                    // ->whereYear('tglMulai', 'like', '%' . $req->year . '%')
+                    // ->where([
+                    //     ['city', 'like', '%' . $req->city . '%'],
+                    //     ['region', 'like', '%' . $req->region . '%']
+                    // ])
+                    // ->where(function ($as) use ($req) {
+                    //     $as->where('spec', 'like', '%' . $req->spec . '%')
+                    //         ->orwhere('deskripsi', 'like', '%' . $req->des . '%')
+                    //         ->orwhere('judul', 'like', '%' . $req->judul . '%')
+                    //         ->orwhereMonth('tglMulai', 'like', '%' . $req->month . '%')
+                    //         ->orwhereYear('tglMulai', 'like', '%' . $req->year . '%')
+                    //         ->orwhere('city', 'like', '%' . $req->city . '%')
+                    //         ->orwhere('region', 'like', '%' . $req->region . '%');
+                    // })
+                    // ->where(function ($mo) use ($req) {
+                    //     if ($req->month == "") {
+                    //         $mo->whereMonth('tglMulai', 'like', '%' . $req->month . '%');
+                    //     } else {
+                    //         $mo->whereMonth('tglMulai', '=',  $req->month);
+                    //     }
+                    // })
+                    // ->orderBy('tglMulai', 'ASC')
+                    // ->where('tglMulai', '>', $hari)
+                    // ->limit(3)
+                    // ->get();
             } else {
                 /*
                 $data = eventModel::query()
@@ -425,6 +450,7 @@ class eventController extends Controller
             }
             $output = '';
             $last_id = '';
+            $last_date = '';
             if (!$data->isEmpty()) {
                 foreach ($data as $even) {
                     $output .= '
@@ -448,10 +474,11 @@ class eventController extends Controller
                  </a>
                      ';
                     $last_id = $even->id;
+                    $last_date = $even->tglMulai;
                 }
                 $output .= '
                 <div id="load_more" class="pt-2">
-                    <button type="button" name="load_more_button" id="load_more_button" class="btn btn-light form-control load" data-id="' . $last_id . '">Load More</button>
+                    <button type="button" name="load_more_button" id="load_more_button" class="btn btn-light form-control load" data-id="' . $last_id . '" data-date="'.$last_date.'">Load More</button>
                 </div>
             ';
             } else {
