@@ -177,6 +177,17 @@ class eventController extends Controller
         //return $event;
     }
 
+    public function dataIklan(Request $req)
+    {
+        $carousel = CarouselModel::query()
+        ->select('judul','gambar','url','jenis')
+        ->where('url','=',$req->id)
+        ->get();
+
+        return view('main/dataiklan')->with('carousel', $carousel);
+        //return $event;
+    }
+
     public function comboCarievent(Request $req)
     {
         $event = eventModel::whereYear('tglMulai', 'like', '%' . $req->year . '%')
