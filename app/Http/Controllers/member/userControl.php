@@ -203,21 +203,24 @@ class userControl extends Controller
                 $user->remember_token = $remember_token;
                 $user->save();
 
+                if ($user->save()) {
+                    dispatch(new SendVerificationEmail($user));
 
-                return response()->json([
-                    'value' => "success",
-                    'nama' => $request->fullname,
-                    'address' => $request->address,
-                    'phone' => $request->phone,
-                    'job' => $request->job,
-                    'institute' => $request->institute,
-                    'remember_token' => $remember_token,
-                    'dateofbirth' => $request->dateofbirth,
-                    'email' => $request->gmail
-                ]);
+                    return response()->json([
+                        'value' => "success",
+                        'nama' => $request->fullname,
+                        'address' => $request->address,
+                        'phone' => $request->phone,
+                        'job' => $request->job,
+                        'institute' => $request->institute,
+                        'remember_token' => $remember_token,
+                        'dateofbirth' => $request->dateofbirth,
+                        'email' => $request->gmail
+                    ]);
+                }
             } catch (\Exception $th) {
                 return response()->json([
-                    'value' => 'ada kesalahan input data, coba cek kembali data anda '.$th
+                    'value' => 'ada kesalahan input data, coba cek kembali data anda ' . $th
 
                 ]);
             }
