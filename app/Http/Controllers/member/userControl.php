@@ -217,7 +217,7 @@ class userControl extends Controller
                 ]);
             } catch (\Exception $th) {
                 return response()->json([
-                    'value' => 'ada kesalahan input data, coba cek kembali data anda'
+                    'value' => 'ada kesalahan input data, coba cek kembali data anda '.$th
 
                 ]);
             }
