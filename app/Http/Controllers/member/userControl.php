@@ -153,7 +153,7 @@ class userControl extends Controller
                 'dateofbirth' => $getDateOfBirth,
                 'id' => $getId
             ]);
-        } else if($getUser != null){
+        } else if ($getUser != null) {
 
             $getToken = $getUser->remember_token;
             $getEmail = $getUser->email;
