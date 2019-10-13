@@ -67,6 +67,7 @@ class eventControl extends Controller
             $res['tempat'] = $data->tempat;
             $res['spec'] = $data->spec;
             $res['noContact'] = $data->noContact;
+            $res['namaContact'] = $data->namaContact;
             $res['gambar'] = $data->gambar;
             $res['filepdf'] = $data->filepdf;
             return response($res);
