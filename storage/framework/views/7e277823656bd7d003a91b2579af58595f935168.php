@@ -197,7 +197,7 @@
                                 alt="asd">
                         </a>
                         <div class="text-center">
-                            <a href="#!" class="btn btn-light w-200" style="border-radius: 5rem !important"><img
+                            <a href="https://play.google.com/store/apps/details?id=com.genossys.simpoku_app&hl=en" target="_blank" class="btn btn-light w-200" style="border-radius: 5rem !important"><img
                                     class="m-0 p-0" src="<?php echo e(asset('/assets/gambar/playstore.png')); ?>" alt="Twitter"
                                     width="150"></a>
                         </div>

@@ -202,7 +202,7 @@
                     </div>
                     <div class="pb-2">
                         <h6 class="text-uppercase font-weight-bold">Download</h6>
-                        <a href="android" id="ad" class="">
+                        <a href="https://play.google.com/store/apps/details?id=com.genossys.simpoku_app&hl=en" target="_blank" id="ad" class="">
                             <span class="fa-stack fa-lg">
                                 
                                 <i class="fa fa-android fa-stack-2x" style=""></i>
