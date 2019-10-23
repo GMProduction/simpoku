@@ -57,9 +57,31 @@
                         <li class="upper-links"><a class="links" href="event"><i class="fa fa-calendar"
                                     aria-hidden="true"></i> Event</a></li>
                         @if (auth()->guard('member')->check())
-                        Hi, {{auth()->guard('member')->user()->fullname}}
-                        <li class="upper-links"><a class="links" href="/logout"><i class="fa fa-sign-out"
-                                    aria-hidden="true"></i> Logout</a></li>
+                        <li class="upper-links dropdown">
+                            <a class="links dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{-- <i class="fa fa-user-circle" aria-hidden="true"></i>  --}}
+                                @if (auth()->guard('member')->user()->avatar == 'default')
+                                <img src="{{ asset('/assets/account/avatar/default.png') }}" alt="" srcset="" class=""
+                                    width="20" height="20" style="border-radius: 2rem !important; ">
+                                Hi,{{auth()->guard('member')->user()->fullname}}
+                                @else
+                                <img src="{{ asset('/assets/account/avatar') }}/{{auth()->guard('member')->user()->avatar}}"
+                                    alt="" srcset="" class="" width="20" height="20"
+                                    style="border-radius: 2rem !important; ">
+                                Hi,{{auth()->guard('member')->user()->fullname}}
+                                @endif
+
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="member"><i class="fa fa-pencil" aria-hidden="true"></i>
+                                    Edit
+                                    Member</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/logout"><i class="fa fa-sign-out"
+                                        aria-hidden="true"></i> Logout</a>
+                            </div>
+                        </li>
                         @else
                         <li class="upper-links"><a class="links" href="login"><i class="fa fa-lock"
                                     aria-hidden="true"></i> Login </a></li>
@@ -106,8 +128,32 @@
         </div>
         <a class="links" href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
         <a class="links" href="event"><i class="fa fa-calendar" aria-hidden="true"></i> Event</a>
-        <a class="links" href="login"><i class="fa fa-lock" aria-hidden="true"></i> Login</a>
-        <a class="links" href="register"><i class="fa fa-sign-in" aria-hidden="true"></i> Register</a>
+        @if (auth()->guard('member')->check())
+        <a class="links dropdown dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            @if (auth()->guard('member')->user()->avatar == 'default')
+            <img src="{{ asset('/assets/account/avatar/default.png') }}" alt="" srcset="" class="" width="20"
+                height="20" style="border-radius: 2rem !important; ">
+            Hi,{{auth()->guard('member')->user()->fullname}}
+            @else
+            <img src="{{ asset('/assets/account/avatar') }}/{{auth()->guard('member')->user()->avatar}}" alt=""
+                srcset="" class="" width="20" height="20" style="border-radius: 2rem !important; ">
+            Hi,{{auth()->guard('member')->user()->fullname}}
+            @endif
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="member"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Member</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+        </div>
+        @else
+        <a class="links" href="login"><i class="fa fa-lock" aria-hidden="true"></i> Login </a>
+
+
+
+        <a class="links" href="/register"><i class="fa fa-sign-in" aria-hidden="true"></i>
+            Register</a>
+        @endif
     </div>
 
     <div style="min-height: 100%" class="">
@@ -189,7 +235,7 @@
     </footer>
 
     <style>
-       
+
     </style>
 
 

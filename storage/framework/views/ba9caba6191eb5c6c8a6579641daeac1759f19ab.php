@@ -57,10 +57,33 @@
                         <li class="upper-links"><a class="links" href="event"><i class="fa fa-calendar"
                                     aria-hidden="true"></i> Event</a></li>
                         <?php if(auth()->guard('member')->check()): ?>
-                        Hi, <?php echo e(auth()->guard('member')->user()->fullname); ?>
+                        <li class="upper-links dropdown">
+                            <a class="links dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                
+                                <?php if(auth()->guard('member')->user()->avatar == 'default'): ?>
+                                <img src="<?php echo e(asset('/assets/account/avatar/default.png')); ?>" alt="" srcset="" class=""
+                                    width="20" height="20" style="border-radius: 2rem !important; ">
+                                Hi,<?php echo e(auth()->guard('member')->user()->fullname); ?>
 
-                        <li class="upper-links"><a class="links" href="/logout"><i class="fa fa-sign-out"
-                                    aria-hidden="true"></i> Logout</a></li>
+                                <?php else: ?>
+                                <img src="<?php echo e(asset('/assets/account/avatar')); ?>/<?php echo e(auth()->guard('member')->user()->avatar); ?>"
+                                    alt="" srcset="" class="" width="20" height="20"
+                                    style="border-radius: 2rem !important; ">
+                                Hi,<?php echo e(auth()->guard('member')->user()->fullname); ?>
+
+                                <?php endif; ?>
+
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="member"><i class="fa fa-pencil" aria-hidden="true"></i>
+                                    Edit
+                                    Member</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/logout"><i class="fa fa-sign-out"
+                                        aria-hidden="true"></i> Logout</a>
+                            </div>
+                        </li>
                         <?php else: ?>
                         <li class="upper-links"><a class="links" href="login"><i class="fa fa-lock"
                                     aria-hidden="true"></i> Login </a></li>
@@ -107,8 +130,34 @@
         </div>
         <a class="links" href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
         <a class="links" href="event"><i class="fa fa-calendar" aria-hidden="true"></i> Event</a>
-        <a class="links" href="login"><i class="fa fa-lock" aria-hidden="true"></i> Login</a>
-        <a class="links" href="register"><i class="fa fa-sign-in" aria-hidden="true"></i> Register</a>
+        <?php if(auth()->guard('member')->check()): ?>
+        <a class="links dropdown dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <?php if(auth()->guard('member')->user()->avatar == 'default'): ?>
+            <img src="<?php echo e(asset('/assets/account/avatar/default.png')); ?>" alt="" srcset="" class="" width="20"
+                height="20" style="border-radius: 2rem !important; ">
+            Hi,<?php echo e(auth()->guard('member')->user()->fullname); ?>
+
+            <?php else: ?>
+            <img src="<?php echo e(asset('/assets/account/avatar')); ?>/<?php echo e(auth()->guard('member')->user()->avatar); ?>" alt=""
+                srcset="" class="" width="20" height="20" style="border-radius: 2rem !important; ">
+            Hi,<?php echo e(auth()->guard('member')->user()->fullname); ?>
+
+            <?php endif; ?>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="member"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Member</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+        </div>
+        <?php else: ?>
+        <a class="links" href="login"><i class="fa fa-lock" aria-hidden="true"></i> Login </a>
+
+
+
+        <a class="links" href="/register"><i class="fa fa-sign-in" aria-hidden="true"></i>
+            Register</a>
+        <?php endif; ?>
     </div>
 
     <div style="min-height: 100%" class="">
@@ -190,7 +239,7 @@
     </footer>
 
     <style>
-       
+
     </style>
 
 

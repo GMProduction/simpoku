@@ -46,6 +46,15 @@ Route::get('/adminpanel', 'Auth\Admin\LoginController@showLoginForm');
 Route::post('/postloginadmin', 'Auth\Admin\LoginController@postlogin');
 Route::get('/logoutadmin', 'Auth\Admin\LoginController@logout')->name('logoutadmin');
 
+Route::group(['middleware' => 'ifNotMember'], function(){
+    Route::get('/member', function () {
+        return view('main/dashboard');
+    })->name('member');
+    Route::post('updateMember', 'member\memberController@editMember');
+    Route::post('updateFoto', 'member\memberController@editFoto');
+
+});
+
 Route::group(['middleware' => 'memberonly'], function () {
     Route::get('/verifyaccount/{token}', 'Auth\member\VerificationController@verify');
     Route::get('/resend/{id}', 'Auth\member\VerificationController@resend');
@@ -71,9 +80,7 @@ Route::group(['middleware' => 'memberonly'], function () {
     })->name('dataload');
 
     Route::get('eventsearch', 'member\eventController@searchEvent')->name('eventsearch');
-    Route::get('/member', function () {
-        return view('main/dashboard');
-    })->name('about');
+    
 
     Route::get('/dataLoad/load_data', 'member\eventController@load_data')->name('dataLoad.load_data');
 

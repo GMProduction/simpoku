@@ -27,12 +27,12 @@ class LoginMemberController extends Controller
 
     function postlogin(Request $request)
     {
-        $login_type = filter_var($request->input('username'), FILTER_VALIDATE_EMAIL)
+        $login_type = filter_var($request->input('email'), FILTER_VALIDATE_EMAIL)
             ? 'email'
             : 'username';
 
         $request->merge([
-            $login_type => $request->input('username')
+            $login_type => $request->input('email')
         ]);
 
         if (Auth::guard('member')->attempt($request->only($login_type, 'password'))) {

@@ -1,6 +1,4 @@
-@extends('main.header')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <style>
     .txtEdit1 {
         background-color: white !important
@@ -28,8 +26,8 @@
 
                     </div>
                     <form action="updateFoto" id="formFoto" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" name="id" value="{{auth()->guard('member')->user()->id}}">
+                        <?php echo csrf_field(); ?>
+                        <input type="hidden" name="id" value="<?php echo e(auth()->guard('member')->user()->id); ?>">
                         <div class="pt-2">
                             <input type="file" name="foto" id="poto" class="form-control btn-sm border-0"
                                 style="outline: none" onchange="showImgAcount(this)">
@@ -42,7 +40,7 @@
             </div>
             <div class="col-lg-7">
                 <form class="" id="formMember" role="form" action="" method="">
-                    @csrf
+                    <?php echo csrf_field(); ?>
                     <div class="row pt-2">
                         <div class="col-lg-12 mb-3 justify-content-end">
                             <a onclick="editProfile()" style="cursor: pointer; color: white" id="edit"
@@ -54,7 +52,7 @@
 
                         </div>
                         <div class="col-lg-12 mb-3">
-                            <input type="hidden" name="id" value="{{auth()->guard('member')->user()->id}}">
+                            <input type="hidden" name="id" value="<?php echo e(auth()->guard('member')->user()->id); ?>">
                             <div class="input-group">
                                 <div class="input-group-append">
                                     <div class="input-group-text transparan divIcon" style="">
@@ -62,7 +60,7 @@
                                     </div>
                                 </div>
                                 <input type="text" name="fullname" class="form-control bordertext txtEdit " disabled
-                                    placeholder="Full name" value=" {{auth()->guard('member')->user()->fullname}}">
+                                    placeholder="Full name" value=" <?php echo e(auth()->guard('member')->user()->fullname); ?>">
 
                             </div>
                         </div>
@@ -74,7 +72,7 @@
                                     </div>
                                 </div>
                                 <input type="text" name="email" class="form-control bordertext txtEdit " disabled
-                                    placeholder="" value=" {{auth()->guard('member')->user()->email}}">
+                                    placeholder="" value=" <?php echo e(auth()->guard('member')->user()->email); ?>">
 
                             </div>
                         </div>
@@ -106,7 +104,7 @@
                                     </div>
                                 </div>
                                 <input type="text" name="instansi" class="form-control bordertext txtEdit " disabled
-                                    placeholder="instansi" value=" {{auth()->guard('member')->user()->institute}}">
+                                    placeholder="instansi" value=" <?php echo e(auth()->guard('member')->user()->institute); ?>">
 
                             </div>
                         </div>
@@ -118,7 +116,7 @@
                                     </div>
                                 </div>
                                 <input type="text" name="phone" class="form-control bordertext txtEdit " disabled
-                                    placeholder="phone" value=" {{auth()->guard('member')->user()->phone}}">
+                                    placeholder="phone" value=" <?php echo e(auth()->guard('member')->user()->phone); ?>">
 
                             </div>
                         </div>
@@ -131,7 +129,7 @@
                                 </div>
                                 <input type="date" name="tgl" class="form-control bordertext txtEdit" disabled style=""
                                     placeholder=""
-                                    value="{{date('Y-m-d', strtotime(auth()->guard('member')->user()->dateofbirth))}}">
+                                    value="<?php echo e(date('Y-m-d', strtotime(auth()->guard('member')->user()->dateofbirth))); ?>">
 
                             </div>
                         </div>
@@ -144,7 +142,7 @@
                                 </div>
                                 <textarea name="alamat" id="" cols="30" rows="3" disabled
                                     class="form-control bordertext txtEdit"
-                                    placeholder="Address"> {{auth()->guard('member')->user()->address}}</textarea>
+                                    placeholder="Address"> <?php echo e(auth()->guard('member')->user()->address); ?></textarea>
 
                             </div>
                         </div>
@@ -159,20 +157,20 @@
 
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 
 <script>
     $(document).ready(function () {
-        var a =  '{{ Auth::guard('member')->user()->job }}';
+        var a =  '<?php echo e(Auth::guard('member')->user()->job); ?>';
         
-        if ('{{Auth::guard('member')->user()->avatar}}' == null || '{{Auth::guard('member')->user()->avatar}}'
+        if ('<?php echo e(Auth::guard('member')->user()->avatar); ?>' == null || '<?php echo e(Auth::guard('member')->user()->avatar); ?>'
                         == 'default') {
-            $('#imgAccount').attr('src','{{asset ("/assets/account/default.png")}}')
+            $('#imgAccount').attr('src','<?php echo e(asset ("/assets/account/default.png")); ?>')
         } else {
-            var fo = '{{ Auth::guard('member')->user()->avatar }}';
-            $('#imgAccount').attr('src','{{asset ("/assets/account")}}/{{ Auth::guard('member')->user()->avatar }}');
+            var fo = '<?php echo e(Auth::guard('member')->user()->avatar); ?>';
+            $('#imgAccount').attr('src','<?php echo e(asset ("/assets/account")); ?>/<?php echo e(Auth::guard('member')->user()->avatar); ?>');
             
         }
             $('#job').val(a);
@@ -180,5 +178,6 @@
 
         
 </script>
-<script src="{{ asset('/js/tampilan/member.js') }}"></script>
-@endsection
+<script src="<?php echo e(asset('/js/tampilan/member.js')); ?>"></script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('main.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Program\web\New folder\simpoku\resources\views/main/dashboard.blade.php ENDPATH**/ ?>
