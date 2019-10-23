@@ -43,7 +43,7 @@ class userControl extends Controller
                         'password' => $getPassword,
                         'value' => 'sukses',
                         'id' => $getId,
-                        'nama' => $getNama,
+                        'fullname' => $getNama,
                         'address' => $getAddress,
                         'phone' => $getPhone,
                         'job' => $getJob,
@@ -89,7 +89,7 @@ class userControl extends Controller
                         'value' => 'success',
                         'remember_token' => $getToken,
                         'email' => $r->email,
-                        'nama' => $r->fullname,
+                        'fullname' => $r->fullname,
                         'address' => $r->address,
                         'phone' => $r->phone,
                         'job' => $r->job,
@@ -146,14 +146,14 @@ class userControl extends Controller
                 'value' => 'success',
                 'remember_token' => $getToken,
                 'email' => $getEmail,
-                'nama' => $getNama,
+                'fullname' => $getNama,
                 'address' => $getAddress,
                 'phone' => $getPhone,
                 'job' => $getJob,
                 'dateofbirth' => $getDateOfBirth,
                 'id' => $getId
             ]);
-        } else if($getUser != null){
+        } else if ($getUser != null) {
 
             $getToken = $getUser->remember_token;
             $getEmail = $getUser->email;
@@ -168,7 +168,7 @@ class userControl extends Controller
                 'value' => 'success',
                 'remember_token' => $getToken,
                 'email' => $getEmail,
-                'nama' => $getNama,
+                'fullname' => $getNama,
                 'address' => $getAddress,
                 'phone' => $getPhone,
                 'job' => $getJob,
@@ -203,21 +203,24 @@ class userControl extends Controller
                 $user->remember_token = $remember_token;
                 $user->save();
 
+                if ($user->save()) {
+                    dispatch(new SendVerificationEmail($user));
 
-                return response()->json([
-                    'value' => "success",
-                    'nama' => $request->fullname,
-                    'address' => $request->address,
-                    'phone' => $request->phone,
-                    'job' => $request->job,
-                    'institute' => $request->institute,
-                    'remember_token' => $remember_token,
-                    'dateofbirth' => $request->dateofbirth,
-                    'email' => $request->gmail
-                ]);
+                    return response()->json([
+                        'value' => "success",
+                        'fullname' => $request->fullname,
+                        'address' => $request->address,
+                        'phone' => $request->phone,
+                        'job' => $request->job,
+                        'institute' => $request->institute,
+                        'remember_token' => $remember_token,
+                        'dateofbirth' => $request->dateofbirth,
+                        'email' => $request->gmail
+                    ]);
+                }
             } catch (\Exception $th) {
                 return response()->json([
-                    'value' => 'ada kesalahan input data, coba cek kembali data anda'
+                    'value' => 'ada kesalahan input data, coba cek kembali data anda ' . $th
 
                 ]);
             }
