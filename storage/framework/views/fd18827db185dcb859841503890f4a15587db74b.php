@@ -1,12 +1,10 @@
-@extends('main.header')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <style>
 
 </style>
 
-<link href="{{ asset('/css/login.css') }}" rel="stylesheet" />
+<link href="<?php echo e(asset('/css/login.css')); ?>" rel="stylesheet" />
 
 <div class="container bawah">
 
@@ -19,7 +17,7 @@
                             <h4 class="login-box-msg">Create your Simpoku Account</h4>
                             <p class="login-box-msg">General Information</p>
                             <form action="/detailregister" method="post">
-                                @csrf
+                                <?php echo csrf_field(); ?>
                                 <div class="input-group mb-3">
                                     <div class="input-group-append">
                                         <div class="input-group-text transparan" style="">
@@ -27,14 +25,23 @@
                                         </div>
                                     </div>
                                     <input type="text"
-                                        class="form-control bordertext @error('fullname') is-invalid @enderror"
+                                        class="form-control bordertext <?php if ($errors->has('fullname')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('fullname'); ?> is-invalid <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>"
                                         placeholder="Full name" name="fullname" id="fullname"
-                                        value="{{old('fulname')}}">
-                                    @error('fullname')
+                                        value="<?php echo e(old('fulname')); ?>">
+                                    <?php if ($errors->has('fullname')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('fullname'); ?>
                                     <span class="msg invalid-feedback" role="alert">
-                                        {{$message}}
+                                        <?php echo e($message); ?>
+
                                     </span>
-                                    @enderror
+                                    <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-append">
@@ -43,13 +50,22 @@
                                         </div>
                                     </div>
                                     <input type="email"
-                                        class="form-control bordertext @error('email') is-invalid @enderror"
-                                        placeholder="Email" name="email" id="email" value="{{old('email')}}" style="">
-                                    @error('email')
+                                        class="form-control bordertext <?php if ($errors->has('email')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('email'); ?> is-invalid <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>"
+                                        placeholder="Email" name="email" id="email" value="<?php echo e(old('email')); ?>" style="">
+                                    <?php if ($errors->has('email')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('email'); ?>
                                     <span class="msg invalid-feedback" role="alert">
-                                        {{$message}}
+                                        <?php echo e($message); ?>
+
                                     </span>
-                                    @enderror
+                                    <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-append">
@@ -58,7 +74,11 @@
                                         </div>
                                     </div>
                                     <input type="password"
-                                        class="form-control bordertext @error('password') is-invalid @enderror"
+                                        class="form-control bordertext <?php if ($errors->has('password')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('password'); ?> is-invalid <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>"
                                         id="password" name="password" placeholder="Password">
 
                                     <div class="input-group-append">
@@ -79,7 +99,11 @@
                                         </div>
                                     </div>
                                     <input type="password"
-                                        class="form-control bordertext @error('password') is-invalid @enderror"
+                                        class="form-control bordertext <?php if ($errors->has('password')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('password'); ?> is-invalid <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>"
                                         id="password_confirmation" name="password_confirmation"
                                         placeholder="Retype password">
 
@@ -89,11 +113,16 @@
                                                     class="fa fa-eye-slash" id="ico2"></span></a>
                                         </div>
                                     </div>
-                                    @error('password')
+                                    <?php if ($errors->has('password')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('password'); ?>
                                     <span class="msg invalid-feedback" role="alert">
-                                        {{$message}}
+                                        <?php echo e($message); ?>
+
                                     </span>
-                                    @enderror
+                                    <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>
                                 </div>
                                 <div class="row">
 
@@ -123,7 +152,7 @@
             <div class="col-lg-6">
                 <div class="row col-12 justify-content-center">
                     <div class="col-6 mb-5 mt-5">
-                        <img src="{{ asset('/assets/gambar/logo2.png') }}" alt="">
+                        <img src="<?php echo e(asset('/assets/gambar/logo2.png')); ?>" alt="">
                     </div>
                 </div>
                 <p align="center">Only Simpoku members can download announcement</p>
@@ -158,4 +187,5 @@
 }
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('main.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Program\web\New folder\simpoku\resources\views/auth/member/register.blade.php ENDPATH**/ ?>
