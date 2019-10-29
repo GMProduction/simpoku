@@ -204,7 +204,6 @@ class userControl extends Controller
                 $user->save();
 
                 if ($user->save()) {
-                    dispatch(new SendVerificationEmail($user));
 
                     return response()->json([
                         'value' => "success",
