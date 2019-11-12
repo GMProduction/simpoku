@@ -77,7 +77,7 @@
             border-top-left-radius: 1rem !important;
         }
         .txtKecil{
-            color: red;
+            color: black;
         }
         .bgKecil {
             height: 200px !important;
