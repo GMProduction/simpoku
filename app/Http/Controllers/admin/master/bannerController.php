@@ -145,7 +145,7 @@ class bannerController extends Controller
                 $image = $r->file('gambar');
                 $namaFoto = $r->judul . '.' . $image->getClientOriginalExtension();
                 $image_resize = Image::make($image->getRealPath());
-                $image_resize->resize(1318, 401);
+                $image_resize->resize(1111, 370);
                 $image_resize->save(public_path('assets/banner/' . $namaFoto));
                 $data = array_add($data, 'gambar', $namaFoto);
             }
