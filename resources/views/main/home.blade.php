@@ -78,6 +78,7 @@
         }
         .txtKecil{
             color: #843B69;
+            text-shadow: unset !important;
         }
         .bgKecil {
             height: 200px !important;
@@ -130,7 +131,7 @@
                                             <div class="align-self-end">
                                                 {{-- <span class="badge">{{$data->city}}, {{$data->regional}}</span>
                                                 --}}
-                                                <h4 class=" txtKecil" style="font-weight: bold ">{{$data->judul}}</h4>
+                                                <h4 class="card-title txtKecil" style="font-weight: bold ">{{$data->judul}}</h4>
                                                 <p id="desSlider" class="textfeat txtKecil" style="display: none; ">
                                                     {{$data->deskripsi}}</p>
                                             </div>
@@ -165,12 +166,10 @@
                     <div class="col-lg-9 col-md-12">
 
                         <div class="card border-0 m-0 p-0">
-                            <div class="row">
-                                <div class="col-lg-10 col-sm-6" style="bottom: -5px">
+                                <div class="" style="bottom: -5px">
                                     <h4 class=" heading-large warna1">Upcoming Events </h4>
                                 </div>
 
-                            </div>
                             {{-- <div id="tampilEventHome"></div> --}}
                             <div class="card-body m-0 p-0 postList border-0">
                                 @foreach ($event as $even)
@@ -205,11 +204,9 @@
                     </div>
                     <div class="col-lg-3 side-bar col-md-12">
                         <!--- BP Batam LOGO --->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <h4 class=" heading-large warna1">Download App </h4>
-                            </li>
-                        </ul>
+                        <div class="" style="">
+                            <h4 class=" heading-large warna1">Download App </h4>
+                        </div>
                         <a href="" target="_blank">
                             <img src="{{asset ('/assets/gambar/qrcode.png')}}" class="img-fluid img-thumbnail border-0"
                                 alt="asd">
