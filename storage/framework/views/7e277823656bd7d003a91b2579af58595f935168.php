@@ -77,7 +77,7 @@
         }
         .bgKecil {
             height: 200px !important;
-            border: #000 1px solid !important;
+            border: #dee2e6 1px solid !important;
             border-radius: 1rem !important;
         }
 
