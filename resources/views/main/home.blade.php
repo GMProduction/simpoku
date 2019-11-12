@@ -130,7 +130,7 @@
                                             <div class="align-self-end">
                                                 {{-- <span class="badge">{{$data->city}}, {{$data->regional}}</span>
                                                 --}}
-                                                <h4 class="card-title txtKecil" style=" ">{{$data->judul}}</h4>
+                                                <h4 class=" txtKecil" style="font-weight: bold ">{{$data->judul}}</h4>
                                                 <p id="desSlider" class="textfeat txtKecil" style="display: none; ">
                                                     {{$data->deskripsi}}</p>
                                             </div>

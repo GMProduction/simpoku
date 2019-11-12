@@ -121,7 +121,7 @@
 
                                             <div class="align-self-end">
                                                 
-                                                <h4 class="card-title txtKecil" style=" "><?php echo e($data->judul); ?></h4>
+                                                <h4 class=" txtKecil" style="font-weight: bold "><?php echo e($data->judul); ?></h4>
                                                 <p id="desSlider" class="textfeat txtKecil" style="display: none; ">
                                                     <?php echo e($data->deskripsi); ?></p>
                                             </div>
