@@ -72,7 +72,7 @@
 
     @media (max-width: 765px) {
         .kecil {
-            height: 209px !important;
+            height: 127px !important;
         }
 
         .desSlider {
@@ -112,7 +112,7 @@
                                 @else
                                 <a href="/dataiklan?id={{$data->id}}">
                                     @endif
-                                    <div class="card bg-dark text-white border-0 img kecil" style="height: 628px;">
+                                    <div class="card bg-dark text-white border-0 img kecil" style="height: 370px;">
                                         <img class="card-img img-fluid" src="{{asset ('/assets/banner/'.$data->gambar)}}"
                                             alt="" style=" object-fit: cover !important; height: 100%">
                                         <div class="card-img-overlay d-flex linkfeat" style="z-index: 9999 !important">
