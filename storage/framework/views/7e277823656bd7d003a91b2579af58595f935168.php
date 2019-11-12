@@ -72,7 +72,9 @@
             border-top-right-radius : 1rem !important;
             border-top-left-radius: 1rem !important;
         }
-        
+        .txtKecil{
+            color: red;
+        }
         .bgKecil {
             height: 200px !important;
             border: #000 1px solid !important;
@@ -119,8 +121,8 @@
 
                                             <div class="align-self-end">
                                                 
-                                                <h4 class="card-title" style=" color: red"><?php echo e($data->judul); ?></h4>
-                                                <p id="desSlider" class="textfeat" style="display: none; color: red">
+                                                <h4 class="card-title txtKecil" style=" "><?php echo e($data->judul); ?></h4>
+                                                <p id="desSlider" class="textfeat txtKecil" style="display: none; ">
                                                     <?php echo e($data->deskripsi); ?></p>
                                             </div>
 
