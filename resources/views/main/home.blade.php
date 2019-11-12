@@ -73,6 +73,14 @@
     @media (max-width: 765px) {
         .kecil {
             height: 127px !important;
+            border-top-right-radius : 1rem !important;
+            border-top-left-radius: 1rem !important;
+        }
+        
+        .bgKecil {
+            height: 200px !important;
+            border: #000 1px solid !important;
+            border-radius: 1rem !important;
         }
 
         .desSlider {
@@ -112,16 +120,16 @@
                                 @else
                                 <a href="/dataiklan?id={{$data->id}}">
                                     @endif
-                                    <div class="card bg-dark text-white border-0 img kecil" style="height: 370px;">
-                                        <img class="card-img img-fluid" src="{{asset ('/assets/banner/'.$data->gambar)}}"
+                                    <div class="card text-white border-0 img bgKecil" style="height: 370px;">
+                                        <img class="card-img img-fluid kecil" src="{{asset ('/assets/banner/'.$data->gambar)}}"
                                             alt="" style=" object-fit: cover !important; height: 100%">
                                         <div class="card-img-overlay d-flex linkfeat" style="z-index: 9999 !important">
 
                                             <div class="align-self-end">
                                                 {{-- <span class="badge">{{$data->city}}, {{$data->regional}}</span>
                                                 --}}
-                                                <h4 class="card-title">{{$data->judul}}</h4>
-                                                <p id="desSlider" class="textfeat" style="display: none;">
+                                                <h4 class="card-title" style=" color: red">{{$data->judul}}</h4>
+                                                <p id="desSlider" class="textfeat" style="display: none; color: red">
                                                     {{$data->deskripsi}}</p>
                                             </div>
 
