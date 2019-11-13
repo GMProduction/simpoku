@@ -73,13 +73,32 @@
     @media (max-width: 765px) {
         .kecil {
             height: 127px !important;
-            border-top-right-radius : 1rem !important;
+            border-top-right-radius: 1rem !important;
             border-top-left-radius: 1rem !important;
         }
-        .txtKecil{
+
+        .txtKecil {
             color: #843B69;
             text-shadow: unset !important;
+
         }
+
+        .badge-block {
+            width: 100%;
+            -webkit-box-flex: 0 !important;
+            -ms-flex: 0 0 100% !important;
+            flex: 0 0 100% !important;
+            max-width: 100% !important;
+        }
+
+        .card-img-overlay {
+            padding-bottom: 0px !important;
+        }
+
+        .h4 {
+            font-size: 1rem !important;
+        }
+
         .bgKecil {
             height: 200px !important;
             border: #dee2e6 1px solid !important;
@@ -124,14 +143,16 @@
                                 <a href="/dataiklan?id={{$data->id}}">
                                     @endif
                                     <div class="card text-white border-0 img bgKecil" style="height: 370px;">
-                                        <img class="card-img img-fluid kecil" src="{{asset ('/assets/banner/'.$data->gambar)}}"
-                                            alt="" style=" object-fit: cover !important; height: 100%">
+                                        <img class="card-img img-fluid kecil"
+                                            src="{{asset ('/assets/banner/'.$data->gambar)}}" alt=""
+                                            style=" object-fit: cover !important; height: 100%">
                                         <div class="card-img-overlay d-flex linkfeat" style="z-index: 9999 !important">
 
-                                            <div class="align-self-end">
+                                            <div class="align-self-end" style="">
                                                 {{-- <span class="badge">{{$data->city}}, {{$data->regional}}</span>
                                                 --}}
-                                                <h4 class="card-title txtKecil" style="font-weight: bold ">{{$data->judul}}</h4>
+                                                <div class="card-title txtKecil h4" style="font-weight: bold ">
+                                                    {{$data->judul}}</div>
                                                 <p id="desSlider" class="textfeat txtKecil" style="display: none; ">
                                                     {{$data->deskripsi}}</p>
                                             </div>
@@ -166,23 +187,24 @@
                     <div class="col-lg-9 col-md-12">
 
                         <div class="card border-0 m-0 p-0">
-                                <div class="" style="bottom: -5px">
-                                    <h4 class=" heading-large warna1">Upcoming Events </h4>
-                                </div>
+                            <div class="" style="bottom: -5px">
+                                <h4 class=" heading-large warna1">Upcoming Events </h4>
+                            </div>
 
                             {{-- <div id="tampilEventHome"></div> --}}
                             <div class="card-body m-0 p-0 postList border-0">
                                 @foreach ($event as $even)
                                 <a href="/dataevent?id={{$even->id}}" class="media pl-2 pt-3 pb-3 border-B listHover">
                                     <div class="media">
-                                        <div class="last-media-img ml-1 mt-1 mr-2"
-                                            style="">
-                                            <img src="{{asset ('/assets/thumbnails/'.$even->gambar)}}" alt="" width="120" height="120" style="object-fit: cover">
+                                        <div class="last-media-img ml-1 mt-1 mr-2" style="">
+                                            <img src="{{asset ('/assets/thumbnails/'.$even->gambar)}}" alt=""
+                                                width="120" height="120" style="object-fit: cover">
                                         </div>
                                         <div class="media-body pt-1">
-                                            <div class="time-cat pb-1 pl-0">
-                                                <span class="badge" style="">{{$even->city}}, {{$even->region}}</span>
-                                                <small class="text-time "
+                                            <div class="time-cat pb-1 pl-0 ">
+                                                <span class="badge badge-block" style="">{{$even->city}},
+                                                    {{$even->region}}</span>
+                                                <small class="text-time"
                                                     style="">{{date('d M', strtotime($even->tglMulai))}}
                                                     s/d
                                                     {{date('d M Y', strtotime($even->tglAkhir))}}</small>
@@ -212,7 +234,8 @@
                                 alt="asd">
                         </a>
                         <div class="text-center">
-                            <a href="https://play.google.com/store/apps/details?id=com.genossys.simpoku_app&hl=en" target="_blank" class="btn btn-light w-200" style="border-radius: 5rem !important"><img
+                            <a href="https://play.google.com/store/apps/details?id=com.genossys.simpoku_app&hl=en"
+                                target="_blank" class="btn btn-light w-200" style="border-radius: 5rem !important"><img
                                     class="m-0 p-0" src="{{ asset('/assets/gambar/playstore.png') }}" alt="Twitter"
                                     width="150"></a>
                         </div>
