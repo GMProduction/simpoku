@@ -63,52 +63,7 @@
         background: #000;
     }
 
-    @media (max-width: 1200px) {
-        .kecil {
-            height: 300px !important;
-
-        }
-    }
-
-    @media (max-width: 765px) {
-        .kecil {
-            height: 127px !important;
-            border-top-right-radius: 1rem !important;
-            border-top-left-radius: 1rem !important;
-        }
-
-        .txtKecil {
-            color: #843B69;
-            text-shadow: unset !important;
-
-        }
-
-        .badge-block {
-            width: 100%;
-            -webkit-box-flex: 0 !important;
-            -ms-flex: 0 0 100% !important;
-            flex: 0 0 100% !important;
-            max-width: 100% !important;
-        }
-
-        .card-img-overlay {
-            padding-bottom: 0px !important;
-        }
-
-        .h4 {
-            font-size: 1rem !important;
-        }
-
-        .bgKecil {
-            height: 200px !important;
-            border: #dee2e6 1px solid !important;
-            border-radius: 1rem !important;
-        }
-
-        .desSlider {
-            display: block !important;
-        }
-    }
+    
 </style>
 <div class="bawahHome" style="">
     @if (auth()->guard('member')->check() && auth()->guard('member')->user()->email_verified_at == NULL)

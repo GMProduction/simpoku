@@ -462,7 +462,7 @@ class eventController extends Controller
                          </div>
                          <div class="media-body pt-1">
                              <div class="time-cat pb-1 pl-0">
-                                 <span class="badge">' . $even->city .', '.  $even->region . '</span>
+                                 <span class="badge badge-block">' . $even->city .', '.  $even->region . '</span>
                                  <small class="text-time">' . date("d M", strtotime($even->tglMulai)) . ' s/d
                                      ' . date("d M Y", strtotime($even->tglAkhir)) . '</small>
                              </div>
