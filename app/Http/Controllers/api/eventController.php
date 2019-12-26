@@ -15,62 +15,54 @@ class eventController extends Controller
 
     public function dataEvent()
     {
-        $data = eventModel::orderBy('tglMulai', 'desc')->paginate(20);
-        if (count($data) > 0) {
+        try {
+            $data = eventModel::orderBy('tglMulai', 'desc')->paginate(20);
             return response()->json([
                 'respon' => 'success',
-                'message' => 'success fetch data baliho',
+                'message' => 'success fetch data event',
                 'event' => $data
             ]);
-        } else {
+        } catch (\Exception $e) {
+            return response()->json([
+                'respon' => 'failure',
+                'message' => 'terjadi kesalahan ' . $e
+            ], 500);
+        }
+    }
+
+    public  function eventIncoming()
+    {
+        try {
+            $current = Carbon::now();
+            $data = eventModel::where('tglMulai', '>', $current)->orderBy('tglMulai', 'asc')->paginate(20);
             return response()->json([
                 'respon' => 'success',
-                'message' => 'Data tidak di temukan'
+                'message' => 'success fetch data event',
+                'event' => $data
             ]);
-        }
-    }
-
-    public  function apiEventIncoming()
-    {
-        $current = Carbon::now();
-        $data = eventModel::where('tglMulai', '>', $current)->orderBy('tglMulai', 'asc')->get();
-
-
-        if (count($data) > 0) {
-            $res['message'] = "success";
-            $res['value'] = "1";
-            $res['resultEvent'] = $data;
-            return response($res);
-        } else {
-            $res['message'] = "empty";
-            return response($res);
+        } catch (\Exception $e) {
+            return response()->json([
+                'respon' => 'failure',
+                'message' => 'terjadi kesalahan ' . $e
+            ], 500);
         }
     }
 
 
-    public  function apiDetailEvent($id)
+    public  function detailEvent($id)
     {
-
-        $data = eventModel::where('id', $id)->first();
-
-        if ($data != null) {
-            $res['value'] = "success";
-            $res['id'] = $data->id;
-            $res['judul'] = $data->judul;
-            $res['deskripsi'] = $data->deskripsi;
-            $res['region'] = $data->region;
-            $res['tglMulai'] = $data->tglMulai;
-            $res['tglAkhir'] = $data->tglAkhir;
-            $res['tempat'] = $data->tempat;
-            $res['spec'] = $data->spec;
-            $res['noContact'] = $data->noContact;
-            $res['namaContact'] = $data->namaContact;
-            $res['gambar'] = $data->gambar;
-            $res['filepdf'] = $data->filepdf;
-            return response($res);
-        } else {
-            $res['value'] = "empty";
-            return response($res);
+        try {
+            $data = eventModel::where('id', $id)->first();
+            return response()->json([
+                'respon' => 'success',
+                'message' => 'success fetch data event',
+                'event' => $data
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'respon' => 'failure',
+                'message' => 'terjadi kesalahan ' . $e
+            ], 500);
         }
     }
 
@@ -97,7 +89,6 @@ class eventController extends Controller
     public  function apiDataSlider()
     {
         $data = slideModel::where('terlihat', '=', 'ya')->orderBy('gambar', 'asc')->get();
-
 
         if (count($data) > 0) {
             $res['message'] = "success";
@@ -187,7 +178,7 @@ class eventController extends Controller
         }
     }
 
-     public function apiTampilSpec()
+    public function apiTampilSpec()
     {
         $data = specModel::all();
 
@@ -202,9 +193,9 @@ class eventController extends Controller
         }
     }
 
-     public  function apiEventSpec($spec)
+    public  function apiEventSpec($spec)
     {
-        $data = eventModel::where('spec', 'LIKE', '%' .$spec. '%')
+        $data = eventModel::where('spec', 'LIKE', '%' . $spec . '%')
             ->orderBy('tglMulai', 'asc')->get();
         if (count($data) > 0) {
             $res['message'] = "success";
