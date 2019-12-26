@@ -9,7 +9,6 @@ use App\Master\CarouselModel;
 use App\Master\specModel;
 use Carbon\Carbon;
 
-
 class eventController extends Controller
 {
     //
@@ -17,9 +16,9 @@ class eventController extends Controller
     {
         $mytime = Carbon::now();
         $hari =  $mytime->format('d');
-        
+
         $dt = Carbon::now();
-        $bulan = $dt->toDateString();       
+        $bulan = $dt->toDateString();
 
         $event = eventModel::query()
             ->select('id','judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
@@ -56,7 +55,7 @@ class eventController extends Controller
 
     public function evenHome(){
         $dt = Carbon::now();
-        $bulan = $dt->toDateString();   
+        $bulan = $dt->toDateString();
         $event = eventModel::query()
         ->select('id','judul', 'deskripsi', 'tempat', 'region', 'city', 'tglMulai', 'tglAkhir', 'noContact', 'namaContact', 'spec', 'gambar', 'filepdf')
         ->orderBy('tglMulai', 'ASC')
@@ -68,7 +67,7 @@ class eventController extends Controller
         ];
         return view('main/data/evenHome')->with($data);
     }
-    
+
     public function listEventAll()
     {
         $years = [];
@@ -352,8 +351,8 @@ class eventController extends Controller
     public function load_data(Request $req)
     {
         $mytime = Carbon::now();
-        $hari = $mytime->toDateString();     
-        
+        $hari = $mytime->toDateString();
+
         if ($req->ajax()) {
             if ($req->id > 0) {
                 /*
@@ -458,7 +457,7 @@ class eventController extends Controller
                      <div class="media">
                          <div class="last-media-img ml-1 mt-1 mr-2"
                              style="background-image: url(\'assets/thumbnails/' . $even->gambar . '\')">
-                             
+
                          </div>
                          <div class="media-body pt-1">
                              <div class="time-cat pb-1 pl-0">
@@ -503,7 +502,7 @@ class eventController extends Controller
           );
             return Response()->download($file, 'filename.pdf', $headers);
 
-        
-         
+
+
     }
 }
