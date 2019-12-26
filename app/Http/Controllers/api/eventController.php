@@ -86,125 +86,158 @@ class eventController extends Controller
         }
     }
 
-    public  function apiDataSlider()
+    public  function dataSlider()
     {
-        $data = slideModel::where('terlihat', '=', 'ya')->orderBy('gambar', 'asc')->get();
-
-        if (count($data) > 0) {
-            $res['message'] = "success";
-            $res['value'] = "1";
-            $res['resultSlider'] = $data;
-            return response($res);
-        } else {
-            $res['message'] = "empty";
-            return response($res);
+        try {
+            $data = slideModel::where('terlihat', '=', 'ya')->orderBy('gambar', 'asc')->get();
+            return response()->json([
+                'respon' => 'success',
+                'message' => 'success fetch data slider',
+                'slider' => $data
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'respon' => 'failure',
+                'message' => 'terjadi kesalahan ' . $e
+            ], 500);
         }
     }
 
-    public  function apiInsertFavorit(Request $r)
+    public  function insertFavorit(Request $r)
     {
+        //PR AUTH DISINI
         try {
-
             $data = new favoriteModel();
             $data->idUser = $r->idUser;
             $data->idEvent = $r->idEvent;
             $data->save();
-
-            return response()->json(['value' => "success"]);
-        } catch (\Exception $th) {
             return response()->json([
-                'value' =>  $th
+                'respon' => "success",
+                'message' => 'berhasil set ke favorit'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'respon' =>  'failure',
+                'message' => 'terjadi kesalahan ' . $e
             ]);
         }
     }
 
-    public  function apiDeleteFavorit(Request $r)
+    public  function deleteFavorit(Request $r)
     {
+        //PR AUTH DISINI
         try {
-
-            $data = favoriteModel::where('idUser', $r->idUser)
+            favoriteModel::where('idUser', $r->idUser)
                 ->where('idEvent', $r->idEvent)->delete();
 
-            return response()->json(['value' => "success"]);
-        } catch (\Exception $th) {
             return response()->json([
-                'value' => $th
-
+                'respon' => "success",
+                'message' => 'berhasil set ke favorit'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'respon' =>  'failure',
+                'message' => 'terjadi kesalahan ' . $e
             ]);
         }
     }
 
-    public  function apiCekFavorite($idUser, $idEvent)
+    public function cekFavorite($idUser, $idEvent)
     {
-
-        $data = favoriteModel::where('idUser', $idUser)
-            ->where('idEvent', $idEvent)->first();
-
-        if ($data != null) {
-            return response()->json(['value' => "ada"]);
-        } else {
-            return response()->json(['value' => "kosong"]);
+        try {
+            $data = favoriteModel::where('idUser', $idUser)
+                ->where('idEvent', $idEvent)->first();
+            if ($data != null) {
+                return response()->json([
+                    'respon' =>  'success',
+                    'value' => "ada"
+                ]);
+            } else {
+                return response()->json([
+                    'respon' =>  'success',
+                    'value' => "kosong"
+                ]);
+            }
+        } catch (\Exception $e) {
+            return response()->json([
+                'respon' =>  'failure',
+                'message' => 'terjadi kesalahan ' . $e
+            ]);
         }
     }
 
-    public function apiTampilFavorite($idUser)
+    public function tampilFavorite($idUser)
     {
-        $data = favoriteModel::join('tb_event', 'tb_favorite.idEvent', 'tb_event.id')
-            ->where('idUser', $idUser)->get();
+        try {
+            $data = favoriteModel::join('tb_event', 'tb_favorite.idEvent', 'tb_event.id')
+                ->where('idUser', $idUser)->get();
 
-        if (count($data) > 0) {
-            $res['message'] = "success";
-            $res['value'] = "1";
-            $res['resultEvent'] = $data;
-            return response($res);
-        } else {
-            $res['message'] = "empty";
-            return response($res);
+            return response()->json([
+                'respon' => 'success',
+                'message' => 'success fetch data favorite',
+                'event' => $data
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'respon' =>  'failure',
+                'message' => 'terjadi kesalahan ' . $e
+            ]);
         }
     }
 
-    public  function apiEventMonth($month)
+    public  function eventMonth($month)
     {
-        $data = eventModel::whereMonth('tglMulai', '=', $month)
-            ->orderBy('tglMulai', 'asc')->get();
-        if (count($data) > 0) {
-            $res['message'] = "success";
-            $res['value'] = "1";
-            $res['resultEvent'] = $data;
-            return response($res);
-        } else {
-            $res['message'] = "empty";
-            return response($res);
+        try {
+            $data = eventModel::whereMonth('tglMulai', '=', $month)
+                ->orderBy('tglMulai', 'asc')->get();
+
+            return response()->json([
+                'respon' => 'success',
+                'message' => 'success fetch data event',
+                'event' => $data
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'respon' =>  'failure',
+                'message' => 'terjadi kesalahan ' . $e
+            ]);
         }
     }
 
-    public function apiTampilSpec()
+    public function tampilSpec()
     {
-        $data = specModel::all();
+        try {
+            $data = specModel::all();
 
-        if (count($data) > 0) {
-            $res['message'] = "success";
-            $res['value'] = "1";
-            $res['resultSpec'] = $data;
-            return response($res);
-        } else {
-            $res['message'] = "empty";
-            return response($res);
+            return response()->json([
+                'respon' => 'success',
+                'message' => 'success fetch data specialist',
+                'specialist' => $data
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'respon' =>  'failure',
+                'message' => 'terjadi kesalahan ' . $e
+            ]);
         }
     }
 
-    public  function apiEventSpec($spec)
+    public  function eventSpec($spec)
     {
-        $data = eventModel::where('spec', 'LIKE', '%' . $spec . '%')
-            ->orderBy('tglMulai', 'asc')->get();
-        if (count($data) > 0) {
-            $res['message'] = "success";
-            $res['value'] = "1";
-            $res['resultEvent'] = $data;
-            return response($res);
-        } else {
-            $res['message'] = "empty";
-            return response($res);
+        try {
+            $data = eventModel::where('spec', 'LIKE', '%' . $spec . '%')
+                ->orderBy('tglMulai', 'asc')->get();
+
+            return response()->json([
+                'respon' => 'success',
+                'message' => 'success fetch data event',
+                'event' => $data
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'respon' =>  'failure',
+                'message' => 'terjadi kesalahan ' . $e
+            ]);
         }
     }
 }
