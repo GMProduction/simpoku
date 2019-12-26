@@ -59,22 +59,7 @@
         background: #000;
     }
 
-    @media (max-width: 1200px) {
-        .kecil {
-            height: 300px !important;
-
-        }
-    }
-
-    @media (max-width: 765px) {
-        .kecil {
-            height: 209px !important;
-        }
-
-        .desSlider {
-            display: block !important;
-        }
-    }
+    
 </style>
 <div class="bawahHome" style="">
     <?php if(auth()->guard('member')->check() && auth()->guard('member')->user()->email_verified_at == NULL): ?>
@@ -104,15 +89,17 @@
                                 <?php else: ?>
                                 <a href="/dataiklan?id=<?php echo e($data->id); ?>">
                                     <?php endif; ?>
-                                    <div class="card bg-dark text-white border-0 img kecil" style="height: 628px;">
-                                        <img class="card-img img-fluid" src="<?php echo e(asset ('/assets/banner/'.$data->gambar)); ?>"
-                                            alt="" style=" object-fit: cover !important; height: 100%">
+                                    <div class="card text-white border-0 img bgKecil" style="height: 370px;">
+                                        <img class="card-img img-fluid kecil"
+                                            src="<?php echo e(asset ('/assets/banner/'.$data->gambar)); ?>" alt=""
+                                            style=" object-fit: cover !important; height: 100%">
                                         <div class="card-img-overlay d-flex linkfeat" style="z-index: 9999 !important">
 
-                                            <div class="align-self-end">
+                                            <div class="align-self-end" style="">
                                                 
-                                                <h4 class="card-title"><?php echo e($data->judul); ?></h4>
-                                                <p id="desSlider" class="textfeat" style="display: none;">
+                                                <div class="card-title txtKecil h4" style="font-weight: bold ">
+                                                    <?php echo e($data->judul); ?></div>
+                                                <p id="desSlider" class="textfeat txtKecil" style="display: none; ">
                                                     <?php echo e($data->deskripsi); ?></p>
                                             </div>
 
@@ -146,25 +133,24 @@
                     <div class="col-lg-9 col-md-12">
 
                         <div class="card border-0 m-0 p-0">
-                            <div class="row">
-                                <div class="col-lg-10 col-sm-6" style="bottom: -5px">
-                                    <h4 class=" heading-large warna1">Upcoming Events </h4>
-                                </div>
-
+                            <div class="" style="bottom: -5px">
+                                <h4 class=" heading-large warna1">Upcoming Events </h4>
                             </div>
+
                             
                             <div class="card-body m-0 p-0 postList border-0">
                                 <?php $__currentLoopData = $event; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $even): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <a href="/dataevent?id=<?php echo e($even->id); ?>" class="media pl-2 pt-3 pb-3 border-B listHover">
                                     <div class="media">
-                                        <div class="last-media-img ml-1 mt-1 mr-2"
-                                            style="">
-                                            <img src="<?php echo e(asset ('/assets/thumbnails/'.$even->gambar)); ?>" alt="" width="120" height="120" style="object-fit: cover">
+                                        <div class="last-media-img ml-1 mt-1 mr-2" style="">
+                                            <img src="<?php echo e(asset ('/assets/thumbnails/'.$even->gambar)); ?>" alt=""
+                                                width="120" height="120" style="object-fit: cover">
                                         </div>
                                         <div class="media-body pt-1">
-                                            <div class="time-cat pb-1 pl-0">
-                                                <span class="badge" style=""><?php echo e($even->city); ?>, <?php echo e($even->region); ?></span>
-                                                <small class="text-time "
+                                            <div class="time-cat pb-1 pl-0 ">
+                                                <span class="badge badge-block" style=""><?php echo e($even->city); ?>,
+                                                    <?php echo e($even->region); ?></span>
+                                                <small class="text-time"
                                                     style=""><?php echo e(date('d M', strtotime($even->tglMulai))); ?>
 
                                                     s/d
@@ -187,17 +173,16 @@
                     </div>
                     <div class="col-lg-3 side-bar col-md-12">
                         <!--- BP Batam LOGO --->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <h4 class=" heading-large warna1">Download App </h4>
-                            </li>
-                        </ul>
+                        <div class="" style="">
+                            <h4 class=" heading-large warna1">Download App </h4>
+                        </div>
                         <a href="" target="_blank">
                             <img src="<?php echo e(asset ('/assets/gambar/qrcode.png')); ?>" class="img-fluid img-thumbnail border-0"
                                 alt="asd">
                         </a>
                         <div class="text-center">
-                            <a href="https://play.google.com/store/apps/details?id=com.genossys.simpoku_app&hl=en" target="_blank" class="btn btn-light w-200" style="border-radius: 5rem !important"><img
+                            <a href="https://play.google.com/store/apps/details?id=com.genossys.simpoku_app&hl=en"
+                                target="_blank" class="btn btn-light w-200" style="border-radius: 5rem !important"><img
                                     class="m-0 p-0" src="<?php echo e(asset('/assets/gambar/playstore.png')); ?>" alt="Twitter"
                                     width="150"></a>
                         </div>
