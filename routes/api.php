@@ -17,4 +17,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('v1/dataEvent', 'api\EventController@dataEvent')->name('dataEvent');
+Route::get('v1/dataEvent', 'api\eventController@dataEvent')->name('dataEvent');
